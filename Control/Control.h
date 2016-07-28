@@ -3,7 +3,7 @@
 
 namespace OrbMod
 {
-	class Interface
+	class Control
 	{
 	public:
 		static void Process();

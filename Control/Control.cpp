@@ -5,14 +5,13 @@ using namespace Algebra;
 namespace OrbMod
 {
 
-	 void Interface::Process()
+	 void Control ::Process()
 	{
 		//Очистка файла с ускорениями
 		FILE*facc = fopen("acc.out", "w");
 		fclose(facc);
 
 		Force::setMu();
-
 
 		Global::N_rp = 0;
 		Global::start = clock();
@@ -35,7 +34,7 @@ namespace OrbMod
 			debugAction4();
 		//OrbFit::fo.close();
 	}
-	 void Interface::ParameterEstimation()
+	 void Control::ParameterEstimation()
 	 {
 		 ObsSet::Instance().f_res.open("residuals.out");
 		 OrbFit::fo.open("Orbfit.out");
@@ -61,7 +60,7 @@ namespace OrbMod
 		 ObsSet::Instance().f_res.close();
 		 OrbFit::fo.close();
 	 }
-	 void Interface::FODE()
+	 void Control::FODE()
 	 {
 		 const int  NOR = Global::NOR;
 		 double to = Global::t0;
@@ -81,7 +80,7 @@ namespace OrbMod
 		 Integration::Instance.GetX(X, Global::SV, te, dXdX0);
 
 	 };
-	 void Interface::FODE_test()
+	 void Control::FODE_test()
 	 {
 		 FILE *ft = fopen("Test.out", "w");
 		 //FILE *fx = fopen("X.out", "w");
@@ -90,7 +89,9 @@ namespace OrbMod
 		 fprintf(ft, "dt, days %f\n", dtd / 86400);
 
 		 int Ntest = abs(log10(Global::eps));
-		 for (int i = 0; i <= Ntest; i++)
+		 int istart = -6;
+
+		 for (int i = istart; i <= Ntest; i++)
 		 {
 			 const int  NOR = Global::NOR;
 			 double to = Global::t0;

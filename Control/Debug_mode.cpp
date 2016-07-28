@@ -5,7 +5,7 @@ using namespace std;
 //
 namespace OrbMod
 {
-	void  Interface::debugAction1()
+	void  Control::debugAction1()
 	{
 
 		ofstream f;
@@ -90,7 +90,7 @@ namespace OrbMod
 		OrbFit::fo.close();
 	}
 	//
-	void  Interface::debugAction2()
+	void  Control::debugAction2()
 	{
 		OrbFit::fo.open("Orbfit.out");
 		const int  NOR = Global::NOR;
@@ -150,7 +150,7 @@ namespace OrbMod
 		OrbFit::fo.close();
 	}
 	//
-	void  Interface::debugAction3()
+	void  Control::debugAction3()
 	{
 		OrbFit::fo.open("Orbfit.out");
 		const int  NOR = Global::NOR;
@@ -197,7 +197,7 @@ namespace OrbMod
 		OrbFit::fo.close();
 	}
 
-	void Interface::debugAction4()
+	void Control::debugAction4()
 	{
 		OrbFit::fo.open("Orbfit.out");
 

@@ -97,7 +97,7 @@
 #include"OrbFit\OrbFit_KS.h"
 #include"OrbFit\OrbFit_SB.h"
 
-#include"Interface\Interface.h"
+#include"Control\Control.h"
 
 
 
