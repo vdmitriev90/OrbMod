@@ -1,5 +1,7 @@
 #pragma once
+#include"stdafx.h"
 #include "OrbFit\Abstract\OrbFit.h"
+
 namespace OrbMod
 {
 	class seqLS_KS :

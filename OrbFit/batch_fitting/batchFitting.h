@@ -2,6 +2,7 @@
 #include "stdafx.h"
 namespace OrbMod
 {
+	//
 	class batchFitting : public OrbFit
 	{
 

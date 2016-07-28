@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "var_KS_izo2.h"
-
 namespace OrbMod
 {
+
 	var_KS_izo2::var_KS_izo2()
 	{
 	}
@@ -19,7 +19,7 @@ namespace OrbMod
 		SVi.clear();
 	}
 	//
-	bool var_KS_izo2::Inter(double s0, double H, vector<double> &X, vector<double> &Y, vector<double> &F0, vector<double> &P, vector< vector<double>> &B)
+	bool var_KS_izo2::Inter(double s0, double H, vector<double> &X, vector<double> &Y)
 	{
 		double t0 = X[9];
 
@@ -42,7 +42,7 @@ namespace OrbMod
 		{
 			while (abs(tout - t0) < abs(stepT))
 			{
-				calcSV(H, t0, tout, X, B, F0, P, Y);
+				calcSV(H, t0, tout, X, Y);
 				KS svout = KS(Y);
 
 				Matrix svi = svout.SV3d();
@@ -58,7 +58,7 @@ namespace OrbMod
 		//
 		if (b)
 		{
-			calcSV(H, t0, te, X, B, F0, P, Y);
+			calcSV(H, t0, te, X, Y);
 			X = Y;
 			KS svout = KS(Y);
 			return true;

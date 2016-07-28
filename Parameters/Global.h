@@ -2,6 +2,7 @@
 #include"stdafx.h"
 using namespace std;
 using namespace Consts;
+using namespace Algebra;
 
 namespace OrbMod
 {

@@ -16,12 +16,12 @@ namespace OrbMod
 		SVi.clear();
 	}
 	//
-	bool var_3D_izo2::Inter(double t0, double H, vector<double> &X, vector<double> &Yo, vector<double> &F0, vector<double> &P, vector< vector<double>> &B)
+	bool var_3D_izo2::Inter(double t0, double H, vector<double> &X, vector<double> &Yo)
 	{
 		if (Global::Discr != 0)
 			while (abs(tout - t0) <= abs(H))
 			{
-				stepDs(tout - t0, H, X, B, F0, P, Yo);
+				stepDs(tout - t0, H, X, Yo);
 				Matrix fi(6, 6), svi(6, 1);
 				svi.setFromVec(0, Yo);
 				SVi.push_back(svi);

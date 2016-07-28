@@ -1,5 +1,7 @@
 #pragma once
 #include "OrbFit\Abstract\OrbFit.h"
+using namespace Algebra;
+
 namespace OrbMod
 {
 	class hibridKalman_XV :

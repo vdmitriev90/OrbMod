@@ -1,18 +1,17 @@
 #pragma once
 #include"Integrate.h"
 using namespace std;
-using namespace Algebra;
 
+//class ivar;
 namespace OrbMod
 {
-
 	class var_2D : public ivar {
 	public:
 		var_2D();
 		virtual void setPar(vector<double> &X, Matrix &mSV, double t0) override;
 		virtual void GetX(vector<double> &X, Matrix &mSV, double t0, Matrix &dXdX0)override;
 		virtual void force(const double Ti, const vector<double> &X, vector<double> &dXds) override;
-		virtual bool Inter(double t0, double H, vector<double> &X, vector<double> &Yo, vector<double> &F0, vector<double> &P, vector< vector<double>> &B)override;
+		virtual bool Inter(double t0, double H, vector<double> &X, vector<double> &Yo)override;
 	};
 	//
 	class var_3D : public ivar {
@@ -21,7 +20,7 @@ namespace OrbMod
 		virtual void setPar(vector<double> &X, Matrix &mSV, double t0) override;
 		virtual void GetX(vector<double> &X, Matrix &mSV, double t0, Matrix &dXdX0)override;
 		virtual void force(const double Ti, const vector<double> &X, vector<double> &dXds)override;
-		virtual bool Inter(double t0, double H, vector<double> &X, vector<double> &Yo, vector<double> &F0, vector<double> &P, vector< vector<double>> &B)override;
+		virtual bool Inter(double t0, double H, vector<double> &X, vector<double> &Yo)override;
 	};
 	//
 	class var_3D_izo : public var_3D {
@@ -39,9 +38,9 @@ namespace OrbMod
 		virtual void setPar(vector<double> &X, Matrix &mSV, double t0) override;
 		virtual void GetX(vector<double> &X, Matrix &mSV, double t0, Matrix &dXdX0)override;
 		virtual void force(const double Ti, const vector<double> &X, vector<double> &dXds)override;
-		virtual void endOfStep(double t0, double H, vector<double> &X, vector<double> &Y, vector<double> &F0, vector<double> &P, vector<vector<double>> &B) override;
-		virtual bool Inter(double t0, double H, vector<double> &X, vector<double> &Yo, vector<double> &F0, vector<double> &P, vector< vector<double>> &B)override;
-		void calcSV(double S, double t0, double tout, vector<double> &X, vector< vector<double>> &B, vector<double> &F0, vector<double> &P, vector<double> &Y);
+		virtual void endOfStep(double t0, double H, vector<double> &X, vector<double> &Y) override;
+		virtual bool Inter(double t0, double H, vector<double> &X, vector<double> &Yo)override;
+		void calcSV(double S, double t0, double tout, vector<double> &X, vector<double> &Y);
 	};
 	//
 	class var_KS_izo : public var_KS {
@@ -60,9 +59,9 @@ namespace OrbMod
 		virtual void setPar(vector<double> &X, Matrix &mSV, double t0)override;
 		virtual void GetX(vector<double> &X, Matrix &mSV, double t0, Matrix &dXdX0)override;
 		virtual void force(const double Ti, const vector<double> &X, vector<double> &dXds)override;
-		virtual void endOfStep(double t0, double H, vector<double> &X, vector<double> &Y, vector<double> &F0, vector<double> &P, vector<vector<double>> &B) override;
-		virtual bool Inter(double t0, double H, vector<double> &X, vector<double> &Yo, vector<double> &F0, vector<double> &P, vector< vector<double>> &B)override;
-		void calcSV(double S, double t0, double tout, vector<double> &X, vector< vector<double>> &B, vector<double> &F0, vector<double> &P, vector<double> &Y);
+		virtual void endOfStep(double t0, double H, vector<double> &X, vector<double> &Y) override;
+		virtual bool Inter(double t0, double H, vector<double> &X, vector<double> &Yo)override;
+		void calcSV(double S, double t0, double tout, vector<double> &X, vector<double> &Y);
 	};
 	//
 	class var_SB_izo : public var_SB {
@@ -75,5 +74,4 @@ namespace OrbMod
 		void getdXdX0(const vector<double> &X, Matrix &Fi);
 	};
 }
-
  

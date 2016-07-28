@@ -1,8 +1,9 @@
 #pragma once
 #include "OrbFit\OrbFit_XV.h"
+using namespace Algebra;
+
 namespace OrbMod
 {
-
 	class Filter_XV : public OrbFit_XV
 	{
 	public:
@@ -16,3 +17,4 @@ namespace OrbMod
 		virtual void GetX(vector<double> &X, Matrix &mSV, double t0, Matrix &dXdX0) override;
 	};
 }
+

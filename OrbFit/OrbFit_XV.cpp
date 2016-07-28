@@ -1,15 +1,16 @@
 #include "stdafx.h"
 #include "OrbFit_XV.h"
-#define DEF__2  0
-//using namespace alglib;
 
-//TypeOfObs OrbFit::ObsType;
-//
-//Matrix OrbFit_3D::Fi = Matrix(6, 6);
-//Matrix OrbFit_3D::x = Matrix(6, 1);
-//
+#define DEF__2  0
 namespace OrbMod
 {
+	//using namespace alglib;
+
+	//TypeOfObs OrbFit::ObsType;
+	//
+	//Matrix OrbFit_3D::Fi = Matrix(6, 6);
+	//Matrix OrbFit_3D::x = Matrix(6, 1);
+	//
 	void OrbFit_XV::setPar(vector<double> &X, Matrix &SV, double t0)
 	{
 
@@ -29,7 +30,7 @@ namespace OrbMod
 		OmC.clear();
 	}
 	//
-	bool OrbFit_XV::Inter(double t0, double H, vector<double> &X, vector<double> &Yo, vector<double> &F0, vector<double> &P, vector< vector<double>> &B)
+	bool OrbFit_XV::Inter(double t0, double H, vector<double> &X, vector<double> &Yo)
 	{
 		double dt = tout - t0;
 
@@ -38,7 +39,7 @@ namespace OrbMod
 			if (Global::ObsT == TypeOfObs::Astro || Global::ObsT == TypeOfObs::mAstro2)
 				StateLTCorr(t0, H, X, B, F0, P, Yo);
 			else
-				stepDs(dt, H, X, B, F0, P, Yo);
+				stepDs(dt, H, X, Yo);
 
 			xi.setFromVec(0, Yo);
 			Fi.setFromVec(6, Yo);
@@ -60,7 +61,7 @@ namespace OrbMod
 		while (1)
 		{
 			dt = dt0 - tau;
-			stepDs(dt, H, X, B, F0, P, Yo);
+			stepDs(dt, H, X, Yo);
 
 			triple Pos(Yo[0], Yo[1], Yo[2]);
 			double d = (Pos - pE).getAbs();
@@ -70,9 +71,9 @@ namespace OrbMod
 			tau = tau1;
 		}
 		dt = dt0 - tau;
-		stepDs(dt, H, X, B, F0, P, Yo);
+		stepDs(dt, H, X, Yo);
 	}
-	void OrbFit_XV::endOfStep(double t0, double H, vector<double> &X, vector<double> &Y, vector<double> &F0, vector<double> &P, vector< vector<double>> &B)
+	void OrbFit_XV::endOfStep(double t0, double H, vector<double> &X, vector<double> &Y)
 	{
 		for (int k = 0; k < N; k++)
 			P[k] = 0.0;

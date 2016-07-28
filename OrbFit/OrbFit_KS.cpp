@@ -18,7 +18,7 @@ namespace OrbMod
 		OmC.clear();
 	}
 	//
-	bool OrbFit_KS::Inter(double s0, double H, vector<double> &X, vector<double> &Y, vector<double> &F0, vector<double> &P, vector< vector<double>> &B)
+	bool OrbFit_KS::Inter(double s0, double H, vector<double> &X, vector<double> &Y)
 	{
 		//момент физичкского времени на начало шага (дифф. ур-е №9 в KS переменных)
 		double t0 = X[9];
@@ -39,7 +39,7 @@ namespace OrbMod
 			if (Global::ObsT == TypeOfObs::Astro || Global::ObsT == TypeOfObs::mAstro2)
 				StateLTCorr(t0, H, X, B, F0, P, Y);
 			else
-				calcSV(H, t0, tout, X, B, F0, P, Y);
+				calcSV(H, t0, tout, X, Y);
 
 			//получение решения на момент tout
 			KS svout = KS(Y);
@@ -66,7 +66,7 @@ namespace OrbMod
 
 		while (1)
 		{
-			calcSV(H, t0, tout - tau, X, B, F0, P, Yo);
+			calcSV(H, t0, tout - tau, X, Yo);
 			KS svlt = KS(Yo);
 			Plt = svlt.X();
 
@@ -81,7 +81,7 @@ namespace OrbMod
 		//fo << (tout-t0) << " " << tau << " " << H << " " << endl;
 	}
 	//
-	void OrbFit_KS::endOfStep(double t0, double H, vector<double> &X, vector<double> &Y, vector<double> &F0, vector<double> &P, vector< vector<double>> &B)
+	void OrbFit_KS::endOfStep(double t0, double H, vector<double> &X, vector<double> &Y)
 	{
 		double t = X[9];
 		for (int k = 0; k < N; k++)
@@ -102,20 +102,20 @@ namespace OrbMod
 		tau0 = calcLTCorr(399, svlt.X(), t);
 
 	}
-}
 
-//void OrbFit_KS::GetX(vector<double> &X, Matrix &SV, double t0, Matrix &dXdX0)
-//{
-//	SV = Matrix(6, 1);
-//	dXdX0 = Matrix(Niter, Niter);
-//	KS sv = KS(X);
-//	triple Pos = sv.X();
-//	triple V = sv.V();
-//	for (size_t i = 0; i < 3; i++)
-//	{
-//		SV(i, 0) = Pos[i];
-//		SV(i + 3, 0) = V[i];
-//	}
-//	dXdX0.setFromVec(10, X);
-//	//OrbFit::fo.close();
-//}
+	//void OrbFit_KS::GetX(vector<double> &X, Matrix &SV, double t0, Matrix &dXdX0)
+	//{
+	//	SV = Matrix(6, 1);
+	//	dXdX0 = Matrix(Niter, Niter);
+	//	KS sv = KS(X);
+	//	triple Pos = sv.X();
+	//	triple V = sv.V();
+	//	for (size_t i = 0; i < 3; i++)
+	//	{
+	//		SV(i, 0) = Pos[i];
+	//		SV(i + 3, 0) = V[i];
+	//	}
+	//	dXdX0.setFromVec(10, X);
+	//	//OrbFit::fo.close();
+	//}
+}

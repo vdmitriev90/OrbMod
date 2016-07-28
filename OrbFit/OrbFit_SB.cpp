@@ -22,7 +22,7 @@ namespace OrbMod
 		OmC.clear();
 	}
 
-	bool OrbFit_SB::Inter(SpiceDouble s0, double H, vector<double> &X, vector<double> &Y, vector<double> &F0, vector<double> &P, vector< vector<double>> &B)
+	bool OrbFit_SB::Inter(SpiceDouble s0, double H, vector<double> &X, vector<double> &Y)
 	{
 		//момент физичкского времени на начало шага (дифф. ур-е №9 в KS переменных)
 		double t0 = X[10];
@@ -41,7 +41,7 @@ namespace OrbMod
 		while (abs(tout - t0) < abs(stepT))
 		{
 			//получение решения на момент tout 
-			calcSV(H, t0, tout, X, B, F0, P, Y);
+			calcSV(H, t0, tout, X, Y);
 			SB svout = SB(Y);
 			getdXdX0(Y, Fi);
 

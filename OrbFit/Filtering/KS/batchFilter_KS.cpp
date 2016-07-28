@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include"batchFilter_KS.h"
+
 namespace OrbMod
 {
-
 	batchFilter_KS::batchFilter_KS() :OrbFit_KS(this)
 	{
 	}

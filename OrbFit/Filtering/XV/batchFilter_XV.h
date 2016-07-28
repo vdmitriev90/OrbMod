@@ -10,4 +10,5 @@ namespace OrbMod
 		~batchFilter_XV();
 		int FitBatch(Matrix &SV, double &t0, double &te, double &sigma, Matrix &Q) override;
 	};
+
 }

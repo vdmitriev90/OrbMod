@@ -53,7 +53,7 @@ namespace OrbMod
 		Global::N_rp++;
 	}
 	//
-	bool var_SB::Inter(SpiceDouble s0, double H, vector<double> &X, vector<double> &Y, vector<double> &F0, vector<double> &P, vector< vector<double>> &B)
+	bool var_SB::Inter(SpiceDouble s0, double H, vector<double> &X, vector<double> &Y)
 	{
 		double t0 = X[10];
 
@@ -78,7 +78,7 @@ namespace OrbMod
 		{
 			while (abs(tout - t0) < abs(stepT))
 			{
-				calcSV(H, t0, tout, X, B, F0, P, Y);
+				calcSV(H, t0, tout, X, Y);
 				SB svout = SB(Y);
 				Integration::Instance.write(tout, svout.q, svout.v(), 0, 0);
 				tout += Global::Discr;
@@ -87,7 +87,7 @@ namespace OrbMod
 		//последний шаг
 		if (b)
 		{
-			calcSV(H, t0, te, X, B, F0, P, Y);
+			calcSV(H, t0, te, X, Y);
 			X = Y;
 			SB svout = SB(Y);
 			if (Global::Discr != 0)
@@ -97,7 +97,7 @@ namespace OrbMod
 		return false;
 	}
 	//
-	void var_SB::endOfStep(double s0, double H, vector<double> &X, vector<double> &Y, vector<double> &F0, vector<double> &P, vector<vector<double>> &B)
+	void var_SB::endOfStep(double s0, double H, vector<double> &X, vector<double> &Y)
 	{
 		double t_s = X[10];
 		double p = 0;
@@ -107,12 +107,12 @@ namespace OrbMod
 		double tf = t_s + H*(F0[9] + p);
 		//
 		if (abs(tf - t_s) > abs(te - t_s))
-			calcSV(H, t_s, te, X, B, F0, P, Y);
+			calcSV(H, t_s, te, X, Y);
 		else
-			ivar::endOfStep(s0, H, X, Y, F0, P, B);
+			ivar::endOfStep(s0, H, X, Y);
 	}
 	//
-	void var_SB::calcSV(double S, double t0, double tout, vector<double> &X, vector< vector<double>> &B, vector<double> &F0, vector<double> &P, vector<double> &Y)
+	void var_SB::calcSV(double S, double t0, double tout, vector<double> &X, vector<double> &Y)
 	{
 		double r0 = sqrt(X[0] * X[0] + X[1] * X[1] + X[2] * X[2]);
 		double ds = (tout - t0) / r0;
@@ -120,7 +120,7 @@ namespace OrbMod
 		int i = 0;
 		while (abs(tout - t) > 1e-15 && i < 15)
 		{
-			stepDs(ds, S, X, B, F0, P, Y);
+			stepDs(ds, S, X, Y);
 			r0 = sqrt(Y[0] * Y[0] + Y[1] * Y[1] + Y[2] * Y[2]);
 			t = Y[10];
 			ds += (tout - t) / r0;

@@ -1,9 +1,6 @@
 #include"stdafx.h"
 #include"OrbFit.h"
 using namespace std;
-using namespace Algebra;
-
-
 namespace OrbMod
 {
 	//
@@ -166,4 +163,5 @@ namespace OrbMod
 			return false;
 		}
 	}
+
 }

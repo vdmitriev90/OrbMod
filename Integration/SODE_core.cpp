@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Integration_.h"
 using namespace std;
+
 namespace OrbMod
 {
 	void Integration::SODE()

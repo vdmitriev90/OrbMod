@@ -10,7 +10,7 @@ namespace OrbMod
 		~var_3D_izo2();
 		vector<Matrix> Fi, SVi;
 		void setPar(vector<double> &X, Matrix &SV, double t0) override;
-		bool Inter(double s0, double H, vector<double> &X, vector<double> &Y, vector<double> &F0, vector<double> &P, vector< vector<double>> &B) override;
+		bool Inter(double s0, double H, vector<double> &X, vector<double> &Y) override;
 
 	};
 }

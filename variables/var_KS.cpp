@@ -1,5 +1,5 @@
 #include"stdafx.h"
-//#include"atltrace.h";
+
 using namespace std;
 namespace OrbMod
 {
@@ -63,7 +63,7 @@ namespace OrbMod
 		Global::N_rp++;
 	}
 	//
-	bool var_KS::Inter(double s0, double H, vector<double> &X, vector<double> &Y, vector<double> &F0, vector<double> &P, vector< vector<double>> &B)
+	bool var_KS::Inter(double s0, double H, vector<double> &X, vector<double> &Y)
 	{
 		double t0 = X[9];
 
@@ -86,7 +86,7 @@ namespace OrbMod
 		{
 			while (abs(tout - t0) < abs(stepT))
 			{
-				calcSV(H, t0, tout, X, B, F0, P, Y);
+				calcSV(H, t0, tout, X, Y);
 				KS svout = KS(Y);
 				triple pos = svout.X();
 				triple vel = svout.V();
@@ -97,7 +97,7 @@ namespace OrbMod
 		}
 		if (b)
 		{
-			calcSV(H, t0, te, X, B, F0, P, Y);
+			calcSV(H, t0, te, X, Y);
 			X = Y;
 			KS svout = KS(Y);
 			if (Global::Discr != 0)
@@ -108,7 +108,7 @@ namespace OrbMod
 		return false;
 	}
 	//
-	void var_KS::endOfStep(double s0, double H, vector<double> &X, vector<double> &Y, vector<double> &F0, vector<double> &P, vector<vector<double>> &B)
+	void var_KS::endOfStep(double s0, double H, vector<double> &X, vector<double> &Y)
 	{
 		double t_s = X[9];
 		double p = 0;
@@ -118,9 +118,9 @@ namespace OrbMod
 		double tf = t_s + H*(F0[9] + p);
 		//
 		if (abs(tf - t_s) > abs(te - t_s))
-			calcSV(H, t_s, te, X, B, F0, P, Y);
+			calcSV(H, t_s, te, X, Y);
 		else
-			ivar::endOfStep(s0, H, X, Y, F0, P, B);
+			ivar::endOfStep(s0, H, X, Y);
 	}
 	/// <summary>
 	/// Интерполяция вектора состояния и изохронных производных на произвольный момент ФИЗИЧЕСКОГО времени tout
@@ -134,7 +134,7 @@ namespace OrbMod
 	/// <param name="F0">Правые части</param>
 	/// <param name="X">Вектор состояния и изохронные производные на tout</param>
 	/// <returns>void</returns>
-	void var_KS::calcSV(double S, double t0, double tout, vector<double> &X, vector< vector<double>> &B, vector<double> &F0, vector<double> &P, vector<double> &Y)
+	void var_KS::calcSV(double S, double t0, double tout, vector<double> &X, vector<double> &Y)
 	{
 		double r0 = (X[0] * X[0] + X[1] * X[1] + X[2] * X[2] + X[3] * X[3]);
 		double ds = (tout - t0) / r0;
@@ -146,7 +146,7 @@ namespace OrbMod
 		double conv = DBL_MAX;
 		do
 		{
-			stepDs(ds, S, X, B, F0, P, Y);
+			stepDs(ds, S, X, Y);
 			r0 = Y[0] * Y[0] + Y[1] * Y[1] + Y[2] * Y[2] + Y[3] * Y[3];
 			t = Y[9];
 			ds += (tout - t) / r0;

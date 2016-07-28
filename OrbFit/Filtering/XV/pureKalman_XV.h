@@ -1,5 +1,7 @@
 #pragma once
 #include "OrbFit\Abstract\OrbFit.h"
+using namespace Algebra;
+
 namespace OrbMod
 {
 	class pureKalman_XV : public OrbFit
@@ -21,3 +23,4 @@ namespace OrbMod
 
 	};
 }
+

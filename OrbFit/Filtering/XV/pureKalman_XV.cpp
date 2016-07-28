@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "pureKalman_XV.h"
-//
 namespace OrbMod
 {
 	//

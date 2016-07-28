@@ -1,7 +1,5 @@
 #pragma once
 #include"stdafx.h"
-using namespace Algebra;
-
 namespace OrbMod
 {
 	class OrbFit {
@@ -55,6 +53,7 @@ namespace OrbMod
 
 	};
 }
+
 
 
 

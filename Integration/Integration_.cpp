@@ -43,17 +43,17 @@ namespace OrbMod
 		if (Global::Discr != 0) streamsClose();
 		var->GetX(X, mSV, t0, dXdX0);
 	}
-	bool Integration::Inter(double t0, double H, vector<double> &X, vector<double> &Yo, vector<double> &F0, vector<double> &P, vector< vector<double>> &B)
+	bool Integration::Inter(double t0, double H, vector<double> &X, vector<double> &Yo)
 	{
-		return var->Inter(t0, H, X, Yo, F0, P, B);
+		return var->Inter(t0, H, X, Yo);
 	}
 	void Integration::force(const double Ti, const vector<double> &X, vector<double> &dXds)
 	{
 		var->force(Ti, X, dXds);
 	}
-	void Integration::FODE(vector<double> &X, double to, double &te, double &step, int NOR, int NI, int &NS, int &NBS)
+	int Integration::FODE(vector<double> &X, double to, double &te, double &step, int NOR, int NI, int &NS, int &NBS)
 	{
-		var->FODE(X, to, te, step, NOR, NI, NS, NBS);
+		return var->FODE(X, to, te, step, NOR, NI, NS, NBS);
 	}
 	//
 	void Integration::Integrate(Matrix &SV, double t0, double te, Matrix &dXdX0)

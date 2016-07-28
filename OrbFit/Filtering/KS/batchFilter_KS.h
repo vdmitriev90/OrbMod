@@ -1,9 +1,10 @@
 #pragma once
+#include "stdafx.h"
 #include "OrbFit\OrbFit_KS.h"
+using namespace Algebra;
 
 namespace OrbMod
 {
-	class Orbfit_KS;
 	class batchFilter_KS : public OrbFit_KS
 	{
 	public:

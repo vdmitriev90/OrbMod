@@ -1,6 +1,6 @@
 #pragma once
-
 #include "OrbFit\Abstract\OrbFit.h"
+
 namespace OrbMod
 {
 	class seqLS :

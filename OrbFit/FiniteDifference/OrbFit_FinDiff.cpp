@@ -3,7 +3,6 @@
 
 namespace OrbMod
 {
-
 	OrbFit_FinDiff::OrbFit_FinDiff()
 	{
 	}
@@ -106,7 +105,7 @@ namespace OrbMod
 		double dt = tout - t0;
 		while (abs(dt) < abs(H))
 		{
-			stepDs(dt, H, X, B, F0, P, Yo);
+			stepDs(dt, H, X, Yo);
 			xi.setFromVec(0, Yo);
 			if (I == 0)
 			{
