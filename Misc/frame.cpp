@@ -18,7 +18,7 @@ namespace OrbMod
 
 		frmnam_c(idfrom, 60, namefrom);
 		frmnam_c(idto, 60, nameto);
-		//матрица преобразования
+		//transformation matrix
 		pxform_c(namefrom, nameto, et, rotate);
 
 		mxv_c(rotate, Xin, Xout);
@@ -37,7 +37,7 @@ namespace OrbMod
 
 		frmnam_c(idfrom, 60, namefrom);
 		frmnam_c(idto, 60, nameto);
-		//матрица преобразования
+		//transformation matrix
 		pxform_c(namefrom, nameto, et, rotate);
 
 		mxv_c(rotate, Xin, Xout);

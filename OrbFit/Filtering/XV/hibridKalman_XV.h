@@ -1,6 +1,7 @@
 #pragma once
 #include "OrbFit\Abstract\OrbFit.h"
 using namespace Algebra;
+using namespace Consts;
 
 namespace OrbMod
 {
@@ -11,7 +12,7 @@ namespace OrbMod
 		hibridKalman_XV();
 		~hibridKalman_XV();
 		static hibridKalman_XV instance1;
-		void  SwitchVar(Variables V);
+		//void  SwitchVar(Variables V);
 
 		virtual void  InitFilter(Matrix &SV, double t0, double &sigma, Matrix &P)override;
 	protected:

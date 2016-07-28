@@ -11,7 +11,7 @@ namespace OrbMod
 		ObsSet::Instance().reset();
 		tout = (*ObsSet::Instance().it)->t;
 
-		//световой промежуток в физическом времени
+		//Light-time in physical space
 		tau0 = calcLTCorr(399, triple(SV(0, 0), SV(1, 0), SV(2, 0)), t0);
 
 		A.Clear();
@@ -20,18 +20,18 @@ namespace OrbMod
 	//
 	bool OrbFit_KS::Inter(double s0, double H, vector<double> &X, vector<double> &Y)
 	{
-		//момент физичкского времени на начало шага (дифф. ур-е №9 в KS переменных)
+		//moment of physical time at the beginning of step (diff. eq. #9 in KS variables)
 		double t0 = X[9];
 
 		double p = 0;
 		for (int j = K - 1; j >= 0; j--)
 			p = B[j][9] + p;
-		//момент физического времени соответствующий концу шага
+		//moment of physical time corresponding to the end of step
 		double tf = t0 + H*(F0[9] + p);
 
-		//величина шага в секундах
+		//step size in seconds
 		double stepT = tf - t0;
-		//интервал интерполяции в физическом времени без учета световременой коррекции
+		//interpolation interval in physical time excluding  Light-time  
 		double dt = tout - t0;
 
 		while (abs(dt - tau0) < abs(stepT))
@@ -41,13 +41,13 @@ namespace OrbMod
 			else
 				calcSV(H, t0, tout, X, Y);
 
-			//получение решения на момент tout
+			// Solution at the time tout
 			KS svout = KS(Y);
 			getdXdX0(Y, Fi);
-
+			//call of procedure-constructor of parametric equations (matrix A and vector A to C)
 			bool b_ = setParEq(svout.SV3d(), Fi, 0, tout);
-			//если ф-я возвращает true  - достигнуто последнее измерение =>
-			//=> прекращаем интегрирование
+			// If-function  "setParEq" return true - achieved last measurement => 
+			// => stop integration
 			if (b_) return true;
 			dt = tout - t0;
 		}
@@ -98,7 +98,7 @@ namespace OrbMod
 
 		KS svlt = KS(X);
 
-		//световой промежуток в физическом времени
+		//Light - time in physical space
 		tau0 = calcLTCorr(399, svlt.X(), t);
 
 	}

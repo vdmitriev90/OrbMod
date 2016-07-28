@@ -8,7 +8,7 @@ namespace OrbMod
 	Derivatives::~Derivatives()
 	{
 	};
-	//производные от вектра состо€ни€ по Ёлементам орбиты по ћонтенбруку
+	//State to orbital elements partials, by (Montenbruc & Gill, 2001) 
 	Matrix Derivatives::dSVdOscEl_Mont(double SV[6], double mu)
 	{
 		Matrix Out(6, 6), Out1(6, 6), PQW(3, 3), RzOm(3, 3), Rxi(3, 3), Rzw(3, 3), dXYZ_dAEM(3, 3), dXYZ_dOWI(3, 3), dVxVyVz_dAEM(3, 3), dVxVyVz_dOmWI(3, 3);
@@ -123,7 +123,7 @@ namespace OrbMod
 
 		return Out1;
 	}
-	//производные от вектра состо€ни€ по Ёлементам орбиты по ”рмаеву
+	//State to orbital elements partials, by (Urmaev, 1981) 
 	Matrix	Derivatives::dSVdOscEl_Urm(double SV[6], double mu)
 	{
 		Matrix Out(6, 6), RzOm(3, 3), Rxi(3, 3), Rzw(3, 3), R(3, 3), RT(3, 3), dRTzdOm(3, 3), dRTxdi(3, 3), dRTzdw(3, 3), dRTdOm(3, 3), dRTdi(3, 3), dRTdw(3, 3);
@@ -137,7 +137,7 @@ namespace OrbMod
 		double elts[8];
 		oscelt_c(SV, 0, mu, elts);
 		double e = elts[1];
-		//функции эксцентриситета
+		//eccentricity functions
 		double e2 = e*e;
 		double de2 = sqrt(1.0 - e2);
 		double DE2 = de2*de2;
@@ -234,7 +234,7 @@ namespace OrbMod
 		return Out;
 	}
 
-	//производные от вектора пр€моугольных координат по сферическим
+	//Cartesian to spherical partials
 	Matrix Derivatives::dNEUdDAzEl(triple DAzEl)
 	{
 		double R = DAzEl[0];

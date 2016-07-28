@@ -193,9 +193,6 @@ namespace Algebra
 		return angle;
 	}
 	//
-
-
-	//
 	Matrix triple::xxt(triple &a, triple &b)
 	{
 		Matrix R(3, 3);

@@ -29,7 +29,7 @@ namespace OrbMod
 		double te = Global::te;
 		double step = Global::step;
 
-		//максимальное число итераций
+		//max number of iteration
 		int NI = Global::Niter;
 		//Output parameters
 		int NS = 0;
@@ -60,7 +60,7 @@ namespace OrbMod
 
 		A.Clear();
 		OmC.clear();
-		//первое интегрирование без вариаций
+		//1-st integration w/o variations
 		FODE(Xi, to, te, step, NOR, NI, NS, NBS);
 
 		//+
@@ -110,7 +110,7 @@ namespace OrbMod
 			if (I == 0)
 			{
 				Fi.Identy();
-				//вызов процедуры-конструктора параметрических уравнений (м-ца А и вектор О-С)
+				//call of procedure-constructor of parametric equations (matrix A and vector A to C)
 				bool b = setParEq(xi, Fi, 0, tout);
 				if (b)
 				{

@@ -31,7 +31,7 @@ namespace OrbMod
 		return  (f.force_cb() + f.force_pert());
 	}
 	//
-	//ускорение от центрального тела
+	//Central body acceleration 
 	triple Force::force_cb()
 	{
 		double r = X.getAbs();
@@ -39,7 +39,7 @@ namespace OrbMod
 		return a;
 	}
 	//
-	//возмущающее ускорение 
+	//Perturbation acceleration
 	triple Force::force_pert()
 	{
 		triple acc = triple(.0, .0, .0);
@@ -157,7 +157,7 @@ namespace OrbMod
 		triple rel = K1*X + K2*((4.0*(X*V))*V - v2*X);
 		return rel;
 	}
-	//прецессия Лензе-Тирринга:
+	//Lenze-Thirring precession:
 	triple Force::L_T()
 	{
 		double Xa[6];
@@ -220,7 +220,7 @@ namespace OrbMod
 		triple acccb = force_cb();
 		fprintf(facc, "%30.16e ", acccb.getAbs());
 
-		//ускорение от центрального тела + гармонические коэффициенты 
+		//Central body + harmonic coefficients
 		if (Global::b_Cunn == true)
 		{
 			triple accCunn = Global::GravField_CB.getAcceleration(Global::IDC, time, X);
@@ -228,37 +228,37 @@ namespace OrbMod
 		}
 		else fprintf(facc, "%e ", 0.0);
 
-		//Солнце
+		//Sun
 		if (Global::b_10 == true) { accp = planet(10); fprintf(facc, "%30.16e ", accp.getAbs()); }
 		else { fprintf(facc, "0. "); }
 
-		//Меркурий
+		//Mercury 
 		if (Global::b_1 == true) { accp = planet(1); fprintf(facc, "%30.16e ", accp.getAbs()); }
 		else { fprintf(facc, "0. "); }
 
-		//Венера
+		//Venus
 		if (Global::b_2 == true) { accp = planet(2); fprintf(facc, "%30.16e ", accp.getAbs()); }
 		else { fprintf(facc, "0. "); }
 
-		//Земля+Луна
+		//Earth+Moon
 		if (Global::b_3 == true) { accp = planet(3); fprintf(facc, "%30.16e ", accp.getAbs()); }
 		else { fprintf(facc, "0. "); }
-		//Марс
+		//Mars
 		if (Global::b_4 == true) { accp = planet(4); fprintf(facc, "%30.16e ", accp.getAbs()); }
 		else { fprintf(facc, "0. "); }
-		//Юпитер
+		//Jupiter
 		if (Global::b_5 == true) { accp = planet(5); fprintf(facc, "%30.16e ", accp.getAbs()); }
 		else { fprintf(facc, "0. "); }
-		//Сатурн
+		//Saturn
 		if (Global::b_6 == true) { accp = planet(6); fprintf(facc, "%30.16e ", accp.getAbs()); }
 		else { fprintf(facc, "0. "); }
-		//Уран
+		//Uranus
 		if (Global::b_7 == true) { accp = planet(7); fprintf(facc, "%30.16e ", accp.getAbs()); }
 		else { fprintf(facc, "0. "); }
-		//Нептун
+		//Neptune
 		if (Global::b_8 == true) { accp = planet(8); fprintf(facc, "%30.16e ", accp.getAbs()); }
 		else { fprintf(facc, "0. "); }
-		//Плутон
+		//Pluto
 		if (Global::b_9 == true) { accp = planet(9); fprintf(facc, "%30.16e ", accp.getAbs()); }
 		else { fprintf(facc, "0. "); }
 
@@ -276,7 +276,7 @@ namespace OrbMod
 		else { fprintf(facc, "0. "); }
 
 		if (Global::b_add5 == true) {
-			// аномальная часть притяжения пятого тела
+			// add5' non-central part
 			if (Global::b_add5_cun_on == true) {
 
 				double pos[3], lt;
@@ -307,7 +307,7 @@ namespace OrbMod
 		}
 		else { fprintf(facc, "0. "); }
 
-		//атмосферное торможение
+		//atmospheric drag
 		if (Global::b_atm == true) {
 			HIJ.setPos(X);
 			HIJ.setVel(V);
@@ -318,11 +318,11 @@ namespace OrbMod
 		else { fprintf(facc, "0. "); }
 
 
-		//Релятивистские возмущения в рамках задачи Шварцшильда(PPN=1)
+		//General relativity effects (Swartsshild metric,PPN=1)
 		if (Global::b_rel == true) { accp = relativ();  fprintf(facc, "%30.16e ", accp.getAbs()); }
 		else { fprintf(facc, "%e ", 0.0); }
 
-		//Релятивистские возмущения: прецессия Л-Т(PPN=1):
+		//General relativity effects (L-T precession, PPN=1)
 		if (Global::b_rel_LT == true) { accp = L_T(); fprintf(facc, "%30.16e ", accp.getAbs()); }
 		else { fprintf(facc, "%e ", 0.0); }
 		fprintf(facc, "\n");

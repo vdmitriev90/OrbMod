@@ -20,7 +20,7 @@ namespace OrbMod
 		Matrix dYdY0(10, 10);
 		dYdY0.Identy();
 		dYdY0.copyToVec(10, X);
-		//произодные от  вектора сотояния в KS переменных по ветору сотояния в прямоугольных координатах на t0
+		//KS to cartesian partials on t0
 		dY0dy0 = sv.dYdy(Force::getMu());
 		delete[] SV_;
 	}

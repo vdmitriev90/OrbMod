@@ -54,7 +54,7 @@ namespace Algebra
 		static triple const zero;
 		static double getAngle(const triple &a, const triple &b);
 
-		//внешенее произведение
+		//tensor product
 		static Matrix xxt(triple &a, triple &b);
 	};
 }

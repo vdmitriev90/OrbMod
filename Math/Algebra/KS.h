@@ -3,6 +3,7 @@ using namespace std;
 #include"stdafx.h"
 namespace Algebra
 {
+	//Kustaanheimo-Stiefel transformation and  variables
 	class KS
 	{
 	private:

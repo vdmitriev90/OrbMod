@@ -73,7 +73,7 @@ namespace OrbMod
 		double stepT = tf - t0;
 
 		Y = X;
-		//запись результатов
+		// results logging
 		if (Global::Discr != 0)
 		{
 			while (abs(tout - t0) < abs(stepT))
@@ -84,7 +84,7 @@ namespace OrbMod
 				tout += Global::Discr;
 			}
 		}
-		//последний шаг
+		//last step
 		if (b)
 		{
 			calcSV(H, t0, te, X, Y);

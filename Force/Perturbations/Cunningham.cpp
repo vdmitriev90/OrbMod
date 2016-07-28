@@ -63,7 +63,7 @@ namespace OrbMod
 	    Cunningham:R0 = atof(str_R0);
 
 		unsigned int Normalize = atoi(str_Normalize);
-		//чтение файла с грав. моделью
+		//reading of file with gravity model
 		while (!feof(f)) {
 
 			fscanf(f, "%s %s %s %s %s %s \n", str_n, str_m, str_C, str_S, str_mC, str_mS);
@@ -75,7 +75,7 @@ namespace OrbMod
 
 			if (n > this->Ngf) break;
 
-			//разнормирование
+			//denormalization
 			coef = enom(m) *(2.0*n + 1)*factorial(n - m) / factorial(n + m);
 			coef = sqrt(coef);
 			C *= coef;
@@ -86,7 +86,7 @@ namespace OrbMod
 			this->GravModel[n][m] = CSnm;
 		}
 		fclose(f);
-		//исключаем притяжение центральной части
+		//excluding of central part of gravity
 		GravModel[0][0].setNum(0, 0);
 
 		this->init_poly(Ngf);
@@ -108,7 +108,7 @@ namespace OrbMod
 		V.resize(N + 3);
 		for (int i = 0; i <= N + 2; i++) V[i].resize(N + 3);
 	}
-	//Полиномы Каннингама
+	//Cunninghan's polinoms
 	void Cunningham::validdV() {
 
 		//vector<vector<ComplexNum>> V(22);

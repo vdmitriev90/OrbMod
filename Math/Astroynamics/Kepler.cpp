@@ -33,7 +33,7 @@ namespace OrbMod
 		double Ecc = True2Ecc(TA, ecc);
 		return Ecc2Mean(Ecc, ecc);
 	}
-	//решение ур-я Кеплера
+	//solving of Kepler's equation
 	void Kepler::kepler(double M, double E, double &EX, double &TA)
 	{
 		double   F, F1, Ex0 = M, EXi;
@@ -53,14 +53,14 @@ namespace OrbMod
 	}
 	//
 	/// <summary>
-	/// перевычисление вектора состояния с эпохи tdb1 на эпоху tdb2 по формулам невозмущенного движения
+	/// two-bodies state vctor propagation from  tdb1 to tdb2 
 	/// </summary>
-	/// <param name="mu">GM центрального тела km^3 /sec^2 </param>
-	/// <param name="sv1"> входной вектор состояния ( km, km /sec) в инерциальной системе координат на эпоху tdb1 </param>
-	/// <param name="tdb1">эпоха TDB в секундах после J2000, соответствующая sv1 </param>
-	/// <param name="tdb2">эпоха TDB в секундах после J2000, на которую нужно получить вектор состояния sv2 </param>
-	/// <param name="sv2">выходной вектор состояния в инерциальной системе координат на эпоху tdb2</param>
-	/// <returns>0, если вычисления завершены успешно, иначе 1</returns>
+	/// <param name="mu"> Central GM km^3 /sec^2 </param>
+	/// <param name="sv1"> input state ( km, km /sec) on tdb1 </param>
+	/// <param name="tdb1">input epoch TDB in form of seconds past J2000, corresponding  sv1 </param>
+	/// <param name="tdb2">epoch TDB in form of seconds past J2000, corresponding output sv2 </param>
+	/// <param name="sv2">output state vector on epoch tdb2</param>
+	/// <returns>0, if success, else 1</returns>
 	int Kepler::PropSV(double mu, const double *sv1, double tdb1, double tdb2, double *sv2)
 	{
 		if (mu <= 0) return 1;

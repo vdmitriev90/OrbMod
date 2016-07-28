@@ -20,7 +20,7 @@ namespace OrbMod
 		Fi.setFromVec(6, X);
 		//OrbFit::fo << "--\n" << Fi.toString("\t", "%e", 20, 1) << endl;
 
-		//прогноз световременной коррекции на конец следующего шага
+		//Prediction of Light-time correction on the end of the next step
 		tau0 = calcLTCorr(399, triple(X[0], X[2], X[3]), t0);
 
 		ObsSet::Instance().reset();
@@ -44,7 +44,7 @@ namespace OrbMod
 			xi.setFromVec(0, Yo);
 			Fi.setFromVec(6, Yo);
 
-			//вызов процедуры-конструктора параметрических уравнений (м-ца А и вектор О-С)
+			//call of procedure-constructor of parametric equations (matrix A and vector A to C)
 			bool b = setParEq(xi, Fi, 0, tout);
 			if (b)return true;
 			dt = tout - t0;
@@ -85,7 +85,7 @@ namespace OrbMod
 		for (int k = 0; k < N; k++)
 			X[k] = X[k] + H*(F0[k] + P[k]);
 
-		//прогноз световременной коррекции на конец следующего шага
+		//Prediction of Light-time correction on the end of the next step
 		tau0 = calcLTCorr(399, triple(X[0], X[2], X[3]), t0 + H);
 	}
 }

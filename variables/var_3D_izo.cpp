@@ -34,7 +34,7 @@ namespace OrbMod
 		ForceIzo f(Ti, triple(X[0], X[1], X[2]), triple(X[3], X[4], X[5]));
 		triple acc = f.force_cb() + f.force_pert();
 
-		//ѕравые части дл€ вектора состо€ни€
+		//first - order derivatives of the state vector
 		for (size_t i = 0; i < 3; i++)
 		{
 			F[i] = X[i + 3];
@@ -60,7 +60,7 @@ namespace OrbMod
 		//Force::dFdX(i + 3, j) = Force::dFcbdx(i, j) + Force::dF3bdx(i, j);
 		Matrix dFidt = dFdX*dXdX0;
 
-		//ѕравые части дл€ изохронных производных
+		//first - order derivatives of transition matrix
 		dFidt.copyToVec(6, F);
 		//(dFdX*dXdX0).copyToVec(6, F);
 		//Force::dXdX0dt.copyToVec(6, F);

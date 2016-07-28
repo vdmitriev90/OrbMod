@@ -1,5 +1,6 @@
 #include"stdafx.h"
 #include "atmosferic_drag.h"
+
 namespace OrbMod
 {
 	atm::atm(void) {}

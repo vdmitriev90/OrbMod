@@ -11,8 +11,8 @@ namespace Algebra
 	class Matrix
 	{
 	private:
-		//n - число строк
-		//m - число столбцов
+		//n - number of rows
+		//m - number of columns
 		size_t n, m, size;
 		double* M;
 
@@ -22,7 +22,7 @@ namespace Algebra
 	public:
 		Matrix();
 
-		//конструкторы
+		//constructors
 		Matrix(const int & N, const int & M);
 		Matrix(const alglib::real_2d_array &rArr);
 		Matrix(const double *Arr, int N, int M);
@@ -30,7 +30,7 @@ namespace Algebra
 		Matrix(const vector<double> &Vec);
 		Matrix(triple Vec);
 
-		//конструктор копирования
+		//copy constructor
 		Matrix(const Matrix &);
 		~Matrix();
 
@@ -83,10 +83,10 @@ namespace Algebra
 		friend Matrix operator*(Matrix & left, const double & right);
 		friend Matrix operator*(Matrix & a, Matrix & b);
 
-		//оператор присваивания
+		//assignment operator
 		Matrix & operator = (const Matrix & other);
 
-		//взятие/присваивание элемента по индексу
+		//indexer
 		double  &operator ()(int i, int j);
 
 		void operator+=(const  Matrix & right);

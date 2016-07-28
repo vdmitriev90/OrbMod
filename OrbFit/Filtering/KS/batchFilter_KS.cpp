@@ -17,7 +17,7 @@ namespace OrbMod
 		Fi = Matrix(6, 6);
 		xi = Matrix(6, 1);
 
-		//световой промежуток
+		// Light-time correction
 		tau0 = calcLTCorr(399, triple(SV(0, 0), SV(1, 0), SV(2, 0)), t0);
 
 		//ObsSet::Instance().it = it_0;

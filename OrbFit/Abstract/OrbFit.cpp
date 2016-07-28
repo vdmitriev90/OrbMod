@@ -78,9 +78,9 @@ namespace OrbMod
 	bool OrbFit::setParEq(Matrix &sv, Matrix &dxdx0, double  tau, double &tnext)
 	{
 		string obsid = (*ObsSet::Instance().it)->observ.ID;
-		//если обсерватория отмечена для использования
+		//if the observatory is marked for use
 		if (ObsSet::Instance().isUseObs[obsid])
-			//вызов процедуры-конструктора параметрических уравнений (матрица А и вектор О-С)
+			//call of procedure-constructor of parametric equations (matrix A and vector A to C)
 			(*ObsSet::Instance().it)->setParEq(A, OmC, sv, dxdx0, tau);
 
 		ObsSet::Instance().it++;

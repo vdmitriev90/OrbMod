@@ -12,7 +12,7 @@ namespace OrbMod
 		dYdY0.Identy();
 		dYdY0.copyToVec(11, X);
 
-		//произодные от  вектора сотояния в KS переменных по ветору сотояния в прямоугольных координатах на t0
+		//SB to cartesian partials on t0
 		dY0dy0 = sv.dYdy(Force::getMu());
 
 		ObsSet::Instance().reset();
@@ -24,30 +24,30 @@ namespace OrbMod
 
 	bool OrbFit_SB::Inter(SpiceDouble s0, double H, vector<double> &X, vector<double> &Y)
 	{
-		//момент физичкского времени на начало шага (дифф. ур-е №9 в KS переменных)
+		//moment of physical time at the beginning of step (diff. eq. #10 in SB variables)
 		double t0 = X[10];
 
 		double p = 0;
 		for (int j = K - 1; j >= 0; j--)
 			p = B[j][10] + p;
-		//момент физического времени соответствующий концу шага
+		//moment of physical time corresponding to the end of step
 		double tf = t0 + H*(F0[10] + p);
 
-		//величина шага в секундах
+		//step size in seconds
 		double stepT = tf - t0;
 
 		//забыл смысл этого присваивания
 		Y = X;
 		while (abs(tout - t0) < abs(stepT))
 		{
-			//получение решения на момент tout 
+			// Solution at the time tout
 			calcSV(H, t0, tout, X, Y);
 			SB svout = SB(Y);
 			getdXdX0(Y, Fi);
 
 			bool b = setParEq(svout.SV3d(), Fi, 0, tout);
-			//если ф-я возвращает true  - достигнуто последнее измерение =>
-			//=> прекращаем интегрирование
+			// If-function  "setParEq" return true - achieved last measurement => 
+			// => stop integration
 			if (b) return true;
 		}
 		return false;

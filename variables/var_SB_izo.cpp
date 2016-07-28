@@ -40,7 +40,7 @@ namespace OrbMod
 		double r2 = r*r;
 		triple v3d = sv.p / r;
 
-		//ускорения и произодные от ускорений по прямоугольным координатам;
+		//acceleration and acceleration partials
 		ForceIzo f_(sv.t, sv.q, v3d);
 		triple f = f_.force_pert();
 		Matrix ddFdy = f_.get_ddFdsv();
@@ -48,7 +48,7 @@ namespace OrbMod
 		Matrix F3d(f);
 		Matrix  Q(sv.q), P(sv.p), A(sv.a);
 
-		//копирование вектора в матрицы
+		//Vector 2 Matrix
 		Matrix dYdY0(11, 11), dqdY0(3, 11), dpdY0(3, 11), dadY0(3, 11), dhdY0(1, 11);
 
 		dYdY0.setFromVec(11, X);

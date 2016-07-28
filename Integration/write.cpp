@@ -106,7 +106,7 @@ namespace OrbMod
 		timout_c(t0, pictur, 50, utcstr);
 		//	et2utc_c (t0,  "C", 10, 60, utcstr);
 
-		//элементы орбиты J2000-----------------------				
+		//orbit elements J2000-----------------------				
 		if (Global::b_out_el_J2000 == true) {
 			fprintf(foel, "%s ", utcstr);
 			fprintf(foel, " %25.16e ", t0);
@@ -121,7 +121,7 @@ namespace OrbMod
 		}
 		else {}
 
-		//вектор состояния J2000--------------------------				
+		//state vector J2000--------------------------				
 		if (Global::b_out_sv_J2000 == true) {
 			fprintf(fosv, "%s ", utcstr);
 			fprintf(fosv, " %25.16e ", t0);
@@ -132,7 +132,7 @@ namespace OrbMod
 		}
 		else {}
 
-		//элементы орбиты ECLIP2000-----------------------				
+		//orbit elements ECLIP2000-----------------------				
 		if (Global::cb_out_el_ECLIPJ2000 == true) {
 			fprintf(foelEcl, "%s ", utcstr);
 			fprintf(foelEcl, " %25.16e ", t0);
@@ -146,7 +146,7 @@ namespace OrbMod
 			fprintf(foelEcl, "\n");
 		}
 
-		//вектор состояния ECLIPJ2000--------------------------				
+		//state vector ECLIPJ2000--------------------------				
 		if (Global::cb_out_sv_ECLIPJ2000 == true) {
 			fprintf(foSvEcl, "%s ", utcstr);
 			fprintf(foSvEcl, " %25.16e ", t0);
@@ -155,7 +155,7 @@ namespace OrbMod
 
 			fprintf(foSvEcl, "\n");
 		}
-		/*		//элементы орбиты связанные с эквтором и улом орбиты планеты
+		/*		//orbit elements связанные с эквтором и улом орбиты планеты
 				if(Global::b_out_elts_planet==true){
 
 				fprintf(foelp,"%s ",utcstr);
@@ -169,7 +169,7 @@ namespace OrbMod
 
 				}else{}*/
 
-				//вектор состояния IAU_PLANET---------------------	
+				//state vector IAU_PLANET---------------------	
 		if (Global::b_out_sv_IAUPlanet == true) {
 			fprintf(fosvR, "%s ", utcstr);
 			fprintf(fosvR, " %25.16e ", t0);
@@ -178,7 +178,7 @@ namespace OrbMod
 			fprintf(fosvR, "\n");
 		}
 
-		//элементы орбиты IAU_PLANET---------------------				
+		//orbit elements IAU_PLANET---------------------				
 		if (Global::b_out_el_IAUPlanet == true) {
 
 			fprintf(foelR, "%s ", utcstr);
@@ -190,7 +190,7 @@ namespace OrbMod
 			for (int i = 2; i < 6; i++) fprintf(foelR, " %25.16e", eltsIAUpl[i] * rad);
 			fprintf(foelR, "\n");
 		}
-		//элементы орбиты Planet IAU 
+		//orbit elements Planet IAU 
 		if (Global::b_out_elts_planet == true) {
 			fprintf(foelp, "%s ", utcstr);
 			fprintf(foelp, " %25.16e ", t0);
@@ -203,7 +203,7 @@ namespace OrbMod
 			fprintf(foelp, "\n");
 		}
 
-		//вектор состояния Planet IAU
+		//state vector Planet IAU
 		if (Global::b_out_sv_planet == true) {
 
 			fprintf(fosvp, "%s ", utcstr);
@@ -214,7 +214,7 @@ namespace OrbMod
 
 			fprintf(fosvp, "\n");
 		}
-		// подспутниковая почка
+		// subsatellite point
 		if (Global::b_out_BL == true) {
 			double rectan[3];
 			for (int iv = 0; iv < 3; iv++) rectan[iv] = SViauNR[iv];
@@ -248,17 +248,17 @@ namespace OrbMod
 			fprintf(foAZR, "%25.16e %25.16e %25.16e", A*rad, h*rad, r);
 			fprintf(foAZR, "\n");
 		}
-		//Видимость
+		//visibility
 
 		if (Global::b_visi == true)
 		{
 			if (Global::i_fr == 1) visi(fvisi, t0, Ti, X, V);
 			if (Global::i_fr == 0) visi(fvisi, t0, Ti, triple(SVEcl[0], SVEcl[1], SVEcl[2]), triple(SVEcl[3], SVEcl[4], SVEcl[5]));
 		}
-		// Геодезические координаты в СК 3-го тела
+		// Geodetic coordinates in 3-body frame
 		if (true == Global::b_3_BFF_sv)	 write_3_BodyFix_sv(fo3bg, utcstr, t0, Ti, X, V);
 
-		//ускорения------------------------------------
+		//acceleration------------------------------------
 		if (Global::b_out_acc == true) Fs.force_w(t0, Ti);
 	};
 

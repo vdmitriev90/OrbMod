@@ -5,10 +5,10 @@
 using namespace std;
 namespace OrbMod
 {
-	//преобразование координат в планетофиксированную систему координат	
+	//coordinate transformation to planet-fixed system
 	triple trpos(SpiceDouble et, long int, long int, triple xin);
 	void trpos(SpiceDouble et, long int, long int, SpiceDouble xin[3], SpiceDouble xout[3]);
-	//преобразование вектора состо€ни€ в планетофиксированную систему координат
+	//coordinate transformation to planet-fixed system
 	void trsv(SpiceDouble et, long int, long int, triple xin, triple vin, triple &xout, triple &vout);
 	void trsv(SpiceDouble et, long int, long int, SpiceDouble xin[6], SpiceDouble xout[6]);
 	//преобразование к невращающейс€ планетофиксированной — 

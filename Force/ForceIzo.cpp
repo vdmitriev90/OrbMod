@@ -15,7 +15,7 @@ namespace OrbMod
 	{
 	};
 	//
-	//Инициализация матриц ихзохронных производных в прямоугольных координатах
+	//Initialization of transition matrix in cartesian coordinates
 	void ForceIzo::init_izo()
 	{
 		dfdv = Matrix(3, 3);
@@ -50,7 +50,7 @@ namespace OrbMod
 		double r = Xp.getAbs();
 		triple accp = Delta*mu / D3 - Xp*mu / CUB(r);
 
-		//производная ускорений третьих тел по координатам
+		//3-bodies partials 
 		double E[3][3], M2[3][3];
 		E[0][0] = E[1][1] = E[2][2] = 1.0 / D3;
 

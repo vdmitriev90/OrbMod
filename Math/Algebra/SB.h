@@ -3,6 +3,7 @@
 namespace Algebra
 {
 	using namespace std;
+	// Sperling-Burdet transformation and  variables
 	class SB
 	{
 	private:

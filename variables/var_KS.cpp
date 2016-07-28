@@ -124,15 +124,18 @@ namespace OrbMod
 	}
 	/// <summary>
 	/// Интерполяция вектора состояния и изохронных производных на произвольный момент ФИЗИЧЕСКОГО времени tout
+	///Interpolation of the state vector and ransition Matrix on a moment of physical time tout
 	/// </summary>
 	/// <param name="S">текущая величина шага в единицах фиктивного времени</param>
+	/// <param name="S">Step value in units of the fictitious time</param>
 	/// <param name="t0">Момент ФИЗИЧЕСКОГО времени, соответствующий началу шага интегрирования</param>
+	/// <param name="t0">The moment of physical time, corresponding to the beginning of the integration step</param>	
 	/// <param name="tout">Момент ФИЗИЧЕСКОГО времени, должна быть выполнена интерполяция</param>
+	/// <param name="tout">The moment of physical time, interpolation should to be performed on </param>
 	/// <param name="X">Вектор состояния и изохронные производные на начало шага интегрирования</param>
-	/// <param name="B">Коэффициенты интерполяционного полинома,  представляющего решение на шаге</param>
-	/// <param name="P">Вспомогательный вектор</param>
-	/// <param name="F0">Правые части</param>
-	/// <param name="X">Вектор состояния и изохронные производные на tout</param>
+	/// <param name="X">Variables on the beginning of the integration step </param>
+	/// <param name="Y">Искомый вектор состояния на  tout</param>
+	/// <param name="Y">Derived  variables on the beginning of the moment tout</param>
 	/// <returns>void</returns>
 	void var_KS::calcSV(double S, double t0, double tout, vector<double> &X, vector<double> &Y)
 	{

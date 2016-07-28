@@ -75,7 +75,7 @@ namespace Algebra
 		for (int i = 0; i < 3; ++i)
 			this->M[i] = Vec[i];
 	}
-	//конструктор копировани€
+	//copy-constuctor
 	Matrix::Matrix(const Matrix & other)
 	{
 		this->n = other.n;
@@ -105,10 +105,10 @@ namespace Algebra
 
 #pragma region Operators
 
-	//опреатор присваивани€
+	//assignment operator
 	Matrix & Matrix::operator = (const Matrix & other)
 	{
-		if (this != &other) // защита от самоприсваивани€
+		if (this != &other) // self-assignment protection
 		{
 			this->n = other.n;
 			this->m = other.m;
@@ -122,7 +122,7 @@ namespace Algebra
 		}
 		return *this;
 	}
-	//вз€тие/присваивание элемента по индексу
+	//indexer
 	double & Matrix:: operator ()(int i, int j)
 	{
 		if (this->size >= (i + 1)*(j + 1))
@@ -300,7 +300,7 @@ namespace Algebra
 			for (int j = 0; j < this->m; ++j) res(j, i) = M[i*this->m + j];
 		return res;
 	}
-	//ќбращение
+	//Invertion
 	Matrix Matrix::Inverse()
 	{
 		if (this->n == 0 || this->m == 0)
@@ -327,7 +327,7 @@ namespace Algebra
 		}
 		return  Minv;
 	}
-	//матрица поворота
+	//Rotaton
 	void Matrix::Rotate(Axis axis, double angle)
 	{
 		double _sin = sin(angle);
@@ -345,7 +345,7 @@ namespace Algebra
 			throw ("Axis index is out of range.");
 		}
 	}
-	//ћаксимум модул€
+	//Maximum module
 	double Matrix::MaxMod()
 	{
 		double Max = 0;
@@ -414,7 +414,7 @@ namespace Algebra
 		int i, j;
 		int n = X.n;
 
-		//гауссовский обратный ход
+		//Gaussian reverse
 		double sum;
 		for (i = n - 1; i >= 0; i--)
 		{
