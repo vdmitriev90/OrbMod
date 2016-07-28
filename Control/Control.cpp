@@ -7,7 +7,7 @@ namespace OrbMod
 
 	 void Control ::Process()
 	{
-		//Очистка файла с ускорениями
+		//Erase the file with accelerations
 		FILE*facc = fopen("acc.out", "w");
 		fclose(facc);
 
@@ -66,7 +66,7 @@ namespace OrbMod
 		 double to = Global::t0;
 		 double te = Global::te;
 
-		 //максимальное число итераций
+		 //max number of iterations
 		 int NI = Global::Niter;
 		 //Output parameters
 		 int NS = 0;
@@ -101,7 +101,7 @@ namespace OrbMod
 			 //double err = Global::eps;
 			 Global::eps = pow(10, -i);
 
-			 //максимальное число итераций
+			 //max number of iterations
 			 int NI = Global::Niter;
 			 //Output parameters
 			 int NS = 0;
@@ -124,7 +124,7 @@ namespace OrbMod
 
 			 fprintf(ft, "%e\t", Global::eps);
 			 double dr = 0;
-			 fprintf(ft, " SV\t");
+		
 			 Matrix dX = SV - SVfinal;
 			 //fprintf(ft, dX.toString("\t","%21.12e",30).c_str());
 			 for (size_t i = 0; i < 3; i++) dr += SQR(dX(i, 0));
@@ -139,8 +139,7 @@ namespace OrbMod
 					 if (i == j) val -= 1.0;
 					 maxIZO = (maxIZO>abs(val)) ? maxIZO : abs(val);
 				 }
-			 fprintf(ft, " Summ\t");
-
+		
 			 fprintf(ft, "%d\t%21.12e\t%21.12e\n", Global::N_rp, sqrt(dr), maxIZO);
 #pragma endregion
 
