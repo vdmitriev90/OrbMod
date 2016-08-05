@@ -25,6 +25,16 @@ namespace Consts
 	//
 	enum EarthFixFrame { IAU_EARTH = 0, ITRF93, ITRF2008 };
 	char* const EarthFixedFrame_strs[] = { "IAU_EARTH", "ITRF93","ITRF2008" };
+	
+	enum TimeFormat { UTC_Calendar_format = 0, TDB_Seconds_past_J2000, TDB_Calendar_format, TT_Calendar_format };
+	const char* const TimeFormat_strs[] = { "UTC (Calendar format)", "TDB (Seconds past J2000.0)","TDB (Calendar format)", "TT (Calendar format)" };
+	
+	enum TypeOfIC {  OrbitalElements=0, StateVector };
+	const char* const TypeOfIC_strs[] = { "State Vector", "Orbital Elements" };
+
+	enum FrameOfIC { Equator_and_Equinox_J2000 = 0, Ecliptic_and_Equinox_J2000 };
+	const char* const FrameOfIC_strs[] = { "Equator and Equinox_J2000.0", "Ecliptic and Equinox J2000.0"
+	};
 
 	//масштабный множитель
 	 const double	AU = 149597870.693;;

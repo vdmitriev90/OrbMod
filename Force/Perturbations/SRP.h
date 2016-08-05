@@ -21,7 +21,6 @@ namespace OrbMod
 		static void setSRPconst();
 
 		//геты
-
 		double getRadii() { return rPl; };
 		double getSRPconst() { return SRPconst; };
 		triple getAcceleration(double et);

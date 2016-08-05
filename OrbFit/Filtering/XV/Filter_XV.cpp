@@ -21,7 +21,7 @@ namespace OrbMod
 		tau0 = calcLTCorr(399, triple(X[0], X[1], X[2]), t0);
 
 		//ObsSet::Instance().it = it_0;
-		tout = (*ObsSet::Instance().it)->t;
+		tout = (*Control::Obs_.it)->t;
 
 		A.Clear();
 		OmC.clear();

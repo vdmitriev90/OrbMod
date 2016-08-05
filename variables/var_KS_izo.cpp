@@ -61,7 +61,7 @@ namespace OrbMod
 		Matrix B = sv.B();
 		Matrix F3d(acc);
 
-		//копирование вектора в матрицу 10х10
+		//vector to matrix 10x10
 		Matrix dYdY0(10, 10), E4(4, 4), dQdY0(4, 10), dPdY0(4, 10), dhdY0(1, 10), dtdY0(1, 10);
 		dYdY0.setFromVec(10, X);
 		dQdY0.setFromVec(10, X);

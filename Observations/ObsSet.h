@@ -6,7 +6,7 @@ namespace OrbMod
 	class ObsSet
 	{
 	public:
-		static  ObsSet& Instance();
+		//static  ObsSet& Instance();
 		static bool isLogResid;
 		static double fct;
 		~ObsSet()
@@ -33,9 +33,11 @@ namespace OrbMod
 		int getObsNum();
 		Obsiter  FindTime(double et);
 
-	private:
+	
 		ObsSet();
+		ObsSet(const ObsSet& other);
 
+	private:
 		Obsiter it0;
 
 		//порождающая функция

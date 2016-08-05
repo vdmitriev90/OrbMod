@@ -1,5 +1,6 @@
 #pragma once
 #include"stdafx.h"
+
 #include"Parameters\constant.h"
 using namespace Consts;
 
@@ -35,7 +36,7 @@ namespace OrbMod
 		ivar *var;
 		void streamsOpen();
 		void streamsClose();
-		FILE * fosv, *foel, *foSvEcl, *foelEcl, *fosvR, *foelR, *fosvp, *foelp, *foBL, *foNEU, *foAZR, *fvisi, *fo3bg, *fodbg;
+		FILE * fosv, *foel, *foSvEcl, *foelEcl, *fosvR, /**foelR, *fosvp, *foelp,*/ *foBL, *foNEU, *foAZR, *fvisi, *fo3bg, *fodbg;
 	};
 }
 

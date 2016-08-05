@@ -16,14 +16,14 @@ namespace OrbMod
 	//
 	void hibridKalman_XV::InitFilter(Matrix &SV, double t0, double &sigma, Matrix &P)
 	{
-		ObsSet::Instance().reset();
-		Obsiter ite = ObsSet::Instance().it_end;
-		ObsSet::Instance().it_end = ObsSet::Instance().it + Global::MinObsinBatch;
+		Control::Obs_.reset();
+		Obsiter ite = Control::Obs_.it_end;
+		Control::Obs_.it_end = Control::Obs_.it + Global::MinObsinBatch;
 		batchFitting prefit;
 		Matrix Q;
 		prefit.Adjust(SV, t0, sigma, Q);
 
-		ObsSet::Instance().it_end = ite;
+		Control::Obs_.it_end = ite;
 		Matrix disp = LinAlgAux::CalcRMS(sigma, Q);
 		P = LinAlgAux::initCov(disp);
 	}

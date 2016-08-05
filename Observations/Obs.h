@@ -8,6 +8,7 @@ namespace OrbMod
 	{
 	public:
 		Obs();
+		Obs(const Obs& other);
 		virtual ~Obs();
 		double t, dlt;
 		Observatory observ;
@@ -17,6 +18,7 @@ namespace OrbMod
 		virtual bool tryParce(std::string s) = 0;
 		virtual void setParEq(Matrix &A, vector<double> &OmC, Matrix &x, Matrix &dxdx0, double  tau) = 0;
 		virtual string getType() = 0;
+		virtual Obs * clone() const = 0;
 
 	protected:
 		bool isOutl;

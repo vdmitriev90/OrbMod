@@ -6,6 +6,7 @@ namespace OrbMod
 	{
 	public:
 		ModDistObs();
+		ModDistObs(const ModDistObs& otr);
 		~ModDistObs();
 		double dist;
 		double res;
@@ -17,7 +18,7 @@ namespace OrbMod
 
 		virtual string getType() override;
 		virtual void writeRes() override;
-
+		virtual ModDistObs* clone() const override;
 	};
 }
 

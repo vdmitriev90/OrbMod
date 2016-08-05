@@ -91,7 +91,7 @@ namespace OrbMod
 #pragma region parcers
 	bool config::NmNr(string s)
 	{
-		Global::NameNr = (NameOrNumber)stoi(s);
+		//Global::NameNr = (NameOrNumber)stoi(s);
 		return true;
 	}
 	//
@@ -213,7 +213,7 @@ namespace OrbMod
 	//
 	bool config::frame(string s)
 	{
-		Global::i_frame = stoi(s);
+		Global::ICFrame = (FrameOfIC)stoi(s);
 		return true;
 	}
 	//
@@ -233,7 +233,7 @@ namespace OrbMod
 	//
 	bool config::tscale(string s)
 	{
-		Global::i_tscale = stoi(s);
+		Global::Tscale = (TimeFormat)stoi(s);
 		return true;
 	}
 	//
@@ -342,19 +342,16 @@ namespace OrbMod
 	bool config::Out(string s)
 	{
 		vector<string> strs = Misc::splitStr(s, ';');
-		if (strs.size() < 10) return false;
+		if (strs.size() < 8) return false;
 
 		Global::b_out_sv_J2000 = (bool)stoi(strs[0]);
 		Global::b_out_el_J2000 = (bool)stoi(strs[1]);
 		Global::cb_out_sv_ECLIPJ2000 = (bool)stoi(strs[2]);
 		Global::cb_out_el_ECLIPJ2000 = (bool)stoi(strs[3]);
 		Global::b_out_sv_IAUPlanet = (bool)stoi(strs[4]);
-		Global::b_out_el_IAUPlanet = (bool)stoi(strs[5]);
-		Global::b_out_sv_planet = (bool)stoi(strs[6]);
-		Global::b_out_elts_planet = (bool)stoi(strs[7]);
-		Global::b_out_acc = (bool)stoi(strs[8]);
-		Global::b_out_BL = (bool)stoi(strs[9]);
-		Global::b_3_BFF_sv = (bool)stoi(strs[10]);
+		Global::b_out_acc = (bool)stoi(strs[5]);
+		Global::b_out_BL = (bool)stoi(strs[6]);
+		Global::b_3_BFF_sv = (bool)stoi(strs[7]);
 		return true;
 	}
 	//
@@ -384,7 +381,7 @@ namespace OrbMod
 				if (it.size() < 5) return false;
 				string key = it.substr(0, 3);
 				int val = stoi(it.substr(4, 1));
-				if (!ObsSet::Instance().tryAddObs(key, val)) ObsSet::Instance().isUseObs[key] = val;
+				if (!Control::Obs_.tryAddObs(key, val)) Control::Obs_.isUseObs[key] = val;
 			}
 		}
 		catch (...)
@@ -396,7 +393,7 @@ namespace OrbMod
 	//
 	bool config::ObservationsPath(string s)
 	{
-		ObsSet::Instance().path = s;
+		Control::Obs_.path = s;
 		return true;
 	}
 	//
@@ -411,7 +408,7 @@ namespace OrbMod
 	{
 		vector<string> strs = Misc::splitStr(s, ';');
 		if (strs.size() < 3) return false;
-		ObsSet::Instance().sigma = stod(strs[0]);
+		Control::Obs_.sigma = stod(strs[0]);
 		OrbFit::PosRMS = stod(strs[1]);
 		OrbFit::VelRMS = stod(strs[2]);
 
@@ -428,8 +425,8 @@ namespace OrbMod
 #pragma region formatters
 	std::string config::NmNr()
 	{
-		std::string str = "NmNr:";
-		str += to_string((int)Global::NameNr);
+		std::string str = " ";
+		//str += to_string((int)Global::NameNr);
 		return str;
 	}
 	//
@@ -564,7 +561,7 @@ namespace OrbMod
 	std::string config::Frame()
 	{
 		std::string str = "Frame:";
-		str += to_string(Global::i_frame);
+		str += to_string((int)Global::ICFrame);
 		return str;
 	}
 	//
@@ -578,7 +575,7 @@ namespace OrbMod
 	std::string config::Time_scale()
 	{
 		std::string str = "Time_scale:";
-		str += to_string(Global::i_tscale);
+		str += to_string((int)Global::Tscale);
 		return str;
 	}
 	std::string config::TypeIC()
@@ -682,9 +679,6 @@ namespace OrbMod
 		str += to_string((int)Global::cb_out_sv_ECLIPJ2000) + ";";
 		str += to_string((int)Global::cb_out_el_ECLIPJ2000) + ";";
 		str += to_string((int)Global::b_out_sv_IAUPlanet) + ";";
-		str += to_string((int)Global::b_out_el_IAUPlanet) + ";";
-		str += to_string((int)Global::b_out_sv_planet) + ";";
-		str += to_string((int)Global::b_out_elts_planet) + ";";
 		str += to_string((int)Global::b_out_acc) + ";";
 		str += to_string((int)Global::b_out_BL) + ";";
 		str += to_string((int)Global::b_3_BFF_sv) + ";";
@@ -711,7 +705,7 @@ namespace OrbMod
 	std::string config::useObs()
 	{
 		std::string str = "useObservatoris:";
-		for (auto it : ObsSet::Instance().isUseObs)
+		for (auto it : Control::Obs_.isUseObs)
 			str += it.first + ',' + to_string((int)it.second) + ';';
 
 		return str;
@@ -720,7 +714,7 @@ namespace OrbMod
 	std::string config::ObservationsPath()
 	{
 		std::string str = "ObservationsPath:";
-		str += ObsSet::Instance().path;
+		str += Control::Obs_.path;
 		return str;
 	}
 
@@ -737,7 +731,7 @@ namespace OrbMod
 		std::string str = "aprioriRMS:";
 		char buf[50];
 
-		std::sprintf(buf, "%12.8e;", ObsSet::Instance().sigma);
+		std::sprintf(buf, "%12.8e;", Control::Obs_.sigma);
 		str += buf;
 		std::sprintf(buf, "%12.8e;", OrbFit::PosRMS);
 		str += buf;
@@ -750,26 +744,22 @@ namespace OrbMod
 	{
 		std::string str = "processNoise:";
 		char buf[50];
-		std::sprintf(buf, "%12.8e;", OrbFit::Qnoise);
+		std::sprintf(buf, "%12.8e", OrbFit::Qnoise);
 		str += buf;
 		return str;
 	}
 #pragma endregion
 	//ïðåîáðàçîâàíèå íà÷àëüíûõ óñëîâèé âî âíóòðåííèé ôîðìàò
-	bool  config::SetIC(std::string IC_[])
+	bool  config::SetIC(std::string IC_[], int IDC, TypeOfIC ICtype, FrameOfIC ICframe)
 	{
 		double   mu;
 		double elts[8];
 		for (int i = 0; i < 5; i++)
 			elts[i] = stod(IC_[i]);
 
-		//ÂÛÁÎÐ ÏËÀÍÅÒÎÖÅÍÒÐÈ×ÅÑÊÎÉ ÃÐÀÂÈÒÀÖÈÎÍÍÎÉ ÏÎÑÒÎßÍÍÎÉ
-		if (Global::b_Cunn)
-			mu = Global::GravField_CB.getGM();
-		else
 			mu = ID2GM(Global::IDC);
 
-		if (Global::i_IC == 0)
+		if (ICtype == TypeOfIC::OrbitalElements)
 		{
 			double sma = elts[0];
 			elts[0] = sma*(1.0 - elts[1]);
@@ -785,7 +775,7 @@ namespace OrbMod
 				//mean motion
 				double n = sqrt(mu / (sma*sma*sma));
 				double et_peri = 0;
-				if (!Misc::parceTime(IC_[5], et_peri)) return false;
+				if (!Misc::parceTime(IC_[5],Global::Tscale, et_peri)) return false;
 				elts[5] = n*(Global::t0 - et_peri);
 
 				conics_c(elts, 0, config::SV);
@@ -796,29 +786,45 @@ namespace OrbMod
 				conics_c(elts, 0, config::SV);
 			}
 		}
-		else if (Global::i_IC == 1)
+		else if (ICtype == TypeOfIC::StateVector)
 		{
 			for (int i = 0; i < 5; i++)
 				config::SV[i] = elts[i];
 			config::SV[5] = stod(IC_[5]);
 		}
+
+		if (ICframe == FrameOfIC::Ecliptic_and_Equinox_J2000)
+		{
+			double matr[6][6];
+
+			sxform_c("ECLIPJ2000", "J2000", 0, matr);
+			mxvg_c(matr, config::SV, 6, 6, config::SV);
+		}
 		return true;
 	}
+	//
 	//ïðåîáðàçîâàíèå íà÷àëüíûõ óñëîâèé èç âíóòðåííåãî ôîðìàòà
-	bool config::GetIC(std::string *IC)
+	bool config::GetIC(std::string *IC, int IDC, TypeOfIC ICtype, FrameOfIC ICframe)
 	{
 		double IC_[8], mu;
 		char buf[70];
+		double SV_tr[6];
+		for (int i = 0; i < 6; i++)
+			SV_tr[i] = config::SV[i];
 
-		//ÂÛÁÎÐ ÏËÀÍÅÒÎÖÅÍÒÐÈ×ÅÑÊÎÉ ÃÐÀÂÈÒÀÖÈÎÍÍÎÉ ÏÎÑÒÎßÍÍÎÉ
-		if (Global::b_Cunn)
-			mu = Global::GravField_CB.getGM();
-		else
-			mu = ID2GM(Global::IDC);
+		mu = ID2GM(IDC);
 
-		if (Global::i_IC == 0)
+		if (ICframe == FrameOfIC::Ecliptic_and_Equinox_J2000)
 		{
-			oscelt_c(config::SV, 0, mu, IC_);
+			double matr[6][6];
+
+			sxform_c("J2000", "ECLIPJ2000", 0, matr);
+			mxvg_c(matr, config::SV, 6, 6, SV_tr);
+		}
+
+		if (ICtype == TypeOfIC::OrbitalElements)
+		{
+			oscelt_c(SV_tr, 0, mu, IC_);
 			double sma = IC_[0] / (1.0 - IC_[1]);
 			IC_[0] = sma;
 			for (int i = 0; i < 5; i++)
@@ -835,7 +841,7 @@ namespace OrbMod
 				double et_peri = 0;
 				double tp = Global::t0 - IC_[5] / n;
 				string s_tp;
-				Misc::et2cal(tp, s_tp);
+				Misc::et2cal(tp, Global::Tscale, s_tp);
 				IC[5] = s_tp;
 			}
 			else
@@ -848,9 +854,10 @@ namespace OrbMod
 		{
 			for (int i = 0; i < 6; i++)
 			{
-				sprintf(buf, "%20.13f", config::SV[i]);
+				sprintf(buf, "%20.13f", SV_tr[i]);
 				IC[i] = buf;
 			}
+
 		}
 		return true;
 	}
@@ -865,6 +872,7 @@ namespace OrbMod
 				std::string line;
 				getline(file, line);
 				vector<string> _v = Misc::splitStr2(line, ':');
+				if (_v.size() < 2) continue;
 				parce_dict::iterator it = parceDict.find(_v[0]);
 				if (it != parceDict.end())
 					(*it).second(_v[1]);

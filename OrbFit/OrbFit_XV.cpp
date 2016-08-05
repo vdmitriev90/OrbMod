@@ -23,8 +23,8 @@ namespace OrbMod
 		//Prediction of Light-time correction on the end of the next step
 		tau0 = calcLTCorr(399, triple(X[0], X[2], X[3]), t0);
 
-		ObsSet::Instance().reset();
-		tout = (*ObsSet::Instance().it)->t;
+		Control::Obs_.reset();
+		tout = (*Control::Obs_.it)->t;
 
 		A.Clear();
 		OmC.clear();

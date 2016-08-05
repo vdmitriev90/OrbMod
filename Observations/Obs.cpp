@@ -6,6 +6,13 @@ namespace OrbMod
 	{
 		isOutl = false;
 	};
+	Obs::Obs(const Obs& otr)
+	{
+		this->t = otr.t;
+		this->dlt = otr.dlt;
+		this->observ = Observatory(otr.observ);
+		this->str_dbg = otr.str_dbg;
+	}
 	Obs::~Obs()
 	{
 

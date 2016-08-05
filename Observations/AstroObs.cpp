@@ -15,6 +15,18 @@ namespace OrbMod
 		res_del = 0;
 	}
 
+	AstroObs::AstroObs(const AstroObs& otr) :Obs(otr)
+	{
+		this->ra = otr.ra;
+		this->dra = otr.dra;
+
+		this->dec = otr.dec;
+		this->ddec = otr.ddec;
+
+		this->res_ra = otr.res_ra;
+		this->res_del = otr.res_del;
+
+	}
 	AstroObs::~AstroObs()
 	{
 	}
@@ -55,10 +67,11 @@ namespace OrbMod
 		{
 			return false;
 		}
+		//
 		this->t = et;
 		this->ra = ra*deg2rad * 15;
 		this->dec = dec*deg2rad;
-
+		//
 		auto it = Observatory::str2Obsy.find(obs_id);
 		if (it == Observatory::str2Obsy.end())
 			return false;
@@ -66,6 +79,7 @@ namespace OrbMod
 
 		return true;
 	}
+	//
 	void AstroObs::setParEq(Matrix &A, vector<double> &OmC, Matrix &sv, Matrix &dxdx0, double  tau)
 	{
 		double pos[6], lt, ra_c, dec_c, d;
@@ -73,7 +87,7 @@ namespace OrbMod
 
 		spkgeo_c(399, this->t, "J2000", Global::IDC, pos, &lt);
 		triple re(pos);
-		//ATLTRACE("%20.7f %20.7f %20.7f %20.7f %20.7f %20.7f\n", sv(0, 0), sv(0, 1), sv(0, 2), sv(0, 3), sv(0, 4), sv(0, 5));
+
 		str_dbg = dxdx0.toString("\t", "%e", 10);
 		triple dr = r - re;
 
@@ -111,7 +125,7 @@ namespace OrbMod
 		isOutl = isOutlier();
 		if (isOutl)
 		{
-			ObsSet::Instance().Nouts++;
+			Control::Obs_.Nouts++;
 			return;
 		}
 		//d(RA,DEC)/d(x,y,z,vx,vy,vz)
@@ -148,12 +162,13 @@ namespace OrbMod
 		this->dra = _ra - this->ra;
 		this->ddec = _dec - this->dec;
 	}
+	//
 	bool AstroObs::isOutlier()
 	{
-		if (OrbFit::isRejOuts && ObsSet::Instance().isConverg)
+		if (OrbFit::isRejOuts && Control::Obs_.isConverg)
 		{
 			double d = sqrt(res_ra*res_ra + res_del*res_del);
-			double d_cr = OrbFit::OutlsThresh*ObsSet::Instance().sigma;
+			double d_cr = OrbFit::OutlsThresh*Control::Obs_.sigma;
 
 			return (d > d_cr);
 		}
@@ -166,6 +181,11 @@ namespace OrbMod
 		char buff[200], c_time[35];
 		timout_c(this->t, Global::pictur_tdb, 70, c_time);
 		sprintf(buff, "%s %20.7f %f %f\n", this->observ.ID.c_str(), this->t, res_ra*rad2asec, res_del*rad2asec);
-		ObsSet::Instance().f_res << c_time << "\t" << buff;
+		Control::Obs_.f_res << c_time << "\t" << buff;
+	}
+	//
+	AstroObs* AstroObs::clone() const
+	{
+		return new AstroObs(*this);
 	}
 }

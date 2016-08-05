@@ -6,6 +6,7 @@ namespace OrbMod
 	public:
 
 		ModAstroObs();
+		ModAstroObs(const ModAstroObs& otr);
 		~ModAstroObs();
 
 		double ra;
@@ -20,5 +21,6 @@ namespace OrbMod
 		//void AbbCorr(int K, double dt0, double H, vector<double> &X, vector< vector<double>> &B, vector<double> &F0, vector<double> &P, vector<double> &Yo) override;
 		string getType() override;
 		void writeRes() override;
+		virtual ModAstroObs* clone() const override;
 	};
 }

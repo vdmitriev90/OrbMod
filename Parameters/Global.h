@@ -8,7 +8,7 @@ namespace OrbMod
 {
 	class Cunningham;
 
-	enum NameOrNumber { Name = 0, Number = 1 };
+	//enum NameOrNumber { Name = 0, Number = 1 };
 	class Global
 	{
 	public:
@@ -25,8 +25,10 @@ namespace OrbMod
 
 		static EarthFixFrame EFrame;
 		static char *		EarthFrame;
-		static NameOrNumber	NameNr;
+		
+		//
 		static TypeOfObs	ObsT;
+		
 		//¬ид уравнений движени€
 		static Variables	Var;
 		//режим
@@ -41,9 +43,9 @@ namespace OrbMod
 		static long int		start;
 
 		//ситема координат
-		static int			i_frame;
+		static FrameOfIC	ICFrame;
 		//Ўкала времени
-		static int			i_tscale;
+		static TimeFormat  Tscale;
 		//тип начальных условий
 		static int			i_IC;
 		static bool			IsUsePeriTime;
@@ -117,11 +119,7 @@ namespace OrbMod
 		static bool			cb_out_sv_ECLIPJ2000;
 		static bool			cb_out_el_ECLIPJ2000;
 
-		static bool			b_out_sv_planet;
-		static bool			b_out_elts_planet;
-
 		static bool			b_out_sv_IAUPlanet;
-		static bool			b_out_el_IAUPlanet;
 
 		static bool			b_out_BL;
 
@@ -178,8 +176,7 @@ namespace OrbMod
 		static int ColorsAcc[22];
 		//
 		static unsigned int	ElapsedTime;
-		//костыли
-		static bool			kost1;
+
 
 	};
 }

@@ -5,11 +5,20 @@ namespace OrbMod
 	Observatory::Observatory()
 	{
 	}
-
+	//
+	Observatory::Observatory(const Observatory& obsy)
+	{
+		this->ID = obsy.ID;
+		this->X = obsy.X;
+		this->Name = obsy.Name;
+	}
+	//
 	Observatory::~Observatory()
 	{
 	}
+	//
 	vector<Observatory> Observatory::Obsrs;
+	//
 	map<string, Observatory> Observatory::str2Obsy;
 	//
 	bool Observatory::tryParce(const string &str)
@@ -35,6 +44,7 @@ namespace OrbMod
 
 		return true;
 	}
+	//
 	bool Observatory::LoadObsrs(std::string FileName)
 	{
 		Obsrs.clear();
@@ -59,7 +69,7 @@ namespace OrbMod
 		for (auto it : Obsrs)
 		{
 			str2Obsy.insert(std::pair<string, Observatory>(it.ID, it));
-			ObsSet::Instance().tryAddObs(it.ID, false);
+			Control::Obs_.tryAddObs(it.ID, false);
 		}
 
 		return true;

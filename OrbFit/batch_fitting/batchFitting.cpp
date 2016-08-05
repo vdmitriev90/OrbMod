@@ -43,7 +43,7 @@ namespace OrbMod
 			fit->Nbatch = 1;
 			fo << SV.toString("\t", "%21.16f", 35) << endl;
 
-			double te = (*ObsSet::Instance().it_end)->t;
+			double te = (*Control::Obs_.it_end)->t;
 
 			fit->FitBatch(SV, t0, te, sigma, Q);
 			double pe, ve;

@@ -3,32 +3,31 @@
 //
 namespace OrbMod
 {
-	std::string Global::FormCaption = "v_integrator v. 2.8";
+	std::string		Global::FormCaption = "3.8";
 	//
 	ConstSpiceChar * Global::pictur_utc = "YYYY MM DD HR:MN:SC.####### ::UTC";
 	ConstSpiceChar * Global::pictur_tdb = "YYYY MM DD HR:MN:SC.####### ::TDB";
 	ConstSpiceChar * Global::pictur_tdt = "YYYY MM DD HR:MN:SC.####### ::TDT";
 	//
-	EarthFixFrame Global::EFrame = EarthFixFrame::IAU_EARTH;
-	char * Global::EarthFrame = "IAU_EARTH";
+	EarthFixFrame	Global::EFrame = EarthFixFrame::IAU_EARTH;
+	char *			Global::EarthFrame = "IAU_EARTH";
 
 	//Вид уравнений движения
 	Variables		Global::Var = SODE_XV;
 	TypeOfObs		Global::ObsT = Astro;
 
-	NameOrNumber	Global::NameNr;
 	//режим
-	Mode Global::mode = Mode::Propagation;
+	Mode			Global::mode = Mode::Propagation;
 	//способ уточнения
-	FitMode Global::fitMode = FitMode::LS;
+	FitMode			Global::fitMode = FitMode::LS;
 	//
 	double			Global::ArcLength = 864000;
 	int				Global::MinObsinBatch = 6;
 
 	//
 	long int		Global::start;
-	int				Global::i_frame = 0;
-	int				Global::i_tscale = 0;
+	FrameOfIC				Global::ICFrame;
+	TimeFormat				Global::  Tscale;
 	//тип начальных условий
 	int				Global::i_IC = 1;
 	bool			Global::IsUsePeriTime = false;
@@ -52,12 +51,12 @@ namespace OrbMod
 	unsigned int	Global::IDC = 0;
 
 	//его константы
-	double		Global::mu = .0;
-	double     Global::R[3] = { 0.0,0.0,0.0 };
-	double		Global::f = .0;
-	double		Global::Re = .0;
-	double		Global::Rm = .0;
-	double		Global::oz = .0;
+	double			Global::mu = .0;
+	double			Global::R[3] = { 0.0,0.0,0.0 };
+	double			Global::f = .0;
+	double			Global::Re = .0;
+	double			Global::Rm = .0;
+	double			Global::oz = .0;
 
 	unsigned int	Global::ID1 = 0;
 	unsigned int	Global::ID2 = 0;
@@ -96,11 +95,7 @@ namespace OrbMod
 	bool			Global::cb_out_sv_ECLIPJ2000 = false;
 	bool			Global::cb_out_el_ECLIPJ2000 = false;
 
-	bool			Global::b_out_sv_planet = false;
-	bool			Global::b_out_elts_planet = false;
-
 	bool			Global::b_out_sv_IAUPlanet = false;
-	bool			Global::b_out_el_IAUPlanet = false;
 
 	bool			Global::b_out_BL = false;
 
@@ -122,24 +117,24 @@ namespace OrbMod
 	//сопротивление атмосферы
 	bool			Global::b_atm = false;
 	//для топоцентрической системы координат
-	double		Global::Lat_topo;
-	double		Global::Lon_topo;
-	double		Global::H_topo;
+	double			Global::Lat_topo;
+	double			Global::Lon_topo;
+	double			Global::H_topo;
 
-	double		Global::R_topo[3] = { 0.0 };
-	double		Global::M_topo[3][3] = { 0.0 };
+	double			Global::R_topo[3] = { 0.0 };
+	double			Global::M_topo[3][3] = { 0.0 };
 	//Видимость
 	bool			Global::b_visi = false;
 	bool			Global::b_rot_with_3body = false;
 	bool			Global::b_visi_rb = false;
 	int				Global::i_fr = 0;
 	int				Global::N_visi = 0;
-	double		Global::B_visi = 0.0;
-	double		Global::L_visi = 0.0;
-	double		Global::H_visi = 0.0;
-	double		Global::R_visi[3] = { .0,.0,.0 };
-	double		Global::M_visi[3][3] = { .0 };
-	double		Global::oz_visi = .0;
+	double		    Global::B_visi = 0.0;
+	double			Global::L_visi = 0.0;
+	double			Global::H_visi = 0.0;
+	double			Global::R_visi[3] = { .0,.0,.0 };
+	double			Global::M_visi[3][3] = { .0 };
+	double			Global::oz_visi = .0;
 	bool			Global::b_visi_pl = false;
 	int				Global::ID_visi = 0;
 	double			Global::R_pl = 0;
@@ -147,11 +142,9 @@ namespace OrbMod
 	long unsigned int Global::N_rp = 0;
 
 	//colors
-	int Global::col_Main;
-	int Global::ColorsAcc[22];
+	int					Global::col_Main;
+	int					Global::ColorsAcc[22];
 
-	unsigned int Global::ElapsedTime = 0;
+	unsigned int		Global::ElapsedTime = 0;
 
-	//костыли
-	bool		Global::kost1 = false;
 }

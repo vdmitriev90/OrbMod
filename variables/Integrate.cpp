@@ -126,208 +126,247 @@ namespace OrbMod
 		double RMN = 1.0 / RMX;
 
 		//direction 
-		double dir = (te - to) / abs(to - te);
-		Global::Discr *= dir;
+		double DIR = (te - to) / abs(to - te);
+		Global::Discr *= DIR;
 		double H_ = abs(step);
-		vs = (err != 0);
+		vs = err != 0;
 		CNV = NI <= 0;
 		double t = to;
 		double B_ = 0;
 		IPS = IPS0;
-		double R = 1.0;
 		//метка 3
+	M3: double H = H_*DIR;
+		double R = 1.0;
+		ls = false;
+		for (int k = 0; k < N; k++)
+		{
+			XK[k] = 0.0;
+			for (int i = 0; i < K; i++)
+				B[i][k] = 0.0;
+	}
 
+#pragma endregion
+
+		//Начальное значение шага
+#pragma region Начальное значение шага
+		if (H_ == 0)
+		{
+			if (!vs)throw("Zero Constant Step!");
+			///////////////////////////////////////
+			force(to, X, F0);
+			H_ = EPS;
+			B_ = 0.0;
+			while (B_ == 0)
+			{
+				H_ = H_*10.0;
+				H = H_*DIR;
+				for (int j = 0; j < N; j++)
+					Y[j] = X[j] + H*F0[j];
+				if (abs(te - to) <= H_)
+					goto M1;
+				///////////////////////////////
+				force(to + H, Y, F);
+
+				for (int j = 0; j < N; j++)
+				{
+					double d = (F[j] - F0[j]);
+					B_ = B_ + d*d;
+				}
+			}
+			H_ = sqrt(2.0*err*H_ / sqrt(B_));
+			H = H_*DIR;
+		}
 #pragma endregion
 #if IS_DEBUG
 		fprintf(fodbg, "%f %f \n", err, vs);
 #endif
-		if (Init(H_, dir, R, to, X, Y, B_))return 1;
+		//if (Init(H_, dir, R, to, X, Y, B_))return 1;
 
 
 		//Start of integration
 #pragma region Start of integration
-		while (true)
-		{
-			if (abs(te - t) <= H_)
-			{
-				step = H_;
-				H = te - t;
-				H_ = abs(H);
-				R = R*H_ / step;
-				ls = true;
-			}
-			if (NS <= 1)
-			{
-				for (int i = 0; i < K; i++)
-					for (int j = 0; j < N; j++)
-						BL[i][j] = B[i][j];
-			}
+		M1 :
+		   if (abs(te - t) <= H_)
+		   {
+			   step = H_;
+			   H = te - t;
+			   H_ = abs(H);
+			   R = R*H_ / step;
+			   ls = true;
+		   }
+		   if (NS <= 1)
+		   {
+			   for (int i = 0; i < K; i++)
+				   for (int j = 0; j < N; j++)
+					   BL[i][j] = B[i][j];
+		   }
 #pragma endregion
 
 #if IS_IOUT
-			fprintf(foInteg, "%19.12e\t%12.8f\t%d\n", t, H, it);
+		   fprintf(foInteg, "%19.12e\t%12.8f\t%d\n", t, H, it);
 #endif // DEBUG
 
 
 
 #pragma region A+dA
-			//не трогай!
-			double q = 1.0;
-			for (int l = 0; l < K; l++)
-			{
-				for (int i = 0; i < N; i++)
-					P[i] = 0.0;
+		   //не трогай!
+		   double q = 1.0;
+		   for (int l = 0; l < K; l++)
+		   {
+			   for (int i = 0; i < N; i++)
+				   P[i] = 0.0;
 
-				for (int m = l; m < K; m++)
-					for (int i = 0; i < N; i++)
-						P[i] = P[i] + E[m + 1][l + 1] * B[m][i];
-				q = q*R;
-				for (int i = 0; i < N; i++)
-				{
-					B[l][i] = B[l][i] - BL[l][i];
+			   for (int m = l; m < K; m++)
+				   for (int i = 0; i < N; i++)
+					   P[i] = P[i] + E[m + 1][l + 1] * B[m][i];
+			   q = q*R;
+			   for (int i = 0; i < N; i++)
+			   {
+				   B[l][i] = B[l][i] - BL[l][i];
 
-					BL[l][i] = P[i] * q / (l + 2);
-					B[l][i] = BL[l][i] + B[l][i];
-				}
-			}
-			//</A+dA>  
+				   BL[l][i] = P[i] * q / (l + 2);
+				   B[l][i] = BL[l][i] + B[l][i];
+			   }
+		   }
+		   //</A+dA>  
 #pragma endregion
 
 #pragma region Alpha
-			for (int l = 0; l < K; l++)
-			{
-				for (int i = 0; i < N; i++)
-					P[i] = 0.0;
+		   for (int l = 0; l < K; l++)
+		   {
+			   for (int i = 0; i < N; i++)
+				   P[i] = 0.0;
 
-				for (int m = l; m < K; m++)
-					for (int i = 0; i < N; i++)
-						P[i] = P[i] + D[m + 1][l + 1] * B[m][i];
+			   for (int m = l; m < K; m++)
+				   for (int i = 0; i < N; i++)
+					   P[i] = P[i] + D[m + 1][l + 1] * B[m][i];
 
-				for (int i = 0; i < N; i++)
-					A[l][i] = P[i];
-			}
+			   for (int i = 0; i < N; i++)
+				   A[l][i] = P[i];
+		   }
 #pragma endregion
 
-			force(t, X, F0);
+		   force(t, X, F0);
 
 #pragma region Corrector
-			//<Iterations on step>
-			for (it = 1; it < IPS; it++)
-			{
-				double s, t_;
-				int j, k;
-				//#pragma omp parallel for\
-				    			//firstprivate (P,H,B,F,Y,A) \
-	    			//private (s,t_,j,k) \
-	    			//lastprivate(A)
+		   //<Iterations on step>
+		   for (it = 1; it < IPS; it++)
+		   {
+			   double s, t_;
+			   int j, k;
+			   //#pragma omp parallel for\
+			   			    			//firstprivate (P,H,B,F,Y,A) \
+    			//private (s,t_,j,k) \
+    			//lastprivate(A)
 
-				for (int i = 0; i < K; i++)
-				{
-					s = Spacing[i + 1];
-					for (k = 0; k < N; k++)
-						P[k] = 0.0;
-					for (j = K - 1; j >= 0; j--)
-						for (k = 0; k < N; k++)
-							P[k] = s*(B[j][k] + P[k]);
+			   for (int i = 0; i < K; i++)
+			   {
+				   s = Spacing[i + 1];
+				   for (k = 0; k < N; k++)
+					   P[k] = 0.0;
+				   for (j = K - 1; j >= 0; j--)
+					   for (k = 0; k < N; k++)
+						   P[k] = s*(B[j][k] + P[k]);
 
-					for (k = 0; k < N; k++)
-						Y[k] = X[k] + H*s*(F0[k] + P[k]);
+				   for (k = 0; k < N; k++)
+					   Y[k] = X[k] + H*s*(F0[k] + P[k]);
 
-					////////////////////////////////////////
-					//#pragma omp atomic
-					t_ = t + H*s;
-					force(t_, Y, F);
+				   ////////////////////////////////////////
+				   //#pragma omp atomic
+				   t_ = t + H*s;
+				   force(t_, Y, F);
 
-					for (k = 0; k < N; k++)
-						P[k] = (F[k] - F0[k]) / s;
+				   for (k = 0; k < N; k++)
+					   P[k] = (F[k] - F0[k]) / s;
 
-					for (j = 0; j < i; j++)
-						for (k = 0; k < N; k++)
-							P[k] = (P[k] - A[j][k])*_S[i][j];
+				   for (j = 0; j < i; j++)
+					   for (k = 0; k < N; k++)
+						   P[k] = (P[k] - A[j][k])*_S[i][j];
 
-					for (j = 0; j <= i; j++)
-						for (k = 0; k < N; k++)
-							B[j][k] = B[j][k] + C[i + 1][j + 1] * (P[k] - A[i][k]);
+				   for (j = 0; j <= i; j++)
+					   for (k = 0; k < N; k++)
+						   B[j][k] = B[j][k] + C[i + 1][j + 1] * (P[k] - A[i][k]);
 
-					for (k = 0; k < N; k++)
-						A[i][k] = P[k];
-				}
+				   for (k = 0; k < N; k++)
+					   A[i][k] = P[k];
+			   }
 
-				//<Convergence check and exit>
-				for (int k = 0; k < N; k++)
-					dX[k] = Y[k] - XK[k];
-				bool b = true;
-				for (int k = 0; k < Niter; k++)
-					if (!(abs(dX[k]) <= abs(EPS*Y[k])))
-						b = false;
+			   //<Convergence check and exit>
+			   for (int k = 0; k < N; k++)
+				   dX[k] = Y[k] - XK[k];
+			   bool b = true;
+			   for (int k = 0; k < N; k++)
+				   if (!(abs(dX[k]) <= abs(EPS*Y[k])))
+					   b = false;
 
-				for (int k = 0; k < N; k++)
-					XK[k] = Y[k];
+			   for (int k = 0; k < N; k++)
+				   XK[k] = Y[k];
 
-				if (b == true) break;
-			}
+			   if (b == true) break;
+		   }
 #pragma endregion
 
-			if ((it > IPS0) && (!CNV) && (NS != 0)) NBS++;
+		   if ((it > IPS0) && (!CNV) && (NS != 0)) NBS++;
 
 #pragma region Проверка величины шага
-			if (vs)
-			{
-				B_ = 0.0;
-				for (int k = 0; k < N; k++)
-				{
-					double b2 = B[K - 1][k] * B[K - 1][k];
-					B_ = B_ + b2;
-				}
+		   if (vs)
+		   {
+			   B_ = 0.0;
+			   for (int k = 0; k < N; k++)
+			   {
+				   double b2 = B[K - 1][k] * B[K - 1][k];
+				   B_ = B_ + b2;
+			   }
 
-				if (B_ != 0)
-					R = pow((err / sqrt(B_) / H_), DEG);
-				else
-					R = RMX;
-				if (NS == 0)
-				{
-					INC = (!ls) && INC;
-					if (INC && (R > RMX) || (R < RMN))
-					{
-						NST++;
-						if ((NST > 100) && (R > RMX)) goto M4;
-						H_ = H_*R;
-						if (Init(H_, dir, R, to, X, Y, B_))return 1;
-					}
-				}
-				//metka4
-			M4:	if (R > RMX) R = RMX;
-			}
+			   if (B_ != 0)
+				   R = pow((err / sqrt(B_) / H_), DEG);
+			   else
+				   R = RMX;
+			   if (NS == 0)
+			   {
+				   INC = (!ls) && INC;
+				   if (INC && (R > RMX) || (R < RMN))
+				   {
+					   NST++;
+					   if ((NST > 100) && (R > RMX)) goto M4;
+					   H_ = H_*R; goto M3;
+					   //if (Init(H_, dir, R, to, X, Y, B_))return 1;
+				   }
+			   }
+			   //metka4
+		   M4:	if (R > RMX) R = RMX;
+		   }
 #pragma endregion
 
-			if (Inter(t, H, X, Yo)) ls = true;
+		   if (Inter(t, H, X, Yo)) ls = true;
 
-			// Solution on step
-			endOfStep(t, H, X, Yo);
+		   // Solution on step
+		   endOfStep(t, H, X, Yo);
 
-			t = t + H;
-			H = H*R;
-			H_ = abs(H);
-			NS++;
+		   t = t + H;
+		   H = H*R;
+		   H_ = abs(H);
+		   NS++;
 
-			if (CNV)
-				IPS = IPS0;
-			else
-				IPS = NI;
+		   if (CNV)
+			   IPS = IPS0;
+		   else
+			   IPS = NI;
 
-			if (ls)
-			{
-				te = t;
+		   if (ls)
+		   {
+			   te = t;
 #if IS_IOUT
-				fclose(foInteg);
+			   fclose(foInteg);
 #endif
 #if IS_DEBUG
-				fclose(fodbg);
+			   fclose(fodbg);
 #endif
-				return 0;
-			}
-		}
+			   return 0;
+		   }
+		   goto M1;
 	};
+
 	int ivar::Init(double &H_, double &dir, double &R, double &to, vector<double> X, vector<double> Y, double &B_)
 	{
 		H = H_*dir;

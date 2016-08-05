@@ -115,8 +115,8 @@ namespace OrbMod
 
 		static bool SaveCFG(string fileName);
 		static bool LoadCFG(string fileName);
-		static bool SetIC(std::string IC[]);
-		static bool GetIC(std::string *IC);
+		static bool SetIC(std::string IC[], int IDC, TypeOfIC ICtype, FrameOfIC ICframe);
+		static bool GetIC(std::string *IC, int IDC, TypeOfIC ICtype, FrameOfIC ICframe);
 
 #pragma region буферные переменные 
 		static int		NameNr;

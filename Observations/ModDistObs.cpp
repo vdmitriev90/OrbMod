@@ -4,10 +4,14 @@ using namespace Algebra;
 #define DEF__1 1
 namespace OrbMod
 {
-	ModDistObs::ModDistObs()
+	ModDistObs::ModDistObs() 
 	{
 	}
-
+	ModDistObs::ModDistObs(const ModDistObs& otr):Obs(otr)
+	{
+		this->dist = otr.dist;
+		this->res = otr.res;
+	}
 	ModDistObs::~ModDistObs()
 	{
 	}
@@ -81,6 +85,10 @@ namespace OrbMod
 
 		//sprintf(buff, "%20.7f %f", this->t, res);
 		//ObsSet::Instance().f_res << c_time << " " << buff<< "\t" << str_dbg <<endl;
-		ObsSet::Instance().f_res << str_dbg << endl;
+		Control::Obs_.f_res << str_dbg << endl;
+	}
+	ModDistObs* ModDistObs::clone() const
+	{
+		return new ModDistObs(*this);
 	}
 }

@@ -39,19 +39,8 @@ namespace OrbMod
 		//	fprintf(foel,"year month day hms(UTC) TDB(sec) interval(days) A E I NODE W M \n");
 		foSvEcl = fopen("sv_ECLIPJ2000.out", "w");
 		foelEcl = fopen("elts_ECLIPJ2000.out", "w");
-
-
-		fosvp = fopen("sv_planetIAU.out", "w");
-		//	fprintf(fosvp,"year month day hms(UTC) TDB(sec) interval(days) X Y Z Vx Vy Vz \n");
-
-		foelp = fopen("elts_planetIAU.out", "w");
-		//	fprintf(foelp,"year month day hms(UTC) TDB(sec) interval(days) A E I NODE W M \n");
-
 		fosvR = fopen("sv_IAUplanet.out", "w");
 		//	fprintf(fosvR,"year month day hms(UTC) TDB(sec) interval(days) X Y Z Vx Vy Vz \n");
-
-		foelR = fopen("elts_IAUplanet.out", "w");
-		//	fprintf(foelR,"year month day hms(UTC) TDB(sec) interval(days) A E I NODE W M \n");
 
 		foBL = fopen("BL.out", "w");
 		//	fprintf(foBL,"year month day hms(UTC) TDB(sec) interval(days) L B H \n");
@@ -284,10 +273,10 @@ namespace OrbMod
 
 
 		fclose(fosvR);
-		fclose(foelR);
+		//fclose(foelR);
 
-		fclose(fosvp);
-		fclose(foelp);
+		//fclose(fosvp);
+		//fclose(foelp);
 
 		fclose(foBL);
 

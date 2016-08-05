@@ -9,6 +9,12 @@ namespace OrbMod
 	{
 	}
 	//
+	ModAstroObs2::ModAstroObs2(const ModAstroObs2& otr) :AstroObs(otr)
+	{
+		this->pos = otr.pos;
+		this->posres = otr.posres;
+	}
+	//
 	ModAstroObs2::~ModAstroObs2()
 	{
 
@@ -104,6 +110,10 @@ namespace OrbMod
 		char buff[200], c_time[35];
 		timout_c(this->t, Global::pictur_tdb, 70, c_time);
 		sprintf(buff, "%20.7f %f %f  %f %f %f\n", this->t, res_ra*rad2asec, res_del*rad2asec, posres[0], posres[1], posres[2]);
-		ObsSet::Instance().f_res << c_time << " " << buff;
+		Control::Obs_.f_res << c_time << " " << buff;
+	}
+	ModAstroObs2* ModAstroObs2::clone() const
+	{
+		return new ModAstroObs2(*this);
 	}
 }

@@ -172,23 +172,23 @@ namespace OrbMod
 		dt.sec = stod(w2[2]);
 		return true;
 	}
-	bool Misc::parceTime(string str_in, double &et)
+	bool Misc::parceTime(string str_in, TimeFormat F, double &et)
 	{
 		double t0 = 0;
-		if (Global::i_tscale == 0)
+		if (F == TimeFormat::UTC_Calendar_format)
 		{
 			const char *utc1 = str_in.c_str();
 			str2et_c(utc1, &t0);
 		}
-		else if (Global::i_tscale == 1)
+		else if (F == TimeFormat::TDB_Seconds_past_J2000)
 			t0 = stod(str_in);
-		else if (Global::i_tscale == 2)
+		else if (F == TimeFormat::TDB_Calendar_format )
 		{
 			str_in += " TDB";
 			const char *tdb1 = str_in.c_str();
 			str2et_c(tdb1, &t0);
 		}
-		else
+		else if (F == TimeFormat::TT_Calendar_format)
 		{
 			str_in += " TDT";
 			const char *tdt1 = str_in.c_str();
@@ -197,18 +197,18 @@ namespace OrbMod
 		et = t0;
 		return true;
 	}
-	bool Misc::et2cal(double et, string &str_out)
+	bool Misc::et2cal(double et, TimeFormat F, string &str_out)
 	{
 		char str[50];
 
-		if (Global::i_tscale == 0)
+		if (F == TimeFormat::UTC_Calendar_format)
 			timout_c(et, Global::pictur_utc, 50, str);
-		else if (Global::i_tscale == 1)
+		else if (F == TimeFormat::TDB_Seconds_past_J2000)
 			sprintf(str, "%20.13f", et);
 
-		else if (Global::i_tscale == 2)
+		else if (F == TimeFormat::TDB_Calendar_format)
 			timout_c(et, Global::pictur_tdb, 50, str);
-		else
+		else if (F == TimeFormat::TT_Calendar_format)
 			timout_c(et, Global::pictur_tdt, 50, str);
 		str_out = str;
 		return true;

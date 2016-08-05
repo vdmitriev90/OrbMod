@@ -15,17 +15,16 @@ namespace OrbMod
 		//	fprintf(foel,"year month day hms(UTC) TDB(sec) interval(days) A E I NODE W M \n");
 		foSvEcl = fopen("sv_ECLIPJ2000.out", "w");
 		foelEcl = fopen("elts_ECLIPJ2000.out", "w");
-
-		fosvp = fopen("sv_planetIAU.out", "w");
-		//	fprintf(fosvp,"year month day hms(UTC) TDB(sec) interval(days) X Y Z Vx Vy Vz \n");
-
-		foelp = fopen("elts_planetIAU.out", "w");
-		//	fprintf(foelp,"year month day hms(UTC) TDB(sec) interval(days) A E I NODE W M \n");
-
 		fosvR = fopen("sv_IAUplanet.out", "w");
 		//	fprintf(fosvR,"year month day hms(UTC) TDB(sec) interval(days) X Y Z Vx Vy Vz \n");
 
-		foelR = fopen("elts_IAUplanet.out", "w");
+		//fosvp = fopen("sv_planetIAU.out", "w");
+		//	fprintf(fosvp,"year month day hms(UTC) TDB(sec) interval(days) X Y Z Vx Vy Vz \n");
+
+	   //foelp = fopen("elts_planetIAU.out", "w");
+		//	fprintf(foelp,"year month day hms(UTC) TDB(sec) interval(days) A E I NODE W M \n");
+
+		//foelR = fopen("elts_IAUplanet.out", "w");
 		//	fprintf(foelR,"year month day hms(UTC) TDB(sec) interval(days) A E I NODE W M \n");
 
 		foBL = fopen("BL.out", "w");
@@ -53,10 +52,10 @@ namespace OrbMod
 		fclose(foelEcl);
 
 		fclose(fosvR);
-		fclose(foelR);
+		//fclose(foelR);
 
-		fclose(fosvp);
-		fclose(foelp);
+		//fclose(fosvp);
+		//fclose(foelp);
 
 		fclose(foBL);
 
@@ -84,17 +83,7 @@ namespace OrbMod
 		double Ti = (t0 - TimeNode) / 86400.0;
 		if (Global::cb_out_sv_ECLIPJ2000 == true || Global::cb_out_el_ECLIPJ2000 == true) trsv(0, 1, 17, SVo, SVEcl);
 		if (Global::b_out_sv_IAUPlanet == true || Global::b_out_NEU == true || Global::b_out_AZR == true) trsv(t0, 1, Global::IDC, SVo, SViau);
-		if (Global::b_out_el_IAUPlanet == true || Global::b_out_elts_planet == true || Global::b_out_sv_planet == true || Global::b_out_BL == true) trsv_NR(t0, 1, Global::IDC, SVo, SViauNR);
 
-		if (Global::b_out_elts_planet == true || Global::b_out_sv_planet == true || Global::b_out_el_IAUPlanet == true) oscelt_c(SViauNR, 0.0, mu, eltsIAUpl);
-		if (Global::b_out_elts_planet == true || Global::b_out_sv_planet == true)
-		{
-			for (int i = 0; i < 8; i++) eltsPl[i] = eltsIAUpl[i];
-			eltsPl[3] = eltsIAUpl[3] + NodeA + Global::oz*(t0 - TimeNode);
-
-			while (eltsPl[3] < 0.0)	eltsPl[3] = eltsPl[3] + 2.0*pi;
-			while (eltsPl[3] > 2.0*pi)	eltsPl[3] = eltsPl[3] - 2.0*pi;
-		}
 		if (Global::b_out_NEU == true || Global::b_out_AZR == true)
 		{
 			double X0[3];
@@ -155,19 +144,6 @@ namespace OrbMod
 
 			fprintf(foSvEcl, "\n");
 		}
-		/*		//orbit elements связанные с эквтором и улом орбиты планеты
-				if(Global::b_out_elts_planet==true){
-
-				fprintf(foelp,"%s ",utcstr);
-				fprintf(foelp," %25.16e ",t0);
-				oscelt_c (SVpl, 0, mu, eltsPl);
-				for(int i=0; i<2;i++){
-				fprintf(foelp," %25.16e",eltsPl[i]);}
-				for(int i=2; i<6;i++){
-				fprintf(foelp," %25.16e",eltsPl[i]*rad);}
-				fprintf(foelp,"\n");
-
-				}else{}*/
 
 				//state vector IAU_PLANET---------------------	
 		if (Global::b_out_sv_IAUPlanet == true) {
@@ -178,42 +154,6 @@ namespace OrbMod
 			fprintf(fosvR, "\n");
 		}
 
-		//orbit elements IAU_PLANET---------------------				
-		if (Global::b_out_el_IAUPlanet == true) {
-
-			fprintf(foelR, "%s ", utcstr);
-			fprintf(foelR, " %25.16e ", t0);
-			fprintf(foelR, " %25.16e ", Ti);
-
-			fprintf(foelR, " %25.16e", eltsIAUpl[0]/**(1.0-eltsIAUpl[1])*/);
-			fprintf(foelR, " %25.16e", eltsIAUpl[1]);
-			for (int i = 2; i < 6; i++) fprintf(foelR, " %25.16e", eltsIAUpl[i] * rad);
-			fprintf(foelR, "\n");
-		}
-		//orbit elements Planet IAU 
-		if (Global::b_out_elts_planet == true) {
-			fprintf(foelp, "%s ", utcstr);
-			fprintf(foelp, " %25.16e ", t0);
-			fprintf(foelp, " %25.16e ", Ti);
-
-			fprintf(foelp, " %25.16e", eltsPl[0]/**(1.0-eltsPl[1])*/);
-			fprintf(foelp, " %25.16e", eltsPl[1]);
-			for (int i = 2; i < 6; i++) fprintf(foelp, " %25.16e", eltsPl[i] * rad);
-
-			fprintf(foelp, "\n");
-		}
-
-		//state vector Planet IAU
-		if (Global::b_out_sv_planet == true) {
-
-			fprintf(fosvp, "%s ", utcstr);
-			fprintf(fosvp, " %25.16e ", t0);
-			fprintf(fosvp, " %25.16e ", Ti);
-			conics_c(eltsPl, 0.0, SVpl);
-			for (int i = 0; i < 6; i++) fprintf(fosvp, " %25.16e", SVpl[i]);
-
-			fprintf(fosvp, "\n");
-		}
 		// subsatellite point
 		if (Global::b_out_BL == true) {
 			double rectan[3];

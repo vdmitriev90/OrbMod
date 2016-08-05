@@ -12,7 +12,7 @@ namespace OrbMod
 		int i_frame = 0;
 
 		if (Global::i_fr == 0) { FRAME = "ECLIPJ2000"; i_frame = 17; }
-		if (Global::i_fr == 1) { FRAME = "J2000"; i_frame = 1; }
+		else { FRAME = "J2000"; i_frame = 1; }
 
 		SpiceChar   utcstr[50];
 		triple Vo;

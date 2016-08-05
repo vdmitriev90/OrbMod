@@ -18,7 +18,7 @@ namespace OrbMod
 		static  double dms2deg(int &sign, int &d, int &m, double &sec);
 		static bool str2deg(string &str, const char& sep, double &deg);
 		static bool tryPrcSpUTC(string &s, dateTime &dt);
-		static bool parceTime(string str_in, double &et);
-		static bool et2cal(double et, string &str_out);
+		static bool parceTime(string str_in, TimeFormat F, double &et);
+		static bool et2cal(double et, TimeFormat F, string &str_out);
 	};
 }

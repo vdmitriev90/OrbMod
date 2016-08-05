@@ -4,8 +4,53 @@ using namespace Algebra;
 
 namespace OrbMod
 {
+	ObsSet Control::Obs_;
 
-	 void Control ::Process()
+	
+	//
+	 void Control  ::LogReport(std::string path)
+	{
+		
+	}
+	 bool Control ::loadKernels(std::string path)
+	{
+		try
+		{
+			furnsh_c("metak.tm");
+			return true;
+		}
+		catch (...)
+		{
+			return false;
+		}
+
+	}
+	 bool Control ::loadObservatories(std::string path)
+	{
+		if (Observatory::LoadObsrs(path))
+			return true;
+		else
+			return false;
+	}
+	//
+	 bool Control::loadConfig(std::string path)
+	 {
+		 return config::LoadCFG(path);
+	 }
+	 bool Control::setTime()
+	 {
+		 if (!Misc::parceTime(config::s_t0, Global::Tscale, Global::t0))return false;
+		 if (!Misc::parceTime(config::s_te, Global::Tscale, Global::te))return false;
+	 }
+	//
+	 void Control::Process(std::string path)
+	 {
+		 config::LoadCFG(path);
+		 setTime();
+		 StartProcess();
+	 }
+	//
+	 void Control ::StartProcess()
 	{
 		//Erase the file with accelerations
 		FILE*facc = fopen("acc.out", "w");
@@ -34,9 +79,10 @@ namespace OrbMod
 			debugAction4();
 		//OrbFit::fo.close();
 	}
+	 //
 	 void Control::ParameterEstimation()
 	 {
-		 ObsSet::Instance().f_res.open("residuals.out");
+		 Obs_.f_res.open("residuals.out");
 		 OrbFit::fo.open("Orbfit.out");
 		 double sigma;
 
@@ -57,7 +103,7 @@ namespace OrbMod
 		 default:
 			 break;
 		 }
-		 ObsSet::Instance().f_res.close();
+		 Control::Obs_.f_res.close();
 		 OrbFit::fo.close();
 	 }
 	 void Control::FODE()

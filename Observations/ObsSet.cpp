@@ -1,13 +1,11 @@
 #include"stdafx.h"
 #include"ObsSet.h"
 #include<algorithm>
+#include <iterator>
+#include <algorithm>
+#include <vector>
 namespace OrbMod
 {
-	ObsSet& ObsSet::Instance()
-	{
-		static ObsSet singleton;
-		return singleton;
-	}
 	double ObsSet::fct = 1;
 	//
 	bool ObsSet::isLogResid = false;
@@ -18,16 +16,31 @@ namespace OrbMod
 		sigma = DBL_MAX;
 		Nouts = 0;
 	}
+	ObsSet::ObsSet(const ObsSet& other)
+	{
+		this->isConverg = other.isConverg;
+		this->sigma = other.sigma;
+		this->Nouts = other.Nouts;
+		this->path = other.path;
+
+		for (int i = 0; i < other.obs.size(); i++)
+			this->obs.push_back(other.obs[i]->clone());
+
+		this->it = this->obs.begin()+(other.it - other.obs.begin());
+		this->it0 = this->obs.begin() + (other.it0 - other.obs.begin());
+		this->it_end = this->obs.begin() + (other.it_end - other.obs.begin());
+	}
 	//
 	bool ObsSet::tryAddObs(string ID, bool val)
 	{
-		auto it1 = ObsSet::Instance().isUseObs.begin();
-		it1 = ObsSet::Instance().isUseObs.find(ID);
-		if (it1 != ObsSet::Instance().isUseObs.end()) return false;
+		auto it1 = this->isUseObs.begin();
+		it1 = this->isUseObs.find(ID);
+		if (it1 != this->isUseObs.end()) 
+			return false;
 		else
 		{
 			pair<string, bool> p(ID, val);
-			ObsSet::Instance().isUseObs.insert(p);
+			this->isUseObs.insert(p);
 			return true;
 		}
 	}
