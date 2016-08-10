@@ -220,6 +220,14 @@ namespace OrbModCLRWrapper
 		return OrbMod::Control::loadConfig(Marsh::S2s(path));
 	}
 	//
+	bool OrbModWrap::parseTime(System::String ^path, int TF, double % t)
+	{
+		double et;
+		if(!Control::parseTime(Marsh::S2s(path), (TimeFormat)TF, et)) return false;
+		t = et;
+		return true;
+	}
+	//
 	String ^ OrbModWrap::getVersion()
 	{
 		return(Marsh::s2S(Global::FormCaption));
