@@ -28,18 +28,48 @@ namespace OrbMod
 
 	formatters config::formatDict
 	{
-		IsTestMode,FittingMode,
-		Obs, MinObsInbatch,ArcLength,
-		NmNr, CB,Int, Var, NOR,
-		 Step, Eps, orbFitEps,
-		IsAutoStep ,Niter, orbFitNiter,
-		orbFitNiterPerBatch,orbFitRejOuts,
-		 T_start ,  T_end ,	 Frame ,EarthFixedFrame,
-		 Time_scale, TypeIC, UsePeriTime, IC,
-		BigPlanets,	 AddBodies,AddBody5HT, CBHterms, Rel, SRP,
-		Discr, Out,BFFID, Colors, useObs,ObservationsPath,
+		IsTestMode,
+		FittingMode,
+		Obs,
+		MinObsInbatch,
+		ArcLength,
+		NmNr,
+		CB,
+		Int,
+		Var,
+		NOR,
+		 Step,
+		 Eps,
+		 orbFitEps,
+		IsAutoStep ,
+		Niter,
+		orbFitNiter,
+		orbFitNiterPerBatch,
+		orbFitRejOuts,
+		 T_start ,
+		 T_end ,
+		 Frame,
+		 EarthFixedFrame,
+		 Time_scale,
+		 TypeIC,
+		 UsePeriTime,
+		 IC,
+		BigPlanets,
+		AddBodies,
+		AddBody5HT,
+		CBHterms,
+		Rel,
+		SRP,
+		Discr,
+		Out,
+		BFFID,
+		Colors,
+		useObs,
+		ObsTimeFrame,
+		ObservationsPath,
 		 IsLogResiduals,
-		aprioriRMS,processNoise
+		 aprioriRMS,
+		 processNoise
 	};
 
 	parce_dict config::parceDict
@@ -81,6 +111,7 @@ namespace OrbMod
 		{ "BFFID", BFFID },
 		{ "Colors", Colors },
 		{ "useObservatoris", useObs },
+		{ "ObsTimeFrame", ObsTimeFrame },
 		{ "ObservationsPath", ObservationsPath },
 
 		{ "IsLogResiduals", IsLogResiduals },
@@ -388,6 +419,16 @@ namespace OrbMod
 		{
 			return false;
 		}
+		return true;
+	}
+	//
+    bool config ::ObsTimeFrame( string s)
+	{
+		vector<string> strs = Misc::splitStr(s, ';');
+		if (strs.size() < 2) return false;
+		
+		Control::Obs_.t0 = stod(strs[0]);
+		Control::Obs_.te = stod(strs[1]);
 		return true;
 	}
 	//
@@ -708,6 +749,19 @@ namespace OrbMod
 		for (auto it : Control::Obs_.isUseObs)
 			str += it.first + ',' + to_string((int)it.second) + ';';
 
+		return str;
+	}
+	//
+	std::string config::ObsTimeFrame()
+	{
+		std::string str = "ObsTimeFrame:";
+		char buf[25];
+
+		sprintf(buf, "%20.5f", Control::Obs_.t0 );
+		str += buf; str +=";";
+
+		sprintf(buf, "%20.5f", Control::Obs_.te);
+		str += buf; str += ";";
 		return str;
 	}
 	//

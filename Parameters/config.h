@@ -51,6 +51,7 @@ namespace OrbMod
 		static bool BFFID(string s);
 		static bool Colors(string s);
 		static bool useObs(string s);
+		static bool ObsTimeFrame(string s);
 		static bool ObservationsPath(string s);
 		static bool orbFitEps(string s);
 		static bool orbFitNiter(string s);
@@ -97,6 +98,7 @@ namespace OrbMod
 		static std::string BFFID();
 		static std::string Colors();
 		static std::string useObs();
+		static std::string ObsTimeFrame();
 		static std::string ObservationsPath();
 		static std::string orbFitEps();
 		static std::string orbFitNiter();
@@ -106,6 +108,7 @@ namespace OrbMod
 		static std::string IsLogResiduals();
 		static std::string aprioriRMS();
 		static std::string processNoise();
+
 
 #pragma endregion
 

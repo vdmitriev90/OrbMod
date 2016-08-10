@@ -14,7 +14,7 @@ namespace OrbMod
 			for (int i = obs.size() - 1; i >= 0; --i)  delete obs[i];
 		}
 
-		double sigma;
+		double sigma,t0,te;
 		bool isConverg;
 		int  Nouts;
 

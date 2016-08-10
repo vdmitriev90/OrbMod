@@ -128,6 +128,8 @@ namespace OrbMod
 		if (obs.size() < 2) return false;
 		it0 = obs.begin();
 		int N = obs.size();
+		
+		t0 = et_s, te = et_e;
 
 		it = it0 = FindTime(et_s);
 		it_end = FindTime(et_e);
