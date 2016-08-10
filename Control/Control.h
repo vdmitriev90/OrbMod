@@ -14,6 +14,8 @@ namespace OrbMod
 		static bool loadObservatories(std::string path);
 		static bool loadConfig(std::string path);
 
+		static bool parseTime(string s_t, TimeFormat TForm, double t);
+		
 	private:
 		static bool setTime();
 		static void StartProcess();

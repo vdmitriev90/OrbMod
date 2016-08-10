@@ -252,7 +252,7 @@ namespace OrbMod
 	{
 		vector<string> strs = Misc::splitStr(s, ';');
 		if (strs.size() < 6) return false;
-		for (int i = 0; i < 6; i++) config::SV[i] = stod(strs[i]);
+		for (int i = 0; i < 6; i++) Global::SV(i,0) =  config::SV[i] = stod(strs[i]);
 		return true;
 	}
 	bool config::BigPlanets(string s)

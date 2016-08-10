@@ -37,6 +37,11 @@ namespace OrbMod
 	 {
 		 return config::LoadCFG(path);
 	 }
+	 bool Control::parseTime(string s_t,TimeFormat TForm, double t )
+	 {
+		 if (!Misc::parceTime(s_t, TForm, t))return false;
+		 else return true;	 
+	 }
 	 bool Control::setTime()
 	 {
 		 if (!Misc::parceTime(config::s_t0, Global::Tscale, Global::t0))return false;
