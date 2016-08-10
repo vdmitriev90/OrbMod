@@ -27,7 +27,7 @@ namespace OrbModCLRWrapper {
 		int getObsNum();
 		String ^ TypeOfObserv();
 		void DataToForm(ZedGraph::GraphPane ^pane, System::Windows::Forms::DataGridView^  dgv_1);
-		void _ObsSet::ChangeTimeFrame(ZedGraph ::GraphPane ^pane, System::Windows::Forms::DataGridView^  dgv_1, String ^t_start, String ^t_finish);
+		void _ObsSet::ChangeTimeFrame(ZedGraph::GraphPane ^pane, System::Windows::Forms::DataGridView^  dgv_1, String ^t_start, String ^t_finish, double % t0, double % te);
 		void SetUseObs(String ^ID, bool use);
 
 	private:

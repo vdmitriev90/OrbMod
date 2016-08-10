@@ -137,7 +137,8 @@ namespace OrbModCLRWrapper
 			i++;
 		}
 	}
-	void _ObsSet::ChangeTimeFrame(GraphPane ^pane, System::Windows::Forms::DataGridView^  dgv_1, String ^t_start, String ^t_finish)
+	//
+	void _ObsSet::ChangeTimeFrame(GraphPane ^pane, System::Windows::Forms::DataGridView^  dgv_1, String ^t_start, String ^t_finish, double % t0, double % te)
 	{
 		//Обсерватории наблюдения которых будут использованы
 		for (int i = 0; i < N; i++)
@@ -166,7 +167,7 @@ namespace OrbModCLRWrapper
 		str2et_c(TDB_finish, &et1);
 		char t_first[70], t_last[70];
 		this->setO->setTimeFrames(et0, et1);
-
+		t0 = et0; te = et1;
 		timout_c((*this->setO->it)->t, Global::pictur_tdb, 70, t_first);
 		timout_c((*this->setO->it_end)->t, Global::pictur_tdb, 70, t_last);
 
