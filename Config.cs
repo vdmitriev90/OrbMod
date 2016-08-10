@@ -305,7 +305,7 @@ namespace OrbModUI
         //
         bool eps(string s)
         {
-            Local_eps = Math.Pow(10, -float.Parse(s));
+            Local_eps =float.Parse(s);
             return true;
         }
         //
@@ -647,7 +647,7 @@ namespace OrbModUI
         string  Eps()
         {
             string str = "Eps:";
-            str += Convert.ToString(Abs(Log10( Local_eps)));
+            str += Convert.ToString(Local_eps);
             return str;
         }
         string  orbFitEps()
