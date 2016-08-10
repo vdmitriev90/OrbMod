@@ -79,7 +79,7 @@ namespace OrbModUI
         //
         void ChangeTimeFrame()
         {
-            OrbModWrap.Instance.SetObserv.ChangeTimeFrame(pane, dgv_1, tb_UTC_start.Text, tb_UTC_finish.Text);
+            OrbModWrap.Instance.SetObserv.ChangeTimeFrame(pane, dgv_1, tb_UTC_start.Text, tb_UTC_finish.Text,ref Config.Instance.obs_t0, ref Config.Instance.obs_te);
             lb_numobs.Text = OrbModWrap.Instance.SetObserv.getObsNum().ToString();
         }
         //

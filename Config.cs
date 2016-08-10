@@ -120,6 +120,7 @@ namespace OrbModUI
         public int[] ColorsAcc = new int[22];
         //
         public string ObsPath;
+        public double obs_t0, obs_te;
         //
         //line
         public int LineWidth;
@@ -127,6 +128,8 @@ namespace OrbModUI
         public int SymbolSize;
         //
         public bool isLogRes;
+
+
 
 #endregion
 
@@ -173,6 +176,7 @@ namespace OrbModUI
         { "Colors", Colors },
         { "useObservatoris", useObs },
         { "ObservationsPath", ObservationsPath },
+        { "ObsTimeFrame", ObsTimeFrame },
 
         { "IsLogResiduals", IsLogResiduals },
         { "aprioriRMS", aprioriRMS },
@@ -189,7 +193,8 @@ namespace OrbModUI
          T_start ,  T_end ,  Frame ,EarthFixedFrame,
          Time_scale, TypeIC, UsePeriTime, IC,
         BigPlanets,  AddBodies,AddBody5HT, CBHterms, Rel, SRP,
-        Discr, Out,BFFID, Colors, useObs,ObservationsPath,
+        Discr, Out,BFFID, Colors,
+                useObs,ObservationsPath,ObsTimeFrame,
        lineWidth,symbolSize, symbolType,  IsLogResiduals,
         aprioriRMS,processNoise
             };
@@ -518,6 +523,16 @@ namespace OrbModUI
             //{
             //    return false;
             //}
+            return true;
+        }
+        //
+        bool ObsTimeFrame(string s)
+        {
+            string[] strs = s.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
+            if (strs.Length < 2) return false;
+
+            obs_t0 = double.Parse( strs[0]);
+            obs_te = double.Parse(strs[1]);
             return true;
         }
         //
@@ -851,7 +866,13 @@ namespace OrbModUI
             str += ObsPath;
             return str;
         }
-
+        string ObsTimeFrame()
+        {
+            string str = "ObsTimeFrame:";
+            str += obs_t0.ToString("F4")+";";
+            str += obs_te.ToString("F4") + ";";
+            return str;
+        }
         //
         string  IsLogResiduals()
         {
