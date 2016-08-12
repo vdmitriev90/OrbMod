@@ -223,7 +223,7 @@ namespace OrbModCLRWrapper
 	//
 	bool OrbModWrap::parseTime(System::String ^path, int TF, double % t)
 	{
-		double et;
+		double et = 0;
 		if(!Control::parseTime(Marsh::S2s(path), (TimeFormat)TF, et)) return false;
 		t = et;
 		return true;
