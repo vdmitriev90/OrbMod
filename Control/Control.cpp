@@ -4,7 +4,15 @@ using namespace Algebra;
 
 namespace OrbMod
 {
-	ObsSet Control::Obs_;
+	Control::Control()
+	{
+		Obs_ = new ObsSet();
+	}
+	Control::~Control()
+	{
+		delete Obs_;
+	}
+	Control Control::Inst;
 
 	
 	//
@@ -46,6 +54,9 @@ namespace OrbMod
 	 {
 		 if (!Misc::parceTime(config::s_t0, Global::Tscale, Global::t0))return false;
 		 if (!Misc::parceTime(config::s_te, Global::Tscale, Global::te))return false;
+		
+		 return true;
+
 	 }
 	//
 	 void Control::Process(std::string path)
@@ -87,7 +98,7 @@ namespace OrbMod
 	 //
 	 void Control::ParameterEstimation()
 	 {
-		 Obs_.f_res.open("residuals.out");
+		 Inst.Obs_->f_res.open("residuals.out");
 		 OrbFit::fo.open("Orbfit.out");
 		 double sigma;
 
@@ -108,7 +119,7 @@ namespace OrbMod
 		 default:
 			 break;
 		 }
-		 Control::Obs_.f_res.close();
+		 Inst.Obs_->f_res.close();
 		 OrbFit::fo.close();
 	 }
 	 void Control::FODE()

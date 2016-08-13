@@ -412,7 +412,8 @@ namespace OrbMod
 				if (it.size() < 5) return false;
 				string key = it.substr(0, 3);
 				int val = stoi(it.substr(4, 1));
-				if (!Control::Obs_.tryAddObs(key, val)) Control::Obs_.isUseObs[key] = val;
+				if (!Control::Inst.Obs_->tryAddObs(key, val))
+					Control::Inst.Obs_->isUseObs[key] = val;
 			}
 		}
 		catch (...)
@@ -427,18 +428,16 @@ namespace OrbMod
 		vector<string> strs = Misc::splitStr(s, ';');
 		if (strs.size() < 2) return false;
 		
-		Control::Obs_.t0 = stod(strs[0]);
-		Control::Obs_.te = stod(strs[1]);
+		Control::Inst.Obs_->t0 = stod(strs[0]);
+		Control::Inst.Obs_->te = stod(strs[1]);
 		return true;
 	}
 	//
 	bool config::ObservationsPath(string s)
 	{
-		Control::Obs_.path = s;
+		Control::Inst.Obs_->path = s;
 		return true;
 	}
-	//
-
 	//
 	bool config::IsLogResiduals(string s)
 	{
@@ -449,7 +448,7 @@ namespace OrbMod
 	{
 		vector<string> strs = Misc::splitStr(s, ';');
 		if (strs.size() < 3) return false;
-		Control::Obs_.sigma = stod(strs[0]);
+		Control::Inst.Obs_->sigma = stod(strs[0]);
 		OrbFit::PosRMS = stod(strs[1]);
 		OrbFit::VelRMS = stod(strs[2]);
 
@@ -746,7 +745,7 @@ namespace OrbMod
 	std::string config::useObs()
 	{
 		std::string str = "useObservatoris:";
-		for (auto it : Control::Obs_.isUseObs)
+		for (auto it : Control::Inst.Obs_->isUseObs)
 			str += it.first + ',' + to_string((int)it.second) + ';';
 
 		return str;
@@ -757,10 +756,10 @@ namespace OrbMod
 		std::string str = "ObsTimeFrame:";
 		char buf[25];
 
-		sprintf(buf, "%20.5f", Control::Obs_.t0 );
+		sprintf(buf, "%20.5f", Control::Inst.Obs_->t0 );
 		str += buf; str +=";";
 
-		sprintf(buf, "%20.5f", Control::Obs_.te);
+		sprintf(buf, "%20.5f", Control::Inst.Obs_->te);
 		str += buf; str += ";";
 		return str;
 	}
@@ -768,7 +767,7 @@ namespace OrbMod
 	std::string config::ObservationsPath()
 	{
 		std::string str = "ObservationsPath:";
-		str += Control::Obs_.path;
+		str += Control::Inst.Obs_->path;
 		return str;
 	}
 
@@ -785,7 +784,7 @@ namespace OrbMod
 		std::string str = "aprioriRMS:";
 		char buf[50];
 
-		std::sprintf(buf, "%12.8e;", Control::Obs_.sigma);
+		std::sprintf(buf, "%12.8e;", Control::Inst.Obs_->sigma);
 		str += buf;
 		std::sprintf(buf, "%12.8e;", OrbFit::PosRMS);
 		str += buf;

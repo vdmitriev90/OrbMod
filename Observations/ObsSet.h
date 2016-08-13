@@ -36,6 +36,8 @@ namespace OrbMod
 	
 		ObsSet();
 		ObsSet(const ObsSet& other);
+		//assignment operator
+		ObsSet & operator = (const ObsSet & other);
 
 	private:
 		Obsiter it0;

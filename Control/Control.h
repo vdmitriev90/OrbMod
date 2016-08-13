@@ -6,9 +6,14 @@ namespace OrbMod
 	class Control
 	{
 	public:
+		
+		Control();
+		Control(const Control& othr);
 
-		static ObsSet Obs_;
-
+		~Control();
+		ObsSet *Obs_;
+		//static 
+		static Control Inst;
 		static void Process(std::string PathConfig);
 		static bool loadKernels(std::string path);
 		static bool loadObservatories(std::string path);

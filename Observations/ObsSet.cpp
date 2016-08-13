@@ -15,6 +15,8 @@ namespace OrbMod
 		isConverg = false;
 		sigma = DBL_MAX;
 		Nouts = 0;
+		for (auto it : Observatory::Obsrs)
+			tryAddObs(it.ID, false);
 	}
 	ObsSet::ObsSet(const ObsSet& other)
 	{
@@ -23,12 +25,30 @@ namespace OrbMod
 		this->Nouts = other.Nouts;
 		this->path = other.path;
 
+		//observations
+		this->obs.clear();
 		for (int i = 0; i < other.obs.size(); i++)
 			this->obs.push_back(other.obs[i]->clone());
 
 		this->it = this->obs.begin()+(other.it - other.obs.begin());
 		this->it0 = this->obs.begin() + (other.it0 - other.obs.begin());
 		this->it_end = this->obs.begin() + (other.it_end - other.obs.begin());
+		
+		//observatories
+		this->isUseObs.clear();
+		for (auto it : other.isUseObs)
+		{
+			this->isUseObs.insert(it);
+		}
+	}
+	//
+	ObsSet & ObsSet::operator = (const ObsSet & other)
+	{
+		if (this != &other) // self-assignment protection
+		{
+			*this = ObsSet(other);
+		}
+		return *this;
 	}
 	//
 	bool ObsSet::tryAddObs(string ID, bool val)

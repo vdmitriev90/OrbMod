@@ -15,8 +15,8 @@ namespace OrbMod
 		//SB to cartesian partials on t0
 		dY0dy0 = sv.dYdy(Force::getMu());
 
-		Control::Obs_.reset();
-		tout = (*Control::Obs_.it)->t;
+		Control::Inst.Obs_->reset();
+		tout = (*Control::Inst.Obs_->it)->t;
 
 		A.Clear();
 		OmC.clear();

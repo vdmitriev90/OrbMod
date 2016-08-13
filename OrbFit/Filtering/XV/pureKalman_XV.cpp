@@ -20,7 +20,7 @@ namespace OrbMod
 	void pureKalman_XV::InitFilter(Matrix &SV, double t0, double &sigma, Matrix &P)
 	{
 
-		sigma = Control::Obs_.sigma;
+		sigma = Control::Inst.Obs_->sigma;
 		P = LinAlgAux::initCov(PosRMS*PosRMS, VelRMS*VelRMS);
 	}
 	//
@@ -51,13 +51,13 @@ namespace OrbMod
 		Global::SV_start = SV;
 
 		InitFilter(SV, t0, sigma, P);
-		Control::Obs_.reset();
+		Control::Inst.Obs_->reset();
 
 		fit->Nbatch = 1;
 
-		while (Control::Obs_.it != Control::Obs_.it_end + 1)
+		while (Control::Inst.Obs_->it != Control::Inst.Obs_->it_end + 1)
 		{
-			te = (*(Control::Obs_.it))->t;
+			te = (*(Control::Inst.Obs_->it))->t;
 
 			fo << "Batch " << fit->Nbatch;
 			int  failed = fit->FitBatch(SV, t0, te, sigma, P);
@@ -104,13 +104,13 @@ namespace OrbMod
 	Obsiter pureKalman_XV::getLastObs(double t, double dt)
 	{
 		double t1 = t + dt;
-		Obsiter it1 = Control::Obs_.FindTime(t1);
+		Obsiter it1 = Control::Inst.Obs_->FindTime(t1);
 
-		while ((it1 - Control::Obs_.it) <= Global::MinObsinBatch)
+		while ((it1 - Control::Inst.Obs_->it) <= Global::MinObsinBatch)
 			it1++;
 
-		int d = Control::Obs_.it_end - it1;
-		Obsiter iout = (d <= Global::MinObsinBatch) ? Control::Obs_.it_end : it1;
+		int d = Control::Inst.Obs_->it_end - it1;
+		Obsiter iout = (d <= Global::MinObsinBatch) ? Control::Inst.Obs_->it_end : it1;
 		return iout;
 	}
 }

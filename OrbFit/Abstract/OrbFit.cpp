@@ -77,18 +77,18 @@ namespace OrbMod
 	//
 	bool OrbFit::setParEq(Matrix &sv, Matrix &dxdx0, double  tau, double &tnext)
 	{
-		string obsid = (*Control::Obs_.it)->observ.ID;
+		string obsid = (*Control::Inst.Obs_->it)->observ.ID;
 		//if the observatory is marked for use
-		if (Control::Obs_.isUseObs[obsid])
+		if (Control::Inst.Obs_->isUseObs[obsid])
 			//call of procedure-constructor of parametric equations (matrix A and vector A to C)
-			(*Control::Obs_.it)->setParEq(A, OmC, sv, dxdx0, tau);
+			(*Control::Inst.Obs_->it)->setParEq(A, OmC, sv, dxdx0, tau);
 
-		Control::Obs_.it++;
+		Control::Inst.Obs_->it++;
 		int b = 0;
-		if (Control::Obs_.it == Control::Obs_.it_end + 1)
+		if (Control::Inst.Obs_->it == Control::Inst.Obs_->it_end + 1)
 			b = 1;
-		if (Control::Obs_.it != Control::Obs_.obs.end())
-			tnext = (*Control::Obs_.it)->t;
+		if (Control::Inst.Obs_->it != Control::Inst.Obs_->obs.end())
+			tnext = (*Control::Inst.Obs_->it)->t;
 
 		return b;
 	}
@@ -102,14 +102,14 @@ namespace OrbMod
 		double pe, ve;
 		Matrix x;
 		int iter = 1;
-		Control::Obs_.isConverg = false;
+		Control::Inst.Obs_->isConverg = false;
 		bool isFirst = true;
 
 		while (iter <= maxIter)
 		{
 			string s_iter = "iter " + to_string(iter) + "\t";
-			Control::Obs_.f_res << s_iter << endl;
-			Control::Obs_.Nouts = 0;
+			Control::Inst.Obs_->f_res << s_iter << endl;
+			Control::Inst.Obs_->Nouts = 0;
 
 			inst->setPar(X, SV, t0);
 			inst->FODE(X, t0, te, Global::step, Global::NOR, Global::Niter, NS, NBS);
@@ -121,10 +121,10 @@ namespace OrbMod
 			fo << iter << "--\n" << "dx " << x.toString("\t", "%f", 25) << endl;
 			fo << "N_rp " << Global::N_rp << "\tN obs " << OmC.size() << " sigma " << sigma*ObsSet::fct << " pRMS " << pe << " vRMS " << ve << endl;
 			//
-			Control::Obs_.sigma = sigma;
+			Control::Inst.Obs_->sigma = sigma;
 
-			Control::Obs_.isConverg = x.MaxMod() < epsIter*SV.MaxMod();
-			if (!isFirst) 	Control::Obs_.isConverg = true;
+			Control::Inst.Obs_->isConverg = x.MaxMod() < epsIter*SV.MaxMod();
+			if (!isFirst) 	Control::Inst.Obs_->isConverg = true;
 			//
 			if (FinalizeIter(isFirst)) break;
 			iter++;
@@ -138,7 +138,7 @@ namespace OrbMod
 	bool OrbFit::FinalizeIter(bool &isFirst)
 	{
 		static int Nouts_pre = 0;
-		if (Control::Obs_.isConverg)
+		if (Control::Inst.Obs_->isConverg)
 		{
 			if (!isRejOuts)
 				return true;
@@ -150,10 +150,10 @@ namespace OrbMod
 				}
 				else
 				{
-					if (Control::Obs_.Nouts == Nouts_pre) return true;
+					if (Control::Inst.Obs_->Nouts == Nouts_pre) return true;
 					else
 					{
-						Nouts_pre = Control::Obs_.Nouts;
+						Nouts_pre = Control::Inst.Obs_->Nouts;
 						return false;
 					}
 				}

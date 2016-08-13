@@ -125,7 +125,7 @@ namespace OrbMod
 		isOutl = isOutlier();
 		if (isOutl)
 		{
-			Control::Obs_.Nouts++;
+			Control::Inst.Obs_->Nouts++;
 			return;
 		}
 		//d(RA,DEC)/d(x,y,z,vx,vy,vz)
@@ -165,10 +165,10 @@ namespace OrbMod
 	//
 	bool AstroObs::isOutlier()
 	{
-		if (OrbFit::isRejOuts && Control::Obs_.isConverg)
+		if (OrbFit::isRejOuts && Control::Inst.Obs_->isConverg)
 		{
 			double d = sqrt(res_ra*res_ra + res_del*res_del);
-			double d_cr = OrbFit::OutlsThresh*Control::Obs_.sigma;
+			double d_cr = OrbFit::OutlsThresh*Control::Inst.Obs_->sigma;
 
 			return (d > d_cr);
 		}
@@ -181,7 +181,7 @@ namespace OrbMod
 		char buff[200], c_time[35];
 		timout_c(this->t, Global::pictur_tdb, 70, c_time);
 		sprintf(buff, "%s %20.7f %f %f\n", this->observ.ID.c_str(), this->t, res_ra*rad2asec, res_del*rad2asec);
-		Control::Obs_.f_res << c_time << "\t" << buff;
+		Control::Inst.Obs_->f_res << c_time << "\t" << buff;
 	}
 	//
 	AstroObs* AstroObs::clone() const

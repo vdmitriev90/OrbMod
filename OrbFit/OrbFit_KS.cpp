@@ -8,8 +8,8 @@ namespace OrbMod
 	{
 		var_KS_izo::setPar(X, SV, t0);
 
-		Control::Obs_.reset();
-		tout = (*Control::Obs_.it)->t;
+		Control::Inst.Obs_->reset();
+		tout = (*Control::Inst.Obs_->it)->t;
 
 		//Light-time in physical space
 		tau0 = calcLTCorr(399, triple(SV(0, 0), SV(1, 0), SV(2, 0)), t0);

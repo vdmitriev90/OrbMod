@@ -14,19 +14,19 @@ namespace OrbMod
 	//
 	void seqLS_KS::Adjust(Matrix &SV, double t0, double &sigma, Matrix &P)
 	{
-		Control::Obs_.reset();
+		Control::Inst.Obs_->reset();
 		double t1 = t0, te;
 		fit->Nbatch = 1;
 		int s_o = Global::MinObsinBatch;
-		Obsiter ite = Control::Obs_.it_end;
+		Obsiter ite = Control::Inst.Obs_->it_end;
 
-		while (Control::Obs_.it != ite + 1)
+		while (Control::Inst.Obs_->it != ite + 1)
 		{
-			int ost = ite - Control::Obs_.it;
+			int ost = ite - Control::Inst.Obs_->it;
 			int offst = (ost < s_o) ? ost : s_o;
-			Control::Obs_.it_end = Control::Obs_.it + offst;
+			Control::Inst.Obs_->it_end = Control::Inst.Obs_->it + offst;
 
-			te = (*Control::Obs_.it_end)->t;
+			te = (*Control::Inst.Obs_->it_end)->t;
 
 			int IsFitSucces = fit->FitBatch(SV, t1, te, sigma, P);
 			t1 = te;

@@ -19,8 +19,8 @@ namespace OrbMod
 		xi = Matrix(6, 1);
 		Fi = Matrix(6, 6);
 
-		Control::Obs_.reset();
-		tout = (*Control::Obs_.it)->t;
+		Control::Inst.Obs_->reset();
+		tout = (*Control::Inst.Obs_->it)->t;
 	}
 	void OrbFit_FinDiff::Adjust(Matrix &SV, double t0, double &sigma, Matrix &Q)
 	{
@@ -68,8 +68,8 @@ namespace OrbMod
 		{
 			Xi = X0;
 			Xi[I - 1] += var[I - 1];
-			Control::Obs_.reset();
-			tout = (*Control::Obs_.it)->t;
+			Control::Inst.Obs_->reset();
+			tout = (*Control::Inst.Obs_->it)->t;
 			FODE(Xi, to, te, step, NOR, NI, NS, NBS);
 		}
 		//-
@@ -77,8 +77,8 @@ namespace OrbMod
 		{
 			Xi = X0;
 			Xi[I - 7] -= var[I - 7];
-			Control::Obs_.reset();
-			tout = (*Control::Obs_.it)->t;
+			Control::Inst.Obs_->reset();
+			tout = (*Control::Inst.Obs_->it)->t;
 			FODE(Xi, to, te, step, NOR, NI, NS, NBS);
 		}
 		Matrix Am;
@@ -120,13 +120,13 @@ namespace OrbMod
 			}
 			else
 			{
-				Control::Obs_.it++;
-				if (Control::Obs_.it == Control::Obs_.obs.end())
+				Control::Inst.Obs_->it++;
+				if (Control::Inst.Obs_->it == Control::Inst.Obs_->obs.end())
 				{
 					Xvar[I].push_back(Yo);
 					return true;
 				}
-				tout = (*Control::Obs_.it)->t;
+				tout = (*Control::Inst.Obs_->it)->t;
 			}
 
 			Xvar[I].push_back(Yo);

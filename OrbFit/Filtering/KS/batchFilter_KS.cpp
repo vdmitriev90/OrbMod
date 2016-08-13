@@ -21,7 +21,7 @@ namespace OrbMod
 		tau0 = calcLTCorr(399, triple(SV(0, 0), SV(1, 0), SV(2, 0)), t0);
 
 		//ObsSet::Instance().it = it_0;
-		tout = (*Control::Obs_.it)->t;
+		tout = (*Control::Inst.Obs_->it)->t;
 
 		A.Clear();
 		OmC.clear();
@@ -41,12 +41,12 @@ namespace OrbMod
 		double pe, ve;
 		Matrix b, K, D, dx, x, E(6, 6), Q, sv, dxdx0, Pi = P;
 		int iter = 1;
-		Obsiter it_0 = Control::Obs_.it;
+		Obsiter it_0 = Control::Inst.Obs_->it;
 		while (iter <= maxIterPerBatch)
 		{
-			Control::Obs_.it = it_0;
+			Control::Inst.Obs_->it = it_0;
 			string s_iter = "iter " + to_string(iter) + "\t";
-			Control::Obs_.f_res << s_iter << endl;
+			Control::Inst.Obs_->f_res << s_iter << endl;
 			//fo << s_iter;
 			inst->setPar(X, SV, t0);
 			double step = 0;
@@ -62,7 +62,7 @@ namespace OrbMod
 
 			Matrix R(n, n);
 			R.Identy();
-			sigma = Control::Obs_.sigma;
+			sigma = Control::Inst.Obs_->sigma;
 			R *= (sigma*sigma);
 
 			if (Nbatch == 1)
