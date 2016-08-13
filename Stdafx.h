@@ -7,6 +7,7 @@
 
 #include"Marshaling.h"
 #include"OrbModCLRWrapper.h"
+#include"Stdafx.h"
 
 //#include"OrbModLib\src\Observations\ObsSet.h"
 //#include"OrbModLib\src\Parameters\constant.h"
