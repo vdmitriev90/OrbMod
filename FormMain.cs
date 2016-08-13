@@ -63,6 +63,10 @@ namespace OrbModUI
             if (!LoadCfg(cfgPath))
                 MessageBox.Show("UI.FormMain:\nFailed to load:\n OrbMod.ini\n");
 
+
+            if (System.IO.File.Exists(Config.Instance.ObsPath))
+                OrbModWrap.Instance.SetObserv.LoadObs(Config.Instance.ObsPath,(int)Config.Instance.ObsType);
+
         }
         //
         private void tsmi_Plot_Click(object sender, EventArgs e)
@@ -84,8 +88,12 @@ namespace OrbModUI
             if (ofd_Obs.ShowDialog() == DialogResult.OK)
             {
                 string fname = ofd_Obs.FileName;
-                 int ObsT = cmb_TypeOfObs.SelectedIndex;
-                OrbModCLRWrapper.OrbModWrap.Instance.SetObserv.LoadObs(fname,ObsT);
+                int ObsT = cmb_TypeOfObs.SelectedIndex;
+                OrbModWrap.Instance.SetObserv.LoadObs(fname,ObsT);
+                OrbModWrap.getObsSetFromCtrl();
+                Config.Instance.observeratories = OrbModWrap.Instance.SetObserv.UsedObs2String();
+
+                Config.Instance.ObsPath = fname;
             }
         }
         //

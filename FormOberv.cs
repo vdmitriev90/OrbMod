@@ -74,12 +74,16 @@ namespace OrbModUI
                 OrbModWrap.Instance.SetObserv.SetUseObs(s, b);
 
             }
-            Config.Instance.observeratories = OrbModWrap.getUsedObs();
+            OrbModWrap.Instance.SetObserv.SetObservationToCore();
+
+            Config.Instance.observeratories = OrbModWrap.Instance.SetObserv.UsedObs2String();
         }
         //
         void ChangeTimeFrame()
         {
-            OrbModWrap.Instance.SetObserv.ChangeTimeFrame(pane, dgv_1, tb_UTC_start.Text, tb_UTC_finish.Text,ref Config.Instance.obs_t0, ref Config.Instance.obs_te);
+            string s1 = "", s2 = "";
+            OrbModWrap.Instance.SetObserv.ChangeTimeFrame(pane, dgv_1, ref s1, ref s2, ref Config.Instance.obs_t0, ref Config.Instance.obs_te);
+            tb_UTC_start.Text = s2; tb_UTC_finish.Text = s2;
             lb_numobs.Text = OrbModWrap.Instance.SetObserv.getObsNum().ToString();
         }
         //

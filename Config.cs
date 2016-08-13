@@ -47,7 +47,7 @@ namespace OrbModUI
         public EarthFixFrame EarthFrame;
         public TypeOfIC ICType;
         public FrameOfIC ICFrame;
-        public TimeFormat Tframe;
+        public OrbModUI.TimeFormat Tframe;
 
         public bool IsUsePeriTime;
         //state
@@ -138,7 +138,7 @@ namespace OrbModUI
         {
             Parser = new Dictionary<string, Str2Par>()
             {
-        { "Mode", IsTestMode },
+        { "Mode", ProcessMode },
         { "FittingMode", FittingMode },
         { "Obs", Obs },
         { "MinObsInbatch", MinObsInbatch },
@@ -184,7 +184,7 @@ namespace OrbModUI
             };
             Formatters = new Par2Str[]
             {
-        IsTestMode,FittingMode,
+        ProcessMode,FittingMode,
         Obs, MinObsInbatch,ArcLength,
         NmNr, CB,Int, Var, NOR,
          step, Eps, orbFitEps,
@@ -237,9 +237,6 @@ namespace OrbModUI
                 return false;
             }
             return true;
-
-
-
         }
 
         #region Parsers
@@ -249,9 +246,9 @@ namespace OrbModUI
             return true;
         }
         //
-        bool IsTestMode(string s)
+        bool ProcessMode(string s)
         {
-            // mode = (Mode)int.Parse(s);
+             mode = (ProcessMode)int.Parse(s);
             return true;
         }
         //
@@ -379,7 +376,7 @@ namespace OrbModUI
         //
         bool tscale(string s)
         {
-            Tframe = (TimeFormat)int.Parse(s);
+            Tframe = (OrbModUI.TimeFormat)int.Parse(s);
             return true;
         }
         //
@@ -594,7 +591,7 @@ namespace OrbModUI
             return str;
         }
         //
-        string  IsTestMode()
+        string  ProcessMode()
         {
             string str = "Mode:";
             str += Convert.ToString((int) mode);
