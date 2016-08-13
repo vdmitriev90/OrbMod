@@ -67,6 +67,9 @@ namespace OrbMod
 			Q = dxdx0*Q*dxdx0.Transpose();
 			RMS = LinAlgAux::CalcRMS(sigma, Q, pe, ve);
 			fo << "RMS(te)\n" << RMS.toString("\t", "%18.12e", 18) << endl;
+			//
+			for (int i = 0; i < 6; i++)
+				config::SV[i] = SV(i, 0);
 
 		}
 	}

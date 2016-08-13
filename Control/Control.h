@@ -12,6 +12,7 @@ namespace OrbMod
 
 		~Control();
 		ObsSet *Obs_;
+		bool loadObseravations(string path,TypeOfObs OType);
 		//static 
 		static Control Inst;
 		static void Process(std::string PathConfig);
@@ -22,6 +23,7 @@ namespace OrbMod
 		static bool parseTime(string s_t, TimeFormat TForm, double t);
 		
 	private:
+		
 		static bool setTime();
 		static void StartProcess();
 		static void LogReport(std::string path);

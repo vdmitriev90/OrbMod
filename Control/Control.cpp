@@ -13,10 +13,13 @@ namespace OrbMod
 		delete Obs_;
 	}
 	Control Control::Inst;
-
+	bool Control:: loadObseravations(string path, TypeOfObs OType)
+	{
+		return Obs_->LoadObs(path, OType);
+	}
 	
 	//
-	 void Control  ::LogReport(std::string path)
+	 void Control ::LogReport(std::string path)
 	{
 		
 	}
@@ -63,6 +66,8 @@ namespace OrbMod
 	 {
 		 config::LoadCFG(path);
 		 setTime();
+		 Control::Inst.loadObseravations(Control::Inst.Obs_->path, Global::ObsT);
+
 		 StartProcess();
 	 }
 	//

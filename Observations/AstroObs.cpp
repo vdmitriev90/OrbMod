@@ -178,7 +178,7 @@ namespace OrbMod
 	//
 	void AstroObs::writeRes()
 	{
-		char buff[200], c_time[35];
+		char buff[250], c_time[70];
 		timout_c(this->t, Global::pictur_tdb, 70, c_time);
 		sprintf(buff, "%s %20.7f %f %f\n", this->observ.ID.c_str(), this->t, res_ra*rad2asec, res_del*rad2asec);
 		Control::Inst.Obs_->f_res << c_time << "\t" << buff;
