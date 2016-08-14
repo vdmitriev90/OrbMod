@@ -16,5 +16,10 @@ namespace OrbModUI
         {
             InitializeComponent();
         }
+
+        private void butt_plot_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

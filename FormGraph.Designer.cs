@@ -1202,6 +1202,7 @@
             this.butt_plot.TabIndex = 19;
             this.butt_plot.Text = "Plot";
             this.butt_plot.UseVisualStyleBackColor = true;
+            this.butt_plot.Click += new System.EventHandler(this.butt_plot_Click);
             // 
             // zedGraphControl1
             // 
