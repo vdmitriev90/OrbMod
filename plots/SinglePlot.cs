@@ -25,6 +25,7 @@ namespace OrbModUI
                 while (sr.Peek() != -1)
                 {
                     string line = sr.ReadLine();
+
                     AddPoint(line, points);
                 }
                 EndPlot();

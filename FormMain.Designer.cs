@@ -826,7 +826,7 @@
             // 
             this.tb_Cnm_file.Location = new System.Drawing.Point(77, 85);
             this.tb_Cnm_file.Name = "tb_Cnm_file";
-            this.tb_Cnm_file.Size = new System.Drawing.Size(93, 20);
+            this.tb_Cnm_file.Size = new System.Drawing.Size(102, 20);
             this.tb_Cnm_file.TabIndex = 4;
             // 
             // lb_Cunn_2
@@ -849,7 +849,7 @@
             // 
             // tb_Cunn_N
             // 
-            this.tb_Cunn_N.Location = new System.Drawing.Point(96, 41);
+            this.tb_Cunn_N.Location = new System.Drawing.Point(105, 40);
             this.tb_Cunn_N.Name = "tb_Cunn_N";
             this.tb_Cunn_N.Size = new System.Drawing.Size(74, 20);
             this.tb_Cunn_N.TabIndex = 1;

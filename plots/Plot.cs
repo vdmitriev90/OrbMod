@@ -8,9 +8,9 @@ using ZedGraph;
 
 namespace OrbModUI
 {
-     abstract class Plot
+    abstract class Plot
     {
-      public  Plot()
+        public Plot()
         {
 
         }
@@ -26,7 +26,5 @@ namespace OrbModUI
         public abstract void EndPlot();
 
         public abstract void Autoscale();
-
     }
-    
 }
