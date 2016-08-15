@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows.Forms;
 using ZedGraph;
+using static OrbModUI.OrbMod_FormGraph;
 
 namespace OrbModUI
 {
@@ -17,6 +18,7 @@ namespace OrbModUI
             this.zg = zg;
             FName = fname;
         }
+
         //
         protected ZedGraphControl zg;
         //

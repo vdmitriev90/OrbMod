@@ -14,10 +14,21 @@ namespace OrbModUI
             {
 
             }
-            //private Plot Factory(ZedGraphControl zg, string fname)
-            //{
-            //    return new Plo
-            //}
+            //
+
+            private Plot Factory(PlotSourceData sourse, int Type)
+            {
+                switch(sourse)
+                {
+                    case PlotSourceData.Acc:
+                        return PlotAccFactory(sourse, Type);
+                    case PlotSourceData.Elts:
+
+                    default:
+                        return null;
+
+                }
+            }
             public override void PlotData()
             {
                 this.plot.PlotData();
@@ -30,7 +41,28 @@ namespace OrbModUI
             {
                 this.plot.Autoscale();
             }
+            private Plot PlotAccFactory(PlotSourceData sourse, int Type)
+            {
+                switch ((Acc_vs_T)Type)
+                {
+                    case Acc_vs_T.Accelerations:
+                        return new Acc1Plot(this.zg, FName);
+                    default:
+                        return null;
 
+                }
+            }
+            private Plot PlotEltsvsT(PlotSourceData sourse, int Type)
+            {
+                switch ((Elts_vs_T)Type)
+                {
+                    case Elts_vs_T.SMA:
+                        return new Acc1Plot(this.zg, FName);
+                    default:
+                        return null;
+
+                }
+            }
         }
     }
 }
