@@ -47,6 +47,10 @@
             this.rb_Xaxis_days = new System.Windows.Forms.RadioButton();
             this.butt_AutoScale = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.cmb_PlotType = new System.Windows.Forms.ComboBox();
+            this.cmb_file = new System.Windows.Forms.ComboBox();
             this.rb_3b_XY = new System.Windows.Forms.RadioButton();
             this.rb_3b_XZ = new System.Windows.Forms.RadioButton();
             this.rb_3b_YZ = new System.Windows.Forms.RadioButton();
@@ -126,10 +130,6 @@
             this.rb_v = new System.Windows.Forms.RadioButton();
             this.butt_plot = new System.Windows.Forms.Button();
             this.zedGraphControl1 = new ZedGraph.ZedGraphControl();
-            this.cmb_file = new System.Windows.Forms.ComboBox();
-            this.cmb_PlotType = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nud_DotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Wight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Smooth)).BeginInit();
@@ -143,7 +143,7 @@
             this.cmb_symbol.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cmb_symbol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_symbol.FormattingEnabled = true;
-            this.cmb_symbol.Location = new System.Drawing.Point(125, 411);
+            this.cmb_symbol.Location = new System.Drawing.Point(125, 298);
             this.cmb_symbol.Name = "cmb_symbol";
             this.cmb_symbol.Size = new System.Drawing.Size(98, 21);
             this.cmb_symbol.TabIndex = 32;
@@ -151,7 +151,7 @@
             // nud_DotSize
             // 
             this.nud_DotSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.nud_DotSize.Location = new System.Drawing.Point(126, 387);
+            this.nud_DotSize.Location = new System.Drawing.Point(126, 274);
             this.nud_DotSize.Maximum = new decimal(new int[] {
             10,
             0,
@@ -170,7 +170,7 @@
             // 
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(178, 390);
+            this.label12.Location = new System.Drawing.Point(178, 277);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(45, 13);
             this.label12.TabIndex = 30;
@@ -179,7 +179,7 @@
             // butt_setEqScale
             // 
             this.butt_setEqScale.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.butt_setEqScale.Location = new System.Drawing.Point(132, 469);
+            this.butt_setEqScale.Location = new System.Drawing.Point(132, 356);
             this.butt_setEqScale.Name = "butt_setEqScale";
             this.butt_setEqScale.Size = new System.Drawing.Size(102, 20);
             this.butt_setEqScale.TabIndex = 29;
@@ -189,7 +189,7 @@
             // butt_ColorScheme
             // 
             this.butt_ColorScheme.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.butt_ColorScheme.Location = new System.Drawing.Point(132, 446);
+            this.butt_ColorScheme.Location = new System.Drawing.Point(132, 333);
             this.butt_ColorScheme.Name = "butt_ColorScheme";
             this.butt_ColorScheme.Size = new System.Drawing.Size(102, 20);
             this.butt_ColorScheme.TabIndex = 28;
@@ -199,7 +199,7 @@
             // nud_Wight
             // 
             this.nud_Wight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.nud_Wight.Location = new System.Drawing.Point(12, 412);
+            this.nud_Wight.Location = new System.Drawing.Point(12, 299);
             this.nud_Wight.Maximum = new decimal(new int[] {
             10,
             0,
@@ -223,7 +223,7 @@
             0,
             0,
             65536});
-            this.nud_Smooth.Location = new System.Drawing.Point(12, 387);
+            this.nud_Smooth.Location = new System.Drawing.Point(12, 274);
             this.nud_Smooth.Maximum = new decimal(new int[] {
             10,
             0,
@@ -237,7 +237,7 @@
             // 
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(64, 393);
+            this.label9.Location = new System.Drawing.Point(64, 280);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(51, 13);
             this.label9.TabIndex = 25;
@@ -247,7 +247,7 @@
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(64, 415);
+            this.label8.Location = new System.Drawing.Point(64, 302);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(55, 13);
             this.label8.TabIndex = 24;
@@ -258,7 +258,7 @@
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox2.Controls.Add(this.rb_AU);
             this.groupBox2.Controls.Add(this.rb_km);
-            this.groupBox2.Location = new System.Drawing.Point(6, 488);
+            this.groupBox2.Location = new System.Drawing.Point(6, 375);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(120, 51);
             this.groupBox2.TabIndex = 23;
@@ -291,7 +291,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox1.Controls.Add(this.rb_Xaxis_calend);
             this.groupBox1.Controls.Add(this.rb_Xaxis_days);
-            this.groupBox1.Location = new System.Drawing.Point(6, 435);
+            this.groupBox1.Location = new System.Drawing.Point(6, 322);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(120, 53);
             this.groupBox1.TabIndex = 22;
@@ -324,7 +324,7 @@
             // butt_AutoScale
             // 
             this.butt_AutoScale.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.butt_AutoScale.Location = new System.Drawing.Point(132, 519);
+            this.butt_AutoScale.Location = new System.Drawing.Point(132, 406);
             this.butt_AutoScale.Name = "butt_AutoScale";
             this.butt_AutoScale.Size = new System.Drawing.Size(102, 22);
             this.butt_AutoScale.TabIndex = 21;
@@ -420,8 +420,45 @@
             this.panel1.Controls.Add(this.rb_v);
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(231, 378);
+            this.panel1.Size = new System.Drawing.Size(231, 265);
             this.panel1.TabIndex = 20;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(11, 49);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(36, 13);
+            this.label14.TabIndex = 84;
+            this.label14.Text = "Graph";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(11, 5);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(23, 13);
+            this.label13.TabIndex = 83;
+            this.label13.Text = "File";
+            // 
+            // cmb_PlotType
+            // 
+            this.cmb_PlotType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_PlotType.FormattingEnabled = true;
+            this.cmb_PlotType.Location = new System.Drawing.Point(7, 69);
+            this.cmb_PlotType.Name = "cmb_PlotType";
+            this.cmb_PlotType.Size = new System.Drawing.Size(184, 21);
+            this.cmb_PlotType.TabIndex = 82;
+            // 
+            // cmb_file
+            // 
+            this.cmb_file.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_file.FormattingEnabled = true;
+            this.cmb_file.Location = new System.Drawing.Point(7, 25);
+            this.cmb_file.Name = "cmb_file";
+            this.cmb_file.Size = new System.Drawing.Size(184, 21);
+            this.cmb_file.TabIndex = 81;
+            this.cmb_file.SelectedIndexChanged += new System.EventHandler(this.SourseFileChange);
             // 
             // rb_3b_XY
             // 
@@ -1205,7 +1242,7 @@
             // 
             this.butt_plot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.butt_plot.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.butt_plot.Location = new System.Drawing.Point(132, 494);
+            this.butt_plot.Location = new System.Drawing.Point(132, 381);
             this.butt_plot.Name = "butt_plot";
             this.butt_plot.Size = new System.Drawing.Size(102, 23);
             this.butt_plot.TabIndex = 19;
@@ -1228,50 +1265,14 @@
             this.zedGraphControl1.ScrollMinX = 0D;
             this.zedGraphControl1.ScrollMinY = 0D;
             this.zedGraphControl1.ScrollMinY2 = 0D;
-            this.zedGraphControl1.Size = new System.Drawing.Size(543, 547);
+            this.zedGraphControl1.Size = new System.Drawing.Size(543, 434);
             this.zedGraphControl1.TabIndex = 33;
-            // 
-            // cmb_file
-            // 
-            this.cmb_file.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_file.FormattingEnabled = true;
-            this.cmb_file.Location = new System.Drawing.Point(7, 21);
-            this.cmb_file.Name = "cmb_file";
-            this.cmb_file.Size = new System.Drawing.Size(184, 21);
-            this.cmb_file.TabIndex = 81;
-            // 
-            // cmb_PlotType
-            // 
-            this.cmb_PlotType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_PlotType.FormattingEnabled = true;
-            this.cmb_PlotType.Location = new System.Drawing.Point(7, 60);
-            this.cmb_PlotType.Name = "cmb_PlotType";
-            this.cmb_PlotType.Size = new System.Drawing.Size(184, 21);
-            this.cmb_PlotType.TabIndex = 82;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(11, 5);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(23, 13);
-            this.label13.TabIndex = 83;
-            this.label13.Text = "File";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(11, 45);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(36, 13);
-            this.label14.TabIndex = 84;
-            this.label14.Text = "Graph";
             // 
             // OrbMod_FormGraph
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(780, 552);
+            this.ClientSize = new System.Drawing.Size(780, 439);
             this.Controls.Add(this.zedGraphControl1);
             this.Controls.Add(this.cmb_symbol);
             this.Controls.Add(this.nud_DotSize);

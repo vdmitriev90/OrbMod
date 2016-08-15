@@ -5,14 +5,17 @@ namespace OrbModUI
 {
     abstract class SingePlot : Plot
     {
+        //
         public SingePlot()
         {
 
         }
-        public SingePlot(ZedGraphControl zg) : base(zg)
+        //
+        public SingePlot(ZedGraphControl zg, string fname) : base(zg,fname)
         {
 
         }
+        //
         protected abstract bool AddPoint(string str, PointPairList list);
 
         public override void PlotData()

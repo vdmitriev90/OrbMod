@@ -1,30 +1,31 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 using ZedGraph;
 
 namespace OrbModUI
 {
-    abstract class Plot
+    public abstract class Plot
     {
         public Plot()
         {
 
         }
-        public Plot(ZedGraphControl zg)
+        //
+        public Plot(ZedGraphControl zg, string fname)
         {
             this.zg = zg;
+            FName = fname;
         }
-
+        //
         protected ZedGraphControl zg;
+        //
         protected string FName;
-
+        //
         public abstract void PlotData();
+        //
         public abstract void EndPlot();
-
+        //
         public abstract void Autoscale();
     }
 }
