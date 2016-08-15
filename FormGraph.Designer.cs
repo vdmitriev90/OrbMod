@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrbMod_FormGraph));
             this.cmb_symbol = new System.Windows.Forms.ComboBox();
             this.nud_DotSize = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
@@ -125,6 +126,10 @@
             this.rb_v = new System.Windows.Forms.RadioButton();
             this.butt_plot = new System.Windows.Forms.Button();
             this.zedGraphControl1 = new ZedGraph.ZedGraphControl();
+            this.cmb_file = new System.Windows.Forms.ComboBox();
+            this.cmb_PlotType = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nud_DotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Wight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Smooth)).BeginInit();
@@ -138,7 +143,7 @@
             this.cmb_symbol.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cmb_symbol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_symbol.FormattingEnabled = true;
-            this.cmb_symbol.Location = new System.Drawing.Point(125, 294);
+            this.cmb_symbol.Location = new System.Drawing.Point(125, 411);
             this.cmb_symbol.Name = "cmb_symbol";
             this.cmb_symbol.Size = new System.Drawing.Size(98, 21);
             this.cmb_symbol.TabIndex = 32;
@@ -146,7 +151,7 @@
             // nud_DotSize
             // 
             this.nud_DotSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.nud_DotSize.Location = new System.Drawing.Point(126, 270);
+            this.nud_DotSize.Location = new System.Drawing.Point(126, 387);
             this.nud_DotSize.Maximum = new decimal(new int[] {
             10,
             0,
@@ -165,7 +170,7 @@
             // 
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(178, 273);
+            this.label12.Location = new System.Drawing.Point(178, 390);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(45, 13);
             this.label12.TabIndex = 30;
@@ -174,7 +179,7 @@
             // butt_setEqScale
             // 
             this.butt_setEqScale.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.butt_setEqScale.Location = new System.Drawing.Point(132, 352);
+            this.butt_setEqScale.Location = new System.Drawing.Point(132, 469);
             this.butt_setEqScale.Name = "butt_setEqScale";
             this.butt_setEqScale.Size = new System.Drawing.Size(102, 20);
             this.butt_setEqScale.TabIndex = 29;
@@ -184,7 +189,7 @@
             // butt_ColorScheme
             // 
             this.butt_ColorScheme.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.butt_ColorScheme.Location = new System.Drawing.Point(132, 329);
+            this.butt_ColorScheme.Location = new System.Drawing.Point(132, 446);
             this.butt_ColorScheme.Name = "butt_ColorScheme";
             this.butt_ColorScheme.Size = new System.Drawing.Size(102, 20);
             this.butt_ColorScheme.TabIndex = 28;
@@ -194,7 +199,7 @@
             // nud_Wight
             // 
             this.nud_Wight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.nud_Wight.Location = new System.Drawing.Point(12, 295);
+            this.nud_Wight.Location = new System.Drawing.Point(12, 412);
             this.nud_Wight.Maximum = new decimal(new int[] {
             10,
             0,
@@ -218,7 +223,7 @@
             0,
             0,
             65536});
-            this.nud_Smooth.Location = new System.Drawing.Point(12, 270);
+            this.nud_Smooth.Location = new System.Drawing.Point(12, 387);
             this.nud_Smooth.Maximum = new decimal(new int[] {
             10,
             0,
@@ -232,7 +237,7 @@
             // 
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(64, 276);
+            this.label9.Location = new System.Drawing.Point(64, 393);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(51, 13);
             this.label9.TabIndex = 25;
@@ -242,7 +247,7 @@
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(64, 298);
+            this.label8.Location = new System.Drawing.Point(64, 415);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(55, 13);
             this.label8.TabIndex = 24;
@@ -253,7 +258,7 @@
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox2.Controls.Add(this.rb_AU);
             this.groupBox2.Controls.Add(this.rb_km);
-            this.groupBox2.Location = new System.Drawing.Point(6, 371);
+            this.groupBox2.Location = new System.Drawing.Point(6, 488);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(120, 51);
             this.groupBox2.TabIndex = 23;
@@ -286,7 +291,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox1.Controls.Add(this.rb_Xaxis_calend);
             this.groupBox1.Controls.Add(this.rb_Xaxis_days);
-            this.groupBox1.Location = new System.Drawing.Point(6, 318);
+            this.groupBox1.Location = new System.Drawing.Point(6, 435);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(120, 53);
             this.groupBox1.TabIndex = 22;
@@ -319,7 +324,7 @@
             // butt_AutoScale
             // 
             this.butt_AutoScale.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.butt_AutoScale.Location = new System.Drawing.Point(132, 402);
+            this.butt_AutoScale.Location = new System.Drawing.Point(132, 519);
             this.butt_AutoScale.Name = "butt_AutoScale";
             this.butt_AutoScale.Size = new System.Drawing.Size(102, 22);
             this.butt_AutoScale.TabIndex = 21;
@@ -332,6 +337,10 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.AutoScroll = true;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Controls.Add(this.label13);
+            this.panel1.Controls.Add(this.cmb_PlotType);
+            this.panel1.Controls.Add(this.cmb_file);
             this.panel1.Controls.Add(this.rb_3b_XY);
             this.panel1.Controls.Add(this.rb_3b_XZ);
             this.panel1.Controls.Add(this.rb_3b_YZ);
@@ -411,13 +420,13 @@
             this.panel1.Controls.Add(this.rb_v);
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(231, 261);
+            this.panel1.Size = new System.Drawing.Size(231, 378);
             this.panel1.TabIndex = 20;
             // 
             // rb_3b_XY
             // 
             this.rb_3b_XY.AutoSize = true;
-            this.rb_3b_XY.Location = new System.Drawing.Point(11, 1138);
+            this.rb_3b_XY.Location = new System.Drawing.Point(7, 1297);
             this.rb_3b_XY.Name = "rb_3b_XY";
             this.rb_3b_XY.Size = new System.Drawing.Size(42, 17);
             this.rb_3b_XY.TabIndex = 80;
@@ -428,7 +437,7 @@
             // rb_3b_XZ
             // 
             this.rb_3b_XZ.AutoSize = true;
-            this.rb_3b_XZ.Location = new System.Drawing.Point(53, 1138);
+            this.rb_3b_XZ.Location = new System.Drawing.Point(49, 1297);
             this.rb_3b_XZ.Name = "rb_3b_XZ";
             this.rb_3b_XZ.Size = new System.Drawing.Size(42, 17);
             this.rb_3b_XZ.TabIndex = 79;
@@ -439,7 +448,7 @@
             // rb_3b_YZ
             // 
             this.rb_3b_YZ.AutoSize = true;
-            this.rb_3b_YZ.Location = new System.Drawing.Point(101, 1138);
+            this.rb_3b_YZ.Location = new System.Drawing.Point(97, 1297);
             this.rb_3b_YZ.Name = "rb_3b_YZ";
             this.rb_3b_YZ.Size = new System.Drawing.Size(42, 17);
             this.rb_3b_YZ.TabIndex = 78;
@@ -450,7 +459,7 @@
             // rb_3b_Z
             // 
             this.rb_3b_Z.AutoSize = true;
-            this.rb_3b_Z.Location = new System.Drawing.Point(101, 1115);
+            this.rb_3b_Z.Location = new System.Drawing.Point(97, 1274);
             this.rb_3b_Z.Name = "rb_3b_Z";
             this.rb_3b_Z.Size = new System.Drawing.Size(32, 17);
             this.rb_3b_Z.TabIndex = 77;
@@ -461,7 +470,7 @@
             // rb_3b_Y
             // 
             this.rb_3b_Y.AutoSize = true;
-            this.rb_3b_Y.Location = new System.Drawing.Point(53, 1115);
+            this.rb_3b_Y.Location = new System.Drawing.Point(49, 1274);
             this.rb_3b_Y.Name = "rb_3b_Y";
             this.rb_3b_Y.Size = new System.Drawing.Size(32, 17);
             this.rb_3b_Y.TabIndex = 76;
@@ -473,7 +482,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label11.Location = new System.Drawing.Point(8, 1097);
+            this.label11.Location = new System.Drawing.Point(4, 1256);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(128, 13);
             this.label11.TabIndex = 75;
@@ -482,7 +491,7 @@
             // rb_3b_X
             // 
             this.rb_3b_X.AutoSize = true;
-            this.rb_3b_X.Location = new System.Drawing.Point(11, 1115);
+            this.rb_3b_X.Location = new System.Drawing.Point(7, 1274);
             this.rb_3b_X.Name = "rb_3b_X";
             this.rb_3b_X.Size = new System.Drawing.Size(32, 17);
             this.rb_3b_X.TabIndex = 73;
@@ -494,7 +503,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label10.Location = new System.Drawing.Point(12, 949);
+            this.label10.Location = new System.Drawing.Point(8, 1108);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(53, 13);
             this.label10.TabIndex = 72;
@@ -503,7 +512,7 @@
             // rb_dYdZ
             // 
             this.rb_dYdZ.AutoSize = true;
-            this.rb_dYdZ.Location = new System.Drawing.Point(11, 1025);
+            this.rb_dYdZ.Location = new System.Drawing.Point(7, 1184);
             this.rb_dYdZ.Name = "rb_dYdZ";
             this.rb_dYdZ.Size = new System.Drawing.Size(54, 17);
             this.rb_dYdZ.TabIndex = 57;
@@ -513,7 +522,7 @@
             // rb_dXdZ
             // 
             this.rb_dXdZ.AutoSize = true;
-            this.rb_dXdZ.Location = new System.Drawing.Point(11, 1004);
+            this.rb_dXdZ.Location = new System.Drawing.Point(7, 1163);
             this.rb_dXdZ.Name = "rb_dXdZ";
             this.rb_dXdZ.Size = new System.Drawing.Size(54, 17);
             this.rb_dXdZ.TabIndex = 56;
@@ -523,7 +532,7 @@
             // rb_ZY_ecl
             // 
             this.rb_ZY_ecl.AutoSize = true;
-            this.rb_ZY_ecl.Location = new System.Drawing.Point(104, 417);
+            this.rb_ZY_ecl.Location = new System.Drawing.Point(100, 576);
             this.rb_ZY_ecl.Name = "rb_ZY_ecl";
             this.rb_ZY_ecl.Size = new System.Drawing.Size(42, 17);
             this.rb_ZY_ecl.TabIndex = 71;
@@ -533,7 +542,7 @@
             // rb_dXdY
             // 
             this.rb_dXdY.AutoSize = true;
-            this.rb_dXdY.Location = new System.Drawing.Point(11, 983);
+            this.rb_dXdY.Location = new System.Drawing.Point(7, 1142);
             this.rb_dXdY.Name = "rb_dXdY";
             this.rb_dXdY.Size = new System.Drawing.Size(54, 17);
             this.rb_dXdY.TabIndex = 55;
@@ -543,7 +552,7 @@
             // rb_XZ_ecl
             // 
             this.rb_XZ_ecl.AutoSize = true;
-            this.rb_XZ_ecl.Location = new System.Drawing.Point(104, 393);
+            this.rb_XZ_ecl.Location = new System.Drawing.Point(100, 552);
             this.rb_XZ_ecl.Name = "rb_XZ_ecl";
             this.rb_XZ_ecl.Size = new System.Drawing.Size(42, 17);
             this.rb_XZ_ecl.TabIndex = 70;
@@ -553,7 +562,7 @@
             // rb_Vot
             // 
             this.rb_Vot.AutoSize = true;
-            this.rb_Vot.Location = new System.Drawing.Point(11, 1067);
+            this.rb_Vot.Location = new System.Drawing.Point(7, 1226);
             this.rb_Vot.Name = "rb_Vot";
             this.rb_Vot.Size = new System.Drawing.Size(123, 17);
             this.rb_Vot.TabIndex = 54;
@@ -563,7 +572,7 @@
             // rb_XY_ecl
             // 
             this.rb_XY_ecl.AutoSize = true;
-            this.rb_XY_ecl.Location = new System.Drawing.Point(104, 369);
+            this.rb_XY_ecl.Location = new System.Drawing.Point(100, 528);
             this.rb_XY_ecl.Name = "rb_XY_ecl";
             this.rb_XY_ecl.Size = new System.Drawing.Size(42, 17);
             this.rb_XY_ecl.TabIndex = 69;
@@ -573,7 +582,7 @@
             // rb_Dot
             // 
             this.rb_Dot.AutoSize = true;
-            this.rb_Dot.Location = new System.Drawing.Point(11, 1046);
+            this.rb_Dot.Location = new System.Drawing.Point(7, 1205);
             this.rb_Dot.Name = "rb_Dot";
             this.rb_Dot.Size = new System.Drawing.Size(126, 17);
             this.rb_Dot.TabIndex = 53;
@@ -583,7 +592,7 @@
             // rb_visi
             // 
             this.rb_visi.AutoSize = true;
-            this.rb_visi.Location = new System.Drawing.Point(11, 962);
+            this.rb_visi.Location = new System.Drawing.Point(7, 1121);
             this.rb_visi.Name = "rb_visi";
             this.rb_visi.Size = new System.Drawing.Size(97, 17);
             this.rb_visi.TabIndex = 52;
@@ -594,7 +603,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(8, 353);
+            this.label7.Location = new System.Drawing.Point(7, 379);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(158, 13);
             this.label7.TabIndex = 68;
@@ -603,7 +612,7 @@
             // rb_X_ecl
             // 
             this.rb_X_ecl.AutoSize = true;
-            this.rb_X_ecl.Location = new System.Drawing.Point(11, 369);
+            this.rb_X_ecl.Location = new System.Drawing.Point(7, 528);
             this.rb_X_ecl.Name = "rb_X_ecl";
             this.rb_X_ecl.Size = new System.Drawing.Size(32, 17);
             this.rb_X_ecl.TabIndex = 62;
@@ -613,7 +622,7 @@
             // rb_Y_ecl
             // 
             this.rb_Y_ecl.AutoSize = true;
-            this.rb_Y_ecl.Location = new System.Drawing.Point(11, 393);
+            this.rb_Y_ecl.Location = new System.Drawing.Point(7, 552);
             this.rb_Y_ecl.Name = "rb_Y_ecl";
             this.rb_Y_ecl.Size = new System.Drawing.Size(32, 17);
             this.rb_Y_ecl.TabIndex = 63;
@@ -623,7 +632,7 @@
             // rb_Z_ecl
             // 
             this.rb_Z_ecl.AutoSize = true;
-            this.rb_Z_ecl.Location = new System.Drawing.Point(11, 417);
+            this.rb_Z_ecl.Location = new System.Drawing.Point(7, 576);
             this.rb_Z_ecl.Name = "rb_Z_ecl";
             this.rb_Z_ecl.Size = new System.Drawing.Size(32, 17);
             this.rb_Z_ecl.TabIndex = 64;
@@ -633,7 +642,7 @@
             // rb_Vx_ecl
             // 
             this.rb_Vx_ecl.AutoSize = true;
-            this.rb_Vx_ecl.Location = new System.Drawing.Point(58, 369);
+            this.rb_Vx_ecl.Location = new System.Drawing.Point(54, 528);
             this.rb_Vx_ecl.Name = "rb_Vx_ecl";
             this.rb_Vx_ecl.Size = new System.Drawing.Size(37, 17);
             this.rb_Vx_ecl.TabIndex = 65;
@@ -643,7 +652,7 @@
             // rb_Vy_ecl
             // 
             this.rb_Vy_ecl.AutoSize = true;
-            this.rb_Vy_ecl.Location = new System.Drawing.Point(58, 393);
+            this.rb_Vy_ecl.Location = new System.Drawing.Point(54, 552);
             this.rb_Vy_ecl.Name = "rb_Vy_ecl";
             this.rb_Vy_ecl.Size = new System.Drawing.Size(37, 17);
             this.rb_Vy_ecl.TabIndex = 66;
@@ -653,7 +662,7 @@
             // rb_Vz_ecl
             // 
             this.rb_Vz_ecl.AutoSize = true;
-            this.rb_Vz_ecl.Location = new System.Drawing.Point(58, 417);
+            this.rb_Vz_ecl.Location = new System.Drawing.Point(54, 576);
             this.rb_Vz_ecl.Name = "rb_Vz_ecl";
             this.rb_Vz_ecl.Size = new System.Drawing.Size(37, 17);
             this.rb_Vz_ecl.TabIndex = 67;
@@ -664,7 +673,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(12, 233);
+            this.label6.Location = new System.Drawing.Point(8, 392);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(179, 13);
             this.label6.TabIndex = 61;
@@ -673,7 +682,7 @@
             // rb_inc_ecl
             // 
             this.rb_inc_ecl.AutoSize = true;
-            this.rb_inc_ecl.Location = new System.Drawing.Point(11, 255);
+            this.rb_inc_ecl.Location = new System.Drawing.Point(7, 414);
             this.rb_inc_ecl.Name = "rb_inc_ecl";
             this.rb_inc_ecl.Size = new System.Drawing.Size(73, 17);
             this.rb_inc_ecl.TabIndex = 55;
@@ -683,7 +692,7 @@
             // rb_node_ecl
             // 
             this.rb_node_ecl.AutoSize = true;
-            this.rb_node_ecl.Location = new System.Drawing.Point(11, 277);
+            this.rb_node_ecl.Location = new System.Drawing.Point(7, 436);
             this.rb_node_ecl.Name = "rb_node_ecl";
             this.rb_node_ecl.Size = new System.Drawing.Size(163, 17);
             this.rb_node_ecl.TabIndex = 56;
@@ -693,7 +702,7 @@
             // rb_w_ecl
             // 
             this.rb_w_ecl.AutoSize = true;
-            this.rb_w_ecl.Location = new System.Drawing.Point(11, 300);
+            this.rb_w_ecl.Location = new System.Drawing.Point(7, 459);
             this.rb_w_ecl.Name = "rb_w_ecl";
             this.rb_w_ecl.Size = new System.Drawing.Size(132, 17);
             this.rb_w_ecl.TabIndex = 57;
@@ -703,7 +712,7 @@
             // rb_M_ecl
             // 
             this.rb_M_ecl.AutoSize = true;
-            this.rb_M_ecl.Location = new System.Drawing.Point(11, 324);
+            this.rb_M_ecl.Location = new System.Drawing.Point(7, 483);
             this.rb_M_ecl.Name = "rb_M_ecl";
             this.rb_M_ecl.Size = new System.Drawing.Size(94, 17);
             this.rb_M_ecl.TabIndex = 58;
@@ -713,7 +722,7 @@
             // rb_acc
             // 
             this.rb_acc.AutoSize = true;
-            this.rb_acc.Location = new System.Drawing.Point(11, 13);
+            this.rb_acc.Location = new System.Drawing.Point(7, 172);
             this.rb_acc.Name = "rb_acc";
             this.rb_acc.Size = new System.Drawing.Size(89, 17);
             this.rb_acc.TabIndex = 51;
@@ -723,7 +732,7 @@
             // rb_YZ_norot
             // 
             this.rb_YZ_norot.AutoSize = true;
-            this.rb_YZ_norot.Location = new System.Drawing.Point(104, 874);
+            this.rb_YZ_norot.Location = new System.Drawing.Point(100, 1033);
             this.rb_YZ_norot.Name = "rb_YZ_norot";
             this.rb_YZ_norot.Size = new System.Drawing.Size(42, 17);
             this.rb_YZ_norot.TabIndex = 50;
@@ -733,7 +742,7 @@
             // rb_XZ_norot
             // 
             this.rb_XZ_norot.AutoSize = true;
-            this.rb_XZ_norot.Location = new System.Drawing.Point(104, 850);
+            this.rb_XZ_norot.Location = new System.Drawing.Point(100, 1009);
             this.rb_XZ_norot.Name = "rb_XZ_norot";
             this.rb_XZ_norot.Size = new System.Drawing.Size(42, 17);
             this.rb_XZ_norot.TabIndex = 49;
@@ -743,7 +752,7 @@
             // rb_XY_norot
             // 
             this.rb_XY_norot.AutoSize = true;
-            this.rb_XY_norot.Location = new System.Drawing.Point(104, 826);
+            this.rb_XY_norot.Location = new System.Drawing.Point(100, 985);
             this.rb_XY_norot.Name = "rb_XY_norot";
             this.rb_XY_norot.Size = new System.Drawing.Size(42, 17);
             this.rb_XY_norot.TabIndex = 48;
@@ -753,7 +762,7 @@
             // rb_X_norot
             // 
             this.rb_X_norot.AutoSize = true;
-            this.rb_X_norot.Location = new System.Drawing.Point(11, 826);
+            this.rb_X_norot.Location = new System.Drawing.Point(7, 985);
             this.rb_X_norot.Name = "rb_X_norot";
             this.rb_X_norot.Size = new System.Drawing.Size(32, 17);
             this.rb_X_norot.TabIndex = 42;
@@ -763,7 +772,7 @@
             // rb_Y_norot
             // 
             this.rb_Y_norot.AutoSize = true;
-            this.rb_Y_norot.Location = new System.Drawing.Point(11, 850);
+            this.rb_Y_norot.Location = new System.Drawing.Point(7, 1009);
             this.rb_Y_norot.Name = "rb_Y_norot";
             this.rb_Y_norot.Size = new System.Drawing.Size(32, 17);
             this.rb_Y_norot.TabIndex = 43;
@@ -773,7 +782,7 @@
             // rb_Z_norot
             // 
             this.rb_Z_norot.AutoSize = true;
-            this.rb_Z_norot.Location = new System.Drawing.Point(11, 874);
+            this.rb_Z_norot.Location = new System.Drawing.Point(7, 1033);
             this.rb_Z_norot.Name = "rb_Z_norot";
             this.rb_Z_norot.Size = new System.Drawing.Size(32, 17);
             this.rb_Z_norot.TabIndex = 44;
@@ -783,7 +792,7 @@
             // rb_Vx_norot
             // 
             this.rb_Vx_norot.AutoSize = true;
-            this.rb_Vx_norot.Location = new System.Drawing.Point(58, 826);
+            this.rb_Vx_norot.Location = new System.Drawing.Point(54, 985);
             this.rb_Vx_norot.Name = "rb_Vx_norot";
             this.rb_Vx_norot.Size = new System.Drawing.Size(37, 17);
             this.rb_Vx_norot.TabIndex = 45;
@@ -793,7 +802,7 @@
             // rb_Vy_norot
             // 
             this.rb_Vy_norot.AutoSize = true;
-            this.rb_Vy_norot.Location = new System.Drawing.Point(58, 850);
+            this.rb_Vy_norot.Location = new System.Drawing.Point(54, 1009);
             this.rb_Vy_norot.Name = "rb_Vy_norot";
             this.rb_Vy_norot.Size = new System.Drawing.Size(37, 17);
             this.rb_Vy_norot.TabIndex = 46;
@@ -803,7 +812,7 @@
             // rb_Vz_norot
             // 
             this.rb_Vz_norot.AutoSize = true;
-            this.rb_Vz_norot.Location = new System.Drawing.Point(58, 874);
+            this.rb_Vz_norot.Location = new System.Drawing.Point(54, 1033);
             this.rb_Vz_norot.Name = "rb_Vz_norot";
             this.rb_Vz_norot.Size = new System.Drawing.Size(37, 17);
             this.rb_Vz_norot.TabIndex = 47;
@@ -814,7 +823,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(8, 797);
+            this.label5.Location = new System.Drawing.Point(4, 956);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(158, 26);
             this.label5.TabIndex = 41;
@@ -823,7 +832,7 @@
             // rb_inc_norot
             // 
             this.rb_inc_norot.AutoSize = true;
-            this.rb_inc_norot.Location = new System.Drawing.Point(11, 725);
+            this.rb_inc_norot.Location = new System.Drawing.Point(7, 884);
             this.rb_inc_norot.Name = "rb_inc_norot";
             this.rb_inc_norot.Size = new System.Drawing.Size(73, 17);
             this.rb_inc_norot.TabIndex = 38;
@@ -833,7 +842,7 @@
             // rb_node_norot
             // 
             this.rb_node_norot.AutoSize = true;
-            this.rb_node_norot.Location = new System.Drawing.Point(11, 748);
+            this.rb_node_norot.Location = new System.Drawing.Point(7, 907);
             this.rb_node_norot.Name = "rb_node_norot";
             this.rb_node_norot.Size = new System.Drawing.Size(163, 17);
             this.rb_node_norot.TabIndex = 39;
@@ -843,7 +852,7 @@
             // rb_w_norot
             // 
             this.rb_w_norot.AutoSize = true;
-            this.rb_w_norot.Location = new System.Drawing.Point(11, 771);
+            this.rb_w_norot.Location = new System.Drawing.Point(7, 930);
             this.rb_w_norot.Name = "rb_w_norot";
             this.rb_w_norot.Size = new System.Drawing.Size(132, 17);
             this.rb_w_norot.TabIndex = 40;
@@ -854,7 +863,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(8, 690);
+            this.label4.Location = new System.Drawing.Point(4, 849);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(175, 26);
             this.label4.TabIndex = 37;
@@ -863,7 +872,7 @@
             // rb_YZ_J2k
             // 
             this.rb_YZ_J2k.AutoSize = true;
-            this.rb_YZ_J2k.Location = new System.Drawing.Point(104, 511);
+            this.rb_YZ_J2k.Location = new System.Drawing.Point(100, 670);
             this.rb_YZ_J2k.Name = "rb_YZ_J2k";
             this.rb_YZ_J2k.Size = new System.Drawing.Size(42, 17);
             this.rb_YZ_J2k.TabIndex = 36;
@@ -873,7 +882,7 @@
             // rb_XZ_J2k
             // 
             this.rb_XZ_J2k.AutoSize = true;
-            this.rb_XZ_J2k.Location = new System.Drawing.Point(104, 487);
+            this.rb_XZ_J2k.Location = new System.Drawing.Point(100, 646);
             this.rb_XZ_J2k.Name = "rb_XZ_J2k";
             this.rb_XZ_J2k.Size = new System.Drawing.Size(42, 17);
             this.rb_XZ_J2k.TabIndex = 35;
@@ -883,7 +892,7 @@
             // rb_XY_J2k
             // 
             this.rb_XY_J2k.AutoSize = true;
-            this.rb_XY_J2k.Location = new System.Drawing.Point(104, 463);
+            this.rb_XY_J2k.Location = new System.Drawing.Point(100, 622);
             this.rb_XY_J2k.Name = "rb_XY_J2k";
             this.rb_XY_J2k.Size = new System.Drawing.Size(42, 17);
             this.rb_XY_J2k.TabIndex = 34;
@@ -894,7 +903,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(8, 579);
+            this.label3.Location = new System.Drawing.Point(4, 738);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(140, 13);
             this.label3.TabIndex = 30;
@@ -903,7 +912,7 @@
             // rb_periD
             // 
             this.rb_periD.AutoSize = true;
-            this.rb_periD.Location = new System.Drawing.Point(11, 186);
+            this.rb_periD.Location = new System.Drawing.Point(7, 345);
             this.rb_periD.Name = "rb_periD";
             this.rb_periD.Size = new System.Drawing.Size(116, 17);
             this.rb_periD.TabIndex = 6;
@@ -914,7 +923,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(8, 447);
+            this.label2.Location = new System.Drawing.Point(4, 606);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(123, 13);
             this.label2.TabIndex = 29;
@@ -924,7 +933,7 @@
             // 
             this.rb_semi.AutoSize = true;
             this.rb_semi.Checked = true;
-            this.rb_semi.Location = new System.Drawing.Point(11, 52);
+            this.rb_semi.Location = new System.Drawing.Point(7, 211);
             this.rb_semi.Name = "rb_semi";
             this.rb_semi.Size = new System.Drawing.Size(94, 17);
             this.rb_semi.TabIndex = 0;
@@ -936,7 +945,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(12, 33);
+            this.label1.Location = new System.Drawing.Point(8, 192);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(144, 13);
             this.label1.TabIndex = 28;
@@ -945,7 +954,7 @@
             // rb_ecc
             // 
             this.rb_ecc.AutoSize = true;
-            this.rb_ecc.Location = new System.Drawing.Point(11, 72);
+            this.rb_ecc.Location = new System.Drawing.Point(7, 231);
             this.rb_ecc.Name = "rb_ecc";
             this.rb_ecc.Size = new System.Drawing.Size(77, 17);
             this.rb_ecc.TabIndex = 1;
@@ -955,7 +964,7 @@
             // rb_inc_J2k
             // 
             this.rb_inc_J2k.AutoSize = true;
-            this.rb_inc_J2k.Location = new System.Drawing.Point(11, 93);
+            this.rb_inc_J2k.Location = new System.Drawing.Point(7, 252);
             this.rb_inc_J2k.Name = "rb_inc_J2k";
             this.rb_inc_J2k.Size = new System.Drawing.Size(73, 17);
             this.rb_inc_J2k.TabIndex = 2;
@@ -965,7 +974,7 @@
             // rb_Vz_fix
             // 
             this.rb_Vz_fix.AutoSize = true;
-            this.rb_Vz_fix.Location = new System.Drawing.Point(58, 657);
+            this.rb_Vz_fix.Location = new System.Drawing.Point(54, 816);
             this.rb_Vz_fix.Name = "rb_Vz_fix";
             this.rb_Vz_fix.Size = new System.Drawing.Size(37, 17);
             this.rb_Vz_fix.TabIndex = 26;
@@ -975,7 +984,7 @@
             // rb_node_J2k
             // 
             this.rb_node_J2k.AutoSize = true;
-            this.rb_node_J2k.Location = new System.Drawing.Point(11, 115);
+            this.rb_node_J2k.Location = new System.Drawing.Point(7, 274);
             this.rb_node_J2k.Name = "rb_node_J2k";
             this.rb_node_J2k.Size = new System.Drawing.Size(163, 17);
             this.rb_node_J2k.TabIndex = 3;
@@ -985,7 +994,7 @@
             // rb_Vy_fix
             // 
             this.rb_Vy_fix.AutoSize = true;
-            this.rb_Vy_fix.Location = new System.Drawing.Point(58, 634);
+            this.rb_Vy_fix.Location = new System.Drawing.Point(54, 793);
             this.rb_Vy_fix.Name = "rb_Vy_fix";
             this.rb_Vy_fix.Size = new System.Drawing.Size(37, 17);
             this.rb_Vy_fix.TabIndex = 25;
@@ -995,7 +1004,7 @@
             // rb_w_J2k
             // 
             this.rb_w_J2k.AutoSize = true;
-            this.rb_w_J2k.Location = new System.Drawing.Point(11, 138);
+            this.rb_w_J2k.Location = new System.Drawing.Point(7, 297);
             this.rb_w_J2k.Name = "rb_w_J2k";
             this.rb_w_J2k.Size = new System.Drawing.Size(132, 17);
             this.rb_w_J2k.TabIndex = 4;
@@ -1005,7 +1014,7 @@
             // rb_Vx_fix
             // 
             this.rb_Vx_fix.AutoSize = true;
-            this.rb_Vx_fix.Location = new System.Drawing.Point(58, 611);
+            this.rb_Vx_fix.Location = new System.Drawing.Point(54, 770);
             this.rb_Vx_fix.Name = "rb_Vx_fix";
             this.rb_Vx_fix.Size = new System.Drawing.Size(37, 17);
             this.rb_Vx_fix.TabIndex = 24;
@@ -1015,7 +1024,7 @@
             // rb_M
             // 
             this.rb_M.AutoSize = true;
-            this.rb_M.Location = new System.Drawing.Point(11, 162);
+            this.rb_M.Location = new System.Drawing.Point(7, 321);
             this.rb_M.Name = "rb_M";
             this.rb_M.Size = new System.Drawing.Size(94, 17);
             this.rb_M.TabIndex = 5;
@@ -1025,7 +1034,7 @@
             // rb_Z_fix
             // 
             this.rb_Z_fix.AutoSize = true;
-            this.rb_Z_fix.Location = new System.Drawing.Point(11, 657);
+            this.rb_Z_fix.Location = new System.Drawing.Point(7, 816);
             this.rb_Z_fix.Name = "rb_Z_fix";
             this.rb_Z_fix.Size = new System.Drawing.Size(32, 17);
             this.rb_Z_fix.TabIndex = 23;
@@ -1035,7 +1044,7 @@
             // rb_apoD
             // 
             this.rb_apoD.AutoSize = true;
-            this.rb_apoD.Location = new System.Drawing.Point(11, 210);
+            this.rb_apoD.Location = new System.Drawing.Point(7, 369);
             this.rb_apoD.Name = "rb_apoD";
             this.rb_apoD.Size = new System.Drawing.Size(113, 17);
             this.rb_apoD.TabIndex = 7;
@@ -1045,7 +1054,7 @@
             // rb_YZ_fix
             // 
             this.rb_YZ_fix.AutoSize = true;
-            this.rb_YZ_fix.Location = new System.Drawing.Point(104, 658);
+            this.rb_YZ_fix.Location = new System.Drawing.Point(100, 817);
             this.rb_YZ_fix.Name = "rb_YZ_fix";
             this.rb_YZ_fix.Size = new System.Drawing.Size(42, 17);
             this.rb_YZ_fix.TabIndex = 22;
@@ -1055,7 +1064,7 @@
             // rb_X_J2k
             // 
             this.rb_X_J2k.AutoSize = true;
-            this.rb_X_J2k.Location = new System.Drawing.Point(11, 463);
+            this.rb_X_J2k.Location = new System.Drawing.Point(7, 622);
             this.rb_X_J2k.Name = "rb_X_J2k";
             this.rb_X_J2k.Size = new System.Drawing.Size(32, 17);
             this.rb_X_J2k.TabIndex = 8;
@@ -1065,7 +1074,7 @@
             // rb_XZ_fix
             // 
             this.rb_XZ_fix.AutoSize = true;
-            this.rb_XZ_fix.Location = new System.Drawing.Point(104, 634);
+            this.rb_XZ_fix.Location = new System.Drawing.Point(100, 793);
             this.rb_XZ_fix.Name = "rb_XZ_fix";
             this.rb_XZ_fix.Size = new System.Drawing.Size(42, 17);
             this.rb_XZ_fix.TabIndex = 21;
@@ -1075,7 +1084,7 @@
             // rb_Y_J2k
             // 
             this.rb_Y_J2k.AutoSize = true;
-            this.rb_Y_J2k.Location = new System.Drawing.Point(11, 487);
+            this.rb_Y_J2k.Location = new System.Drawing.Point(7, 646);
             this.rb_Y_J2k.Name = "rb_Y_J2k";
             this.rb_Y_J2k.Size = new System.Drawing.Size(32, 17);
             this.rb_Y_J2k.TabIndex = 9;
@@ -1085,7 +1094,7 @@
             // rb_XY_fix
             // 
             this.rb_XY_fix.AutoSize = true;
-            this.rb_XY_fix.Location = new System.Drawing.Point(104, 610);
+            this.rb_XY_fix.Location = new System.Drawing.Point(100, 769);
             this.rb_XY_fix.Name = "rb_XY_fix";
             this.rb_XY_fix.Size = new System.Drawing.Size(42, 17);
             this.rb_XY_fix.TabIndex = 20;
@@ -1095,7 +1104,7 @@
             // rb_Z_J2k
             // 
             this.rb_Z_J2k.AutoSize = true;
-            this.rb_Z_J2k.Location = new System.Drawing.Point(11, 511);
+            this.rb_Z_J2k.Location = new System.Drawing.Point(7, 670);
             this.rb_Z_J2k.Name = "rb_Z_J2k";
             this.rb_Z_J2k.Size = new System.Drawing.Size(32, 17);
             this.rb_Z_J2k.TabIndex = 10;
@@ -1105,7 +1114,7 @@
             // rb_Y_fix
             // 
             this.rb_Y_fix.AutoSize = true;
-            this.rb_Y_fix.Location = new System.Drawing.Point(11, 634);
+            this.rb_Y_fix.Location = new System.Drawing.Point(7, 793);
             this.rb_Y_fix.Name = "rb_Y_fix";
             this.rb_Y_fix.Size = new System.Drawing.Size(32, 17);
             this.rb_Y_fix.TabIndex = 19;
@@ -1115,7 +1124,7 @@
             // rb_Vx_J2k
             // 
             this.rb_Vx_J2k.AutoSize = true;
-            this.rb_Vx_J2k.Location = new System.Drawing.Point(58, 463);
+            this.rb_Vx_J2k.Location = new System.Drawing.Point(54, 622);
             this.rb_Vx_J2k.Name = "rb_Vx_J2k";
             this.rb_Vx_J2k.Size = new System.Drawing.Size(37, 17);
             this.rb_Vx_J2k.TabIndex = 11;
@@ -1125,7 +1134,7 @@
             // rb_X_fix
             // 
             this.rb_X_fix.AutoSize = true;
-            this.rb_X_fix.Location = new System.Drawing.Point(11, 611);
+            this.rb_X_fix.Location = new System.Drawing.Point(7, 770);
             this.rb_X_fix.Name = "rb_X_fix";
             this.rb_X_fix.Size = new System.Drawing.Size(35, 17);
             this.rb_X_fix.TabIndex = 18;
@@ -1135,7 +1144,7 @@
             // rb_Vy_J2k
             // 
             this.rb_Vy_J2k.AutoSize = true;
-            this.rb_Vy_J2k.Location = new System.Drawing.Point(58, 487);
+            this.rb_Vy_J2k.Location = new System.Drawing.Point(54, 646);
             this.rb_Vy_J2k.Name = "rb_Vy_J2k";
             this.rb_Vy_J2k.Size = new System.Drawing.Size(37, 17);
             this.rb_Vy_J2k.TabIndex = 12;
@@ -1145,7 +1154,7 @@
             // rb_topo_sph
             // 
             this.rb_topo_sph.AutoSize = true;
-            this.rb_topo_sph.Location = new System.Drawing.Point(11, 926);
+            this.rb_topo_sph.Location = new System.Drawing.Point(7, 1085);
             this.rb_topo_sph.Name = "rb_topo_sph";
             this.rb_topo_sph.Size = new System.Drawing.Size(183, 17);
             this.rb_topo_sph.TabIndex = 17;
@@ -1155,7 +1164,7 @@
             // rb_Vz_J2k
             // 
             this.rb_Vz_J2k.AutoSize = true;
-            this.rb_Vz_J2k.Location = new System.Drawing.Point(58, 511);
+            this.rb_Vz_J2k.Location = new System.Drawing.Point(54, 670);
             this.rb_Vz_J2k.Name = "rb_Vz_J2k";
             this.rb_Vz_J2k.Size = new System.Drawing.Size(37, 17);
             this.rb_Vz_J2k.TabIndex = 13;
@@ -1165,7 +1174,7 @@
             // rb_trassa
             // 
             this.rb_trassa.AutoSize = true;
-            this.rb_trassa.Location = new System.Drawing.Point(11, 903);
+            this.rb_trassa.Location = new System.Drawing.Point(7, 1062);
             this.rb_trassa.Name = "rb_trassa";
             this.rb_trassa.Size = new System.Drawing.Size(63, 17);
             this.rb_trassa.TabIndex = 16;
@@ -1175,7 +1184,7 @@
             // rb_r
             // 
             this.rb_r.AutoSize = true;
-            this.rb_r.Location = new System.Drawing.Point(11, 534);
+            this.rb_r.Location = new System.Drawing.Point(7, 693);
             this.rb_r.Name = "rb_r";
             this.rb_r.Size = new System.Drawing.Size(91, 17);
             this.rb_r.TabIndex = 14;
@@ -1185,7 +1194,7 @@
             // rb_v
             // 
             this.rb_v.AutoSize = true;
-            this.rb_v.Location = new System.Drawing.Point(11, 557);
+            this.rb_v.Location = new System.Drawing.Point(7, 716);
             this.rb_v.Name = "rb_v";
             this.rb_v.Size = new System.Drawing.Size(84, 17);
             this.rb_v.TabIndex = 15;
@@ -1196,7 +1205,7 @@
             // 
             this.butt_plot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.butt_plot.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.butt_plot.Location = new System.Drawing.Point(132, 377);
+            this.butt_plot.Location = new System.Drawing.Point(132, 494);
             this.butt_plot.Name = "butt_plot";
             this.butt_plot.Size = new System.Drawing.Size(102, 23);
             this.butt_plot.TabIndex = 19;
@@ -1219,14 +1228,50 @@
             this.zedGraphControl1.ScrollMinX = 0D;
             this.zedGraphControl1.ScrollMinY = 0D;
             this.zedGraphControl1.ScrollMinY2 = 0D;
-            this.zedGraphControl1.Size = new System.Drawing.Size(543, 430);
+            this.zedGraphControl1.Size = new System.Drawing.Size(543, 547);
             this.zedGraphControl1.TabIndex = 33;
+            // 
+            // cmb_file
+            // 
+            this.cmb_file.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_file.FormattingEnabled = true;
+            this.cmb_file.Location = new System.Drawing.Point(7, 21);
+            this.cmb_file.Name = "cmb_file";
+            this.cmb_file.Size = new System.Drawing.Size(184, 21);
+            this.cmb_file.TabIndex = 81;
+            // 
+            // cmb_PlotType
+            // 
+            this.cmb_PlotType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_PlotType.FormattingEnabled = true;
+            this.cmb_PlotType.Location = new System.Drawing.Point(7, 60);
+            this.cmb_PlotType.Name = "cmb_PlotType";
+            this.cmb_PlotType.Size = new System.Drawing.Size(184, 21);
+            this.cmb_PlotType.TabIndex = 82;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(11, 5);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(23, 13);
+            this.label13.TabIndex = 83;
+            this.label13.Text = "File";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(11, 45);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(36, 13);
+            this.label14.TabIndex = 84;
+            this.label14.Text = "Graph";
             // 
             // OrbMod_FormGraph
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(780, 435);
+            this.ClientSize = new System.Drawing.Size(780, 552);
             this.Controls.Add(this.zedGraphControl1);
             this.Controls.Add(this.cmb_symbol);
             this.Controls.Add(this.nud_DotSize);
@@ -1242,8 +1287,9 @@
             this.Controls.Add(this.butt_AutoScale);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.butt_plot);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "OrbMod_FormGraph";
-            this.Text = "OrbMod_FormGraph";
+            this.Load += new System.EventHandler(this.OrbMod_FormGraph_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nud_DotSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Wight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Smooth)).EndInit();
@@ -1356,5 +1402,9 @@
         private System.Windows.Forms.RadioButton rb_v;
         private System.Windows.Forms.Button butt_plot;
         private ZedGraph.ZedGraphControl zedGraphControl1;
+        private System.Windows.Forms.ComboBox cmb_PlotType;
+        private System.Windows.Forms.ComboBox cmb_file;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
     }
 }

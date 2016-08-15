@@ -49,7 +49,7 @@ namespace OrbModUI
                 cmb_TimeScale.Items.Add(((TimeFormat)value).ToString());
 
             string AppPath = System.Reflection.Assembly.GetExecutingAssembly().Location;
-            string AppDir = System.IO.Path.GetDirectoryName(AppPath);
+            string AppDir = Path.GetDirectoryName(AppPath);
 
              kernelPath = Path.Combine(AppDir, "metak.tm");
              observatoriesPath = Path.Combine(AppDir, "observatories.txt");
