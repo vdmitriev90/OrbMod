@@ -327,6 +327,15 @@ namespace Algebra
 		}
 		return  Minv;
 	}
+	double Matrix::SumSq()
+	{
+		double res = 0;
+		//for (double *val = this->M; val++; )
+		//	res += *val;
+		for (int i = 0; i < this->size; i++)
+			res += M[i]* M[i];
+		return res;
+	}
 	//Rotaton
 	void Matrix::Rotate(Axis axis, double angle)
 	{
@@ -335,11 +344,17 @@ namespace Algebra
 		initDim(3, 3);
 		switch (axis)
 		{
-		case Axis::X: this->M = new double[size] { 1.0, 0.0, 0.0, 0.0, _cos, -_sin, 0.0, _sin, _cos };
+		case Axis::X: this->M = new double[size] { 1.0,	 0.0,	0.0, 
+												   0.0, _cos, -_sin, 
+												   0.0, _sin,  _cos };
 					  break;
-		case Axis::Y: this->M = new double[size] { _cos, 0.0, _sin, 0.0, 1.0, 0.0, -_sin, 0.0, _cos };
+		case Axis::Y: this->M = new double[size] { _cos, 0.0, _sin, 
+													0.0, 1.0,  0.0,
+												  -_sin, 0.0, _cos };
 					  break;
-		case Axis::Z: this->M = new double[size] { _cos, -_sin, 0.0, _sin, _cos, 0.0, 0.0, 0.0, 1.0 };
+		case Axis::Z: this->M = new double[size] { _cos, -_sin, 0.0,
+												   _sin,  _cos, 0.0,
+													0.0,   0.0, 1.0 };
 					  break;
 		default:
 			throw ("Axis index is out of range.");

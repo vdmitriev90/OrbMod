@@ -98,9 +98,8 @@ namespace OrbMod
 		mxvg_c(rotate, Xin, 6, 6, Xout);
 
 	};
-	void trsv_pl(SpiceDouble et, long int from, long int to, SpiceDouble Xin[6], SpiceDouble Xout[6]) {
-
-
+	void trsv_pl(SpiceDouble et, long int from, long int to, SpiceDouble Xin[6], SpiceDouble Xout[6]) 
+	{
 
 		SpiceDouble Xfix[6];
 		SpiceDouble poss[6];

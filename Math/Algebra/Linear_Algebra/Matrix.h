@@ -49,6 +49,7 @@ namespace Algebra
 		double Trace();
 		Matrix Transpose();
 		Matrix Inverse();
+		double SumSq();
 		static bool LeastSQRSolve(Matrix &A, Matrix &b, Matrix &X, Matrix &Q);
 		static bool QRdecomp(Matrix &A, Matrix &Q, Matrix &R);
 		Matrix subMatrix(int n0, int nSize, int m0, int mSize);

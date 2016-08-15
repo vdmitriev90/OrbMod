@@ -114,12 +114,13 @@ namespace OrbMod
 			inst->setPar(X, SV, t0);
 			inst->FODE(X, t0, te, Global::step, Global::NOR, Global::Niter, NS, NBS);
 			//
-			if (!Solve(A, Matrix(OmC), x, sigma, Q)) return 1;
+			Matrix resid = Matrix(OmC);
+			if (!Solve(A, resid, x, sigma, Q)) return 1;
 			SV += x;
 
 			Matrix RMS = LinAlgAux::CalcRMS(sigma, Q, pe, ve);
 			fo << iter << "--\n" << "dx " << x.toString("\t", "%f", 25) << endl;
-			fo << "N_rp " << Global::N_rp << "\tN obs " << OmC.size() << " sigma " << sigma*ObsSet::fct << " pRMS " << pe << " vRMS " << ve << endl;
+			fo << "N_rp " << Global::N_rp << "\tN obs " << OmC.size() << " sigma1 " << sigma*ObsSet::fct <<  " sigma2 " << sqrt(resid.SumSq()/(resid.Size()-1))*ObsSet::fct << " pRMS " << pe << " vRMS " << ve << endl;
 			//
 			Control::Inst.Obs_->sigma = sigma;
 

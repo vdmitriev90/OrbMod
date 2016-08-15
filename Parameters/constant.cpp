@@ -4,9 +4,9 @@ using namespace OrbMod;
 namespace Consts
 {
 
-	SpiceDouble ID2GM(int ID)
+	double ID2GM(int ID)
 	{
-		SpiceDouble mu;
+		double mu;
 		switch (ID)
 		{
 		case 1: mu = BODY1_GM;
@@ -181,6 +181,13 @@ namespace Consts
 			/////////////////////////////////////////////
 		case 10: mu = BODY10_GM;
 			break;
+			//asteroids
+		case 2000001: mu = BODY2000001_GM;
+			break;
+		case 2000002: mu = BODY2000002_GM;
+			break;
+		case 2000004: mu = BODY2000004_GM;
+			break;
 
 		default:
 			;
@@ -282,7 +289,6 @@ namespace Consts
 			// Солнце
 		case 10:  numF = 10010;
 			break;
-
 
 		default:
 			;
@@ -487,9 +493,9 @@ namespace Consts
 
 	triple getR(int ID)
 	{
-		SpiceDouble valPM[3], RADII[3];
+		double valPM[3], RADII[3];
 		SpiceInt dim;
-		SpiceChar  id[20];
+		char  id[20];
 		_itoa(ID, id, 10);
 		bodvrd_c(id, "PM", 3, &dim, valPM);
 		bodvrd_c(id, "RADII", 3, &dim, RADII);
@@ -498,9 +504,9 @@ namespace Consts
 	};
 	double getW(int ID)
 	{
-		SpiceDouble valPM[3];
+		double valPM[3];
 		SpiceInt dim;
-		SpiceChar  id[20];
+		char  id[20];
 		_itoa(ID, id, 10);
 		bodvrd_c(id, "PM", 3, &dim, valPM);
 
@@ -514,7 +520,7 @@ namespace Consts
 		{
 			double valPM[3], RADII[3];
 			SpiceInt dim;
-			SpiceChar  id[20];
+			char  id[20];
 			_itoa(ID, id, 10);
 			bodvrd_c(id, "PM", 3, &dim, valPM);
 			bodvrd_c(id, "RADII", 3, &dim, RADII);
