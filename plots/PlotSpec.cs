@@ -15,7 +15,10 @@ namespace OrbModUI
 
             }
             //
-
+            public void SetInternalState(PlotSourceData sourse, int Type)
+            {
+                plot = Factory(sourse, Type);
+            }
             private Plot Factory(PlotSourceData sourse, int Type)
             {
                 switch(sourse)
@@ -26,21 +29,24 @@ namespace OrbModUI
 
                     default:
                         return null;
-
                 }
             }
+            //
             public override void PlotData()
             {
                 this.plot.PlotData();
             }
+            //
             public override void EndPlot()
             {
                 this.plot.EndPlot();
             }
+            //
             public override void Autoscale()
             {
                 this.plot.Autoscale();
             }
+            //
             private Plot PlotAccFactory(PlotSourceData sourse, int Type)
             {
                 switch ((Acc_vs_T)Type)
@@ -52,7 +58,8 @@ namespace OrbModUI
 
                 }
             }
-            private Plot PlotEltsvsT(PlotSourceData sourse, int Type)
+            //
+            private Plot PlotEltsFactory(PlotSourceData sourse, int Type)
             {
                 switch ((Elts_vs_T)Type)
                 {

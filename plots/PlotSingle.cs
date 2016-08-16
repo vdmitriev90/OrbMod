@@ -3,21 +3,21 @@ using ZedGraph;
 
 namespace OrbModUI
 {
-    abstract class SingePlot : Plot
+   public  abstract class PlotSingle : Plot
     {
         //
-        public SingePlot()
+        public PlotSingle()
         {
 
         }
         //
-        public SingePlot(ZedGraphControl zg, string fname) : base(zg,fname)
+        public PlotSingle(ZedGraphControl zg, string fname) : base(zg,fname)
         {
 
         }
         //
         protected abstract bool AddPoint(string str, PointPairList list);
-
+        //
         public override void PlotData()
         {
             GraphPane pane = zg.GraphPane;
@@ -35,4 +35,5 @@ namespace OrbModUI
             }
         }
     }
-}
+  
+    }

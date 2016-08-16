@@ -130,6 +130,7 @@
             this.rb_v = new System.Windows.Forms.RadioButton();
             this.butt_plot = new System.Windows.Forms.Button();
             this.zedGraphControl1 = new ZedGraph.ZedGraphControl();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             ((System.ComponentModel.ISupportInitialize)(this.nud_DotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Wight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Smooth)).BeginInit();
@@ -1290,6 +1291,7 @@
             this.Controls.Add(this.butt_plot);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "OrbMod_FormGraph";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OrbMod_FormGraph_FormClosing);
             this.Load += new System.EventHandler(this.OrbMod_FormGraph_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nud_DotSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Wight)).EndInit();
@@ -1407,5 +1409,6 @@
         private System.Windows.Forms.ComboBox cmb_file;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ColorDialog colorDialog1;
     }
 }

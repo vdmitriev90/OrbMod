@@ -28,6 +28,24 @@ namespace OrbModUI
         //
         public abstract void EndPlot();
         //
-        public abstract void Autoscale();
+        public virtual void Autoscale()
+        {
+            GraphPane  pane = zg.GraphPane;
+
+            // Установим масштаб по умолчанию для оси X
+            pane.XAxis.Scale.MinAuto = true;
+            pane.XAxis.Scale.MaxAuto = true;
+
+            // Установим масштаб по умолчанию для оси Y
+            pane.YAxis.Scale.MinAuto = true;
+            pane.YAxis.Scale.MaxAuto = true;
+
+            // Обновим данные об осях
+            zg.AxisChange();
+
+            // Обновляем график
+            zg.Invalidate();
+        }
+
     }
 }

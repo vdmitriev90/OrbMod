@@ -126,13 +126,13 @@ namespace OrbModUI
         public int LineWidth;
         public int SymbolType;
         public int SymbolSize;
+
+        public bool UseAU = false;
+        public bool UseCalend = false;
         //
         public bool isLogRes;
 
-
-
 #endregion
-
 
         private void initDict()
         {
