@@ -44,7 +44,7 @@ namespace OrbModUI
             throw new NotImplementedException();
         }
         //
-        public override void EndPlot()
+        public override void EndDraw()
         {
             throw new NotImplementedException();
         }

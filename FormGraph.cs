@@ -22,7 +22,6 @@ namespace OrbModUI
         public enum Elts_vs_T { SMA = 0,Ecc,Inc, Node,W,Mean, PeriDistance, ApoDistance };
         public enum Integ_vs_T { StepSize = 0, ItNum };
         public enum _3body_vs_T { X = 0, Y , Z, Vx, Vy , Vz, R ,V };
-
         
         private PlotSpec currGraph;
         private string[] OutFiles;
@@ -56,8 +55,7 @@ namespace OrbModUI
         private void butt_plot_Click(object sender, EventArgs e)
         {
             FormGraph_SetConfig();
-            string path = OutFiles[cmb_file.SelectedIndex];
-            currGraph = new PlotSpec(zedGraphControl1, path);
+
             currGraph.SetInternalState(currSource, cmb_PlotType.SelectedIndex);
 
             currGraph.PlotData();
@@ -110,9 +108,14 @@ namespace OrbModUI
                 foreach (var value in strs)
                     cmb_PlotType.Items.Add(value);
                 cmb_PlotType.SelectedIndex = 0;
+
             }
             else
                 MessageBox.Show("There are not graphs for given file.");
+
+            string path = OutFiles[cmb_file.SelectedIndex];
+            currGraph = new PlotSpec(zedGraphControl1, path);
+
         }
         //
         private void FormGraphInit()
@@ -189,6 +192,9 @@ namespace OrbModUI
             Config.Instance.LineWidth = Convert.ToInt32(nud_Wight.Value);
             Config.Instance.UseAU = rb_AU.Checked;
             Config.Instance.UseCalend = rb_Xaxis_calend.Checked;
+            Config.Instance.Tension = Convert.ToSingle(nud_Smooth.Value);
+
+            Config.Instance.isSmoothGraph = (Config.Instance.Tension > 0);
         }
     }
 

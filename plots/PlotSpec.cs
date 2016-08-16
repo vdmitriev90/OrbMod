@@ -12,7 +12,10 @@ namespace OrbModUI
             private Plot plot;
             public PlotSpec(ZedGraphControl zg, string fname)
             {
+                this.zg = zg;
+                this.FName = fname;
 
+                plot = new PlotSMA(zg, fname);
             }
             //
             public void SetInternalState(PlotSourceData sourse, int Type)
@@ -26,7 +29,9 @@ namespace OrbModUI
                     case PlotSourceData.Acc:
                         return PlotAccFactory(sourse, Type);
                     case PlotSourceData.Elts:
-
+                        return PlotEltsFactory(sourse, Type);
+                    case PlotSourceData.SV:
+                        return PlotSVFactory(sourse, Type);
                     default:
                         return null;
                 }
@@ -37,9 +42,9 @@ namespace OrbModUI
                 this.plot.PlotData();
             }
             //
-            public override void EndPlot()
+            public override void EndDraw()
             {
-                this.plot.EndPlot();
+                this.plot.EndDraw();
             }
             //
             public override void Autoscale()
@@ -64,7 +69,45 @@ namespace OrbModUI
                 switch ((Elts_vs_T)Type)
                 {
                     case Elts_vs_T.SMA:
-                        return new Acc1Plot(this.zg, FName);
+                        return new PlotSMA(this.zg, FName);
+                    case Elts_vs_T.Ecc:
+                        return new PlotEcc(this.zg, FName);
+                    case Elts_vs_T.Inc:
+                        return new PlotInc(this.zg, FName);
+                    case Elts_vs_T.Node:
+                        return new PlotNode(this.zg, FName);
+                    case Elts_vs_T.W:
+                        return new PlotPeri(this.zg, FName);
+                    case Elts_vs_T.Mean:
+                        return new PlotMeanAn(this.zg, FName);
+
+                    default:
+                        return null;
+
+                }
+            }
+            private Plot PlotSVFactory(PlotSourceData sourse, int Type)
+            {
+                switch ((SV_vs)Type)
+                {
+                    case SV_vs.X:
+                        return new PlotX(this.zg, FName);
+                    case SV_vs.Y:
+                        return new PlotY(this.zg, FName);
+                    case SV_vs.Z:
+                        return new PlotZ(this.zg, FName);
+                    case SV_vs.Vx:
+                        return new PlotVx(this.zg, FName);
+                    case SV_vs.Vy:
+                        return new PlotVy(this.zg, FName);
+                    case SV_vs.Vz:
+                        return new PlotVz(this.zg, FName);
+                    case SV_vs.R:
+                        return new PlotR(this.zg, FName);
+                    case SV_vs.Vel:
+                        return new PlotVel(this.zg, FName);
+                    case SV_vs.XoY:
+                        return new PlotR(this.zg, FName);
                     default:
                         return null;
 

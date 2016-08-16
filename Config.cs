@@ -129,6 +129,9 @@ namespace OrbModUI
 
         public bool UseAU = false;
         public bool UseCalend = false;
+
+        public bool isSmoothGraph = false;
+        public float Tension = 0;
         //
         public bool isLogRes;
 
