@@ -21,8 +21,8 @@ namespace OrbMod
 		void	 	 Integrate(Matrix &SV, double t0, double te, Matrix &dXdX0, Variables var);
 		void SODE();
 
-		void write(double t0, triple X, triple V, double TimeNode, double NodeA);
-		void write_3_BodyFix_sv(FILE*f, char* UTC, double t, double Ti, triple X, triple V);
+		void write(double t0, triple X, triple V);
+		void write_3_BodyFix_sv(FILE*f, char* UTC, double t, triple X, triple V);
 		void SwitchVar(Variables V);
 
 		//
@@ -36,7 +36,7 @@ namespace OrbMod
 		ivar *var;
 		void streamsOpen();
 		void streamsClose();
-		FILE * fosv, *foel, *foSvEcl, *foelEcl, *fosvR, /**foelR, *fosvp, *foelp,*/ *foBL, *foNEU, *foAZR, *fvisi, *fo3bg, *fodbg;
+		FILE * fosv, *foel, *foSvEcl, *foelEcl, *fosvR, /**foelR, *fosvp, *foelp,*/ *foBL, *foNEU,  *fvisi, *fo3bg, *fodbg;
 	};
 }
 

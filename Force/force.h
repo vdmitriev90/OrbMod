@@ -31,7 +31,7 @@ namespace OrbMod
 		virtual triple force_cb();
 		virtual triple force_pert();
 		//
-		void   force_w(double Ti, double TimeNode);
+		void   force_w(double Ti);
 
 	};
 }

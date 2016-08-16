@@ -33,9 +33,6 @@ namespace OrbMod
 		foNEU = fopen("NEU.out", "w");
 		//	fprintf(foNEU,"year month day hms(UTC) TDB(sec) interval(days) N E U \n");
 
-		foAZR = fopen("AZR.out", "w");
-		//	fprintf(foAZR,"year month day hms(UTC) TDB(sec) interval(days) Azimut Z R \n");
-
 		fopen_s(&fvisi, "visibility.out", "w");
 
 		fo3bg = fopen("3body_geodetic.out", "w");
@@ -60,13 +57,12 @@ namespace OrbMod
 		fclose(foBL);
 
 		fclose(foNEU);
-		fclose(foAZR);
 
 		fclose(fvisi);
 		fclose(fo3bg);
 	}
 	//
-	void Integration::write(double t0, triple X, triple V, double TimeNode, double NodeA)
+	void Integration::write(double t0, triple X, triple V)
 	{
 		ConstSpiceChar *pictur = "YYYY MM DD HR:MN:SC.####### ::TDB";
 		Force Fs(t0, X, V);
@@ -80,7 +76,6 @@ namespace OrbMod
 		SVo[3] = V[0];
 		SVo[4] = V[1];
 		SVo[5] = V[2];
-		double Ti = (t0 - TimeNode) / 86400.0;
 		if (Global::cb_out_sv_ECLIPJ2000 == true || Global::cb_out_el_ECLIPJ2000 == true) trsv(0, 1, 17, SVo, SVEcl);
 		if (Global::b_out_sv_IAUPlanet == true || Global::b_out_NEU == true || Global::b_out_AZR == true) trsv(t0, 1, Global::IDC, SVo, SViau);
 
@@ -99,7 +94,6 @@ namespace OrbMod
 		if (Global::b_out_el_J2000 == true) {
 			fprintf(foel, "%s ", utcstr);
 			fprintf(foel, " %25.16e ", t0);
-			fprintf(foel, " %25.16e ", Ti);
 			oscelt_c(SVo, 0, mu, elts);
 
 			fprintf(foel, " %25.16e", elts[0]/**(1.0-elts[1])*/);
@@ -114,7 +108,6 @@ namespace OrbMod
 		if (Global::b_out_sv_J2000 == true) {
 			fprintf(fosv, "%s ", utcstr);
 			fprintf(fosv, " %25.16e ", t0);
-			fprintf(fosv, " %25.16e ", Ti);
 			for (int i = 0; i < 6; i++) fprintf(fosv, " %25.16e", SVo[i]);
 
 			fprintf(fosv, "\n");
@@ -125,7 +118,6 @@ namespace OrbMod
 		if (Global::cb_out_el_ECLIPJ2000 == true) {
 			fprintf(foelEcl, "%s ", utcstr);
 			fprintf(foelEcl, " %25.16e ", t0);
-			fprintf(foelEcl, " %25.16e ", Ti);
 			oscelt_c(SVEcl, 0, mu, eltsEcl);
 
 			fprintf(foelEcl, " %25.16e", eltsEcl[0]/**(1.0-eltsEcl[1])*/);
@@ -139,7 +131,6 @@ namespace OrbMod
 		if (Global::cb_out_sv_ECLIPJ2000 == true) {
 			fprintf(foSvEcl, "%s ", utcstr);
 			fprintf(foSvEcl, " %25.16e ", t0);
-			fprintf(foSvEcl, " %25.16e ", Ti);
 			for (int i = 0; i < 6; i++) fprintf(foSvEcl, " %25.16e", SVEcl[i]);
 
 			fprintf(foSvEcl, "\n");
@@ -149,7 +140,6 @@ namespace OrbMod
 		if (Global::b_out_sv_IAUPlanet == true) {
 			fprintf(fosvR, "%s ", utcstr);
 			fprintf(fosvR, " %25.16e ", t0);
-			fprintf(fosvR, " %25.16e ", Ti);
 			for (int i = 0; i < 6; i++) fprintf(fosvR, " %25.16e", SViau[i]);
 			fprintf(fosvR, "\n");
 		}
@@ -165,7 +155,6 @@ namespace OrbMod
 
 			fprintf(foBL, "%s ", utcstr);
 			fprintf(foBL, " %25.16e ", t0);
-			fprintf(foBL, " %25.16e ", Ti);
 			fprintf(foBL, " %25.16e %25.16e %25.16e ", lon*rad, lat*rad, alt);
 			fprintf(foBL, "\n");
 		}
@@ -173,37 +162,26 @@ namespace OrbMod
 		if (Global::b_out_NEU == true) {
 			fprintf(foNEU, "%s ", utcstr);
 			fprintf(foNEU, " %25.16e ", t0);
-			fprintf(foNEU, " %25.16e ", Ti);
 			for (int i = 0; i < 3; i++)fprintf(foNEU, "%25.16e ", NEU[i]);
 			fprintf(foNEU, "\n");
 		}
-		//AZR
-		if (Global::b_out_AZR == true) {
-			double r, h, A;
 
-			fprintf(foAZR, "%s ", utcstr);
-			fprintf(foAZR, " %25.16e ", t0);
-			fprintf(foAZR, " %25.16e ", Ti);
-			recsph_c(NEU, &r, &h, &A);
-			fprintf(foAZR, "%25.16e %25.16e %25.16e", A*rad, h*rad, r);
-			fprintf(foAZR, "\n");
-		}
 		//visibility
 
 		if (Global::b_visi == true)
 		{
-			if (Global::i_fr == 1) visi(fvisi, t0, Ti, X, V);
-			if (Global::i_fr == 0) visi(fvisi, t0, Ti, triple(SVEcl[0], SVEcl[1], SVEcl[2]), triple(SVEcl[3], SVEcl[4], SVEcl[5]));
+			if (Global::i_fr == 1) visi(fvisi, t0,  X, V);
+			if (Global::i_fr == 0) visi(fvisi, t0,  triple(SVEcl[0], SVEcl[1], SVEcl[2]), triple(SVEcl[3], SVEcl[4], SVEcl[5]));
 		}
 		// Geodetic coordinates in 3-body frame
-		if (true == Global::b_3_BFF_sv)	 write_3_BodyFix_sv(fo3bg, utcstr, t0, Ti, X, V);
+		if (true == Global::b_3_BFF_sv)	 write_3_BodyFix_sv(fo3bg, utcstr, t0,  X, V);
 
 		//acceleration------------------------------------
-		if (Global::b_out_acc == true) Fs.force_w(t0, Ti);
+		if (Global::b_out_acc == true) Fs.force_w(t0);
 	};
 
 	//
-	void Integration::write_3_BodyFix_sv(FILE*f, SpiceChar* UTC, double t, double Ti, triple X, triple V) {
+	void Integration::write_3_BodyFix_sv(FILE*f, SpiceChar* UTC, double t, triple X, triple V) {
 
 		double sv[6], sv3b[6];
 		double lt;
@@ -224,7 +202,6 @@ namespace OrbMod
 
 		fprintf(f, "%s ", UTC);
 		fprintf(f, " %25.16e ", t);
-		fprintf(f, " %25.16e ", Ti);
 
 		for (int i = 0; i < 3; i++) fprintf(f, " %25.16e ", RotFix[i]);
 		for (int i = 0; i < 3; i++) fprintf(f, " %25.16e ", VotFix[i]);

@@ -201,7 +201,7 @@ namespace OrbMod
 		return FlenzeI;
 	}
 	//
-	void Force::force_w(double Ti, double TimeNode)
+	void Force::force_w(double Ti)
 	{
 		ConstSpiceChar *pictur = "YYYY MM DD HR:MN:SC.####### ::UTC";
 
@@ -216,7 +216,6 @@ namespace OrbMod
 		timout_c(time, pictur, 50, utcstr);
 		fprintf(facc, "%s ", utcstr);
 		fprintf(facc, "%30.16e ", time);
-		fprintf(facc, "%30.16e ", TimeNode);
 		triple acccb = force_cb();
 		fprintf(facc, "%30.16e ", acccb.getAbs());
 

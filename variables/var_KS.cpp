@@ -91,7 +91,7 @@ namespace OrbMod
 				triple pos = svout.X();
 				triple vel = svout.V();
 
-				Integration::Instance.write(tout, pos, vel, 0, 0);
+				Integration::Instance.write(tout, pos, vel);
 				tout += Global::Discr;
 			}
 		}
@@ -101,7 +101,7 @@ namespace OrbMod
 			X = Y;
 			KS svout = KS(Y);
 			if (Global::Discr != 0)
-				Integration::Instance.write(te, svout.X(), svout.V(), 0, 0);
+				Integration::Instance.write(te, svout.X(), svout.V());
 			return true;
 		}
 

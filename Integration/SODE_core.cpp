@@ -48,8 +48,6 @@ namespace OrbMod
 		foNEU = fopen("NEU.out", "w");
 		//	fprintf(foNEU,"year month day hms(UTC) TDB(sec) interval(days) N E U \n");
 
-		foAZR = fopen("AZR.out", "w");
-		//	fprintf(foAZR,"year month day hms(UTC) TDB(sec) interval(days) Azimut Z R \n");
 
 		fvisi = fopen("visibility.out", "w");
 
@@ -249,7 +247,7 @@ namespace OrbMod
 					triple Xout = X + V*hout + F0*(hout*hout / 2.0) + dxo*(hout*hout*hout);
 					triple Vout = V + F0*hout + dvo*(hout*hout);
 
-					write(tout, Xout, Vout, TimeNode, NodeA);
+					write(tout, Xout, Vout);
 
 					tout += Global::Discr;
 				}
@@ -263,7 +261,7 @@ namespace OrbMod
 
 		};
 
-		write(t0, X, V, TimeNode, NodeA);
+		write(t0, X, V);
 
 		fclose(fosv);
 		fclose(foel);
@@ -281,7 +279,6 @@ namespace OrbMod
 		fclose(foBL);
 
 		fclose(foNEU);
-		fclose(foAZR);
 
 		fclose(fvisi);
 		fclose(fo3bg);

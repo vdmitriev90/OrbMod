@@ -55,7 +55,7 @@ namespace OrbMod
 			{
 				stepDs(tout - t0, H, X, Yo);
 
-				Integration::Instance.write(t0, triple(X[0], X[1], 0), triple(X[2], X[3], 0), 0, 0);
+				Integration::Instance.write(t0, triple(X[0], X[1], 0), triple(X[2], X[3], 0));
 				tout += Global::Discr;
 			}
 		return false;
@@ -93,7 +93,7 @@ namespace OrbMod
 			while (abs(tout - t0) <= abs(H))
 			{
 				stepDs(tout - t0, H, X, Yo);
-				Integration::Instance.write(tout, triple(Yo[0], Yo[1], Yo[2]), triple(Yo[3], Yo[4], Yo[5]), 0, 0);
+				Integration::Instance.write(tout, triple(Yo[0], Yo[1], Yo[2]), triple(Yo[3], Yo[4], Yo[5]));
 
 				tout += Global::Discr;
 			}

@@ -80,7 +80,7 @@ namespace OrbMod
 			{
 				calcSV(H, t0, tout, X, Y);
 				SB svout = SB(Y);
-				Integration::Instance.write(tout, svout.q, svout.v(), 0, 0);
+				Integration::Instance.write(tout, svout.q, svout.v());
 				tout += Global::Discr;
 			}
 		}
@@ -91,7 +91,7 @@ namespace OrbMod
 			X = Y;
 			SB svout = SB(Y);
 			if (Global::Discr != 0)
-				Integration::Instance.write(te, svout.q, svout.v(), 0, 0);
+				Integration::Instance.write(te, svout.q, svout.v());
 			return true;
 		}
 		return false;

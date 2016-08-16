@@ -3,7 +3,7 @@
 
 namespace OrbMod
 {
-	void visi(FILE*fvisi, double time, double t0, triple X, triple V) {
+	void visi(FILE*fvisi, double time, triple X, triple V) {
 
 		double RotIAU_m[3], RotNEU_m[3], R1[6], Rs[3], pri[3], sec[3], rot[3][3], twf[3][3], Xaxis[3], Yaxis[3], X3b[3];
 		double r, colat, lon, mX, alph, alph_kr, lt, alphS, alphS_kr;
@@ -75,7 +75,7 @@ namespace OrbMod
 			triple VoJ2k = trpos(time, Global::N_visi, i_frame, Vo);
 			Vot = Vo + Vtbto + V;
 
-			fprintf(fvisi, "%s %25.16e %25.16e %d %25.16e %25.16e %25.16e %25.16e %25.16e %25.16e %25.16e %25.16e %25.16e", utcstr, time, t0, visi, RotJ2k[0], RotJ2k[1], RotJ2k[2], colat*rad, Vot[0], Vot[1], Vot[2], RotJ2k.getAbs(), Vot.getAbs());
+			fprintf(fvisi, "%s %25.16e %d %25.16e %25.16e %25.16e %25.16e %25.16e %25.16e %25.16e %25.16e %25.16e", utcstr, time,visi, RotJ2k[0], RotJ2k[1], RotJ2k[2], colat*rad, Vot[0], Vot[1], Vot[2], RotJ2k.getAbs(), Vot.getAbs());
 		}
 		else
 		{
@@ -115,7 +115,7 @@ namespace OrbMod
 					if (aph < aph_kr) visi = false;
 				}
 			}
-			fprintf(fvisi, "%s %25.16e %25.16e ", utcstr, time, t0);
+			fprintf(fvisi, "%s %25.16e", utcstr, time);
 			fprintf(fvisi, "%d %25.16e %25.16e %25.16e 0.0 ", visi, Rot[0], Rot[1], Rot[2]);
 			fprintf(fvisi, " %25.16e %25.16e %25.16e %25.16e %25.16e", Vot[0], Vot[1], Vot[2], Rot.getAbs(), Vot.getAbs());
 		}
