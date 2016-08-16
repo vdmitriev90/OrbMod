@@ -43,6 +43,7 @@ namespace OrbModUI
                 }
 
             }
+            EndDraw();
 
             LineItem myCurve = pane.AddCurve("", points, Color.FromArgb(Config.Instance.col_Main), (SymbolType)Config.Instance.SymbolType);
             myCurve.Symbol.Size = Config.Instance.SymbolSize;

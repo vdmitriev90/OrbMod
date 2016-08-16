@@ -17,14 +17,6 @@ namespace OrbModUI
         protected string FName;
         protected double t0;
 
-        public int Size
-        {
-            get
-            {
-                return _EpochCounter+1;
-            }
-        }
-
         //
         public Plot()
         {
@@ -36,8 +28,7 @@ namespace OrbModUI
             this.zg = zg;
             FName = fname;
             _EpochCounter = 0;
-            this.zg.ZoomEvent += new ZedGraph.ZedGraphControl.ZoomEventHandler(this.zedGraphControl1_ZoomEvent);
-        }
+       }
 
         protected double dTdays(double et)
         {
@@ -62,6 +53,8 @@ namespace OrbModUI
                 data[i] = strs[i + 5];
 
             if (_EpochCounter == 0) t0 = et;
+            _EpochCounter++;
+
             return true;
         }
         //
@@ -72,9 +65,16 @@ namespace OrbModUI
         {
             zg.GraphPane.Title.Text = Path.GetFileNameWithoutExtension(this.FName);
             if (!Config.Instance.UseCalend)
+            {
                 zg.GraphPane.XAxis.Title.Text = "";
+                zg.GraphPane.XAxis.Type = AxisType.Date;
+            }
             else
+            {
                 zg.GraphPane.XAxis.Title.Text = "Time, days";
+                zg.GraphPane.XAxis.Type = AxisType.Linear;
+            }
+
         }
 
         //
@@ -97,14 +97,17 @@ namespace OrbModUI
             zg.Invalidate();
         }
         //
-        private void zedGraphControl1_ZoomEvent(ZedGraphControl sender, ZoomState oldState, ZoomState newState)
+        //
+        
+        //
+        public virtual void zgStateChange()
         {
-            SetEqualScale();
+
         }
         //
         protected static void SetEqualScale(ZedGraphControl zg)
         {
-            GraphPane  pane = zg.GraphPane;
+            GraphPane pane = zg.GraphPane;
             double Xmin = pane.XAxis.Scale.Min;
             double Xmax = pane.XAxis.Scale.Max;
 
@@ -138,10 +141,6 @@ namespace OrbModUI
             // Обновляем график
             zg.Invalidate();
         }
-        //
-        protected virtual void SetEqualScale()
-        {
 
-        }
     }
 }

@@ -306,9 +306,11 @@ namespace OrbModUI
                 xT += "km";
                 yT += "km";
             }
-               
+
             zg.GraphPane.YAxis.Title.Text = yT;
             zg.GraphPane.XAxis.Title.Text = xT;
+            zg.GraphPane.XAxis.Type = AxisType.Linear;
+            SetEqualScale(zg);
         }
         //
         protected override bool AddPoint(DateTime dt, double et, string[] data, ref PointPairList list)
@@ -328,7 +330,115 @@ namespace OrbModUI
             return true;
         }
         //
-        protected override void SetEqualScale()
+        public override void zgStateChange()
+        {
+            SetEqualScale(this.zg);
+        }
+
+    }
+    public class PlotXoZ : PlotSingle
+    {
+
+        public PlotXoZ(ZedGraphControl zg, string fname) : base(zg, fname)
+        {
+
+        }
+        //
+        public override void EndDraw()
+        {
+            base.EndDraw();
+            string yT = "X, ";
+            string xT = "Z, ";
+
+            if (Config.Instance.UseAU)
+            {
+                xT += "AU";
+                yT += "AU";
+            }
+            else
+            {
+                xT += "km";
+                yT += "km";
+            }
+
+            zg.GraphPane.YAxis.Title.Text = yT;
+            zg.GraphPane.XAxis.Title.Text = xT;
+            zg.GraphPane.XAxis.Type = AxisType.Linear;
+            SetEqualScale(zg);
+        }
+        //
+        protected override bool AddPoint(DateTime dt, double et, string[] data, ref PointPairList list)
+        {
+            double x, z;
+            double.TryParse(data[0], out x);
+            double.TryParse(data[2], out z);
+
+
+            if (Config.Instance.UseAU)
+            {
+                x /= Consts.AU;
+                z /= Consts.AU;
+            }
+            list.Add(x, z);
+
+            return true;
+        }
+        //
+        public override void zgStateChange()
+        {
+            SetEqualScale(this.zg);
+        }
+
+    }
+    public class PlotYoZ : PlotSingle
+    {
+
+        public PlotYoZ(ZedGraphControl zg, string fname) : base(zg, fname)
+        {
+
+        }
+        //
+        public override void EndDraw()
+        {
+            base.EndDraw();
+            string yT = "Y, ";
+            string xT = "Z, ";
+
+            if (Config.Instance.UseAU)
+            {
+                xT += "AU";
+                yT += "AU";
+            }
+            else
+            {
+                xT += "km";
+                yT += "km";
+            }
+
+            zg.GraphPane.YAxis.Title.Text = yT;
+            zg.GraphPane.XAxis.Title.Text = xT;
+            zg.GraphPane.XAxis.Type = AxisType.Linear;
+            SetEqualScale(zg);
+        }
+        //
+        protected override bool AddPoint(DateTime dt, double et, string[] data, ref PointPairList list)
+        {
+            double y, z;
+            double.TryParse(data[1], out y);
+            double.TryParse(data[2], out z);
+
+
+            if (Config.Instance.UseAU)
+            {
+                y /= Consts.AU;
+                z /= Consts.AU;
+            }
+            list.Add(y, z);
+
+            return true;
+        }
+        //
+        public override void zgStateChange()
         {
             SetEqualScale(this.zg);
         }

@@ -22,20 +22,7 @@ namespace OrbModUI
             {
                 plot = Factory(sourse, Type);
             }
-            private Plot Factory(PlotSourceData sourse, int Type)
-            {
-                switch(sourse)
-                {
-                    case PlotSourceData.Acc:
-                        return PlotAccFactory(sourse, Type);
-                    case PlotSourceData.Elts:
-                        return PlotEltsFactory(sourse, Type);
-                    case PlotSourceData.SV:
-                        return PlotSVFactory(sourse, Type);
-                    default:
-                        return null;
-                }
-            }
+
             //
             public override void PlotData()
             {
@@ -50,6 +37,28 @@ namespace OrbModUI
             public override void Autoscale()
             {
                 this.plot.Autoscale();
+            }
+            //
+            public override void zgStateChange()
+            {
+                this.plot.zgStateChange();
+            }
+
+            #region Object :Plot factory 
+            //
+            private Plot Factory(PlotSourceData sourse, int Type)
+            {
+                switch (sourse)
+                {
+                    case PlotSourceData.Acc:
+                        return PlotAccFactory(sourse, Type);
+                    case PlotSourceData.Elts:
+                        return PlotEltsFactory(sourse, Type);
+                    case PlotSourceData.SV:
+                        return PlotSVFactory(sourse, Type);
+                    default:
+                        return null;
+                }
             }
             //
             private Plot PlotAccFactory(PlotSourceData sourse, int Type)
@@ -70,6 +79,10 @@ namespace OrbModUI
                 {
                     case Elts_vs_T.SMA:
                         return new PlotSMA(this.zg, FName);
+                    case Elts_vs_T.PeriDistance:
+                        return new PlotW(this.zg, FName);
+                    case Elts_vs_T.ApoDistance:
+                        return new PlotApo(this.zg, FName);
                     case Elts_vs_T.Ecc:
                         return new PlotEcc(this.zg, FName);
                     case Elts_vs_T.Inc:
@@ -77,10 +90,9 @@ namespace OrbModUI
                     case Elts_vs_T.Node:
                         return new PlotNode(this.zg, FName);
                     case Elts_vs_T.W:
-                        return new PlotPeri(this.zg, FName);
-                    case Elts_vs_T.Mean:
+                        return new PlotW(this.zg, FName);
+                    case Elts_vs_T.MeanAnomaly:
                         return new PlotMeanAn(this.zg, FName);
-
                     default:
                         return null;
 
@@ -107,12 +119,17 @@ namespace OrbModUI
                     case SV_vs.Vel:
                         return new PlotVel(this.zg, FName);
                     case SV_vs.XoY:
-                        return new PlotR(this.zg, FName);
+                        return new PlotXoY(this.zg, FName);
+                    case SV_vs.XoZ:
+                        return new PlotXoZ(this.zg, FName);
+                    case SV_vs.YoZ:
+                        return new PlotYoZ(this.zg, FName);
                     default:
                         return null;
 
                 }
-            }
+            } 
+            #endregion
         }
     }
 }

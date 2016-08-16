@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,7 +18,7 @@ namespace OrbModUI
         public enum PlotSourceData {Acc = 0, SV, Elts, Visi,Inegrator,_3_bodyFixFrame ,NotDefined};
         public enum Acc_vs_T { Accelerations = 0 };
         public enum SV_vs { X = 0, Y , Z, Vx, Vy, Vz, R, Vel ,XoY, XoZ, YoZ };
-        public enum Elts_vs_T { SMA = 0,Ecc,Inc, Node,W,Mean, PeriDistance, ApoDistance };
+        public enum Elts_vs_T { SMA = 0,Ecc,Inc, Node,W,MeanAnomaly, PeriDistance, ApoDistance };
         public enum Integ_vs_T { StepSize = 0, ItNum };
         public enum _3body_vs_T { X = 0, Y , Z, Vx, Vy , Vz, R ,V };
         
@@ -114,6 +113,7 @@ namespace OrbModUI
                 MessageBox.Show("There are not graphs for given file.");
 
             string path = OutFiles[cmb_file.SelectedIndex];
+           // zedGraphControl1 = new ZedGraphControl();
             currGraph = new PlotSpec(zedGraphControl1, path);
 
         }
@@ -162,19 +162,10 @@ namespace OrbModUI
         }
         private void ChangeColor()
         {
-            if (rb_acc.Checked == true)
-            {
-                OrbMod_FormColorChange   FM = new OrbMod_FormColorChange();
-                FM.Owner = this;
-                FM.Show();
-            }
-            else
-            {
-                if (colorDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    Config.Instance.col_Main = colorDialog1.Color.ToArgb();
-                }
-            }
+
+            OrbMod_FormColorChange FM = new OrbMod_FormColorChange();
+            FM.Owner = this;
+            FM.Show();
         }
 
         private void OrbMod_FormGraph_FormClosing(object sender, FormClosingEventArgs e)
@@ -195,6 +186,22 @@ namespace OrbModUI
             Config.Instance.Tension = Convert.ToSingle(nud_Smooth.Value);
 
             Config.Instance.isSmoothGraph = (Config.Instance.Tension > 0);
+        }
+
+        private void zedGraphControl1_ZoomEvent(ZedGraphControl sender, ZoomState oldState, ZoomState newState)
+        {
+            currGraph.zgStateChange();
+        }
+
+        private void butt_AutoScale_Click(object sender, EventArgs e)
+        {
+            currGraph.Autoscale();
+            currGraph.zgStateChange();
+        }
+
+        private void butt_ColorScheme_Click(object sender, EventArgs e)
+        {
+            ChangeColor();
         }
     }
 

@@ -6,18 +6,51 @@ using static OrbModUI.OrbMod_FormGraph;
 
 namespace OrbModUI
 {
-        public class PlotSMA : PlotSingle
-        {
+    public class PlotSMA : PlotSingle
+    {
 
-            public PlotSMA(ZedGraphControl zg, string fname) :base(zg, fname)
-            {
-                
-            }
+        public PlotSMA(ZedGraphControl zg, string fname) : base(zg, fname) {      }
         //
         public override void EndDraw()
         {
             base.EndDraw();
             string yT = "Semimajor axis, ";
+            if (Config.Instance.UseAU)
+                yT += "AU";
+            else
+                yT += "km";
+            zg.GraphPane.YAxis.Title.Text = yT;
+        }
+        //
+        protected override bool AddPoint(DateTime dt, double et, string[] data, ref PointPairList list)
+        {
+            double peri, ecc;
+            double.TryParse(data[0], out peri);
+            double.TryParse(data[1], out ecc);
+            double Val = peri * ((1.0 + ecc) / (1.0 - ecc));
+
+            if (Config.Instance.UseAU)
+                Val /= Consts.AU;
+            if (Config.Instance.UseCalend)
+                list.Add(new XDate(dt), Val);
+            else
+                list.Add(dTdays(et), Val);
+            return true;
+
+        }
+    }
+    public class PlotApo : PlotSingle
+    {
+
+        public PlotApo(ZedGraphControl zg, string fname) : base(zg, fname)
+        {
+
+        }
+        //
+        public override void EndDraw()
+        {
+            base.EndDraw();
+            string yT = "apocentric distance, ";
             if (Config.Instance.UseAU)
                 yT += "AU";
             else
@@ -38,7 +71,35 @@ namespace OrbModUI
             return true;
 
         }
+    }
+    public class PlotPeri : PlotSingle
+    {
+        public PlotPeri(ZedGraphControl zg, string fname) : base(zg, fname) { }
+        //
+        public override void EndDraw()
+        {
+            base.EndDraw();
+            string yT = "pericentric distance, ";
+            if (Config.Instance.UseAU)
+                yT += "AU";
+            else
+                yT += "km";
+            zg.GraphPane.YAxis.Title.Text = yT;
+        }
+        //
+        protected override bool AddPoint(DateTime dt, double et, string[] data, ref PointPairList list)
+        {
+            double Val;
+            double.TryParse(data[0], out Val);
+            if (Config.Instance.UseAU)
+                Val /= Consts.AU;
+            if (Config.Instance.UseCalend)
+                list.Add(new XDate(dt), Val);
+            else
+                list.Add(dTdays(et), Val);
+            return true;
 
+        }
 
         //
 
@@ -130,10 +191,10 @@ namespace OrbModUI
 
         }
     }
-    public class PlotPeri : PlotSingle
+    public class PlotW : PlotSingle
     {
 
-        public PlotPeri(ZedGraphControl zg, string fname) : base(zg, fname)
+        public PlotW(ZedGraphControl zg, string fname) : base(zg, fname)
         {
 
         }

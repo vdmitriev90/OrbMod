@@ -72,12 +72,15 @@
             this.col_Earth = new System.Windows.Forms.Panel();
             this.col_Ven = new System.Windows.Forms.Panel();
             this.col_Merc = new System.Windows.Forms.Panel();
+            this.label19 = new System.Windows.Forms.Label();
+            this.col_Main = new System.Windows.Forms.Panel();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(384, 15);
+            this.label1.Location = new System.Drawing.Point(384, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 13);
             this.label1.TabIndex = 89;
@@ -86,7 +89,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(563, 81);
+            this.label22.Location = new System.Drawing.Point(563, 101);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(49, 13);
             this.label22.TabIndex = 88;
@@ -95,7 +98,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(563, 59);
+            this.label23.Location = new System.Drawing.Point(563, 79);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(29, 13);
             this.label23.TabIndex = 87;
@@ -104,23 +107,25 @@
             // col_SRP
             // 
             this.col_SRP.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.col_SRP.Location = new System.Drawing.Point(500, 56);
+            this.col_SRP.Location = new System.Drawing.Point(500, 76);
             this.col_SRP.Name = "col_SRP";
             this.col_SRP.Size = new System.Drawing.Size(56, 16);
             this.col_SRP.TabIndex = 86;
+            this.col_SRP.MouseClick += new System.Windows.Forms.MouseEventHandler(this.col_Main_MouseClick);
             // 
             // col_Atm
             // 
             this.col_Atm.BackColor = System.Drawing.Color.Purple;
-            this.col_Atm.Location = new System.Drawing.Point(500, 78);
+            this.col_Atm.Location = new System.Drawing.Point(500, 98);
             this.col_Atm.Name = "col_Atm";
             this.col_Atm.Size = new System.Drawing.Size(56, 16);
             this.col_Atm.TabIndex = 85;
+            this.col_Atm.MouseClick += new System.Windows.Forms.MouseEventHandler(this.col_Main_MouseClick);
             // 
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(562, 37);
+            this.label24.Location = new System.Drawing.Point(562, 57);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(61, 13);
             this.label24.TabIndex = 84;
@@ -129,7 +134,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(563, 15);
+            this.label25.Location = new System.Drawing.Point(563, 35);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(61, 13);
             this.label25.TabIndex = 83;
@@ -138,23 +143,25 @@
             // col_Rel2
             // 
             this.col_Rel2.BackColor = System.Drawing.Color.Olive;
-            this.col_Rel2.Location = new System.Drawing.Point(500, 34);
+            this.col_Rel2.Location = new System.Drawing.Point(500, 54);
             this.col_Rel2.Name = "col_Rel2";
             this.col_Rel2.Size = new System.Drawing.Size(56, 16);
             this.col_Rel2.TabIndex = 81;
+            this.col_Rel2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.col_Main_MouseClick);
             // 
             // col_Rel1
             // 
             this.col_Rel1.BackColor = System.Drawing.SystemColors.GrayText;
-            this.col_Rel1.Location = new System.Drawing.Point(500, 12);
+            this.col_Rel1.Location = new System.Drawing.Point(500, 32);
             this.col_Rel1.Name = "col_Rel1";
             this.col_Rel1.Size = new System.Drawing.Size(56, 16);
             this.col_Rel1.TabIndex = 82;
+            this.col_Rel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.col_Main_MouseClick);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(384, 103);
+            this.label14.Location = new System.Drawing.Point(384, 123);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(68, 13);
             this.label14.TabIndex = 80;
@@ -163,7 +170,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(383, 125);
+            this.label15.Location = new System.Drawing.Point(383, 145);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(93, 13);
             this.label15.TabIndex = 79;
@@ -172,7 +179,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(384, 81);
+            this.label16.Location = new System.Drawing.Point(384, 101);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(68, 13);
             this.label16.TabIndex = 78;
@@ -181,7 +188,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(384, 59);
+            this.label17.Location = new System.Drawing.Point(384, 79);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(68, 13);
             this.label17.TabIndex = 77;
@@ -190,39 +197,43 @@
             // col_add3
             // 
             this.col_add3.BackColor = System.Drawing.Color.Navy;
-            this.col_add3.Location = new System.Drawing.Point(321, 56);
+            this.col_add3.Location = new System.Drawing.Point(321, 76);
             this.col_add3.Name = "col_add3";
             this.col_add3.Size = new System.Drawing.Size(56, 16);
             this.col_add3.TabIndex = 74;
+            this.col_add3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.col_Main_MouseClick);
             // 
             // col_Add5_HT
             // 
             this.col_Add5_HT.BackColor = System.Drawing.Color.Firebrick;
-            this.col_Add5_HT.Location = new System.Drawing.Point(321, 122);
+            this.col_Add5_HT.Location = new System.Drawing.Point(321, 142);
             this.col_Add5_HT.Name = "col_Add5_HT";
             this.col_Add5_HT.Size = new System.Drawing.Size(56, 16);
             this.col_Add5_HT.TabIndex = 76;
+            this.col_Add5_HT.MouseClick += new System.Windows.Forms.MouseEventHandler(this.col_Main_MouseClick);
             // 
             // col_add5
             // 
             this.col_add5.BackColor = System.Drawing.Color.Black;
-            this.col_add5.Location = new System.Drawing.Point(321, 100);
+            this.col_add5.Location = new System.Drawing.Point(321, 120);
             this.col_add5.Name = "col_add5";
             this.col_add5.Size = new System.Drawing.Size(56, 16);
             this.col_add5.TabIndex = 75;
+            this.col_add5.MouseClick += new System.Windows.Forms.MouseEventHandler(this.col_Main_MouseClick);
             // 
             // col_add4
             // 
             this.col_add4.BackColor = System.Drawing.Color.Green;
-            this.col_add4.Location = new System.Drawing.Point(321, 78);
+            this.col_add4.Location = new System.Drawing.Point(321, 98);
             this.col_add4.Name = "col_add4";
             this.col_add4.Size = new System.Drawing.Size(56, 16);
             this.col_add4.TabIndex = 73;
+            this.col_add4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.col_Main_MouseClick);
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(384, 37);
+            this.label18.Location = new System.Drawing.Point(384, 57);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(68, 13);
             this.label18.TabIndex = 72;
@@ -231,23 +242,25 @@
             // col_add2
             // 
             this.col_add2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.col_add2.Location = new System.Drawing.Point(321, 34);
+            this.col_add2.Location = new System.Drawing.Point(321, 54);
             this.col_add2.Name = "col_add2";
             this.col_add2.Size = new System.Drawing.Size(56, 16);
             this.col_add2.TabIndex = 70;
+            this.col_add2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.col_Main_MouseClick);
             // 
             // col_add1
             // 
             this.col_add1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.col_add1.Location = new System.Drawing.Point(321, 12);
+            this.col_add1.Location = new System.Drawing.Point(321, 32);
             this.col_add1.Name = "col_add1";
             this.col_add1.Size = new System.Drawing.Size(56, 16);
             this.col_add1.TabIndex = 71;
+            this.col_add1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.col_Main_MouseClick);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(74, 40);
+            this.label8.Location = new System.Drawing.Point(74, 60);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(74, 13);
             this.label8.TabIndex = 69;
@@ -256,7 +269,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(217, 103);
+            this.label9.Location = new System.Drawing.Point(217, 123);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(98, 13);
             this.label9.TabIndex = 68;
@@ -265,7 +278,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(75, 59);
+            this.label10.Location = new System.Drawing.Point(75, 79);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(26, 13);
             this.label10.TabIndex = 67;
@@ -274,7 +287,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(216, 125);
+            this.label11.Location = new System.Drawing.Point(216, 145);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(81, 13);
             this.label11.TabIndex = 66;
@@ -283,7 +296,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(217, 81);
+            this.label12.Location = new System.Drawing.Point(217, 101);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(91, 13);
             this.label12.TabIndex = 65;
@@ -292,7 +305,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(217, 59);
+            this.label13.Location = new System.Drawing.Point(217, 79);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(88, 13);
             this.label13.TabIndex = 64;
@@ -301,55 +314,61 @@
             // col_Sat
             // 
             this.col_Sat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.col_Sat.Location = new System.Drawing.Point(154, 56);
+            this.col_Sat.Location = new System.Drawing.Point(154, 76);
             this.col_Sat.Name = "col_Sat";
             this.col_Sat.Size = new System.Drawing.Size(56, 16);
             this.col_Sat.TabIndex = 59;
+            this.col_Sat.MouseClick += new System.Windows.Forms.MouseEventHandler(this.col_Main_MouseClick);
             // 
             // col_CB_HT
             // 
             this.col_CB_HT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.col_CB_HT.Location = new System.Drawing.Point(12, 34);
+            this.col_CB_HT.Location = new System.Drawing.Point(12, 54);
             this.col_CB_HT.Name = "col_CB_HT";
             this.col_CB_HT.Size = new System.Drawing.Size(56, 16);
             this.col_CB_HT.TabIndex = 60;
+            this.col_CB_HT.MouseClick += new System.Windows.Forms.MouseEventHandler(this.col_Main_MouseClick);
             // 
             // col_Sun
             // 
             this.col_Sun.BackColor = System.Drawing.Color.Yellow;
-            this.col_Sun.Location = new System.Drawing.Point(12, 56);
+            this.col_Sun.Location = new System.Drawing.Point(12, 76);
             this.col_Sun.Name = "col_Sun";
             this.col_Sun.Size = new System.Drawing.Size(56, 16);
             this.col_Sun.TabIndex = 61;
+            this.col_Sun.MouseClick += new System.Windows.Forms.MouseEventHandler(this.col_Main_MouseClick);
             // 
             // col_Pluto
             // 
             this.col_Pluto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.col_Pluto.Location = new System.Drawing.Point(154, 122);
+            this.col_Pluto.Location = new System.Drawing.Point(154, 142);
             this.col_Pluto.Name = "col_Pluto";
             this.col_Pluto.Size = new System.Drawing.Size(56, 16);
             this.col_Pluto.TabIndex = 63;
+            this.col_Pluto.MouseClick += new System.Windows.Forms.MouseEventHandler(this.col_Main_MouseClick);
             // 
             // col_Nep
             // 
             this.col_Nep.BackColor = System.Drawing.Color.Olive;
-            this.col_Nep.Location = new System.Drawing.Point(154, 100);
+            this.col_Nep.Location = new System.Drawing.Point(154, 120);
             this.col_Nep.Name = "col_Nep";
             this.col_Nep.Size = new System.Drawing.Size(56, 16);
             this.col_Nep.TabIndex = 62;
+            this.col_Nep.MouseClick += new System.Windows.Forms.MouseEventHandler(this.col_Main_MouseClick);
             // 
             // col_Ur
             // 
             this.col_Ur.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.col_Ur.Location = new System.Drawing.Point(154, 78);
+            this.col_Ur.Location = new System.Drawing.Point(154, 98);
             this.col_Ur.Name = "col_Ur";
             this.col_Ur.Size = new System.Drawing.Size(56, 16);
             this.col_Ur.TabIndex = 58;
+            this.col_Ur.MouseClick += new System.Windows.Forms.MouseEventHandler(this.col_Main_MouseClick);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(217, 37);
+            this.label7.Location = new System.Drawing.Point(217, 57);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(88, 13);
             this.label7.TabIndex = 57;
@@ -358,7 +377,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(75, 103);
+            this.label6.Location = new System.Drawing.Point(75, 123);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(37, 13);
             this.label6.TabIndex = 56;
@@ -367,7 +386,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(217, 15);
+            this.label5.Location = new System.Drawing.Point(217, 35);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(80, 13);
             this.label5.TabIndex = 55;
@@ -376,7 +395,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(74, 125);
+            this.label4.Location = new System.Drawing.Point(74, 145);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(62, 13);
             this.label4.TabIndex = 54;
@@ -385,7 +404,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(75, 81);
+            this.label3.Location = new System.Drawing.Point(75, 101);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 13);
             this.label3.TabIndex = 53;
@@ -394,7 +413,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(75, 15);
+            this.label2.Location = new System.Drawing.Point(75, 35);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 13);
             this.label2.TabIndex = 52;
@@ -403,50 +422,74 @@
             // col_CB
             // 
             this.col_CB.BackColor = System.Drawing.Color.Red;
-            this.col_CB.Location = new System.Drawing.Point(12, 12);
+            this.col_CB.Location = new System.Drawing.Point(12, 32);
             this.col_CB.Name = "col_CB";
             this.col_CB.Size = new System.Drawing.Size(56, 16);
             this.col_CB.TabIndex = 47;
+            this.col_CB.MouseClick += new System.Windows.Forms.MouseEventHandler(this.col_Main_MouseClick);
             // 
             // col_Jup
             // 
             this.col_Jup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.col_Jup.Location = new System.Drawing.Point(154, 34);
+            this.col_Jup.Location = new System.Drawing.Point(154, 54);
             this.col_Jup.Name = "col_Jup";
             this.col_Jup.Size = new System.Drawing.Size(56, 16);
             this.col_Jup.TabIndex = 48;
+            this.col_Jup.MouseClick += new System.Windows.Forms.MouseEventHandler(this.col_Main_MouseClick);
             // 
             // col_Mars
             // 
             this.col_Mars.BackColor = System.Drawing.Color.Fuchsia;
-            this.col_Mars.Location = new System.Drawing.Point(154, 12);
+            this.col_Mars.Location = new System.Drawing.Point(154, 32);
             this.col_Mars.Name = "col_Mars";
             this.col_Mars.Size = new System.Drawing.Size(56, 16);
             this.col_Mars.TabIndex = 50;
+            this.col_Mars.MouseClick += new System.Windows.Forms.MouseEventHandler(this.col_Main_MouseClick);
             // 
             // col_Earth
             // 
             this.col_Earth.BackColor = System.Drawing.Color.Blue;
-            this.col_Earth.Location = new System.Drawing.Point(12, 122);
+            this.col_Earth.Location = new System.Drawing.Point(12, 142);
             this.col_Earth.Name = "col_Earth";
             this.col_Earth.Size = new System.Drawing.Size(56, 16);
             this.col_Earth.TabIndex = 51;
+            this.col_Earth.MouseClick += new System.Windows.Forms.MouseEventHandler(this.col_Main_MouseClick);
             // 
             // col_Ven
             // 
             this.col_Ven.BackColor = System.Drawing.Color.Aqua;
-            this.col_Ven.Location = new System.Drawing.Point(12, 100);
+            this.col_Ven.Location = new System.Drawing.Point(12, 120);
             this.col_Ven.Name = "col_Ven";
             this.col_Ven.Size = new System.Drawing.Size(56, 16);
             this.col_Ven.TabIndex = 49;
+            this.col_Ven.MouseClick += new System.Windows.Forms.MouseEventHandler(this.col_Main_MouseClick);
             // 
             // col_Merc
             // 
             this.col_Merc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.col_Merc.Location = new System.Drawing.Point(12, 78);
+            this.col_Merc.Location = new System.Drawing.Point(12, 98);
             this.col_Merc.Name = "col_Merc";
             this.col_Merc.Size = new System.Drawing.Size(56, 16);
             this.col_Merc.TabIndex = 46;
+            this.col_Merc.MouseClick += new System.Windows.Forms.MouseEventHandler(this.col_Main_MouseClick);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(75, 13);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(56, 13);
+            this.label19.TabIndex = 91;
+            this.label19.Text = "Main color";
+            // 
+            // col_Main
+            // 
+            this.col_Main.BackColor = System.Drawing.Color.Red;
+            this.col_Main.Location = new System.Drawing.Point(12, 10);
+            this.col_Main.Name = "col_Main";
+            this.col_Main.Size = new System.Drawing.Size(56, 16);
+            this.col_Main.TabIndex = 90;
+            this.col_Main.MouseClick += new System.Windows.Forms.MouseEventHandler(this.col_Main_MouseClick);
             // 
             // OrbMod_FormColorChange
             // 
@@ -454,6 +497,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(653, 164);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.col_Main);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.label23);
@@ -502,6 +547,8 @@
             this.MinimumSize = new System.Drawing.Size(669, 202);
             this.Name = "OrbMod_FormColorChange";
             this.Text = "Color change";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OrbMod_FormColorChange_FormClosing);
+            this.Load += new System.EventHandler(this.OrbMod_FormColorChange_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -553,5 +600,8 @@
         public System.Windows.Forms.Panel col_Earth;
         public System.Windows.Forms.Panel col_Ven;
         public System.Windows.Forms.Panel col_Merc;
+        private System.Windows.Forms.Label label19;
+        public System.Windows.Forms.Panel col_Main;
+        private System.Windows.Forms.ColorDialog colorDialog1;
     }
 }
