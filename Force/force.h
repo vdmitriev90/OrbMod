@@ -9,6 +9,7 @@ namespace OrbMod
 	{
 	protected:
 		static double mu;
+		static FILE *facc;
 
 		triple X, V, acc;
 		double time;
@@ -19,7 +20,8 @@ namespace OrbMod
 		triple L_T();
 
 	public:
-
+		static void AccFileOpen();
+		static void AccFileClose();
 		static void setMu();
 		static double getMu() { return mu; };
 		static triple force_SODE(const double Ti, const triple &Xi, const triple &Vi);

@@ -7,6 +7,7 @@ using namespace std;
 namespace OrbMod
 {
 	double Force::mu;
+	FILE * Force::facc;
 	//
 	Force::Force() {};
 	//
@@ -19,9 +20,18 @@ namespace OrbMod
 	//
 	Force::~Force() {};
 	//
+	void Force::AccFileOpen()
+	{
+		facc = fopen("acc.out","w");
+
+	}
+	void Force::AccFileClose()
+	{
+		fclose(facc);
+	}
 	void Force::setMu()
 	{
-		if (Global::b_Cunn == true) mu = Global::GravField_CB.getGM();
+		if (Global::b_Cunn) mu = Global::GravField_CB.getGM();
 		else mu = ID2GM(Global::IDC);
 	};
 	//
@@ -209,7 +219,6 @@ namespace OrbMod
 
 		SRP EFG;
 		atm HIJ;
-		FILE*facc = fopen("acc.out", "a");
 
 		SpiceChar        utcstr[100];
 		//et2utc_c ( this->time,  "C", 10, 80, utcstr );
@@ -325,7 +334,6 @@ namespace OrbMod
 		if (Global::b_rel_LT == true) { accp = L_T(); fprintf(facc, "%30.16e ", accp.getAbs()); }
 		else { fprintf(facc, "%e ", 0.0); }
 		fprintf(facc, "\n");
-		fclose(facc);
 
 	}
 }

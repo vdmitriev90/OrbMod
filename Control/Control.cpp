@@ -17,7 +17,6 @@ namespace OrbMod
 	{
 		return Obs_->LoadObs(path, OType);
 	}
-	
 	//
 	 void Control ::LogReport(std::string path)
 	{
@@ -57,7 +56,6 @@ namespace OrbMod
 	 {
 		 if (!Misc::parceTime(config::s_t0, Global::Tscale, Global::t0))return false;
 		 if (!Misc::parceTime(config::s_te, Global::Tscale, Global::te))return false;
-		
 		 return true;
 
 	 }
@@ -65,17 +63,28 @@ namespace OrbMod
 	 void Control::Process(std::string path)
 	 {
 		 config::LoadCFG(path);
-		 setTime();
-		 Control::Inst.loadObseravations(Control::Inst.Obs_->path, Global::ObsT);
+		 InitProcess();
 
 		 StartProcess();
+	 }
+	 bool Control::InitProcess()
+	 {
+		 if (!setTime())return false;
+		 Force::AccFileOpen();
+		// Force::setMu(Global::mu);
+		 Global::GravField_CB.LoadGravityModel(Global::GravField_CB.FileModel.c_str());
+		 
+		 Global::GravField_add5.LoadGravityModel(Global::GravField_add5.FileModel.c_str());
+
+
+	 }
+	 void Control::FinalizeProcess()
+	 {
+		 Force::AccFileClose();
 	 }
 	//
 	 void Control ::StartProcess()
 	{
-		//Erase the file with accelerations
-		FILE*facc = fopen("acc.out", "w");
-		fclose(facc);
 
 		Force::setMu();
 
@@ -105,6 +114,8 @@ namespace OrbMod
 	 {
 		 Inst.Obs_->f_res.open("residuals.out");
 		 OrbFit::fo.open("Orbfit.out");
+		 Control::Inst.loadObseravations(Control::Inst.Obs_->path, Global::ObsT);
+
 		 double sigma;
 
 		 switch (Global::fitMode)

@@ -45,7 +45,7 @@ namespace OrbMod
 		double getR0() { return(R0); }
 
 		triple getacc(SpiceDouble time, triple X);
-		void LoadGravityModel(const char str[50]);
+		void LoadGravityModel(string str);
 
 		triple getAcceleration(int, long double, triple);
 	protected:

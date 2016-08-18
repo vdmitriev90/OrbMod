@@ -25,6 +25,8 @@ namespace OrbMod
 	private:
 		
 		static bool setTime();
+		static bool InitProcess();
+		static void FinalizeProcess();
 		static void StartProcess();
 		static void LogReport(std::string path);
 
