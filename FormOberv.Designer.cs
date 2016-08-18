@@ -63,7 +63,7 @@
             // 
             this.cb_IsShowLegend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cb_IsShowLegend.AutoSize = true;
-            this.cb_IsShowLegend.Location = new System.Drawing.Point(624, 426);
+            this.cb_IsShowLegend.Location = new System.Drawing.Point(590, 426);
             this.cb_IsShowLegend.Name = "cb_IsShowLegend";
             this.cb_IsShowLegend.Size = new System.Drawing.Size(94, 17);
             this.cb_IsShowLegend.TabIndex = 20;
@@ -94,8 +94,8 @@
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
@@ -108,7 +108,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dgv_1);
-            this.splitContainer1.Size = new System.Drawing.Size(802, 417);
+            this.splitContainer1.Size = new System.Drawing.Size(768, 417);
             this.splitContainer1.SplitterDistance = 278;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 16;
@@ -126,7 +126,7 @@
             this.zg_ObsView.ScrollMinX = 0D;
             this.zg_ObsView.ScrollMinY = 0D;
             this.zg_ObsView.ScrollMinY2 = 0D;
-            this.zg_ObsView.Size = new System.Drawing.Size(802, 278);
+            this.zg_ObsView.Size = new System.Drawing.Size(768, 278);
             this.zg_ObsView.TabIndex = 0;
             this.zg_ObsView.ZoomEvent += new ZedGraph.ZedGraphControl.ZoomEventHandler(this.zg_ObsView_ZoomEvent);
             // 
@@ -145,7 +145,7 @@
             this.dgv_1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_1.Location = new System.Drawing.Point(0, 0);
             this.dgv_1.Name = "dgv_1";
-            this.dgv_1.Size = new System.Drawing.Size(802, 136);
+            this.dgv_1.Size = new System.Drawing.Size(768, 136);
             this.dgv_1.TabIndex = 6;
             // 
             // col_01
@@ -258,7 +258,7 @@
             // bt_apply
             // 
             this.bt_apply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bt_apply.Location = new System.Drawing.Point(724, 423);
+            this.bt_apply.Location = new System.Drawing.Point(690, 423);
             this.bt_apply.Name = "bt_apply";
             this.bt_apply.Size = new System.Drawing.Size(71, 23);
             this.bt_apply.TabIndex = 12;
@@ -270,7 +270,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(807, 454);
+            this.ClientSize = new System.Drawing.Size(773, 454);
             this.Controls.Add(this.cb_IsShowLegend);
             this.Controls.Add(this.lb_numobs);
             this.Controls.Add(this.label2);

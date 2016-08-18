@@ -41,7 +41,6 @@ namespace OrbModUI
 
                     AddPoint(dt, et, data, ref points);
                 }
-
             }
             EndDraw();
 

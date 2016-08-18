@@ -2610,6 +2610,9 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(742, 430);
+            this.MinimumSize = new System.Drawing.Size(742, 430);
             this.Name = "OrbMod_FormMain";
             this.Text = "OrbMod_FmMain";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OrbMod_FormMain_FormClosing);

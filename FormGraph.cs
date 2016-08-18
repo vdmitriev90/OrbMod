@@ -203,6 +203,11 @@ namespace OrbModUI
         {
             ChangeColor();
         }
+
+        private void zedGraphControl1_SizeChanged(object sender, EventArgs e)
+        {
+            currGraph.zgStateChange();
+        }
     }
 
 }

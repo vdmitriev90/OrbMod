@@ -543,6 +543,7 @@
             this.Controls.Add(this.col_Earth);
             this.Controls.Add(this.col_Ven);
             this.Controls.Add(this.col_Merc);
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(669, 202);
             this.MinimumSize = new System.Drawing.Size(669, 202);
             this.Name = "OrbMod_FormColorChange";

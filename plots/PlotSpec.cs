@@ -29,6 +29,11 @@ namespace OrbModUI
                 this.plot.PlotData();
             }
             //
+            public override void EndDraw_()
+            {
+                this.plot.EndDraw_();
+            }
+            //
             public override void EndDraw()
             {
                 this.plot.EndDraw();

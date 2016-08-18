@@ -13,9 +13,9 @@ namespace OrbModUI
 
         }
         //
-        public override void EndDraw()
+       public override void EndDraw_()
         {
-            base.EndDraw();
+            
             string yT = "X, ";
             if (Config.Instance.UseAU)
                 yT += "AU";
@@ -47,9 +47,9 @@ namespace OrbModUI
 
         }
         //
-        public override void EndDraw()
+       public override void EndDraw_()
         {
-            base.EndDraw();
+            
             string yT = "Y, ";
             if (Config.Instance.UseAU)
                 yT += "AU";
@@ -80,9 +80,9 @@ namespace OrbModUI
 
         }
         //
-        public override void EndDraw()
+       public override void EndDraw_()
         {
-            base.EndDraw();
+            
             string yT = "Z, ";
             if (Config.Instance.UseAU)
                 yT += "AU";
@@ -113,9 +113,9 @@ namespace OrbModUI
 
         }
         //
-        public override void EndDraw()
+       public override void EndDraw_()
         {
-            base.EndDraw();
+            
             string yT = "Vx, ";
             if (Config.Instance.UseAU)
                 yT += "AU/day";
@@ -146,9 +146,9 @@ namespace OrbModUI
 
         }
         //
-        public override void EndDraw()
+       public override void EndDraw_()
         {
-            base.EndDraw();
+            
             string yT = "Vy, ";
             if (Config.Instance.UseAU)
                 yT += "AU/day";
@@ -179,9 +179,9 @@ namespace OrbModUI
 
         }
         //
-        public override void EndDraw()
+       public override void EndDraw_()
         {
-            base.EndDraw();
+            
             string yT = "Vz, ";
             if (Config.Instance.UseAU)
                 yT += "AU/day";
@@ -212,9 +212,9 @@ namespace OrbModUI
 
         }
         //
-        public override void EndDraw()
+       public override void EndDraw_()
         {
-            base.EndDraw();
+            
             string yT = "velocity, ";
             if (Config.Instance.UseAU)
                 yT += "AU/day";
@@ -232,7 +232,7 @@ namespace OrbModUI
             double.TryParse(data[5], out z);
 
             triple vel = new triple(x,y,z);
-            double Val = vel.Abs();
+            double Val = vel.Abs;
             if (Config.Instance.UseAU)
                 Val /= Consts.AUpDay;
             if (Config.Instance.UseCalend)
@@ -251,9 +251,9 @@ namespace OrbModUI
 
         }
         //
-        public override void EndDraw()
+       public override void EndDraw_()
         {
-            base.EndDraw();
+            
             string yT = "r, ";
             if (Config.Instance.UseAU)
                 yT += "AU";
@@ -270,7 +270,7 @@ namespace OrbModUI
             double.TryParse(data[2], out z);
 
             triple R = new triple(x, y, z);
-            double Val = R.Abs();
+            double Val = R.Abs;
 
             if (Config.Instance.UseAU)
                 Val /= Consts.AU;
@@ -290,9 +290,9 @@ namespace OrbModUI
 
         }
         //
-        public override void EndDraw()
+       public override void EndDraw_()
         {
-            base.EndDraw();
+            
             string yT = "Y, ";
             string xT = "X, ";
 
@@ -310,7 +310,7 @@ namespace OrbModUI
             zg.GraphPane.YAxis.Title.Text = yT;
             zg.GraphPane.XAxis.Title.Text = xT;
             zg.GraphPane.XAxis.Type = AxisType.Linear;
-            SetEqualScale(zg);
+
         }
         //
         protected override bool AddPoint(DateTime dt, double et, string[] data, ref PointPairList list)
@@ -339,14 +339,11 @@ namespace OrbModUI
     public class PlotXoZ : PlotSingle
     {
 
-        public PlotXoZ(ZedGraphControl zg, string fname) : base(zg, fname)
-        {
-
-        }
+        public PlotXoZ(ZedGraphControl zg, string fname) : base(zg, fname) { }
         //
-        public override void EndDraw()
+       public override void EndDraw_()
         {
-            base.EndDraw();
+            
             string yT = "X, ";
             string xT = "Z, ";
 
@@ -364,7 +361,7 @@ namespace OrbModUI
             zg.GraphPane.YAxis.Title.Text = yT;
             zg.GraphPane.XAxis.Title.Text = xT;
             zg.GraphPane.XAxis.Type = AxisType.Linear;
-            SetEqualScale(zg);
+
         }
         //
         protected override bool AddPoint(DateTime dt, double et, string[] data, ref PointPairList list)
@@ -398,9 +395,9 @@ namespace OrbModUI
 
         }
         //
-        public override void EndDraw()
+       public override void EndDraw_()
         {
-            base.EndDraw();
+            
             string yT = "Y, ";
             string xT = "Z, ";
 
@@ -418,7 +415,7 @@ namespace OrbModUI
             zg.GraphPane.YAxis.Title.Text = yT;
             zg.GraphPane.XAxis.Title.Text = xT;
             zg.GraphPane.XAxis.Type = AxisType.Linear;
-            SetEqualScale(zg);
+
         }
         //
         protected override bool AddPoint(DateTime dt, double et, string[] data, ref PointPairList list)

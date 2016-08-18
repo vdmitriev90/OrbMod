@@ -9,11 +9,11 @@ namespace OrbModUI
     public class PlotSMA : PlotSingle
     {
 
-        public PlotSMA(ZedGraphControl zg, string fname) : base(zg, fname) {      }
+        public PlotSMA(ZedGraphControl zg, string fname) : base(zg, fname) { }
         //
-        public override void EndDraw()
+        public override void EndDraw_()
         {
-            base.EndDraw();
+
             string yT = "Semimajor axis, ";
             if (Config.Instance.UseAU)
                 yT += "AU";
@@ -39,6 +39,8 @@ namespace OrbModUI
 
         }
     }
+
+    
     public class PlotApo : PlotSingle
     {
 
@@ -47,9 +49,9 @@ namespace OrbModUI
 
         }
         //
-        public override void EndDraw()
+        public override void EndDraw_()
         {
-            base.EndDraw();
+         
             string yT = "apocentric distance, ";
             if (Config.Instance.UseAU)
                 yT += "AU";
@@ -76,9 +78,9 @@ namespace OrbModUI
     {
         public PlotPeri(ZedGraphControl zg, string fname) : base(zg, fname) { }
         //
-        public override void EndDraw()
+        public override void EndDraw_()
         {
-            base.EndDraw();
+         
             string yT = "pericentric distance, ";
             if (Config.Instance.UseAU)
                 yT += "AU";
@@ -112,9 +114,8 @@ namespace OrbModUI
 
         }
         //
-        public override void EndDraw()
+        public override void EndDraw_()
         {
-            base.EndDraw();
             string yT = "eccentrycity";
 
             zg.GraphPane.YAxis.Title.Text = yT;
@@ -141,9 +142,9 @@ namespace OrbModUI
 
         }
         //
-        public override void EndDraw()
+        public override void EndDraw_()
         {
-            base.EndDraw();
+         
             string yT = "inclination, deg";
 
             zg.GraphPane.YAxis.Title.Text = yT;
@@ -170,9 +171,9 @@ namespace OrbModUI
 
         }
         //
-        public override void EndDraw()
+        public override void EndDraw_()
         {
-            base.EndDraw();
+         
             string yT = "node, deg";
 
             zg.GraphPane.YAxis.Title.Text = yT;
@@ -199,9 +200,9 @@ namespace OrbModUI
 
         }
         //
-        public override void EndDraw()
+        public override void EndDraw_()
         {
-            base.EndDraw();
+         
             string yT = "argument of periapsis, deg";
 
             zg.GraphPane.YAxis.Title.Text = yT;
@@ -228,9 +229,9 @@ namespace OrbModUI
 
         }
         //
-        public override void EndDraw()
+        public override void EndDraw_()
         {
-            base.EndDraw();
+         
             string yT = "mean anomaly, deg";
 
             zg.GraphPane.YAxis.Title.Text = yT;

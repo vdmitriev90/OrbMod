@@ -49,7 +49,7 @@
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox1.ForeColor = System.Drawing.Color.Blue;
-            this.textBox1.Location = new System.Drawing.Point(48, 49);
+            this.textBox1.Location = new System.Drawing.Point(48, 55);
             this.textBox1.MaximumSize = new System.Drawing.Size(142, 20);
             this.textBox1.MinimumSize = new System.Drawing.Size(142, 20);
             this.textBox1.Multiline = true;
@@ -61,7 +61,7 @@
             // 
             // bt_close
             // 
-            this.bt_close.Location = new System.Drawing.Point(68, 72);
+            this.bt_close.Location = new System.Drawing.Point(68, 78);
             this.bt_close.Name = "bt_close";
             this.bt_close.Size = new System.Drawing.Size(93, 23);
             this.bt_close.TabIndex = 3;
@@ -73,10 +73,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(260, 97);
+            this.ClientSize = new System.Drawing.Size(260, 106);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.bt_close);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(276, 144);
+            this.MinimumSize = new System.Drawing.Size(276, 144);
             this.Name = "OrbMod_FormAbout";
             this.Text = "About";
             this.Load += new System.EventHandler(this.OrbMod_FormAbout_Load);
