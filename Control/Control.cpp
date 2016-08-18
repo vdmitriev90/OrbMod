@@ -66,17 +66,17 @@ namespace OrbMod
 		 InitProcess();
 
 		 StartProcess();
+		 FinalizeProcess();
 	 }
 	 bool Control::InitProcess()
 	 {
 		 if (!setTime())return false;
 		 Force::AccFileOpen();
 		// Force::setMu(Global::mu);
+		 if(Global::b_Cunn)
 		 Global::GravField_CB.LoadGravityModel(Global::GravField_CB.FileModel.c_str());
-		 
+		 if (Global::b_add5_cun_on)
 		 Global::GravField_add5.LoadGravityModel(Global::GravField_add5.FileModel.c_str());
-
-
 	 }
 	 void Control::FinalizeProcess()
 	 {
@@ -85,7 +85,6 @@ namespace OrbMod
 	//
 	 void Control ::StartProcess()
 	{
-
 		Force::setMu();
 
 		Global::N_rp = 0;

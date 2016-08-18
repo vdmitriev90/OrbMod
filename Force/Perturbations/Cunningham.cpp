@@ -76,11 +76,13 @@ namespace OrbMod
 			if (n > this->Ngf) break;
 
 			//denormalization
-			coef = enom(m) *(2.0*n + 1)*factorial(n - m) / factorial(n + m);
-			coef = sqrt(coef);
-			C *= coef;
-			S *= coef;
-
+			if (Normalize)
+			{
+				coef = enom(m) *(2.0*n + 1)*factorial(n - m) / factorial(n + m);
+				coef = sqrt(coef);
+				C *= coef;
+				S *= coef;
+			}
 			CSnm.setNum(C, -S);
 
 			this->GravModel[n][m] = CSnm;

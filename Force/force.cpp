@@ -223,65 +223,65 @@ namespace OrbMod
 		SpiceChar        utcstr[100];
 		//et2utc_c ( this->time,  "C", 10, 80, utcstr );
 		timout_c(time, pictur, 50, utcstr);
-		fprintf(facc, "%s ", utcstr);
-		fprintf(facc, "%30.16e ", time);
+		fprintf(facc, "%s", utcstr);
+		fprintf(facc, et_F, time);
 		triple acccb = force_cb();
-		fprintf(facc, "%30.16e ", acccb.getAbs());
+		fprintf(facc, et_F, acccb.getAbs());
 
 		//Central body + harmonic coefficients
 		if (Global::b_Cunn == true)
 		{
 			triple accCunn = Global::GravField_CB.getAcceleration(Global::IDC, time, X);
-			fprintf(facc, " %30.16e ", accCunn.getAbs());
+			fprintf(facc, et_F, accCunn.getAbs());
 		}
-		else fprintf(facc, "%e ", 0.0);
+		else fprintf(facc, " 0.");
 
 		//Sun
-		if (Global::b_10 == true) { accp = planet(10); fprintf(facc, "%30.16e ", accp.getAbs()); }
-		else { fprintf(facc, "0. "); }
+		if (Global::b_10 == true) { accp = planet(10); fprintf(facc, et_F, accp.getAbs()); }
+		else { fprintf(facc, " 0."); }
 
 		//Mercury 
-		if (Global::b_1 == true) { accp = planet(1); fprintf(facc, "%30.16e ", accp.getAbs()); }
-		else { fprintf(facc, "0. "); }
+		if (Global::b_1 == true) { accp = planet(1); fprintf(facc, et_F, accp.getAbs()); }
+		else { fprintf(facc, " 0."); }
 
 		//Venus
-		if (Global::b_2 == true) { accp = planet(2); fprintf(facc, "%30.16e ", accp.getAbs()); }
-		else { fprintf(facc, "0. "); }
+		if (Global::b_2 == true) { accp = planet(2); fprintf(facc, et_F, accp.getAbs()); }
+		else { fprintf(facc, " 0."); }
 
 		//Earth+Moon
-		if (Global::b_3 == true) { accp = planet(3); fprintf(facc, "%30.16e ", accp.getAbs()); }
-		else { fprintf(facc, "0. "); }
+		if (Global::b_3 == true) { accp = planet(3); fprintf(facc, et_F, accp.getAbs()); }
+		else { fprintf(facc, " 0."); }
 		//Mars
-		if (Global::b_4 == true) { accp = planet(4); fprintf(facc, "%30.16e ", accp.getAbs()); }
-		else { fprintf(facc, "0. "); }
+		if (Global::b_4 == true) { accp = planet(4); fprintf(facc, et_F, accp.getAbs()); }
+		else { fprintf(facc, " 0."); }
 		//Jupiter
-		if (Global::b_5 == true) { accp = planet(5); fprintf(facc, "%30.16e ", accp.getAbs()); }
-		else { fprintf(facc, "0. "); }
+		if (Global::b_5 == true) { accp = planet(5); fprintf(facc, et_F, accp.getAbs()); }
+		else { fprintf(facc, " 0."); }
 		//Saturn
-		if (Global::b_6 == true) { accp = planet(6); fprintf(facc, "%30.16e ", accp.getAbs()); }
-		else { fprintf(facc, "0. "); }
+		if (Global::b_6 == true) { accp = planet(6); fprintf(facc, et_F, accp.getAbs()); }
+		else { fprintf(facc, " 0."); }
 		//Uranus
-		if (Global::b_7 == true) { accp = planet(7); fprintf(facc, "%30.16e ", accp.getAbs()); }
-		else { fprintf(facc, "0. "); }
+		if (Global::b_7 == true) { accp = planet(7); fprintf(facc, et_F, accp.getAbs()); }
+		else { fprintf(facc, " 0."); }
 		//Neptune
-		if (Global::b_8 == true) { accp = planet(8); fprintf(facc, "%30.16e ", accp.getAbs()); }
-		else { fprintf(facc, "0. "); }
+		if (Global::b_8 == true) { accp = planet(8); fprintf(facc, et_F, accp.getAbs()); }
+		else { fprintf(facc, " 0."); }
 		//Pluto
-		if (Global::b_9 == true) { accp = planet(9); fprintf(facc, "%30.16e ", accp.getAbs()); }
-		else { fprintf(facc, "0. "); }
+		if (Global::b_9 == true) { accp = planet(9); fprintf(facc, et_F, accp.getAbs()); }
+		else { fprintf(facc, " 0."); }
 
 		//add1
-		if (Global::b_add1 == true) { accp = planet(Global::ID1); fprintf(facc, "%30.16e ", accp.getAbs()); }
-		else { fprintf(facc, "0. "); }
+		if (Global::b_add1 == true) { accp = planet(Global::ID1); fprintf(facc, et_F, accp.getAbs()); }
+		else { fprintf(facc, " 0."); }
 		//add2
-		if (Global::b_add2 == true) { accp = planet(Global::ID2); fprintf(facc, "%30.16e ", accp.getAbs()); }
-		else { fprintf(facc, "0. "); }
+		if (Global::b_add2 == true) { accp = planet(Global::ID2); fprintf(facc, et_F, accp.getAbs()); }
+		else { fprintf(facc, " 0."); }
 		//add3
-		if (Global::b_add3 == true) { accp = planet(Global::ID3); fprintf(facc, "%30.16e ", accp.getAbs()); }
-		else { fprintf(facc, "0. "); }
+		if (Global::b_add3 == true) { accp = planet(Global::ID3); fprintf(facc, et_F, accp.getAbs()); }
+		else { fprintf(facc, " 0."); }
 		//add4
-		if (Global::b_add4 == true) { accp = planet(Global::ID4); fprintf(facc, "%30.16e ", accp.getAbs()); }
-		else { fprintf(facc, "0. "); }
+		if (Global::b_add4 == true) { accp = planet(Global::ID4); fprintf(facc, et_F, accp.getAbs()); }
+		else { fprintf(facc, " 0."); }
 
 		if (Global::b_add5 == true) {
 			// add5' non-central part
@@ -297,11 +297,11 @@ namespace OrbMod
 
 				accp = planet(Global::ID5);
 
-				fprintf(facc, " %30.16e  %30.16e ", accp.getAbs(), (fs - fcb).getAbs());
+				fprintf(facc, " %24.16e  %24.16e ", accp.getAbs(), (fs - fcb).getAbs());
 			}
 			else {
 				accp = planet(Global::ID5);
-				fprintf(facc, " %30.16e  0. ", accp.getAbs());
+				fprintf(facc, " %13.5e  0. ", accp.getAbs());
 			}
 		}
 		else { fprintf(facc, "0. 0. "); }
@@ -311,9 +311,9 @@ namespace OrbMod
 			EFG.setpos(X);
 			acc_SRP = EFG.getAcceleration(time);
 
-			fprintf(facc, "%30.16e ", acc_SRP.getAbs());
+			fprintf(facc, et_F, acc_SRP.getAbs());
 		}
-		else { fprintf(facc, "0. "); }
+		else { fprintf(facc, " 0."); }
 
 		//atmospheric drag
 		if (Global::b_atm == true) {
@@ -321,19 +321,18 @@ namespace OrbMod
 			HIJ.setVel(V);
 			accA = HIJ.getAcc(time);
 
-			fprintf(facc, "%30.16e ", accA.getAbs());
+			fprintf(facc, et_F, accA.getAbs());
 		}
-		else { fprintf(facc, "0. "); }
+		else { fprintf(facc, " 0."); }
 
 
 		//General relativity effects (Swartsshild metric,PPN=1)
-		if (Global::b_rel == true) { accp = relativ();  fprintf(facc, "%30.16e ", accp.getAbs()); }
-		else { fprintf(facc, "%e ", 0.0); }
+		if (Global::b_rel == true) { accp = relativ();  fprintf(facc, et_F, accp.getAbs()); }
+		else { fprintf(facc, " 0."); }
 
 		//General relativity effects (L-T precession, PPN=1)
-		if (Global::b_rel_LT == true) { accp = L_T(); fprintf(facc, "%30.16e ", accp.getAbs()); }
-		else { fprintf(facc, "%e ", 0.0); }
+		if (Global::b_rel_LT == true) { accp = L_T(); fprintf(facc, et_F, accp.getAbs()); }
+		else { fprintf(facc, " 0."); }
 		fprintf(facc, "\n");
-
 	}
 }

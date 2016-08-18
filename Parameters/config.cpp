@@ -810,7 +810,7 @@ namespace OrbMod
 		for (int i = 0; i < 5; i++)
 			elts[i] = stod(IC_[i]);
 
-			mu = ID2GM(Global::IDC);
+			mu = ID2GM(IDC);
 
 		if (ICtype == TypeOfIC::OrbitalElements)
 		{

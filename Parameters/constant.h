@@ -35,9 +35,9 @@ namespace Consts
 	enum FrameOfIC { Equator_and_Equinox_J2000 = 0, Ecliptic_and_Equinox_J2000 };
 	const char* const FrameOfIC_strs[] = { "Equator and Equinox_J2000.0", "Ecliptic and Equinox J2000.0"
 	};
-
-	//масштабный множитель
-	 const double	AU = 149597870.693;;
+	//
+	const char * const et_F = " %24.16e";
+	 const double	AU = 149597870.693;
 	 const  double	SoL = 299792.458;
 	//пи, радиан
 	const double	pi = 3.1415926535897932384626433832795;
