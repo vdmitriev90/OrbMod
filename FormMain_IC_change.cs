@@ -45,12 +45,14 @@ namespace OrbModUI
                 IC_[3] = tb_IC_4.Text;
                 IC_[4] = tb_IC_5.Text;
                 IC_[5] = tb_IC_6.Text;
-
+                
+                //set new IC to OrbModLib (with old setiings) 
                 OrbModWrap.setIC(IC_, IDC, (int)Config.Instance.ICType, (int)Config.Instance.ICFrame);
 
+                //refresh coordinate frame and type of IC
                 Config.Instance.ICType = (TypeOfIC)cmb_TypeOfIC.SelectedIndex;
                 Config.Instance.ICFrame = (FrameOfIC)cmb_InitFrame.SelectedIndex;
-
+                // than get IC in new  coordinate frame and type of IC
                 string[] IC_out = OrbModWrap.getIC(IDC, (int)Config.Instance.ICType, (int)Config.Instance.ICFrame);
                 
 
@@ -61,6 +63,7 @@ namespace OrbModUI
                 tb_IC_5.Text = IC_out[4];
                 tb_IC_6.Text = IC_out[5];
 
+                // refresh the state  in Config
                 Config.Instance.SV = OrbModWrap.getIC(IDC, (int)TypeOfIC.StateVector, (int)FrameOfIC.Equator_and_Equinox_J2000);
 
             }

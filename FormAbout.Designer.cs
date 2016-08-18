@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrbMod_FormAbout));
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.bt_close = new System.Windows.Forms.Button();
@@ -36,7 +37,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 14);
+            this.label1.Location = new System.Drawing.Point(4, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 5;
@@ -49,7 +50,7 @@
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox1.ForeColor = System.Drawing.Color.Blue;
-            this.textBox1.Location = new System.Drawing.Point(48, 55);
+            this.textBox1.Location = new System.Drawing.Point(57, 55);
             this.textBox1.MaximumSize = new System.Drawing.Size(142, 20);
             this.textBox1.MinimumSize = new System.Drawing.Size(142, 20);
             this.textBox1.Multiline = true;
@@ -58,10 +59,11 @@
             this.textBox1.Size = new System.Drawing.Size(142, 20);
             this.textBox1.TabIndex = 4;
             this.textBox1.Text = "v_dmitriev@miigaik.ru";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // bt_close
             // 
-            this.bt_close.Location = new System.Drawing.Point(68, 78);
+            this.bt_close.Location = new System.Drawing.Point(79, 81);
             this.bt_close.Name = "bt_close";
             this.bt_close.Size = new System.Drawing.Size(93, 23);
             this.bt_close.TabIndex = 3;
@@ -77,6 +79,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.bt_close);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(276, 144);
             this.MinimumSize = new System.Drawing.Size(276, 144);

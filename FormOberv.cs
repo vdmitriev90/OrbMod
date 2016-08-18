@@ -83,7 +83,7 @@ namespace OrbModUI
         {
             string s1 = "", s2 = "";
             OrbModWrap.Instance.SetObserv.ChangeTimeFrame(pane, dgv_1, ref s1, ref s2, ref Config.Instance.obs_t0, ref Config.Instance.obs_te);
-            tb_UTC_start.Text = s2; tb_UTC_finish.Text = s2;
+            tb_UTC_start.Text = s1; tb_UTC_finish.Text = s2;
             lb_numobs.Text = OrbModWrap.Instance.SetObserv.getObsNum().ToString();
         }
         //

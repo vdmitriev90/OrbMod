@@ -10,6 +10,7 @@ namespace OrbModUI
         //
         public void  SaveIni(string fileName)
         {
+            ChangeIC();
             CfgFromForm();
 
             Config.Instance.SV = OrbModWrap.getIC(Config.Instance.IDC, (int)TypeOfIC.StateVector, (int)FrameOfIC.Equator_and_Equinox_J2000);
@@ -69,15 +70,6 @@ namespace OrbModUI
             (Config.Instance.s_t0) = tb_UTC_begin.Text;
             (Config.Instance.s_te) = tb_UTC_end.Text;
 
-             string[] ICs = Config.Instance.SV;
-
-            (ICs[0]) = tb_IC_1.Text;
-            (ICs[1]) = tb_IC_2.Text;
-            (ICs[2]) = tb_IC_3.Text;
-            (ICs[3]) = tb_IC_4.Text;
-            (ICs[4]) = tb_IC_5.Text;
-            (ICs[5]) = tb_IC_6.Text;
-            Config.Instance.SV = ICs;
 
             Config.Instance.ICType = (TypeOfIC)cmb_TypeOfIC.SelectedIndex;
             Config.Instance.IsUsePeriTime = cb_UseToPP.Checked;

@@ -90,6 +90,7 @@ namespace OrbModUI
                 string fname = ofd_Obs.FileName;
                 int ObsT = cmb_TypeOfObs.SelectedIndex;
                 OrbModWrap.Instance.SetObserv.LoadObs(fname,ObsT);
+                OrbModWrap.Instance.SetObserv.SetObservationToCore();
                 OrbModWrap.getObsSetFromCtrl();
                 Config.Instance.observeratories = OrbModWrap.Instance.SetObserv.UsedObs2String();
 
