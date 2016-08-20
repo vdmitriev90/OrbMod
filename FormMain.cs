@@ -3,6 +3,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using OrbModCLRWrapper;
+using static OrbModUI.Config;
 
 namespace OrbModUI
 {
@@ -15,11 +16,10 @@ namespace OrbModUI
         string cfgPath;
 
         System.Diagnostics.Stopwatch timer = new System.Diagnostics.Stopwatch();
-
+        //
         public OrbMod_FormMain()
         {
             InitializeComponent();
-
         }
         //
         private void OrbMod_FormMain_Load(object sender, EventArgs e)
@@ -65,7 +65,7 @@ namespace OrbModUI
 
 
             if (System.IO.File.Exists(Config.Instance.ObsPath))
-                OrbModWrap.Instance.SetObserv.LoadObs(Config.Instance.ObsPath,(int)Config.Instance.ObsType);
+                Config.Instance.OrbModWr.SetObserv.LoadObs(Config.Instance.ObsPath,(int)Config.Instance.ObsType);
 
         }
         //
@@ -89,10 +89,10 @@ namespace OrbModUI
             {
                 string fname = ofd_Obs.FileName;
                 int ObsT = cmb_TypeOfObs.SelectedIndex;
-                OrbModWrap.Instance.SetObserv.LoadObs(fname,ObsT);
-                OrbModWrap.Instance.SetObserv.SetObservationToCore();
-                OrbModWrap.getObsSetFromCtrl();
-                Config.Instance.observeratories = OrbModWrap.Instance.SetObserv.UsedObs2String();
+                Config.Instance.OrbModWr.SetObserv.LoadObs(fname,ObsT);
+                Config.Instance.OrbModWr.SetObserv.SetObservationToCore();
+                Config.Instance.OrbModWr = new OrbModWrap();
+                Config.Instance.observeratories = Config.Instance.OrbModWr.SetObserv.UsedObs2String();
 
                 Config.Instance.ObsPath = fname;
             }
@@ -122,8 +122,14 @@ namespace OrbModUI
         }
         //
         private void OrbMod_FormMain_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            SaveIni(cfgPath);
+        { try
+            {
+                SaveIni(cfgPath);
+            }
+            catch(Exception ex)
+            {
+                this.Close();
+            }
         }
         //
         private void button1_Click(object sender, EventArgs e)
@@ -137,14 +143,14 @@ namespace OrbModUI
                 bgw_1.RunWorkerAsync();
             }
         }
-
+        //
         private void bgw_1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             timer.Reset();
             timer.Start();
             OrbModWrap.Process(cfgPath);
         }
-
+        //
         private void bgw_1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
             toolStripStatusLabel1.ForeColor = Color.Green;
@@ -152,9 +158,6 @@ namespace OrbModUI
             timer.Stop();
             double sec = Convert.ToDouble(timer.ElapsedMilliseconds)/1000.0;
             toolStripStatusLabel2.Text = sec.ToString("F1");
-
         }
-
-
     }
 }

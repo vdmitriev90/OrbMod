@@ -8,10 +8,7 @@ namespace OrbModUI
     public class PlotX : PlotSingle
     {
 
-        public PlotX(ZedGraphControl zg, string fname) : base(zg, fname)
-        {
-
-        }
+        public PlotX(ZedGraphControl zg, string fname) : base(zg, fname)    {     }
         //
        public override void EndDraw_()
         {
@@ -41,15 +38,11 @@ namespace OrbModUI
     }
     public class PlotY : PlotSingle
     {
-
-        public PlotY(ZedGraphControl zg, string fname) : base(zg, fname)
-        {
-
-        }
         //
-       public override void EndDraw_()
+        public PlotY(ZedGraphControl zg, string fname) : base(zg, fname) { }
+        //
+        public override void EndDraw_()
         {
-            
             string yT = "Y, ";
             if (Config.Instance.UseAU)
                 yT += "AU";

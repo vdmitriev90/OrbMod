@@ -37,7 +37,8 @@ namespace OrbModUI
         {
             get { return instanceHolder.Value; }
         }
-#region Fields
+        #region Fields
+        public OrbModCLRWrapper.OrbModWrap OrbModWr;
 
         public int IDC;
         public Variables var;

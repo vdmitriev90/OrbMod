@@ -14,7 +14,7 @@ namespace OrbModUI
             CfgFromForm();
 
             Config.Instance.SV = OrbModWrap.getIC(Config.Instance.IDC, (int)TypeOfIC.StateVector, (int)FrameOfIC.Equator_and_Equinox_J2000);
-            Config.Instance.observeratories = OrbModWrap.Instance.SetObserv.UsedObs2String();
+            Config.Instance.observeratories = Config.Instance.OrbModWr.SetObserv.UsedObs2String();
 
             Config.Instance.SaveConfig(fileName);
         }
@@ -41,10 +41,10 @@ namespace OrbModUI
             //TypeOfObs
             Config.Instance.ObsType = (TypeOfObs)cmb_TypeOfObs.SelectedIndex;
             //integrator
-           Config.Instance.NOr = int.Parse(cmb_NOR.Text);
+            Config.Instance.NOr = int.Parse(cmb_NOR.Text);
             Config.Instance.Step = int.Parse(tb_step.Text);
             Config.Instance.IsAutoStep = cb_AutoStep.Checked;
-           Config.Instance.Local_eps = Convert.ToDouble(nud_eps.Value);
+            Config.Instance.Local_eps = Convert.ToDouble(nud_eps.Value);
 
             Config.Instance.ICFrame = (FrameOfIC)(cmb_InitFrame.SelectedIndex);
             Config.Instance.Tframe = (TimeFormat)(cmb_TimeScale.SelectedIndex);
