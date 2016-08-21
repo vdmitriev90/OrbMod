@@ -11,17 +11,11 @@ namespace OrbModCLRWrapper {
 	public ref class OrbModWrap
 	{
 	public:
-		static OrbModWrap ^Instance;
-		
-		OrbModWrap();
-		
 
-		OrbModWrap(const ObsSet& setObs);
+		//OrbModWrap(const ObsSet& setObs);
 
-		String ^ getVersion();
-		_ObsSet ^SetObserv;
+		static String ^ getVersion();
 
-		static void OrbModWrap::getObsSetFromCtrl();
 		static void Process(System ::String ^path);
 		static bool loadKernels(System::String ^path);
 		static bool loadObservatories(System::String ^path);

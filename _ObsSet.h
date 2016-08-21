@@ -11,7 +11,7 @@ namespace OrbModCLRWrapper {
 	public:
 
 		_ObsSet();
-		_ObsSet(const ObsSet setObs);
+		_ObsSet(const ObsSet & setObs);
 		~_ObsSet();
 
 		//public fields
@@ -19,6 +19,7 @@ namespace OrbModCLRWrapper {
 
 		//methods
 		ObsSet getIntObsSet();
+		static _ObsSet^ getObsSetFromOrbMod();
 		bool LoadObs(System::String ^path, int ObsType);
 		void reset();
 		bool setTimeFrames(double et_0, double et_1);

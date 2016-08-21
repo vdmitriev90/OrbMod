@@ -6,20 +6,7 @@ using namespace ZedGraph;
 
 namespace OrbModCLRWrapper
 {
-	OrbModWrap ::OrbModWrap()
-	{
 
-	}
-	//
-	void OrbModWrap::getObsSetFromCtrl()
-	{
-		Instance = gcnew OrbModWrap(*Control::Inst.Obs_);
-	}
-	//
-	OrbModWrap::OrbModWrap(const ObsSet& setObs)
-	{
-		this->SetObserv = gcnew _ObsSet(setObs);
-	}
 	//
 	void OrbModWrap::Process(System::String ^path)
 	{

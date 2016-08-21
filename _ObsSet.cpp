@@ -13,9 +13,14 @@ namespace OrbModCLRWrapper
 		setO = new ObsSet();
 	}
 	//
-	_ObsSet::_ObsSet(const ObsSet setObs)
+	_ObsSet::_ObsSet(const ObsSet &setObs)
 	{
 		this->setO = new ObsSet(setObs);
+	}
+	//
+	_ObsSet^ _ObsSet::getObsSetFromOrbMod()
+	{
+		return gcnew _ObsSet(Control::Obs_);
 	}
 	//
 	_ObsSet ::~_ObsSet()
@@ -50,11 +55,9 @@ namespace OrbModCLRWrapper
 	//
 	String ^ _ObsSet::TypeOfObserv()
 	{
-
-		if (this->setO->obs.size() > 0)
+		if (this->setO->size() > 0)
 		{
-			Obs* observation = (*this->setO->obs.begin());
-			return Marsh::s2S(observation->getType());
+			return Marsh::s2S(setO->curr().getType());
 		}
 		else  return "";
 	}
@@ -65,16 +68,16 @@ namespace OrbModCLRWrapper
 
 		OrbMod::dateTime dt;
 		map<string, vector<OrbMod::dateTime> > dict;
-		map<string, vector<OrbMod::dateTime> >::iterator oi;
+		auto oi = dict.begin();
 
-		for (auto it : ((*this->setO).obs))
+		for (auto it : ((*this->setO)))
 		{
 			double et = it->t;
 
 			char ptr[100];
 			et2utc_c(et, "ISOC", 5, 100, ptr);
 			string s_utc = ptr;
-			if (!Misc::tryPrcSpUTC(s_utc, dt))continue;
+			if (!Misc::tryPrcSpUTC(s_utc, dt)) continue;
 
 			Observatory o = it->observ;
 			string OCode = o.ID;
@@ -167,8 +170,8 @@ namespace OrbModCLRWrapper
 		char t_first[70], t_last[70];
 		this->setO->setTimeFrames(et0, et1);
 		t0 = et0; te = et1;
-		timout_c((*this->setO->it)->t, Global::pictur_tdb, 70, t_first);
-		timout_c((*this->setO->it_end)->t, Global::pictur_tdb, 70, t_last);
+		timout_c(this->setO->curr().t, Global::pictur_tdb, 70, t_first);
+		timout_c(this->setO->last().t, Global::pictur_tdb, 70, t_last);
 
 		t_start = Marsh::s2S(t_first);
 		t_finish = Marsh::s2S(t_last);
@@ -183,9 +186,9 @@ namespace OrbModCLRWrapper
 
 	void _ObsSet::SetObservationToCore()
 	{
-		delete Control::Inst.Obs_;
-		Control::Inst.Obs_ = new  ObsSet(*this->setO);
+		Control::Obs_  =  *this->setO;
 	}
+
 	String^ _ObsSet::UsedObs2String()
 	{
 		std::string str = "";
