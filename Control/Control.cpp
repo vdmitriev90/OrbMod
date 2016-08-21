@@ -4,18 +4,23 @@ using namespace Algebra;
 
 namespace OrbMod
 {
-	Control::Control()
+	//Control::Control()
+	//{
+	//	Obs_ = new ObsSet();
+	//}
+	ObsSet &Control::inst()
 	{
-		Obs_ = new ObsSet();
+		static ObsSet inrer;
+		return inrer;
 	}
-	Control::~Control()
-	{
-		delete Obs_;
-	}
-	Control Control::Inst;
+	//Control::~Control()
+	//{
+	//	delete Obs_;
+	//}
+	ObsSet Control::Obs_;
 	bool Control:: loadObseravations(string path, TypeOfObs OType)
 	{
-		return Obs_->LoadObs(path, OType);
+		return Obs_.LoadObs(path, OType);
 	}
 	//
 	 void Control ::LogReport(std::string path)
@@ -111,9 +116,9 @@ namespace OrbMod
 	 //
 	 void Control::ParameterEstimation()
 	 {
-		 Inst.Obs_->f_res.open("residuals.out");
+		 Obs_.f_res.open("residuals.out");
 		 OrbFit::fo.open("Orbfit.out");
-		 Control::Inst.loadObseravations(Control::Inst.Obs_->path, Global::ObsT);
+		 loadObseravations(Obs_.path, Global::ObsT);
 
 		 double sigma;
 
@@ -134,7 +139,7 @@ namespace OrbMod
 		 default:
 			 break;
 		 }
-		 Inst.Obs_->f_res.close();
+		 Obs_.f_res.close();
 		 OrbFit::fo.close();
 	 }
 	 void Control::FODE()

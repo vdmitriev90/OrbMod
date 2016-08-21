@@ -69,7 +69,7 @@ namespace OrbMod
 		for (auto it : Obsrs)
 		{
 			str2Obsy.insert(std::pair<string, Observatory>(it.ID, it));
-			Control::Inst.Obs_->tryAddObs(it.ID, false);
+			Control::Obs_.tryAddObs(it.ID, false);
 		}
 
 		return true;

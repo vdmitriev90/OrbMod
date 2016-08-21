@@ -1,47 +1,66 @@
 #pragma once
 #include"stdafx.h"
-typedef vector<OrbMod::Obs*>::iterator Obsiter;
+//typedef vector<OrbMod::Obs*>::iterator Obsiter;
 namespace OrbMod
 {
+	typedef vector<Obs*> Vobs;
+
 	class ObsSet
 	{
+		
 	public:
 		//static  ObsSet& Instance();
 		static bool isLogResid;
 		static double fct;
-		~ObsSet()
-		{
-			for (int i = obs.size() - 1; i >= 0; --i)  delete obs[i];
-		}
 
-		double sigma,t0,te;
+		static ObsSet setObs;
+		uint it;
+		uint it_end;
+		double sigma, t0, te;
 		bool isConverg;
 		int  Nouts;
-
 		ofstream f_res;
-		vector<Obs*> obs;
-		Obsiter it;
-		Obsiter it_end;
+
 		std::string path = "obs_def.in";
 		//список используемых обсерваторий
 		map<string, bool> isUseObs;
 
-		bool tryAddObs(string ID, bool val);
-		bool LoadObs(std::string FileName, TypeOfObs ObsType);
-		void reset();
-		bool setTimeFrames(double et_0, double et_1);
-		int getObsNum();
-		Obsiter  FindTime(double et);
-
-	
 		ObsSet();
 		ObsSet(const ObsSet& other);
 		//assignment operator
 		ObsSet & operator = (const ObsSet & other);
 
-	private:
-		Obsiter it0;
+		~ObsSet()
+		{
+			for (int i = obs.size() - 1; i >= 0; --i)  delete obs[i];
+		}
+		//
+		Vobs::iterator begin();
+		Vobs::iterator end();
+		//
+		//Obs  &operator[](const int index);
+		
+		Obs  &curr();
+		Obs  &first();
+		Obs &last();
 
+
+		void reset();
+		bool next();
+		uint size();
+		int getObsNum();
+
+
+		bool tryAddObs(string ID, bool val);
+		bool LoadObs(std::string FileName, TypeOfObs ObsType);
+		bool setTimeFrames(double et_0, double et_1);
+		uint  FindTime(double et);
+
+
+	protected:
+		uint it0;
+
+		Vobs obs;
 		//порождающая функция
 		Obs * сreateObs(TypeOfObs id);
 

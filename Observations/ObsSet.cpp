@@ -1,15 +1,16 @@
 #include"stdafx.h"
-#include"ObsSet.h"
+
 #include<algorithm>
 #include <iterator>
 #include <algorithm>
 #include <vector>
+#include"ObsSet.h"
 namespace OrbMod
 {
 	double ObsSet::fct = 1;
 	//
 	bool ObsSet::isLogResid = false;
-	//
+
 	ObsSet::ObsSet()
 	{
 		isConverg = false;
@@ -17,38 +18,116 @@ namespace OrbMod
 		Nouts = 0;
 		for (auto it : Observatory::Obsrs)
 			tryAddObs(it.ID, false);
+
+		this->it = this->it = 0;
+		this->it_end = 0;
 	}
 	ObsSet::ObsSet(const ObsSet& other)
 	{
-		this->isConverg = other.isConverg;
-		this->sigma = other.sigma;
-		this->Nouts = other.Nouts;
-		this->path = other.path;
-
-		//observations
-		this->obs.clear();
-		for (int i = 0; i < other.obs.size(); i++)
-			this->obs.push_back(other.obs[i]->clone());
-
-		this->it = this->obs.begin()+(other.it - other.obs.begin());
-		this->it0 = this->obs.begin() + (other.it0 - other.obs.begin());
-		this->it_end = this->obs.begin() + (other.it_end - other.obs.begin());
-		
-		//observatories
-		this->isUseObs.clear();
-		for (auto it : other.isUseObs)
+		if (this != &other) // self-assignment protection
 		{
-			this->isUseObs.insert(it);
+			this->isConverg = other.isConverg;
+			this->sigma = other.sigma;
+			this->Nouts = other.Nouts;
+			this->path = other.path;
+
+			//observations
+			this->obs.clear();
+			for (int i = 0; i < other.obs.size(); i++)
+				this->obs.push_back(other.obs[i]->clone());
+
+			this->it = other.it;
+			this->it0 = other.it0;
+			this->it_end = other.it_end;
+
+			//observatories
+			this->isUseObs.clear();
+			for (auto it : other.isUseObs)
+			{
+				this->isUseObs.insert(it);
+			}
 		}
+		
 	}
+
 	//
 	ObsSet & ObsSet::operator = (const ObsSet & other)
 	{
 		if (this != &other) // self-assignment protection
 		{
-			*this = ObsSet(other);
+			this->isConverg = other.isConverg;
+			this->sigma = other.sigma;
+			this->Nouts = other.Nouts;
+			this->path = other.path;
+
+			//observations
+			this->obs.clear();
+			for (int i = 0; i < other.obs.size(); i++)
+				this->obs.push_back(other.obs[i]->clone());
+
+			this->it = other.it;
+			this->it0 = other.it0;
+			this->it_end = other.it_end;
+
+			//observatories
+			this->isUseObs.clear();
+			for (auto it : other.isUseObs)
+			{
+				this->isUseObs.insert(it);
+			}
 		}
 		return *this;
+	}
+	//Obs  &ObsSet::operator[](const int index)
+	//{
+	//	if (index < obs.size())
+	//		return *(obs[index]);
+	//}
+	//
+	Vobs::iterator ObsSet:: begin()
+	{
+		return obs.begin();
+	}
+	Vobs::iterator ObsSet:: end()
+	{
+		return obs.end();
+	}
+	//
+	bool ObsSet::next()
+	{
+		it++;
+		return (it == this->obs.size()) ? 0 : 1;
+	}
+	//
+	Obs  &ObsSet::curr()
+	{
+		return *obs[it];
+	}
+	//
+	Obs  &ObsSet::first()
+	{
+		return *obs[it0];
+	}
+	//
+	Obs &ObsSet::last()
+	{
+		return *obs[it_end];
+	}
+	//
+
+	void ObsSet::reset()
+	{
+		it = it0;
+	}
+	//
+	uint ObsSet::size()
+	{
+		return obs.size();
+	}
+	//
+	int ObsSet::getObsNum()
+	{
+		return (it_end - it0);
 	}
 	//
 	bool ObsSet::tryAddObs(string ID, bool val)
@@ -88,9 +167,9 @@ namespace OrbMod
 		file.close();
 
 		std::sort(obs.begin(), obs.end(), &Obs::compare);
-		it0 = obs.begin();
-		it_end = obs.end() - 1;
-		if ((*it0)->getType() == "Astrometric") fct = rad2asec;
+		it0 = 0;
+		it_end = obs.size() - 1;
+		if ((obs[0])->getType() == "Astrometric") fct = rad2asec;
 		return true;
 	};
 	//
@@ -112,21 +191,17 @@ namespace OrbMod
 		}
 		return p;
 	}
-	//
-	void ObsSet::reset()
-	{
-		it = it0;
-	}
+
 	//
 	//двоичный поиск  эпохи по времени
-	Obsiter ObsSet::FindTime(double time)
+	uint ObsSet::FindTime(double time)
 	{
 		int min = 0;
 		int max = obs.size();
 		int mid = 0;
 
-		if (obs[0]->t > time) return obs.begin();
-		if (obs[max - 1]->t < time) return obs.end() - 1;
+		if (obs[0]->t > time) return 0;
+		if (obs[max - 1]->t < time) return obs.size()-1 ;
 
 		while (min < max)
 		{
@@ -137,16 +212,13 @@ namespace OrbMod
 			else
 				min = mid + 1;
 		}
-		auto iter = obs.begin();
-		for (size_t i = 0; i < mid; i++) iter++;
-
-		return iter;
+		return mid;
 	}
 	//
 	bool ObsSet::setTimeFrames(double et_s, double et_e)
 	{
 		if (obs.size() < 2) return false;
-		it0 = obs.begin();
+		it0 = 0;
 		int N = obs.size();
 		
 		t0 = et_s, te = et_e;
@@ -156,9 +228,5 @@ namespace OrbMod
 
 		return true;
 	}
-	//
-	int ObsSet::getObsNum()
-	{
-		return (it_end - it0);
-	}
+
 }

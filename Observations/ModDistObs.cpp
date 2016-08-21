@@ -85,7 +85,7 @@ namespace OrbMod
 
 		//sprintf(buff, "%20.7f %f", this->t, res);
 		//ObsSet::Instance().f_res << c_time << " " << buff<< "\t" << str_dbg <<endl;
-		Control::Inst.Obs_->f_res << str_dbg << endl;
+		Control::Obs_.f_res << str_dbg << endl;
 	}
 	ModDistObs* ModDistObs::clone() const
 	{

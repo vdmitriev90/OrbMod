@@ -388,7 +388,7 @@ namespace Algebra
 	std::string Matrix::toString(char* sep, char* format, int L, int isSplitByRows) const
 	{
 		string str = "";
-		char* buf = new char[L];
+		char *buf = new char[L];
 		for (int i = 0; i < this->size; ++i)
 		{
 			std::sprintf(buf, format, this->M[i]);
@@ -396,7 +396,7 @@ namespace Algebra
 			if (isSplitByRows && ((i + 1) % this->m) == 0) str += "\n";
 			else str += sep;
 		}
-		delete[] buf;
+		delete[] buf; 
 		return str;
 	}
 	//

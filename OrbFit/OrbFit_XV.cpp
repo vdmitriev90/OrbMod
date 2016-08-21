@@ -23,8 +23,8 @@ namespace OrbMod
 		//Prediction of Light-time correction on the end of the next step
 		tau0 = calcLTCorr(399, triple(X[0], X[2], X[3]), t0);
 
-		Control::Inst.Obs_->reset();
-		tout = (*Control::Inst.Obs_->it)->t;
+		Control::Obs_.reset();
+		tout = (Control::Obs_.curr()).t;
 
 		A.Clear();
 		OmC.clear();
@@ -86,6 +86,8 @@ namespace OrbMod
 			X[k] = X[k] + H*(F0[k] + P[k]);
 
 		//Prediction of Light-time correction on the end of the next step
+		//OrbFit::fo << setprecision(6);
+		//OrbFit::fo <<" "<< t0 + H<<" "<<X[0] << " " << X[1] << " " << X[2] << " " << triple(X[0], X[2], X[3]).getAbs() << " ";
 		tau0 = calcLTCorr(399, triple(X[0], X[2], X[3]), t0 + H);
 	}
 }

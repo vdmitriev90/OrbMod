@@ -19,7 +19,7 @@ namespace OrbMod
 	protected:
 		OrbFit *fit;
 	private:
-		Obsiter getLastObs(double t, double dt);
+		//uint getLastObs(double t, double dt);
 
 	};
 }

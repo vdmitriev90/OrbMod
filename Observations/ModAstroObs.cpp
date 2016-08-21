@@ -88,7 +88,7 @@ namespace OrbMod
 		char buff[200], c_time[35];
 		timout_c(this->t, Global::pictur_tdb, 70, c_time);
 		sprintf(buff, "%20.7f %f %f\n", this->t, res_ra*rad2asec, res_ra*rad2asec);
-		Control::Inst.Obs_->f_res << c_time << " " << buff;
+		Control::Obs_.f_res << c_time << " " << buff;
 	}
 	//
 	ModAstroObs* ModAstroObs::clone() const
