@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 
 using static System.Math;
+using OrbModCLRWrapper;
 
 namespace OrbModUI
 {
@@ -38,7 +39,8 @@ namespace OrbModUI
             get { return instanceHolder.Value; }
         }
         #region Fields
-        public OrbModCLRWrapper.OrbModWrap OrbModWr;
+       // public OrbModCLRWrapper.OrbModWrap OrbModWr;
+        public _ObsSet ObsSet = new _ObsSet();
 
         public int IDC;
         public Variables var;

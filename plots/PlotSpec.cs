@@ -61,6 +61,8 @@ namespace OrbModUI
                         return PlotEltsFactory(sourse, Type);
                     case PlotSourceData.SV:
                         return PlotSVFactory(sourse, Type);
+                    case PlotSourceData.Residuals:
+                        return PlotResFactory(sourse, Type);
                     default:
                         return null;
                 }
@@ -134,6 +136,21 @@ namespace OrbModUI
 
                 }
             } 
+            private Plot PlotResFactory(PlotSourceData sourse, int Type)
+            {
+                switch ((Residuals)Type)
+                {
+                    case Residuals.RightAccention:
+                        return new PlotResRA(this.zg, FName);
+                    case Residuals.Declination:
+                        return new PlotResDec(this.zg, FName);
+                    case Residuals.Summ:
+                        return new PlotResFull(this.zg, FName);
+                    default:
+                        return null;
+                }
+            }
+
             #endregion
         }
     }

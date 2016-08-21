@@ -14,7 +14,7 @@ namespace OrbModUI
             CfgFromForm();
 
             Config.Instance.SV = OrbModWrap.getIC(Config.Instance.IDC, (int)TypeOfIC.StateVector, (int)FrameOfIC.Equator_and_Equinox_J2000);
-            Config.Instance.observeratories = Config.Instance.OrbModWr.SetObserv.UsedObs2String();
+            Config.Instance.observeratories = Config.Instance.ObsSet.UsedObs2String();
 
             Config.Instance.SaveConfig(fileName);
         }

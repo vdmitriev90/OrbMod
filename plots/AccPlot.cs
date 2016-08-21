@@ -10,25 +10,16 @@ namespace OrbModUI
     public abstract class AccPlot : Plot
     {
         //
-        public AccPlot()
-        {
-
-        }
+        public AccPlot() {    }
         //
-        public AccPlot(ZedGraphControl zg, string fname) : base(zg, fname)
-        {
-
-        }
+        public AccPlot(ZedGraphControl zg, string fname) : base(zg, fname) {   }
         //
     }
     //
     public class Acc1Plot : AccPlot
     {
         //
-        public Acc1Plot()
-        {
-
-        }
+        public Acc1Plot() {       }
         //
         public Acc1Plot(ZedGraphControl zg, string fname) : base(zg, fname) {   }
 

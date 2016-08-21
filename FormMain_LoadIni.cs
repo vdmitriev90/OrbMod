@@ -19,14 +19,14 @@ namespace OrbModUI
         {
             if(!OrbModWrap.loadConfig(fileName))
                 MessageBox.Show("ModOrb:\nFailed to load:\n OrbMod.ini\n");
-        
-            Config.Instance.OrbModWr = new  OrbModWrap();
+
+            Config.Instance.ObsSet =_ObsSet.getObsSetFromOrbMod();
 
             if (!Config.Instance.LoadConfig(fileName))
                 MessageBox.Show("UI.Config:\nFailed to load:\n OrbMod.ini\n");
 
             Config.Instance.SV = OrbModWrap.getIC(Config.Instance.IDC, (int)Config.Instance.ICType, (int)Config.Instance.ICFrame);
-            Config.Instance.observeratories = Config.Instance.OrbModWr.SetObserv.UsedObs2String();
+            Config.Instance.observeratories = Config.Instance.ObsSet.UsedObs2String();
 
             CfgToForm();
 

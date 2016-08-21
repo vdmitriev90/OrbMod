@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using OrbModCLRWrapper;
 
 namespace OrbModUI
 {
@@ -24,7 +18,7 @@ namespace OrbModUI
 
         private void OrbMod_FormAbout_Load(object sender, EventArgs e)
         {
-            string str = "OrbMod version:\t" + Config.Instance.OrbModWr.getVersion() + "\n";
+            string str = "OrbMod version:\t" + OrbModWrap.getVersion() + "\n";
             str += "OrbMod UI version:\t1.0\n";
             str += "Author:\t Vasily Dmitriev, Moscow, MIIGAiK MexLab";
             this.label1.Text = str;

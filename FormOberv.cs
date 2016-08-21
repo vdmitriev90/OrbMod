@@ -37,9 +37,9 @@ namespace OrbModUI
             zg_assist(pane);
             #endregion
 
-            Config.Instance.OrbModWr.SetObserv.DataToForm(pane, dgv_1);
-            string toobs = Config.Instance.OrbModWr.SetObserv.TypeOfObserv();
-            this.N = Config.Instance.OrbModWr.SetObserv.N;
+            Config.Instance.ObsSet.DataToForm(pane, dgv_1);
+            string toobs = Config.Instance.ObsSet.TypeOfObserv();
+            this.N = Config.Instance.ObsSet.N;
 
             #region zg
             pane.YAxis.Title.Text = "Observatory with " + toobs + " obs.";
@@ -71,20 +71,20 @@ namespace OrbModUI
             {
                 string s = Convert.ToString(dgv_1.Rows[i].Cells[2].Value);
                 bool b = Convert.ToBoolean(dgv_1.Rows[i].Cells[1].Value);
-                Config.Instance.OrbModWr.SetObserv.SetUseObs(s, b);
+                Config.Instance.ObsSet.SetUseObs(s, b);
 
             }
-            Config.Instance.OrbModWr.SetObserv.SetObservationToCore();
+            Config.Instance.ObsSet.SetObservationToCore();
 
-            Config.Instance.observeratories = Config.Instance.OrbModWr.SetObserv.UsedObs2String();
+            Config.Instance.observeratories = Config.Instance.ObsSet.UsedObs2String();
         }
         //
         void ChangeTimeFrame()
         {
             string s1 = "", s2 = "";
-            Config.Instance.OrbModWr.SetObserv.ChangeTimeFrame(pane, dgv_1, ref s1, ref s2, ref Config.Instance.obs_t0, ref Config.Instance.obs_te);
+            Config.Instance.ObsSet.ChangeTimeFrame(pane, dgv_1, ref s1, ref s2, ref Config.Instance.obs_t0, ref Config.Instance.obs_te);
             tb_UTC_start.Text = s1; tb_UTC_finish.Text = s2;
-            lb_numobs.Text = Config.Instance.OrbModWr.SetObserv.getObsNum().ToString();
+            lb_numobs.Text = Config.Instance.ObsSet.getObsNum().ToString();
         }
         //
         private void zg_ObsView_ZoomEvent(ZedGraphControl sender, ZoomState oldState, ZoomState newState)

@@ -15,13 +15,14 @@ namespace OrbModUI
     public partial class OrbMod_FormGraph : Form
     {
 
-        public enum PlotSourceData {Acc = 0, SV, Elts, Visi,Inegrator,_3_bodyFixFrame ,NotDefined};
+        public enum PlotSourceData {Acc = 0, SV, Elts, Visi,Inegrator,_3_bodyFixFrame , Residuals, NotDefined};
         public enum Acc_vs_T { Accelerations = 0 };
         public enum SV_vs { X = 0, Y , Z, Vx, Vy, Vz, R, Vel ,XoY, XoZ, YoZ };
         public enum Elts_vs_T { SMA = 0,Ecc,Inc, Node,W,MeanAnomaly, PeriDistance, ApoDistance };
         public enum Integ_vs_T { StepSize = 0, ItNum };
         public enum _3body_vs_T { X = 0, Y , Z, Vx, Vy , Vz, R ,V };
-        
+        public enum Residuals { RightAccention,Declination, Summ };
+
         private PlotSpec currGraph;
         private string[] OutFiles;
         private PlotSourceData currSource;
@@ -33,7 +34,8 @@ namespace OrbModUI
                {PlotSourceData.SV, (SV_vs.R).GetType() },
                {PlotSourceData.Elts, (Elts_vs_T.SMA).GetType() },
                {PlotSourceData.Inegrator, (Integ_vs_T.StepSize).GetType() },
-               {PlotSourceData._3_bodyFixFrame, (_3body_vs_T.X).GetType() }
+               {PlotSourceData._3_bodyFixFrame, (_3body_vs_T.X).GetType() },
+                 {PlotSourceData.Residuals, (Residuals.Declination).GetType() }
 
         };
         //
@@ -43,7 +45,8 @@ namespace OrbModUI
             {"elts", PlotSourceData.Elts },
             {"acc", PlotSourceData.Acc },
             {"integ", PlotSourceData.Inegrator },
-            {"3body_", PlotSourceData._3_bodyFixFrame }
+            {"3body_", PlotSourceData._3_bodyFixFrame },
+             {"residuals", PlotSourceData.Residuals }
         };
         string AppDir;
         public OrbMod_FormGraph()

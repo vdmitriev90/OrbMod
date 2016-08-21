@@ -65,7 +65,7 @@ namespace OrbModUI
 
 
             if (System.IO.File.Exists(Config.Instance.ObsPath))
-                Config.Instance.OrbModWr.SetObserv.LoadObs(Config.Instance.ObsPath,(int)Config.Instance.ObsType);
+                Config.Instance.ObsSet.LoadObs(Config.Instance.ObsPath,(int)Config.Instance.ObsType);
 
         }
         //
@@ -89,10 +89,10 @@ namespace OrbModUI
             {
                 string fname = ofd_Obs.FileName;
                 int ObsT = cmb_TypeOfObs.SelectedIndex;
-                Config.Instance.OrbModWr.SetObserv.LoadObs(fname,ObsT);
-                Config.Instance.OrbModWr.SetObserv.SetObservationToCore();
-                Config.Instance.OrbModWr = new OrbModWrap();
-                Config.Instance.observeratories = Config.Instance.OrbModWr.SetObserv.UsedObs2String();
+                Config.Instance.ObsSet.LoadObs(fname,ObsT);
+                Config.Instance.ObsSet.SetObservationToCore();
+               // Config.Instance.ObsSet = new _ObsSet();
+                Config.Instance.observeratories = Config.Instance.ObsSet.UsedObs2String();
 
                 Config.Instance.ObsPath = fname;
             }
