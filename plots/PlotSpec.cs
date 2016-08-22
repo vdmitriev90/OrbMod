@@ -144,8 +144,12 @@ namespace OrbModUI
                         return new PlotResRA(this.zg, FName);
                     case Residuals.Declination:
                         return new PlotResDec(this.zg, FName);
-                    case Residuals.Summ:
+                    case Residuals.RAandDec:
                         return new PlotResFull(this.zg, FName);
+                    case Residuals.RAbyObservatory:
+                        return new PlotResbyObsRA(this.zg, FName);
+                    case Residuals.DecbyObservatory:
+                        return new PlotResbyObsDec(this.zg, FName);
                     default:
                         return null;
                 }

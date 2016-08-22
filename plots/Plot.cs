@@ -20,6 +20,8 @@ namespace OrbModUI
         //
         public Plot()
         {
+
+
             _EpochCounter = 0;
         }
         //
@@ -27,6 +29,10 @@ namespace OrbModUI
         {
             this.zg = zg;
             FName = fname;
+            GraphPane pane = zg.GraphPane;
+            pane.CurveList.Clear();
+            pane.GraphObjList.Clear();
+
             _EpochCounter = 0;
        }
 

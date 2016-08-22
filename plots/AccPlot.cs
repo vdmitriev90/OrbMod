@@ -105,7 +105,6 @@ namespace OrbModUI
                 }
             }
         }
-        //
 
         //
         public override void EndDraw_()

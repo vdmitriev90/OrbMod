@@ -5,7 +5,7 @@ using ZedGraph;
 
 namespace OrbModUI
 {
-   public  abstract class PlotSingle : Plot
+    public abstract class PlotSingle : Plot
     {
         //
         public PlotSingle()
@@ -13,12 +13,12 @@ namespace OrbModUI
 
         }
         //
-        public PlotSingle(ZedGraphControl zg, string fname) : base(zg,fname)
+        public PlotSingle(ZedGraphControl zg, string fname) : base(zg, fname)
         {
 
         }
         //
-        protected abstract bool AddPoint(DateTime dt,double et, string[] data, ref PointPairList list);
+        protected abstract bool AddPoint(DateTime dt, double et, string[] data, ref PointPairList list);
         //
         public override void PlotData()
         {
@@ -26,7 +26,6 @@ namespace OrbModUI
             pane.CurveList.Clear();
 
             PointPairList points = new PointPairList();
-
             using (StreamReader sr = new StreamReader(FName))
             {
                 DateTime dt = new DateTime();
@@ -41,18 +40,20 @@ namespace OrbModUI
 
                     AddPoint(dt, et, data, ref points);
                 }
+
+                //
+                EndDraw();
+
+                LineItem myCurve = pane.AddCurve("", points, Color.FromArgb(Config.Instance.col_Main), (SymbolType)Config.Instance.SymbolType);
+                myCurve.Symbol.Size = Config.Instance.SymbolSize;
+                myCurve.Symbol.Fill.Type = FillType.Solid;
+                myCurve.Line.Width = Config.Instance.LineWidth;
+                myCurve.Line.IsSmooth = Config.Instance.isSmoothGraph;
+                myCurve.Line.SmoothTension = Config.Instance.Tension;
+               
+                //
+                Autoscale();
             }
-            EndDraw();
-
-            LineItem myCurve = pane.AddCurve("", points, Color.FromArgb(Config.Instance.col_Main), (SymbolType)Config.Instance.SymbolType);
-            myCurve.Symbol.Size = Config.Instance.SymbolSize;
-            myCurve.Symbol.Fill.Type = FillType.Solid;
-            myCurve.Line.Width = Config.Instance.LineWidth;
-            myCurve.Line.IsSmooth = Config.Instance.isSmoothGraph;
-            myCurve.Line.SmoothTension = Config.Instance.Tension;
-
-            Autoscale();
         }
     }
-  
-    }
+}

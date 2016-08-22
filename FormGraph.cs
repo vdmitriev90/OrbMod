@@ -20,8 +20,8 @@ namespace OrbModUI
         public enum SV_vs { X = 0, Y , Z, Vx, Vy, Vz, R, Vel ,XoY, XoZ, YoZ };
         public enum Elts_vs_T { SMA = 0,Ecc,Inc, Node,W,MeanAnomaly, PeriDistance, ApoDistance };
         public enum Integ_vs_T { StepSize = 0, ItNum };
-        public enum _3body_vs_T { X = 0, Y , Z, Vx, Vy , Vz, R ,V };
-        public enum Residuals { RightAccention,Declination, Summ };
+        public enum _3body_vs_T { X = 0, Y, Z, Vx, Vy, Vz, R ,V };
+        public enum Residuals { RightAccention,Declination, RAandDec,RAbyObservatory, DecbyObservatory };
 
         private PlotSpec currGraph;
         private string[] OutFiles;
