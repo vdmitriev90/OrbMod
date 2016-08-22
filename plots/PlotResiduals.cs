@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 using ZedGraph;
 using MathLib;
 using static System.Math;
+using System.IO;
 
 namespace OrbModUI
 {
-    public class PlotResRA:PlotSingle
+    public class PlotResRA : PlotSingle
     {
         private int i = 0;
         private double Mean, Var;
 
         public PlotResRA() { }
-        public PlotResRA(ZedGraphControl zg, string fname) : base(zg, fname){ }
+        public PlotResRA(ZedGraphControl zg, string fname) : base(zg, fname) { }
         public override void EndDraw_()
         {
 
@@ -44,7 +45,7 @@ namespace OrbModUI
 
     public class PlotResDec : PlotSingle
     {
-        private int i=0;
+        private int i = 0;
         private double Mean, Var;
 
         public PlotResDec() { }
@@ -71,10 +72,9 @@ namespace OrbModUI
             else
                 list.Add(dTdays(et), Val);
             return true;
-
         }
-
     }
+    //
     public class PlotResFull : PlotSingle
     {
         private int i = 0;
@@ -86,8 +86,8 @@ namespace OrbModUI
         public override void EndDraw_()
         {
 
-            string yT = "sqrt(Δδ+Δα*cos(δ)), asec";
-            zg.GraphPane.Title.Text += " σ= " + Math.Sqrt(Var1+ Var2).ToString("F3");
+            string yT = "sqrt(Δδ^2+(Δα*cosδ)^2), asec";
+            zg.GraphPane.Title.Text += " σ= " + Math.Sqrt(Var1 + Var2).ToString("F3");
 
             zg.GraphPane.YAxis.Title.Text = yT;
         }
@@ -100,8 +100,8 @@ namespace OrbModUI
             double.TryParse(data[2], out Val2);
             double Val = Sqrt(Val1 * Val1 + Val2 * Val2);
 
-            Misc.RecMeanDisp(ref Mean1, ref Var1,  i, Val1);
-            Misc.RecMeanDisp(ref Mean2, ref Var2,  i, Val2);
+            Misc.RecMeanDisp(ref Mean1, ref Var1, i, Val1);
+            Misc.RecMeanDisp(ref Mean2, ref Var2, i, Val2);
             i++;
             if (Config.Instance.UseCalend)
                 list.Add(new XDate(dt), Val);
@@ -111,4 +111,80 @@ namespace OrbModUI
         }
 
     }
+
+    public abstract class PlotResbyObs : Plot
+    {
+
+        protected struct stat
+        {
+
+            public double Mean;
+            public double Variance;
+            public uint counter;
+
+            public stat(uint i)
+            {
+                counter = i;
+                Mean = Variance = 0;
+            }
+        }
+
+        protected int i = 0;
+        protected double Mean1, Var1;
+        protected double Mean2, Var2;
+
+        public PlotResbyObs() { }
+        public PlotResbyObs(ZedGraphControl zg, string fname) : base(zg, fname) { }
+        protected abstract bool AddPoint(string[] Data, ref PointPairList Points, ref stat Stati);
+
+        public override void PlotData()
+        {
+
+            GraphPane pane = zg.GraphPane;
+            pane.CurveList.Clear();
+
+            Dictionary<string, PointPairList> pLists = new Dictionary<string, PointPairList>();
+            Dictionary<string, stat> Stat = new Dictionary<string, stat>();
+
+            using (StreamReader sr = new StreamReader(FName))
+            {
+                DateTime dt = new DateTime();
+                double et = 0;
+                string[] data = new string[1];
+
+
+                while (sr.Peek() != -1)
+                {
+                    string line = sr.ReadLine();
+
+                    if (!ParseString(line, ref dt, ref et, ref data)) continue;
+
+                    if (data.Length != 3) continue;
+
+                    PointPairList pList;
+
+                    if (!pLists.TryGetValue(data[0], out pList))
+                    {
+                        pList = new PointPairList();
+                        pLists.Add(data[0], pList);
+                        stat st = new stat(0);
+                        Stat.Add(data[0], st);
+                    }
+                    else
+                    {
+                        pList = pLists[data[0]];
+
+                    }
+                    AddPoint(data, ref )
+
+
+                }
+            }
+
+        }
+
+
+    }
+
+
 }
