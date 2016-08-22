@@ -15,7 +15,7 @@ namespace OrbMod
 		double time;
 		virtual triple planet(int IDP);
 		virtual triple planet(int IDP, double mu);
-
+		triple acc5th_body();
 		triple relativ();
 		triple L_T();
 

@@ -215,6 +215,7 @@ namespace OrbMod
 		ComplexNum sumdVx(0., 0.);
 		ComplexNum sumdVy(0., 0.);
 		ComplexNum sumdVz(0., 0.);
+
 #pragma region tide
 
 	/*	if (this->tide_by_body == true) { dCS_tide(et, this->bodyID, this->mu_body); for (int i = 0; i < 3; i++) dCS_body[i] = dCS[i]; }
