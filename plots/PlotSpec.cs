@@ -87,7 +87,7 @@ namespace OrbModUI
                     case Elts_vs_T.SMA:
                         return new PlotSMA(this.zg, FName);
                     case Elts_vs_T.PeriDistance:
-                        return new PlotW(this.zg, FName);
+                        return new PlotPeri(this.zg, FName);
                     case Elts_vs_T.ApoDistance:
                         return new PlotApo(this.zg, FName);
                     case Elts_vs_T.Ecc:

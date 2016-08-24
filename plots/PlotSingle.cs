@@ -8,15 +8,9 @@ namespace OrbModUI
     public abstract class PlotSingle : Plot
     {
         //
-        public PlotSingle()
-        {
-
-        }
+        public PlotSingle(){}
         //
-        public PlotSingle(ZedGraphControl zg, string fname) : base(zg, fname)
-        {
-
-        }
+        public PlotSingle(ZedGraphControl zg, string fname) : base(zg, fname){}
         //
         protected abstract bool AddPoint(DateTime dt, double et, string[] data, ref PointPairList list);
         //
