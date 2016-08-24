@@ -246,54 +246,54 @@ namespace OrbMod
 			triple accCunn = Global::GravField_CB.getAcceleration(Global::IDC, time, X);
 			fprintf(facc, et_F, accCunn.getAbs());
 		}
-		else fprintf(facc, " 0.");
+		else fprintf(facc, " 0");
 
 		//Sun
 		if (Global::b_10) { accp = planet(10); fprintf(facc, et_F, accp.getAbs()); }
-		else { fprintf(facc, " 0."); }
+		else { fprintf(facc, " 0"); }
 
 		//Mercury 
 		if (Global::b_1) { accp = planet(1); fprintf(facc, et_F, accp.getAbs()); }
-		else { fprintf(facc, " 0."); }
+		else { fprintf(facc, " 0"); }
 
 		//Venus
 		if (Global::b_2) { accp = planet(2); fprintf(facc, et_F, accp.getAbs()); }
-		else { fprintf(facc, " 0."); }
+		else { fprintf(facc, " 0"); }
 
 		//Earth+Moon
 		if (Global::b_3) { accp = planet(3); fprintf(facc, et_F, accp.getAbs()); }
-		else { fprintf(facc, " 0."); }
+		else { fprintf(facc, " 0"); }
 		//Mars
 		if (Global::b_4) { accp = planet(4); fprintf(facc, et_F, accp.getAbs()); }
-		else { fprintf(facc, " 0."); }
+		else { fprintf(facc, " 0"); }
 		//Jupiter
 		if (Global::b_5) { accp = planet(5); fprintf(facc, et_F, accp.getAbs()); }
-		else { fprintf(facc, " 0."); }
+		else { fprintf(facc, " 0"); }
 		//Saturn
 		if (Global::b_6) { accp = planet(6); fprintf(facc, et_F, accp.getAbs()); }
-		else { fprintf(facc, " 0."); }
+		else { fprintf(facc, " 0"); }
 		//Uranus
 		if (Global::b_7) { accp = planet(7); fprintf(facc, et_F, accp.getAbs()); }
-		else { fprintf(facc, " 0."); }
+		else { fprintf(facc, " 0"); }
 		//Neptune
 		if (Global::b_8) { accp = planet(8); fprintf(facc, et_F, accp.getAbs()); }
-		else { fprintf(facc, " 0."); }
+		else { fprintf(facc, " 0"); }
 		//Pluto
 		if (Global::b_9) { accp = planet(9); fprintf(facc, et_F, accp.getAbs()); }
-		else { fprintf(facc, " 0."); }
+		else { fprintf(facc, " 0"); }
 
 		//add1
 		if (Global::b_add1) { accp = planet(Global::ID1); fprintf(facc, et_F, accp.getAbs()); }
-		else { fprintf(facc, " 0."); }
+		else { fprintf(facc, " 0"); }
 		//add2
 		if (Global::b_add2) { accp = planet(Global::ID2); fprintf(facc, et_F, accp.getAbs()); }
-		else { fprintf(facc, " 0."); }
+		else { fprintf(facc, " 0"); }
 		//add3
 		if (Global::b_add3) { accp = planet(Global::ID3); fprintf(facc, et_F, accp.getAbs()); }
-		else { fprintf(facc, " 0."); }
+		else { fprintf(facc, " 0"); }
 		//add4
 		if (Global::b_add4) { accp = planet(Global::ID4); fprintf(facc, et_F, accp.getAbs()); }
-		else { fprintf(facc, " 0."); }
+		else { fprintf(facc, " 0"); }
 
 		if (Global::b_add5) 
 		{
@@ -315,10 +315,10 @@ namespace OrbMod
 			}
 			else 
 			{
-				fprintf(facc, " %13.5e  0. ", accp.getAbs());
+				fprintf(facc, " %13.5e  0 ", accp.getAbs());
 			}
 		}
-		else { fprintf(facc, "0. 0. "); }
+		else { fprintf(facc, " 0 0 "); }
 
 		//SRP
 		if (Global::b_SRP) {
@@ -327,7 +327,7 @@ namespace OrbMod
 
 			fprintf(facc, et_F, acc_SRP.getAbs());
 		}
-		else { fprintf(facc, " 0."); }
+		else { fprintf(facc, " 0"); }
 
 		//atmospheric drag
 		if (Global::b_atm) {
@@ -337,15 +337,15 @@ namespace OrbMod
 
 			fprintf(facc, et_F, accA.getAbs());
 		}
-		else { fprintf(facc, " 0."); }
+		else { fprintf(facc, " 0"); }
 
 		//General relativity effects (Swartsshild metric,PPN=1)
 		if (Global::b_rel) { accp = relativ();  fprintf(facc, et_F, accp.getAbs()); }
-		else { fprintf(facc, " 0."); }
+		else { fprintf(facc, " 0"); }
 
 		//General relativity effects (L-T precession, PPN=1)
 		if (Global::b_rel_LT) { accp = L_T(); fprintf(facc, et_F, accp.getAbs()); }
-		else { fprintf(facc, " 0."); }
+		else { fprintf(facc, " 0"); }
 		fprintf(facc, "\n");
 	}
 }
