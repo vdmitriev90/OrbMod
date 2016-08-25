@@ -8,7 +8,6 @@ namespace OrbModUI
 
         public class PlotSpec : Plot
         {
-
             private Plot plot;
             public PlotSpec(ZedGraphControl zg, string fname)
             {
@@ -22,7 +21,6 @@ namespace OrbModUI
             {
                 plot = Factory(sourse, Type);
             }
-
             //
             public override void PlotData()
             {
@@ -76,7 +74,6 @@ namespace OrbModUI
                         return new Acc1Plot(this.zg, FName);
                     default:
                         return null;
-
                 }
             }
             //
@@ -102,7 +99,6 @@ namespace OrbModUI
                         return new PlotMeanAn(this.zg, FName);
                     default:
                         return null;
-
                 }
             }
             private Plot PlotSVFactory(PlotSourceData sourse, int Type)

@@ -18,7 +18,7 @@ namespace OrbModUI
         {
 
             string yT = "Δα*cos(δ), asec";
-            zg.GraphPane.Title.Text += " m= " + Mean.ToString("F3") + " σ= " + Sqrt(Var).ToString("F3") + " σ= " + Sqrt(i + 1).ToString();
+            zg.GraphPane.Title.Text += " m= " + Mean.ToString("F3") + " σ= " + Sqrt(Var).ToString("F3") + " N= " + (i + 1).ToString();
 
             zg.GraphPane.YAxis.Title.Text = yT;
         }
@@ -51,7 +51,7 @@ namespace OrbModUI
         {
 
             string yT = "Δδ, asec";
-            zg.GraphPane.Title.Text += " m= " + Mean.ToString("F3") + " σ= " + Math.Sqrt(Var).ToString("F3");
+            zg.GraphPane.Title.Text += " m= " + Mean.ToString("F3") + " σ= " + Math.Sqrt(Var).ToString("F3")+ " N= " + (i + 1).ToString();
 
             zg.GraphPane.YAxis.Title.Text = yT;
         }

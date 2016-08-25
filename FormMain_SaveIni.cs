@@ -109,18 +109,43 @@ namespace OrbModUI
 
             //hight terms of add5
             Config.Instance.b_add5Cnm = cb_add_cunn_ON.Checked;
-            //if (Config.Instance.b_add5Cnm)
-            //{
-                (Config.Instance.add5_N) = int.Parse(cmb_add_cun_N.Text);
+            (Config.Instance.add5_N) = int.Parse(cmb_add_cun_N.Text);
+
+            if (Config.Instance.b_add5Cnm)
+            {
+                string path = tb_add_cun_file.Text;
+
+                if (!System.IO.File.Exists(path))
+                {
+                    MessageBox.Show("Can not find file with gravity model of add. body #5");
+                    Config.Instance.b_add5Cnm = false;
+                }
+                else
+                    (Config.Instance.add5_FileModel) = tb_add_cun_file.Text;
+            }
+            else
+            {
                 (Config.Instance.add5_FileModel) = tb_add_cun_file.Text;
-            //}
+            }
             //hight terms of CB
             Config.Instance.b_CB_Cnm = cb_Cunn.Checked;
-            //if (Config.Instance.b_CB_Cnm)
-            //{
-                (Config.Instance.CB_N) = int.Parse(tb_Cunn_N.Text);
+            Config.Instance.CB_N = int.Parse(tb_Cunn_N.Text);
+
+            if (Config.Instance.b_CB_Cnm)
+            {
+                string path = tb_Cnm_file.Text;
+                if (!System.IO.File.Exists(path))
+                { 
+                    MessageBox.Show("Can not find file with  gravity model of central body.");
+                    Config.Instance.b_CB_Cnm = false;
+                }
+                else (Config.Instance.CB_FileModel) = tb_Cnm_file.Text;
+            }
+            else
+            {
                 (Config.Instance.CB_FileModel) = tb_Cnm_file.Text;
-           // }
+            }
+
             //tide ob CB
 
             //releff
