@@ -83,8 +83,6 @@ namespace OrbModUI
                 zg.GraphPane.XAxis.Type = AxisType.Linear;
             }
             EndDraw_();
-
-
         }
 
         //

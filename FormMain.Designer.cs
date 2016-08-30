@@ -461,7 +461,7 @@
             this.gb_planet.Controls.Add(this.cb_5);
             this.gb_planet.Location = new System.Drawing.Point(6, 6);
             this.gb_planet.Name = "gb_planet";
-            this.gb_planet.Size = new System.Drawing.Size(227, 104);
+            this.gb_planet.Size = new System.Drawing.Size(223, 104);
             this.gb_planet.TabIndex = 22;
             this.gb_planet.TabStop = false;
             this.gb_planet.Text = "Planetary systems barycenters ";
@@ -886,7 +886,7 @@
             this.gb_add.Controls.Add(this.cb_add1);
             this.gb_add.Location = new System.Drawing.Point(6, 113);
             this.gb_add.Name = "gb_add";
-            this.gb_add.Size = new System.Drawing.Size(327, 190);
+            this.gb_add.Size = new System.Drawing.Size(334, 190);
             this.gb_add.TabIndex = 23;
             this.gb_add.TabStop = false;
             this.gb_add.Text = "Additional bodies";
@@ -899,7 +899,7 @@
             this.gb_add_cunn.Controls.Add(this.tb_add_cun_file);
             this.gb_add_cunn.Controls.Add(this.bt_add_Cnm_file);
             this.gb_add_cunn.Controls.Add(this.cb_add_cunn_ON);
-            this.gb_add_cunn.Location = new System.Drawing.Point(143, 17);
+            this.gb_add_cunn.Location = new System.Drawing.Point(154, 14);
             this.gb_add_cunn.Name = "gb_add_cunn";
             this.gb_add_cunn.Size = new System.Drawing.Size(169, 170);
             this.gb_add_cunn.TabIndex = 10;
@@ -1037,7 +1037,7 @@
             this.tsmi_SaveCfg.Image = global::OrbModUI.Properties.Resources.save_128px_1169863_easyicon_net;
             this.tsmi_SaveCfg.Name = "tsmi_SaveCfg";
             this.tsmi_SaveCfg.Size = new System.Drawing.Size(166, 22);
-            this.tsmi_SaveCfg.Text = "Save config";
+            this.tsmi_SaveCfg.Text = "Save config as";
             this.tsmi_SaveCfg.Click += new System.EventHandler(this.tsmi_SaveCfg_Click);
             // 
             // toolStripSeparator2
@@ -1216,9 +1216,9 @@
             // 
             this.gb_relativ.Controls.Add(this.cb_L_T);
             this.gb_relativ.Controls.Add(this.cb_rel);
-            this.gb_relativ.Location = new System.Drawing.Point(235, 6);
+            this.gb_relativ.Location = new System.Drawing.Point(232, 6);
             this.gb_relativ.Name = "gb_relativ";
-            this.gb_relativ.Size = new System.Drawing.Size(99, 104);
+            this.gb_relativ.Size = new System.Drawing.Size(108, 104);
             this.gb_relativ.TabIndex = 36;
             this.gb_relativ.TabStop = false;
             this.gb_relativ.Text = "General Rel. effects";
@@ -2096,7 +2096,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(69, 93);
+            this.label25.Location = new System.Drawing.Point(67, 93);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(110, 13);
             this.label25.TabIndex = 19;
@@ -2152,7 +2152,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(69, 70);
+            this.label1.Location = new System.Drawing.Point(67, 70);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(33, 13);
             this.label1.TabIndex = 0;
@@ -2161,7 +2161,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(69, 47);
+            this.label2.Location = new System.Drawing.Point(67, 47);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 2;
@@ -2178,7 +2178,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(69, 116);
+            this.label3.Location = new System.Drawing.Point(67, 116);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(92, 13);
             this.label3.TabIndex = 4;

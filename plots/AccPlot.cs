@@ -116,7 +116,6 @@ namespace OrbModUI
             else
                 yT += "km/s^2";
             zg.GraphPane.YAxis.Title.Text = yT;
-
         }
     }
 }

@@ -93,7 +93,7 @@ namespace OrbModUI
                 int i_ = 0;
                 foreach (var it in pLists)
                 {
-                    stats[i_] = new statbyObs(1);
+                    stats[i_] = new statbyObs(0);
                     stats[i_].ID = it.Key;
                     foreach (var it2 in it.Value)
                     {

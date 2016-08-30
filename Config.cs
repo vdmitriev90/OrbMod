@@ -32,14 +32,19 @@ namespace OrbModUI
             initDict();
         }
 
-        private static readonly Lazy<Config> instanceHolder =  new Lazy<Config>(() => new Config());
+        //
+        #region Singleton
+        private static readonly Lazy<Config> instanceHolder = new Lazy<Config>(() => new Config());
 
         public static Config Instance
         {
             get { return instanceHolder.Value; }
         }
+
+        #endregion
+
         #region Fields
-       // public OrbModCLRWrapper.OrbModWrap OrbModWr;
+        // public OrbModCLRWrapper.OrbModWrap OrbModWr;
         public _ObsSet ObsSet = new _ObsSet();
 
         public int IDC;
@@ -188,6 +193,7 @@ namespace OrbModUI
         { "aprioriRMS", aprioriRMS },
         { "processNoise", processNoise }
             };
+
             Formatters = new Par2Str[]
             {
         ProcessMode,FittingMode,
@@ -199,8 +205,8 @@ namespace OrbModUI
          T_start ,  T_end ,  Frame ,EarthFixedFrame,
          Time_scale, TypeIC, UsePeriTime, IC,
         BigPlanets,  AddBodies,AddBody5HT, CBHterms, Rel, SRP,
-        Discr, Out,BFFID, Colors,
-                useObs,ObservationsPath,ObsTimeFrame,
+            Discr, Out,BFFID, Colors,
+         useObs,ObservationsPath,ObsTimeFrame,
        lineWidth,symbolSize, symbolType,  IsLogResiduals,
         aprioriRMS,processNoise
             };
@@ -221,8 +227,7 @@ namespace OrbModUI
                             del(_v[1]);
                     }
                 }
-            
-
+  
             return true;
         }
 
@@ -319,7 +324,7 @@ namespace OrbModUI
         //
         bool orbFitEps(string s)
         {
-            OrbFitEps = Math.Pow(10, -float.Parse(s));
+            OrbFitEps = float.Parse(s);
             return true;
         }
         //
@@ -671,7 +676,7 @@ namespace OrbModUI
         string  orbFitEps()
         {
             string str = "OrbFitEps:";
-            str += Convert.ToString(Abs(Log10(OrbFitEps)));
+            str += OrbFitEps.ToString();
             return str;
         }
         string  AutoStep()
