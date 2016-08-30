@@ -83,7 +83,7 @@ namespace OrbMod
 			//call of procedure-constructor of parametric equations (matrix A and vector A to C)
 			(Control::Obs_.curr()).setParEq(A, OmC, sv, dxdx0, tau);
 
-		if(Control::Obs_.next())
+		if (Control::Obs_.next())
 			tnext = (Control::Obs_.curr()).t;
 		else return 1;
 		return (Control::Obs_.it == Control::Obs_.it_end + 1) ? 1 : 0;
@@ -118,7 +118,7 @@ namespace OrbMod
 
 			Matrix RMS = LinAlgAux::CalcRMS(sigma, Q, pe, ve);
 			fo << iter << "--\n" << "dx " << x.toString("\t", "%f", 25) << endl;
-			fo << "N_rp " << Global::N_rp << "\tN obs " << OmC.size() << " sigma1 " << sigma*ObsSet::fct <<  " sigma2 " << sqrt(resid.SumSq()/(resid.Size()-1))*ObsSet::fct << " pRMS " << pe << " vRMS " << ve << endl;
+			fo << "N_rp " << Global::N_rp << "\tN obs " << OmC.size() << " sigma1 " << sigma*ObsSet::fct << " sigma2 " << sqrt(resid.SumSq() / (resid.Size() - 1))*ObsSet::fct << " pRMS " << pe << " vRMS " << ve << endl;
 			//
 			Control::Obs_.sigma = sigma;
 

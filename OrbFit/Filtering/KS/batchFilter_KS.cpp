@@ -52,8 +52,8 @@ namespace OrbMod
 			Control::Obs_.f_res << s_iter << endl;
 			//fo << s_iter;
 			inst->setPar(X, SV, t0);
-			double step = 0;
-			inst->FODE(X, t0, te, step, Global::NOR, Global::Niter, NS, NBS);
+
+			inst->FODE(X, t0, te, stepKS, Global::NOR, Global::Niter, NS, NBS);
 
 			Matrix A = getA();
 			Matrix b = getb();
@@ -84,17 +84,19 @@ namespace OrbMod
 			SV += dx;
 
 			Matrix RMS = LinAlgAux::CalcRMS(sigma, Q, pe, ve);
-			fo << "dx\t" << dx.MaxMod()/*.toString("\t", "%f", 25)*/ << "N pr\t" << Global::N_rp << " " << b.Size() << " Q " << Pi.Trace() << " sigma " << sigma << " pRMS " << pe << " vRMS " << ve << endl;
+			fo << "dx\t" << dx.MaxMod()/*.toString("\t", "%f", 25)*/ << "N pr\t" << Global::N_rp << " " << b.Size() << " Q " << Pi.Trace() << " sigma " << sigma << " pRMS " << pe << " vRMS " << ve << " stepKS " << stepKS << endl;
 			//fo << "Fi\n" << Fi.toString("\t", "%e", 20, 1)<<endl;
 
 			if (x.MaxMod() < epsIter*SV.MaxMod()) break;
 			iter++;
 		}
+		//
 		P = Pi;
 		//state and covariance propagation
 		P = Fi*P*Fi.Transpose();
 
 		unsigned npr_store = Global::N_rp;
+		Global::step = stepKS;
 		Integration::Instance.Integrate(SV, t0, te, dxdx0);
 		Global::N_rp = npr_store;
 

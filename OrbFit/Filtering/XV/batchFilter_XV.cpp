@@ -31,6 +31,7 @@ namespace OrbMod
 			Control::Obs_.f_res << s_iter << endl;
 			//fo << s_iter;
 			inst->setPar(X, SV, t0);
+
 			inst->FODE(X, t0, te, Global::step, Global::NOR, Global::Niter, NS, NBS);
 
 			b = Matrix(OmC);
@@ -64,11 +65,12 @@ namespace OrbMod
 
 			char dtout[70];
 			timout_c(t0, Global::pictur_tdb, 70, dtout);
-			fo << "dx\t" << dx.MaxMod()/*.toString("\t", "%f", 25)*/ << "N pr\t" << Global::N_rp << " " << b.Size() << " Q " << Pi.Trace() << " sigma " << sigma << " pRMS " << pe << " vRMS " << ve << endl;
+			fo << "dx\t" << dx.MaxMod()/*.toString("\t", "%f", 25)*/ << "N pr\t" << Global::N_rp << " " << b.Size() << " Q " << Pi.Trace() << " sigma " << sigma << " pRMS " << pe << " vRMS " << ve << " Global::step "<< Global::step <<endl;
 			//fo << "Fi\n" << Fi.toString("\t", "%e", 20, 1) << endl;
 			if (x.MaxMod() < epsIter*SV.MaxMod()) break;
 			iter++;
 		}
+		//
 		P = Pi;
 		//state and covariance propagation
 		P = Fi*P*Fi.Transpose();

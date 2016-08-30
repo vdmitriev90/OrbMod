@@ -82,6 +82,8 @@ namespace OrbMod
 		 Global::GravField_CB.LoadGravityModel(Global::GravField_CB.FileModel.c_str());
 		 if (Global::b_add5_cun_on)
 		 Global::GravField_add5.LoadGravityModel(Global::GravField_add5.FileModel.c_str());
+		 
+		 return true;
 	 }
 	 void Control::FinalizeProcess()
 	 {

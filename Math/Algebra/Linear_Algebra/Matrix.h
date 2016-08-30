@@ -88,7 +88,7 @@ namespace Algebra
 		Matrix & operator = (const Matrix & other);
 
 		//indexer
-		double  &operator ()(int i, int j);
+		double  &operator ()(int i, int j) const;
 
 		void operator+=(const  Matrix & right);
 		void operator-=(const  Matrix & right);

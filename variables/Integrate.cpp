@@ -134,6 +134,9 @@ namespace OrbMod
 		double t = to;
 		double B_ = 0;
 		IPS = IPS0;
+
+#pragma endregion
+
 		//метка 3
 	M3: double H = H_*DIR;
 		double R = 1.0;
@@ -143,9 +146,8 @@ namespace OrbMod
 			XK[k] = 0.0;
 			for (int i = 0; i < K; i++)
 				B[i][k] = 0.0;
-	}
+		}
 
-#pragma endregion
 
 		//Начальное значение шага
 #pragma region Начальное значение шага
@@ -304,9 +306,9 @@ namespace OrbMod
 
 			   if (b == true) break;
 		   }
-#pragma endregion
-
+		   //если не сошлись итерации
 		   if ((it > IPS0) && (!CNV) && (NS != 0)) NBS++;
+#pragma endregion
 
 #pragma region Проверка величины шага
 		   if (vs)
@@ -345,7 +347,7 @@ namespace OrbMod
 
 		   t = t + H;
 		   H = H*R;
-		   H_ = abs(H);
+		   step =  H_ = abs(H);
 		   NS++;
 
 		   if (CNV)
@@ -362,6 +364,7 @@ namespace OrbMod
 #if IS_DEBUG
 			   fclose(fodbg);
 #endif
+			   
 			   return 0;
 		   }
 		   goto M1;

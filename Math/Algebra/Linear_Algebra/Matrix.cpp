@@ -123,7 +123,7 @@ namespace Algebra
 		return *this;
 	}
 	//indexer
-	double & Matrix:: operator ()(int i, int j)
+	double & Matrix:: operator ()(int i, int j) const
 	{
 		if (this->size >= (i + 1)*(j + 1))
 			return this->M[i*this->m + j];
