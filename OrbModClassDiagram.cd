@@ -1,0 +1,512 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="OrbMod::Force" Collapsed="true">
+    <Position X="27.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BACBUAAFAAAQAAAAAAEgAAAAEAAIAgABAAQAABAaQAA=</HashCode>
+      <FileName>src\Force\force.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::ForceIzo" Collapsed="true">
+    <Position X="27.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAJAAAABAABAABAgAgAAAIgAAQAAAAFCAAAA=</HashCode>
+      <FileName>src\Force\ForceIzo.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::atm" Collapsed="true">
+    <Position X="36" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEBgACAEAIQAAAADEAAgAAAAQEARAAAgBABA0AAAAA=</HashCode>
+      <FileName>src\Force\Perturbations\atmosferic_drag.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::Cunningham" Collapsed="true">
+    <Position X="36" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BSAEBAAIABAA4ECAABwgAAIGAIABAMAAgQARAIQQAAA=</HashCode>
+      <FileName>src\Force\Perturbations\Cunningham.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::SRP" Collapsed="true">
+    <Position X="36" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BIABQAAACAQAAABAAAAAwgEIgAAAAAQAAAABAQCAAAA=</HashCode>
+      <FileName>src\Force\Perturbations\SRP.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::Integration" Collapsed="true">
+    <Position X="20.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ggoAAMIAABBgAAABAAgAAACABAAAACBAQQAEQAMACBA=</HashCode>
+      <FileName>src\Integration\Integration_.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::tform" Collapsed="true">
+    <Position X="39.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAACAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAACA=</HashCode>
+      <FileName>src\Math\tform.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::Kepler" Collapsed="true">
+    <Position X="36" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAABAAKAAAAAAAAAAAAAAAAAAACgAAAAg=</HashCode>
+      <FileName>src\Math\Astroynamics\Kepler.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::StVec" Collapsed="true">
+    <Position X="37.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAABACAAABAAACAAAAAAgAAIAEAEAAAAAAAQQAA=</HashCode>
+      <FileName>src\Math\Astroynamics\state.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::Derivatives" Collapsed="true">
+    <Position X="39.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAIAAAEAAAAAAAAAAAAAAEAAAIAAABAAAAAAA=</HashCode>
+      <FileName>src\Math\Derivatives\Derivatives.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::dateTime" Collapsed="true">
+    <Position X="37.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQIAAAAAQABAAABAAAAAAAQAAABIIAIAA=</HashCode>
+      <FileName>src\Misc\dateTime.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::JD2" Collapsed="true">
+    <Position X="43" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>src\Misc\dateTime.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::Misc" Collapsed="true">
+    <Position X="43" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAADAAAAQAAAAAEABAIAAAAQAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>src\Misc\Misc.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::OrbFit_KS" Collapsed="true">
+    <Position X="15.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAACAQAAAAAAAAAAAAACAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\OrbFit\OrbFit_KS.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::OrbFit_SB" Collapsed="true">
+    <Position X="18.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAACAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\OrbFit\OrbFit_SB.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::OrbFit_XV" Collapsed="true">
+    <Position X="12.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAECAACAAAAAAAAAAAAAAACAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\OrbFit\OrbFit_XV.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::OrbFit" Collapsed="true">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BIAgAABISAIABIDKQCAgBAAIgDAACAIACQAAIAESACA=</HashCode>
+      <FileName>src\OrbFit\Abstract\OrbFit.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::batchFitting">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAQAAAAEAAAAAABACAAAAAAAAAAAABA=</HashCode>
+      <FileName>src\OrbFit\batch_fitting\batchFitting.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::batchFilter_KS" Collapsed="true">
+    <Position X="15.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIIAAEAAAAAAAAAACAAQAAAAAAAAAA=</HashCode>
+      <FileName>src\OrbFit\Filtering\KS\batchFilter_KS.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::seqLS_KS">
+    <Position X="7" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQIAAAAAAAAAAAACAAAAACAIAAAAAAAAAAAA=</HashCode>
+      <FileName>src\OrbFit\Filtering\KS\seqLS_KS.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::batchFilter_XV" Collapsed="true">
+    <Position X="12.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAABAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\OrbFit\Filtering\XV\batchFilter_XV.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::Filter_XV" Collapsed="true">
+    <Position X="12.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAAAAAAAACAAQAAAACAAACA=</HashCode>
+      <FileName>src\OrbFit\Filtering\XV\Filter_XV.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::hibridKalman_XV" Collapsed="true">
+    <Position X="4.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAIAAAAAAAAAAAAAAAABAAIAgAAAAAAAAAAA=</HashCode>
+      <FileName>src\OrbFit\Filtering\XV\hibridKalman_XV.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::pureKalman_XV" Collapsed="true">
+    <Position X="4.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAIAAAAAAAAAAAAAAAABACAAgAAAAACAAAAA=</HashCode>
+      <FileName>src\OrbFit\Filtering\XV\pureKalman_XV.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::seqLS">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAIAAAAAAAAAAAAAAAAAACBIAAAAAEAAAAAA=</HashCode>
+      <FileName>src\OrbFit\Filtering\XV\seqLS.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::OrbFit_FinDiff" Collapsed="true">
+    <Position X="10.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAACAACDAAAAAEACABAAA=</HashCode>
+      <FileName>src\OrbFit\FiniteDifference\OrbFit_FinDiff.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::AstroObs" Collapsed="true">
+    <Position X="34" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAQIGAEAAAAAAAAAgEABERCAAAAAACAAEAAAAAA=</HashCode>
+      <FileName>src\Observations\AstroObs.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::ModAstroObs" Collapsed="true">
+    <Position X="29.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAQICAEAAAAAAAAAgAABAQACAAAAAEAAEAAAAAA=</HashCode>
+      <FileName>src\Observations\ModAstroObs.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::ModAstroObs2" Collapsed="true">
+    <Position X="34" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAgIABAQAAAAAAAEAEEAAgAAA=</HashCode>
+      <FileName>src\Observations\ModAstroObs2.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::ModDistObs" Collapsed="true">
+    <Position X="31.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgCAAAACAAAAAAIAAIAgAABAQIAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>src\Observations\ModDistObs.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::Obs" Collapsed="true">
+    <Position X="31.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAIAAACAAgQABASQEAAAAACQAEAAARAA=</HashCode>
+      <FileName>src\Observations\Obs.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::Observatory" Collapsed="true">
+    <Position X="36" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAACBAAAAAAAgAAAAAAAgAwAAAAAAAAAABAAAAAAQAA=</HashCode>
+      <FileName>src\Observations\Observatory.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::ObsSet" Collapsed="true">
+    <Position X="37.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GBAAsAAGQAAgIACAAIECAAAQEAQAAYCQCAAgAAIgAhI=</HashCode>
+      <FileName>src\Observations\ObsSet.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::PreObrit" Collapsed="true">
+    <Position X="39.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgABAIAAAAAAACAAAQAAAAAAAAAAIEAAAAQACACA=</HashCode>
+      <FileName>src\Observations\PreObrit.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::body" Collapsed="true">
+    <Position X="37.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAABAAgECBAIQEAAAAAQIAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>src\Parameters\body.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::config" Collapsed="true">
+    <Position X="41.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>aAACAMEghCCAQkYBAKgAAEggoIUyABAhIUO4oUwLjCU=</HashCode>
+      <FileName>src\Parameters\config.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::Global" Collapsed="true">
+    <Position X="41.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QixPoAsBAGKAggSuIIMgADg3oQU4IQUT4AMoF2IwCTA=</HashCode>
+      <FileName>src\Parameters\Global.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::ivar" Collapsed="true">
+    <Position X="15.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgABEEQgCAAAAABAIAAAAgCCAAQECLAQAYDENlAAAA=</HashCode>
+      <FileName>src\variables\Integrate.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::var_2D" Collapsed="true">
+    <Position X="10.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAgAAEAAAAAAAAAAAAAAAAAAAAAAACAAQAAAAAAAAAA=</HashCode>
+      <FileName>src\variables\var.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::var_3D" Collapsed="true">
+    <Position X="12.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAEAAAAAAAAAAAAAAAAAAAAACACAAQAAAAAAAAAA=</HashCode>
+      <FileName>src\variables\var.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::var_3D_izo" Collapsed="true">
+    <Position X="12.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAACAAQAAAAAAABAA=</HashCode>
+      <FileName>src\variables\var.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::var_KS" Collapsed="true">
+    <Position X="15.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAkAAEAAACAAAAAAAAAAAAAAAAAAAiAAQAAAAAAAAAA=</HashCode>
+      <FileName>src\variables\var.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::var_KS_izo" Collapsed="true">
+    <Position X="15.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAEAAAAAAQAAAAAACAAQAAAAAAAAAA=</HashCode>
+      <FileName>src\variables\var.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::var_SB" Collapsed="true">
+    <Position X="18.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAkAAEAAACAAAAAAAAAAAAIAAAAAACAAQAAAAAAAAAA=</HashCode>
+      <FileName>src\variables\var.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::var_SB_izo" Collapsed="true">
+    <Position X="18.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAABAAAAAAAAAAAAAAAQAAAAAACAAQAAAAAAAAAA=</HashCode>
+      <FileName>src\variables\var.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::var_3D_izo2" Collapsed="true">
+    <Position X="12.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAEAAAAAAAACAAAAAAAAAAAAIACAAAAAgAAAAAAA=</HashCode>
+      <FileName>src\variables\debug\var_3D_izo2.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::var_KS_izo2" Collapsed="true">
+    <Position X="15.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAABAACAAAAAAAAAAAAAACAAAAAgAAAQAAA=</HashCode>
+      <FileName>src\variables\debug\var_KS_izo2.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::Control" Collapsed="true">
+    <Position X="43" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAIAEAgAAAABCgAAAAAAAIAEgIIAAAABACIQAAE=</HashCode>
+      <FileName>src\Control\Control.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Algebra::ComplexNum" Collapsed="true">
+    <Position X="39.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAQCAiAAAAgAAAAQAAAAAAAAAAggAAAAAAA=</HashCode>
+      <FileName>src\Math\Algebra\ComplexNum.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Algebra::KS" Collapsed="true">
+    <Position X="37.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAEAAAQAAAAAIAIgQDAAFwQBA=</HashCode>
+      <FileName>src\Math\Algebra\KS.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Algebra::SB" Collapsed="true">
+    <Position X="41.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAABAAAAIgQHQDAIACABA=</HashCode>
+      <FileName>src\Math\Algebra\SB.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Algebra::LinAlgAux" Collapsed="true">
+    <Position X="39.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAgAAAAAEAAAAAAAAAABAAEAAIAAAAAAAA=</HashCode>
+      <FileName>src\Math\Algebra\Linear_Algebra\LinAlgAux.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Algebra::SLAU" Collapsed="true">
+    <Position X="43" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kAIAAACAAQAAAAEAAAAAAAAIgBAAAAIQEwBAIFNgACA=</HashCode>
+      <FileName>src\Math\Algebra\Linear_Algebra\LinearSystem.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Algebra::Matrix" Collapsed="true">
+    <Position X="41.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABggEAAUAAgCAAEIIABQAAURAgABEAEggwAApADAA=</HashCode>
+      <FileName>src\Math\Algebra\Linear_Algebra\Matrix.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Algebra::triple" Collapsed="true">
+    <Position X="41.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAFAgAAAAAAAEAAABBQAAAAEAAACgAQAgBAABAAE=</HashCode>
+      <FileName>src\Math\Algebra\Linear_Algebra\triple.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Typedef Name="OrbMod::Vobs" Collapsed="true">
+    <Position X="37.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Observations\ObsSet.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="uint" Collapsed="true">
+    <Position X="43" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Parameters\config.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="parce_ptr" Collapsed="true">
+    <Position X="41.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Parameters\config.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="format_ptr" Collapsed="true">
+    <Position X="36" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Parameters\config.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="parce_dict" Collapsed="true">
+    <Position X="39.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Parameters\config.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="formatters" Collapsed="true">
+    <Position X="37.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Parameters\config.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="vd" Collapsed="true">
+    <Position X="36" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\variables\Integrate.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="vvd" Collapsed="true">
+    <Position X="39.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\variables\Integrate.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Enum Name="Algebra::Axis" Collapsed="true">
+    <Position X="36" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAE=</HashCode>
+      <FileName>src\Math\Algebra\Linear_Algebra\Matrix.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Consts::Variables" Collapsed="true">
+    <Position X="41.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAEACgAAAIAAAAAAgAAAAIAAAAEAAAAAAA=</HashCode>
+      <FileName>src\Parameters\constant.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Consts::Mode" Collapsed="true">
+    <Position X="43" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAAACAAAAAAAgAAAAAI=</HashCode>
+      <FileName>src\Parameters\constant.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Consts::FitMode" Collapsed="true">
+    <Position X="39.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAIAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>src\Parameters\constant.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Consts::TypeOfObs" Collapsed="true">
+    <Position X="39.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAQAAAAAAAAAAAAQAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Parameters\constant.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Consts::EarthFixFrame" Collapsed="true">
+    <Position X="37.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAARAA=</HashCode>
+      <FileName>src\Parameters\constant.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Consts::TimeFormat" Collapsed="true">
+    <Position X="36" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAgABAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>src\Parameters\constant.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Consts::TypeOfIC" Collapsed="true">
+    <Position X="37.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Parameters\constant.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Consts::FrameOfIC" Collapsed="true">
+    <Position X="41.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>src\Parameters\constant.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
