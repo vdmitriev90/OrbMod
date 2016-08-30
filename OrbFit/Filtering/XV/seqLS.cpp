@@ -36,7 +36,7 @@ namespace OrbMod
 		int s_o = Global::MinObsinBatch;
 		uint ite = Control::Obs_.it_end;
 		P = LinAlgAux::initCov(PosRMS*PosRMS, VelRMS*VelRMS);
-
+		//
 		while (Control::Obs_.it != ite +1)
 		{
 			int ost = ite - Control::Obs_.it;
@@ -49,9 +49,9 @@ namespace OrbMod
 			if (failed) return;
 			t1 = te;
 		}
-
+		//
 		fo << "Nrp = " << Global::N_rp << endl;
-		//	PropagateToTe(SV, te);
+		// PropagateToTe(SV, te);
 		Matrix dxdx0, SVe;
 		SVe = SV;
 		Integration::Instance.Integrate(SV, te, Global::t0, dxdx0);

@@ -16,7 +16,7 @@ namespace OrbMod
 		sv.copyToVect(X);
 		tout = t0;
 	}
-	void var_SB::GetX(vector<double> &X, Matrix &SV, double t0, Matrix &dXdX0)
+	void var_SB::GetX(const vector<double> &X, Matrix &SV, double t0, Matrix &dXdX0)
 	{
 		SV = Matrix(6, 1);
 		SB sv = SB(X);

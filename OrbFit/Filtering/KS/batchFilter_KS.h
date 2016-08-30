@@ -13,6 +13,6 @@ namespace OrbMod
 
 		virtual void setPar(vector<double> &X, Matrix &SV, double t0) override;
 		int  FitBatch(Matrix &SV, double &t0, double &te, double &sigma, Matrix &Q);
-		virtual void GetX(vector<double> &X, Matrix &mSV, double t0, Matrix &dXdX0) override;
+		virtual void GetX(const vector<double> &X, Matrix &mSV, double t0, Matrix &dXdX0) override;
 	};
 }

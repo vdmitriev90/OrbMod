@@ -127,13 +127,13 @@ namespace Algebra
 	{
 		if (this->size >= (i + 1)*(j + 1))
 			return this->M[i*this->m + j];
-		else throw("Matrix: Index is out of range.");
+		else throw out_of_range("Matrix: Index is out of range.");
 	}
 	//
 	Matrix operator + (Matrix &left, Matrix &right)
 	{
 		if (left.n != right.n && left.m != right.m)
-			throw ("Non-conformable matrices in Matrix operation.");
+			throw invalid_argument("Non-conformable matrices in Matrix operation.");
 		Matrix res = Matrix(left.n, left.m);
 		for (int j = 0; j < left.size; ++j) res.M[j] = left.M[j] + right.M[j];
 		return res;
@@ -142,7 +142,7 @@ namespace Algebra
 	Matrix operator-(Matrix & left, Matrix & right)
 	{
 		if (left.n != right.n || left.m != right.m)
-			throw ("Non-conformable matrices in Matrix operation.");
+			throw invalid_argument("Non-conformable matrices in Matrix operation.");
 		Matrix res = Matrix(left.n, left.m);
 		for (int j = 0; j < left.size; ++j) res.M[j] = left.M[j] - right.M[j];
 		return res;
@@ -158,7 +158,7 @@ namespace Algebra
 	triple operator *(Matrix &left, triple &right)
 	{
 		if (left.n != 3 && left.m != 3)
-			throw("Non-conformable matrices in Matrix operation.");
+			throw invalid_argument("Non-conformable matrices in Matrix operation.");
 
 		triple res = triple();
 		for (int i = 0; i < 3; ++i)
@@ -191,7 +191,7 @@ namespace Algebra
 		int bRows = b.n;
 		int bCols = b.m;
 		if (aCols != bRows)
-			throw ("Matrix: Non-conformable matrices in Matrix Product");
+			throw invalid_argument("Matrix: Non-conformable matrices in Matrix Product");
 		Matrix res = Matrix(aRows, bCols);
 		for (int i = 0; i < aRows; ++i)
 			for (int j = 0; j < bCols; ++j)
@@ -204,7 +204,7 @@ namespace Algebra
 	void Matrix::operator+=(const Matrix & right)
 	{
 		if (this->n != right.n || this->m != right.m)
-			throw ("Non-conformable matrices in Matrix operation.");
+			throw invalid_argument("Non-conformable matrices in Matrix operation.");
 		for (size_t i = 0; i < this->size; ++i)
 		{
 			this->M[i] += right.M[i];
@@ -214,7 +214,7 @@ namespace Algebra
 	void Matrix::operator-=(const Matrix & right)
 	{
 		if (this->n != right.n || this->m != right.m)
-			throw ("Non-conformable matrices in Matrix operation.");
+			throw invalid_argument("Non-conformable matrices in Matrix operation.");
 		for (size_t i = 0; i < this->size; ++i)
 		{
 			this->M[i] -= right.M[i];
@@ -241,13 +241,13 @@ namespace Algebra
 	//vector
 	void Matrix::setFromVec(int offset, const vector<double> &V)
 	{
-		if (this->size + offset > V.size()) throw("Can't set from vector: vector too short.");
+		if (this->size + offset > V.size()) throw invalid_argument("Can't set from vector: vector too short.");
 		for (int j = 0; j < this->size; ++j) this->M[j] = V[j + offset];
 	}
 	//vector
 	void Matrix::copyToVec(int offset, vector<double> &F)
 	{
-		if (this->size + offset > F.size()) throw("Can't copy to vector: vector too short.");
+		if (this->size + offset > F.size()) throw invalid_argument("Can't copy to vector: vector too short.");
 		for (int j = 0; j < this->size; ++j) F[j + offset] = this->M[j];
 	}
 	//
@@ -255,7 +255,6 @@ namespace Algebra
 	{
 		delete[] M;
 		initDim(0, 0);
-
 	}
 	//Zero
 	void Matrix::Zero()
@@ -304,10 +303,10 @@ namespace Algebra
 	Matrix Matrix::Inverse()
 	{
 		if (this->n == 0 || this->m == 0)
-			throw ("empty matrices in Matrix operation.");
+			throw invalid_argument("empty matrices in Matrix operation.");
 
 		if (this->n != this->m)
-			throw ("Non-conformable matrices in Matrix operation.");
+			throw invalid_argument("Non-conformable matrices in Matrix operation.");
 		Matrix Minv;
 		int N = this->n;
 		try
@@ -323,7 +322,7 @@ namespace Algebra
 		}
 		catch (...)
 		{
-			throw ("Can't compute inverse matrix.");
+			throw invalid_argument("Can't compute inverse matrix.");
 		}
 		return  Minv;
 	}
@@ -357,7 +356,7 @@ namespace Algebra
 													0.0,   0.0, 1.0 };
 					  break;
 		default:
-			throw ("Axis index is out of range.");
+			throw out_of_range("Axis index is out of range.");
 		}
 	}
 	//Maximum module

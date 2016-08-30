@@ -64,9 +64,13 @@ namespace OrbMod
 			fo << "P prime diag\n" << (Q.PrimeDiag().Transpose()).toString("\t", "%e", 25, true) << endl;
 			fo << "Q\n" << Q.toString("\t", "%18.10e", 20, true) << endl;
 			fo << "Fi\n" << dxdx0.toString("\t", "%18.10e", 20, true) << endl;
-			Q = dxdx0*Q*dxdx0.Transpose();
-			RMS = LinAlgAux::CalcRMS(sigma, Q, pe, ve);
-			fo << "RMS(te)\n" << RMS.toString("\t", "%18.12e", 18) << endl;
+			//
+			if (Global::Var == Variables::IZO_3D)
+			{
+				Q = dxdx0*Q*dxdx0.Transpose();
+				RMS = LinAlgAux::CalcRMS(sigma, Q, pe, ve);
+				fo << "RMS(te)\n" << RMS.toString("\t", "%18.12e", 18) << endl;
+			}
 			//
 			for (int i = 0; i < 6; i++)
 				config::SV[i] = SV(i, 0);

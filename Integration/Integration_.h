@@ -13,7 +13,7 @@ namespace OrbMod
 		static  Integration Instance;
 
 		virtual void setPar(vector<double> &X, Matrix &mSV, double t0) override;
-		virtual void GetX(vector<double> &X, Matrix &mSV, double t0, Matrix &dXdX0) override;
+		virtual void GetX(const vector<double> &X, Matrix &mSV, double t0, Matrix &dXdX0) override;
 		virtual void force(const double Ti, const vector<double> &X, vector<double> &dXds) override;
 		virtual bool Inter(double t0, double H, vector<double> &X, vector<double> &Yo)override;
 		virtual int FODE(vector<double> &X, double to, double &te, double &step, int NOR, int NI, int &NS, int &NBS) override;

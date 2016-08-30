@@ -25,7 +25,7 @@ namespace OrbMod
 		delete[] SV_;
 	}
 	//
-	void var_KS_izo::GetX(vector<double> &X, Matrix &SV, double t0, Matrix &dXdX0)
+	void var_KS_izo::GetX(const vector<double> &X, Matrix &SV, double t0, Matrix &dXdX0)
 	{
 		SV = Matrix(6, 1);
 		dXdX0 = Matrix(Niter, Niter);

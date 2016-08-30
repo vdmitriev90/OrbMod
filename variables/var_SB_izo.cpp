@@ -18,7 +18,7 @@ namespace OrbMod
 		dY0dy0 = sv.dYdy(Force::getMu());
 		tout = t0;
 	}
-	void var_SB_izo::GetX(vector<double> &X, Matrix &SV, double t0, Matrix &dXdX0)
+	void var_SB_izo::GetX(const vector<double> &X, Matrix &SV, double t0, Matrix &dXdX0)
 	{
 		SV = Matrix(6, 1);
 		dXdX0 = Matrix(11, 11);

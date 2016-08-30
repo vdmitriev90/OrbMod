@@ -20,7 +20,7 @@ namespace OrbMod
 		tout = t0;
 	}
 	//
-	void var_3D_izo::GetX(vector<double> &X, Matrix &SV, double t0, Matrix &dXdX0)
+	void var_3D_izo::GetX(const vector<double> &X, Matrix &SV, double t0, Matrix &dXdX0)
 	{
 		dXdX0 = Matrix(6, 6);
 		SV = Matrix(6, 1);

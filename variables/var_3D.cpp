@@ -25,7 +25,7 @@ namespace OrbMod
 
 		tout = t0;
 	}
-	void var_2D::GetX(vector<double> &X, Matrix &SV, double t0, Matrix &dXdX0)
+	void var_2D::GetX(const vector<double> &X, Matrix &SV, double t0, Matrix &dXdX0)
 	{
 		SV = Matrix(6, 1);
 		for (int i = 0; i < 2; i++)
@@ -60,14 +60,14 @@ namespace OrbMod
 			}
 		return false;
 	}
-	void var_3D::setPar(vector<double> &X, Matrix &SV, double t0)
+	void var_3D::setPar(vector<double> &X,  Matrix &SV, double t0)
 	{
 		X.resize(N);
 		for (int i = 0; i < N; i++)
 			X[i] = SV(i, 0);
 		tout = t0;
 	}
-	void var_3D::GetX(vector<double> &X, Matrix &SV, double t0, Matrix &dXdX0)
+	void var_3D::GetX(const vector<double> &X, Matrix &SV, double t0, Matrix &dXdX0)
 	{
 		SV = Matrix(6, 1);
 		for (int i = 0; i < 6; i++)

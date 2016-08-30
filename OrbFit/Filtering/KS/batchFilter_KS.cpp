@@ -27,7 +27,7 @@ namespace OrbMod
 		OmC.clear();
 	}
 	//
-	void batchFilter_KS::GetX(vector<double> &X, Matrix &SV, double t0, Matrix &dXdX0)
+	void batchFilter_KS::GetX(const vector<double> &X, Matrix &SV, double t0, Matrix &dXdX0)
 	{
 		var_KS_izo::GetX(X, SV, t0, dXdX0);
 	}

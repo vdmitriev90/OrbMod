@@ -162,6 +162,7 @@ namespace OrbMod
 		 Integration::Instance.GetX(X, Global::SV, te, dXdX0);
 
 	 };
+
 	 void Control::FODE_test()
 	 {
 		 FILE *ft = fopen("Test.out", "w");
@@ -171,7 +172,7 @@ namespace OrbMod
 		 fprintf(ft, "dt, days %f\n", dtd / 86400);
 
 		 int Ntest = abs(log10(Global::eps));
-		 int istart = -6;
+		 int istart = -3;
 
 		 for (int i = istart; i <= Ntest; i++)
 		 {

@@ -17,7 +17,7 @@ namespace OrbMod
 		double tizo, dtr;
 
 		virtual void setPar(vector<double> &X, Matrix &mSV, double t0) = 0;
-		virtual void GetX(vector<double> &X, Matrix &mSV, double t0, Matrix &dXdX0) = 0;
+		virtual void GetX(const vector<double> &X, Matrix &mSV, double t0, Matrix &dXdX0) = 0;
 		virtual void force(const double Ti, const vector<double> &X, vector<double> &dXds) = 0;
 		virtual bool Inter(double t0, double H, vector<double> &X, vector<double> &Yo) = 0;
 		void stepDs(double ds, double S, vector<double> &X, vector<double> &Y);

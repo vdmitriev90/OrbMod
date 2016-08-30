@@ -8,7 +8,7 @@ namespace OrbMod
 		N = Niter = 10;
 	}
 
-	void var_KS::setPar(vector<double> &X, Matrix &SV, double t0)
+	void var_KS::setPar(vector<double> &X,  Matrix &SV, double t0)
 	{
 		X.resize(N);
 		double *SV_;
@@ -20,7 +20,7 @@ namespace OrbMod
 		delete[] SV_;
 	}
 	//
-	void var_KS::GetX(vector<double> &X, Matrix &SV, double t0, Matrix &dXdX0)
+	void var_KS::GetX(const vector<double> &X, Matrix &SV, double t0, Matrix &dXdX0)
 	{
 		SV = Matrix(6, 1);
 		KS sv = KS(X);

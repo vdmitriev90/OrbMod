@@ -38,7 +38,7 @@ namespace OrbMod
 		var->setPar(X, mSV, t0);
 		if (Global::Discr != 0) streamsOpen();
 	}
-	void Integration::GetX(vector<double> &X, Matrix &mSV, double t0, Matrix &dXdX0)
+	void Integration::GetX(const vector<double> &X, Matrix &mSV, double t0, Matrix &dXdX0)
 	{
 		if (Global::Discr != 0) streamsClose();
 		var->GetX(X, mSV, t0, dXdX0);

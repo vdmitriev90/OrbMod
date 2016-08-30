@@ -27,7 +27,7 @@ namespace OrbMod
 		OmC.clear();
 	}
 	//
-	void Filter_XV::GetX(vector<double> &X, Matrix &SV, double t0, Matrix &dXdX0)
+	void Filter_XV::GetX(const vector<double> &X, Matrix &SV, double t0, Matrix &dXdX0)
 	{
 		var_3D_izo::GetX(X, SV, t0, dXdX0);
 	}
