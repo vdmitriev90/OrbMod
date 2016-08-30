@@ -42,7 +42,7 @@ namespace OrbModUI
             Config.Instance.ObsType = (TypeOfObs)cmb_TypeOfObs.SelectedIndex;
             //integrator
             Config.Instance.NOr = int.Parse(cmb_NOR.Text);
-            Config.Instance.Step = int.Parse(tb_step.Text);
+            Config.Instance.Step = double.Parse(tb_step.Text);
             Config.Instance.IsAutoStep = cb_AutoStep.Checked;
             Config.Instance.Local_eps = Convert.ToDouble(nud_eps.Value);
 

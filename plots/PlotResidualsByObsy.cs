@@ -23,18 +23,20 @@ namespace OrbModUI
             public double Mean;
             public double sigma;
             public uint counter;
-
+            
+            //
             public statbyObs()
             {
                 counter = 0;
                 Mean = sigma = 0;
             }
+            //
             public statbyObs(uint i)
             {
                 counter = i;
                 Mean = sigma = 0;
             }
-
+            //
             public string ToString(string format, string delim)
             {
                 return (ID + delim + counter + delim + Mean.ToString(format) + delim + (sigma).ToString(format));
@@ -45,7 +47,7 @@ namespace OrbModUI
         public PlotResbyObs(ZedGraphControl zg, string fname) : base(zg, fname) { }
         protected abstract bool AddPoint(DateTime dt, double et, string[] Data, ref PointPairList Points);
        
-
+        //
         public override void PlotData()
         {
             Random rand = new Random();
@@ -121,13 +123,18 @@ namespace OrbModUI
 
                     #endregion
 
-                    // Add curve to pane
+                    // random color
                     Color col = Color.FromArgb(rand.Next(0, 255), rand.Next(0, 255), rand.Next(0, 255));
 
                     //add line
                     var list_ = it.Value;
                     LineItem myCurve = pane.AddCurve("", list_, col, (SymbolType)Config.Instance.SymbolType);
 
+                    //line formatting
+                    myCurve.Symbol.Size = Config.Instance.SymbolSize;
+                    myCurve.Symbol.Fill.Type = FillType.Solid;
+                    myCurve.Line.Width = Config.Instance.LineWidth;
+                    
                     //label
                     string LabelText = stats[i_].ToString("F2", " ");
                     TextObj Label = new TextObj(LabelText, list_[0].X, list_[0].Y);
@@ -135,18 +142,13 @@ namespace OrbModUI
                     Label.FontSpec.FontColor = col;
                     Label.FontSpec.IsBold = true;
                     Label.FontSpec.Border.IsVisible = false;
-                    //Label.FontSpec.Border.IsVisible = false;
-
-                    // Добавим текст в список отображаемых объектов
+                    // add label to graph pane
                     pane.GraphObjList.Add(Label);
-                    myCurve.Symbol.Size = Config.Instance.SymbolSize;
-                    myCurve.Symbol.Fill.Type = FillType.Solid;
-                    myCurve.Line.Width = Config.Instance.LineWidth;
 
                     i_++;
                 }
-
             }
+            EndDraw();
         }
 
     }

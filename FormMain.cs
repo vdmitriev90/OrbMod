@@ -128,6 +128,9 @@ namespace OrbModUI
             }
             catch(Exception ex)
             {
+                string ex_text = "An Error has occured.\n" + ex.Message + "\n";
+                ex_text += "Call stack\n" + ex.StackTrace + "\n";
+                MessageBox.Show(ex_text);
                 this.Close();
             }
         }
