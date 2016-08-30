@@ -98,13 +98,6 @@
       <FileName>src\OrbFit\OrbFit_KS.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OrbMod::OrbFit_SB" Collapsed="true">
-    <Position X="18.25" Y="5.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAACAAACAAAAAAAAAAAAA=</HashCode>
-      <FileName>src\OrbFit\OrbFit_SB.h</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="OrbMod::OrbFit_XV" Collapsed="true">
     <Position X="12.5" Y="5.75" Width="1.5" />
     <TypeIdentifier>
@@ -135,13 +128,6 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAIIAAEAAAAAAAAAACAAQAAAAAAAAAA=</HashCode>
       <FileName>src\OrbFit\Filtering\KS\batchFilter_KS.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="OrbMod::seqLS_KS" Collapsed="true">
-    <Position X="7" Y="1.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAQIAAAAAAAAAAAACAAAAACAIAAAAAAAAAAAA=</HashCode>
-      <FileName>src\OrbFit\Filtering\KS\seqLS_KS.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OrbMod::batchFilter_XV" Collapsed="true">
@@ -387,6 +373,20 @@
     <TypeIdentifier>
       <HashCode>AEAAAFAgAAAAAAAEAAABBQAAAAEAAACgAQAgBAABAAE=</HashCode>
       <FileName>src\Math\Algebra\Linear_Algebra\triple.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::seqLS_KS" Collapsed="true">
+    <Position X="7" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQIAAAAAAAAAAAACAAAAACAIAAAAAAAAAAAA=</HashCode>
+      <FileName>src\OrbFit\Filtering\KS\seqLS_KS.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrbMod::OrbFit_SB" Collapsed="true">
+    <Position X="18.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAACAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\OrbFit\OrbFit_SB.h</FileName>
     </TypeIdentifier>
   </Class>
   <Typedef Name="OrbMod::Vobs" Collapsed="true">

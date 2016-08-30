@@ -42,6 +42,9 @@ namespace OrbMod
 		Matrix b, K, D, dx, x, E(6, 6), Q, sv, dxdx0, Pi = P;
 		int iter = 1;
 		uint it_0 = Control::Obs_.it;
+		//Process noise
+		Matrix Qpn = ProcessNoise(Qnoise);
+
 		while (iter <= maxIterPerBatch)
 		{
 			Control::Obs_.it = it_0;
@@ -56,7 +59,7 @@ namespace OrbMod
 			Matrix b = getb();
 			int n = b.Size();
 
-			if (!LinAlgAux::LSSolve(A, b, x, sigma, Q)) return 1;
+			if (!Solve(A, b, x, sigma, Q)) return 1;
 
 			Matrix At = A.Transpose();
 
@@ -65,16 +68,16 @@ namespace OrbMod
 			sigma = Control::Obs_.sigma;
 			R *= (sigma*sigma);
 
-			if (Nbatch == 1)
-			{
-				Pi = Q;
-				dx = Pi*At*b;
-			}
-			else
+			//if (Nbatch == 1)
+			//{
+			//	Pi = Q;
+			//	dx = Pi*At*b;
+			//}
+			//else
 			{
 				K = Pi*At*(A*Pi*At + R).Inverse();
 				D = E - K*A;
-				Pi = D*Pi*D.Transpose() + K*R*K.Transpose();
+				Pi = D*Pi + Qpn;
 				dx = K*b;
 			}
 			//fo << "\nP\n" << (P).toString("\t", "%20.12e", 25, true) << endl;

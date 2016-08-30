@@ -2,10 +2,12 @@
 #include"seqLS.h"
 namespace OrbMod
 {
+	//
 	seqLS::seqLS()
 	{
 		this->fit = new batchFilter_XV();
 	}
+	//
 	seqLS::seqLS(Variables var)
 	{
 		if (var == Variables::IZO_3D)
@@ -13,6 +15,7 @@ namespace OrbMod
 		if (var == Variables::IZO_KS)
 			this->fit = new batchFilter_KS();
 	}
+	//
 	void seqLS::switchVar(Variables var)
 	{
 		if (var == Variables::IZO_3D)
@@ -20,11 +23,12 @@ namespace OrbMod
 		if (var == Variables::IZO_KS)
 			this->fit = new batchFilter_KS();
 	}
+	//
 	seqLS::~seqLS()
 	{
 		delete fit;
 	}
-
+	//
 	seqLS seqLS::inst;
 	//
 	void seqLS::Adjust(Matrix &SV, double t0, double &sigma, Matrix &P)

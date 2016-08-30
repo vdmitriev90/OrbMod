@@ -21,8 +21,8 @@ namespace OrbMod
 			break;
 		case Variables::IZO_KS: this->fit = new OrbFit_KS();
 			break;
-		case Variables::IZO_SB: this->fit = new OrbFit_SB();
-			break;
+		//case Variables::IZO_SB: this->fit = new OrbFit_SB();
+		//	break;
 		case Variables::FinDiff: this->fit = new OrbFit_FinDiff();
 			break;
 		default:
