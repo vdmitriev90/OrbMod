@@ -57,7 +57,7 @@ namespace Algebra
 		initDim(N, M);
 
 		if (this->size > Vec.size() + offset)
-			throw ("Invalid input data in Matrix constructor: input vector<double> is too short");
+			throw invalid_argument("Invalid input data in Matrix constructor: input vector<double> is too short");
 		for (int i = 0; i < size; ++i) this->M[i] = Vec[i];
 	}
 	//

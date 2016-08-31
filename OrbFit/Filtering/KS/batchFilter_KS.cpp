@@ -54,7 +54,8 @@ namespace OrbMod
 			inst->setPar(X, SV, t0);
 
 			inst->FODE(X, t0, te, stepKS, Global::NOR, Global::Niter, NS, NBS);
-
+			
+			Global::IsAutoStep = false;
 			Matrix A = getA();
 			Matrix b = getb();
 			int n = b.Size();
