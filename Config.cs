@@ -14,7 +14,7 @@ namespace OrbModUI
     public enum FrameOfIC { Equator_and_Equinox_J2000 = 0, Ecliptic_and_Equinox_J2000 };
     public enum TimeFormat { UTC_Calendar_format = 0, TDB_Seconds_past_J2000, TDB_Calendar_format, TT_Calendar_format };
 
-    public enum EarthFixFrame { IAU_EARTH = 0, ITRF93, ITRF2008 };
+    public enum EarthFixFrame {IAU_EARTH = 0, ITRF93, ITRF2008 };
 
     public class Config
     {
@@ -30,7 +30,6 @@ namespace OrbModUI
         {
             initDict();
         }
-
         //
         #region Singleton
         private static readonly Lazy<Config> instanceHolder = new Lazy<Config>(() => new Config());
@@ -130,9 +129,10 @@ namespace OrbModUI
         public double obs_t0, obs_te;
         //
         //line
-        public int LineWidth;
-        public int SymbolType;
-        public int SymbolSize;
+        public bool IsShowLines = true;
+        public int LineWidth =0;
+        public int SymbolType=1;
+        public int SymbolSize=1;
 
         public bool UseAU = false;
         public bool UseCalend = false;
@@ -190,7 +190,11 @@ namespace OrbModUI
 
         { "IsLogResiduals", IsLogResiduals },
         { "aprioriRMS", aprioriRMS },
-        { "processNoise", processNoise }
+        { "processNoise", processNoise },
+        { "lineWidth", lineWidth },
+         { "symbolSize", symbolSize },
+          { "symbolType", symbolType },
+            { "isShowLines", isShowLines },
             };
 
             Formatters = new Par2Str[]
@@ -206,8 +210,8 @@ namespace OrbModUI
         BigPlanets,  AddBodies,AddBody5HT, CBHterms, Rel, SRP,
             Discr, Out,BFFID, Colors,
          useObs,ObservationsPath,ObsTimeFrame,
-       lineWidth,symbolSize, symbolType,  IsLogResiduals,
-        aprioriRMS,processNoise
+        IsLogResiduals, aprioriRMS,processNoise,
+        lineWidth,symbolSize, symbolType, isShowLines
             };
         }
 
@@ -591,7 +595,13 @@ namespace OrbModUI
             Qnoise = double.Parse(strs[0]);
             return true;
         }
+        bool  isShowLines(string s)
+        {
 
+            IsShowLines = Convert.ToBoolean(int.Parse(s));
+
+            return true;
+        }
         #endregion
 
         #region Formatters
@@ -926,6 +936,14 @@ namespace OrbModUI
         {
             string str = "symbolType:";
             str += SymbolType.ToString();
+
+            return str;
+        }
+        //
+        string isShowLines()
+        {
+            string str = "siShowLines:";
+            str += IsShowLines.ToString();
 
             return str;
         }

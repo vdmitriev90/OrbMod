@@ -53,6 +53,7 @@
             this.zedGraphControl1 = new ZedGraph.ZedGraphControl();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.label1 = new System.Windows.Forms.Label();
+            this.cb_isShowLines = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.nud_DotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Wight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Smooth)).BeginInit();
@@ -98,7 +99,7 @@
             // butt_ColorScheme
             // 
             this.butt_ColorScheme.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.butt_ColorScheme.Location = new System.Drawing.Point(1, 343);
+            this.butt_ColorScheme.Location = new System.Drawing.Point(1, 376);
             this.butt_ColorScheme.Name = "butt_ColorScheme";
             this.butt_ColorScheme.Size = new System.Drawing.Size(123, 20);
             this.butt_ColorScheme.TabIndex = 28;
@@ -229,7 +230,7 @@
             // butt_AutoScale
             // 
             this.butt_AutoScale.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.butt_AutoScale.Location = new System.Drawing.Point(2, 367);
+            this.butt_AutoScale.Location = new System.Drawing.Point(2, 400);
             this.butt_AutoScale.Name = "butt_AutoScale";
             this.butt_AutoScale.Size = new System.Drawing.Size(122, 22);
             this.butt_AutoScale.TabIndex = 21;
@@ -278,7 +279,7 @@
             // 
             this.butt_plot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.butt_plot.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.butt_plot.Location = new System.Drawing.Point(1, 394);
+            this.butt_plot.Location = new System.Drawing.Point(1, 427);
             this.butt_plot.Name = "butt_plot";
             this.butt_plot.Size = new System.Drawing.Size(123, 23);
             this.butt_plot.TabIndex = 19;
@@ -301,7 +302,7 @@
             this.zedGraphControl1.ScrollMinX = 0D;
             this.zedGraphControl1.ScrollMinY = 0D;
             this.zedGraphControl1.ScrollMinY2 = 0D;
-            this.zedGraphControl1.Size = new System.Drawing.Size(611, 418);
+            this.zedGraphControl1.Size = new System.Drawing.Size(611, 451);
             this.zedGraphControl1.TabIndex = 33;
             this.zedGraphControl1.ZoomEvent += new ZedGraph.ZedGraphControl.ZoomEventHandler(this.zedGraphControl1_ZoomEvent);
             this.zedGraphControl1.SizeChanged += new System.EventHandler(this.zedGraphControl1_SizeChanged);
@@ -315,11 +316,22 @@
             this.label1.TabIndex = 85;
             this.label1.Text = "Symbol Type";
             // 
+            // cb_isShowLines
+            // 
+            this.cb_isShowLines.AutoSize = true;
+            this.cb_isShowLines.Location = new System.Drawing.Point(6, 332);
+            this.cb_isShowLines.Name = "cb_isShowLines";
+            this.cb_isShowLines.Size = new System.Drawing.Size(81, 17);
+            this.cb_isShowLines.TabIndex = 86;
+            this.cb_isShowLines.Text = "Show Lines";
+            this.cb_isShowLines.UseVisualStyleBackColor = true;
+            // 
             // OrbMod_FormGraph
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(741, 423);
+            this.ClientSize = new System.Drawing.Size(741, 456);
+            this.Controls.Add(this.cb_isShowLines);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.zedGraphControl1);
@@ -380,5 +392,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox cb_isShowLines;
     }
 }

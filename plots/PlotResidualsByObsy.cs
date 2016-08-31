@@ -130,9 +130,11 @@ namespace OrbModUI
                     var list_ = it.Value;
                     LineItem myCurve = pane.AddCurve("", list_, col, (SymbolType)Config.Instance.SymbolType);
 
-                    //line formatting
+                    //Symbol formatting
                     myCurve.Symbol.Size = Config.Instance.SymbolSize;
                     myCurve.Symbol.Fill.Type = FillType.Solid;
+                    //line formatting
+                    myCurve.Line.IsVisible = Config.Instance.IsShowLines;
                     myCurve.Line.Width = Config.Instance.LineWidth;
                     
                     //label

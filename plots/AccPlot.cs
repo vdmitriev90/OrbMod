@@ -96,8 +96,11 @@ namespace OrbModUI
                     if (points[i].Count > 0)
                     {
                         LineItem myCurve = pane.AddCurve(AccNames[i], points[i], Color.FromArgb(Config.Instance.ColorsAcc[i]), (SymbolType)Config.Instance.SymbolType);
+
                         myCurve.Symbol.Size = Config.Instance.SymbolSize;
                         myCurve.Symbol.Fill.Type = FillType.Solid;
+
+                        myCurve.Line.IsVisible = Config.Instance.IsShowLines;
                         myCurve.Line.Width = Config.Instance.LineWidth;
                         myCurve.Line.IsSmooth = Config.Instance.isSmoothGraph;
                         myCurve.Line.SmoothTension = Config.Instance.Tension;

@@ -127,7 +127,14 @@ namespace OrbModUI
             foreach (var value in strs)
                 cmb_symbol.Items.Add(value);
 
-            cmb_symbol.SelectedIndex = (int)Config.Instance.SymbolType;
+            cmb_symbol.SelectedIndex = Config.Instance.SymbolType;
+
+            nud_DotSize.Value = Config.Instance.SymbolSize;
+            cb_isShowLines.Checked = Config.Instance.IsShowLines;
+            nud_Wight.Value = Config.Instance.LineWidth;
+            rb_AU.Checked = Config.Instance.UseAU;
+            rb_Xaxis_calend.Checked = Config.Instance.UseCalend;
+            nud_Smooth.Value = Convert.ToDecimal(Config.Instance.Tension);
 
             GraphPane pane = zedGraphControl1.GraphPane;
 
@@ -173,16 +180,15 @@ namespace OrbModUI
 
         private void OrbMod_FormGraph_FormClosing(object sender, FormClosingEventArgs e)
         {
-            FormGraph_Close();
+            FormGraph_SetConfig();
         }
-        private void  FormGraph_Close()
-        {
 
-        }
         private void FormGraph_SetConfig()
         {
             Config.Instance.SymbolType = cmb_symbol.SelectedIndex;
             Config.Instance.SymbolSize = Convert.ToInt32(nud_DotSize.Value);
+            Config.Instance.IsShowLines = cb_isShowLines.Checked;
+            
             Config.Instance.LineWidth = Convert.ToInt32(nud_Wight.Value);
             Config.Instance.UseAU = rb_AU.Checked;
             Config.Instance.UseCalend = rb_Xaxis_calend.Checked;
