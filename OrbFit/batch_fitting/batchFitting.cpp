@@ -41,8 +41,8 @@ namespace OrbMod
 		else
 		{
 			fit->Nbatch = 1;
-			fo << SV.toString("\t", "%21.16f", 35) << endl;
-
+			fo << "Initial state:\t"+SV.toString("\t", "%21.16f", 35) << endl;
+			fo << "Initial elts:\t" << (StVec(SV).getOscEl(true).toString("\t", "%21.16f", 35)) << endl;
 			double te = (Control::Obs_).last().t;
 
 			fit->FitBatch(SV, t0, te, sigma, Q);
@@ -55,15 +55,19 @@ namespace OrbMod
 
 			Integration::Instance.Integrate(SVe, Global::t0, Global::te, dxdx0);
 			fo << setprecision(9);
-			fo << "dSV\t" << (SV - Global::SV_start).toString("\t", "%18.12e", 35) << endl;
-			fo << "\nT_e\t" << Global::te << "\tSVe\t" << SVe.toString("\t", "%18.12e", 18) << endl;
+			fo << "Final state:\t" + SV.toString("\t", "%21.16f", 35) << endl;
+			fo << "Final elts:\t" << (StVec(SV).getOscEl(true).toString("\t", "%21.16f", 35)) << endl;
+
+			//fo << "dSV\t" << (SV - Global::SV_start).toString("\t", "%18.12e", 35) << endl;
+			//fo << "\nT_e\t" << Global::te << "\tSVe\t" << SVe.toString("\t", "%18.12e", 18) << endl;
 			fo << setprecision(3);
-			fo << "SV\t" << SV.toString("\t", "%19.12f", 20) << "\tNumobs\t" << fit->getb().Size() << "\tsigma\t" << sigma << " pRMS " << pe << " vRMS " << ve << endl;
-			fo << "Nrp = " << Global::N_rp << endl;
-			fo << "RMS\t" << RMS.toString("\t", "%12.6e", 20) << endl;
-			fo << "P prime diag\n" << (Q.PrimeDiag().Transpose()).toString("\t", "%e", 25, true) << endl;
+			int del = (Global::ObsT == TypeOfObs::Astro) ? 2 : 1;
+			fo  <<"Process statistic\t" << "\tNumobs\t" << fit->getb().Size()/del << "\tsigma\t" << sigma << "\tpRMS\t" << pe << "\tvRMS\t" << ve << endl;
+			fo << "Nrp=\t" << Global::N_rp << endl;
+			//fo << "RMS\t" << RMS.toString("\t", "%12.6e", 20) << endl;
+		/*	fo << "P prime diag\n" << (Q.PrimeDiag().Transpose()).toString("\t", "%e", 25, true) << endl;
 			fo << "Q\n" << Q.toString("\t", "%18.10e", 20, true) << endl;
-			fo << "Fi\n" << dxdx0.toString("\t", "%18.10e", 20, true) << endl;
+			fo << "Fi\n" << dxdx0.toString("\t", "%18.10e", 20, true) << endl;*/
 			//
 			if (Global::Var == Variables::IZO_3D)
 			{

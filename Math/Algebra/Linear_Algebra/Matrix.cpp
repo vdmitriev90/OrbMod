@@ -122,15 +122,39 @@ namespace Algebra
 		}
 		return *this;
 	}
-	//indexer
-	double & Matrix:: operator ()(int i, int j) const
+	//set-get indexer
+	double & Matrix:: operator ()(int i, int j) 
 	{
 		if (this->size >= (i + 1)*(j + 1))
 			return this->M[i*this->m + j];
 		else throw out_of_range("Matrix: Index is out of range.");
 	}
+	//get-only indexer
+	const double & Matrix:: operator ()(int i, int j) const
+	{
+		return m1;
+		if (this->size >= (i + 1)*(j + 1))
+			return this->M[i*this->m + j];
+		else throw out_of_range("Matrix: Index is out of range.");
+	}
 	//
-	Matrix operator + (Matrix &left, Matrix &right)
+	//set indexer
+	double & Matrix:: at(int i, int j)
+	{
+		if (this->size >= (i + 1)*(j + 1))
+			return this->M[i*this->m + j];
+		else throw out_of_range("Matrix: Index is out of range.");
+	}
+	//get indexer
+	const double & Matrix::at(int i, int j) const
+	{
+		return m1;
+		if (this->size >= (i + 1)*(j + 1))
+			return this->M[i*this->m + j];
+		else throw out_of_range("Matrix: Index is out of range.");
+	}
+	//
+	Matrix operator + (const Matrix &left, const  Matrix &right)
 	{
 		if (left.n != right.n && left.m != right.m)
 			throw invalid_argument("Non-conformable matrices in Matrix operation.");
@@ -139,7 +163,7 @@ namespace Algebra
 		return res;
 	}
 	//
-	Matrix operator-(Matrix & left, Matrix & right)
+	Matrix operator-(const Matrix & left, const Matrix & right)
 	{
 		if (left.n != right.n || left.m != right.m)
 			throw invalid_argument("Non-conformable matrices in Matrix operation.");
@@ -148,14 +172,14 @@ namespace Algebra
 		return res;
 	}
 	//
-	Matrix operator*(const double & left, Matrix & right)
+	Matrix operator*(const double & left, const  Matrix & right)
 	{
 		Matrix res = Matrix(right.n, right.m);
 		for (int j = 0; j < right.size; ++j) res.M[j] = left * right.M[j];
 		return res;
 	}
 	//
-	triple operator *(Matrix &left, triple &right)
+	triple operator *(const Matrix &left, const triple &right)
 	{
 		if (left.n != 3 && left.m != 3)
 			throw invalid_argument("Non-conformable matrices in Matrix operation.");
@@ -170,21 +194,21 @@ namespace Algebra
 		return res;
 	}
 	//
-	Matrix operator/(Matrix & left, const double & right)
+	Matrix operator/(const Matrix & left, const double & right)
 	{
 		Matrix res = Matrix(left.n, left.m);
 		for (int j = 0; j < left.size; ++j) res.M[j] = left.M[j] / right;
 		return res;
 	}
 	//
-	Matrix operator*(Matrix & left, const double & right)
+	Matrix operator*(const Matrix & left, const double & right)
 	{
 		Matrix res = Matrix(left.n, left.m);
 		for (int j = 0; j < left.size; ++j) res.M[j] = right * left.M[j];
 		return res;
 	}
 	//
-	Matrix operator*(Matrix & a, Matrix & b)
+	Matrix operator*(const Matrix & a, const Matrix & b)
 	{
 		int aRows = a.n;
 		int aCols = a.m;
@@ -192,12 +216,12 @@ namespace Algebra
 		int bCols = b.m;
 		if (aCols != bRows)
 			throw invalid_argument("Matrix: Non-conformable matrices in Matrix Product");
+
 		Matrix res = Matrix(aRows, bCols);
 		for (int i = 0; i < aRows; ++i)
 			for (int j = 0; j < bCols; ++j)
 				for (int k = 0; k < aCols; ++k)
 					res(i, j) += a(i, k) * b(k, j);
-
 		return res;
 	}
 	//
@@ -239,13 +263,13 @@ namespace Algebra
 #pragma endregion
 
 	//vector
-	void Matrix::setFromVec(int offset, const vector<double> &V)
+	void Matrix::setFromVec(int offset, const vector<double> &V) 
 	{
 		if (this->size + offset > V.size()) throw invalid_argument("Can't set from vector: vector too short.");
 		for (int j = 0; j < this->size; ++j) this->M[j] = V[j + offset];
 	}
 	//vector
-	void Matrix::copyToVec(int offset, vector<double> &F)
+	void Matrix::copyToVec(int offset, vector<double> &F) const
 	{
 		if (this->size + offset > F.size()) throw invalid_argument("Can't copy to vector: vector too short.");
 		for (int j = 0; j < this->size; ++j) F[j + offset] = this->M[j];
@@ -274,7 +298,7 @@ namespace Algebra
 			}
 	}
 	//
-	Matrix  Matrix::PrimeDiag()
+	Matrix  Matrix::PrimeDiag() const
 	{
 		int L = (this->m < this->n) ? this->m : this->n;
 		Matrix res(L, 1);
@@ -283,7 +307,7 @@ namespace Algebra
 		return res;
 	}
 	//Trace
-	double Matrix::Trace()
+	double Matrix::Trace() const
 	{
 		int L = (this->m < this->n) ? this->m : this->n;
 		double res = 0;
@@ -326,7 +350,7 @@ namespace Algebra
 		}
 		return  Minv;
 	}
-	double Matrix::SumSq()
+	double Matrix::SumSq() const
 	{
 		double res = 0;
 		//for (double *val = this->M; val++; )
@@ -466,7 +490,7 @@ namespace Algebra
 		return true;
 	}
 	//
-	Matrix Matrix::subMatrix(int n0, int nSize, int m0, int mSize)
+	Matrix Matrix::subMatrix(int n0, int nSize, int m0, int mSize) const
 	{
 		if (m0 < 0 || n0 < 0) throw ("negative Matrix indexes");
 		if (this->n < n0 + nSize || this->m < m0 + mSize) throw ("subMatrix bounds are greater than bounds of original Matrix ");

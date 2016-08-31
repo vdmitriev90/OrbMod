@@ -116,10 +116,30 @@ namespace OrbMod
 			if (!Solve(A, resid, x, sigma, Q)) return 1;
 			SV += x;
 
+
 			Matrix RMS = LinAlgAux::CalcRMS(sigma, Q, pe, ve);
 			fo << iter << "--\n" << "dx " << x.toString("\t", "%f", 25) << endl;
-			fo << "N_rp " << Global::N_rp << "\tN obs " << OmC.size() << " sigma1 " << sigma*ObsSet::fct << " sigma2 " << sqrt(resid.SumSq() / (resid.Size() - 1))*ObsSet::fct << " pRMS " << pe << " vRMS " << ve << endl;
-			//
+
+			fo << "N_rp " << Global::N_rp << "\tN obs " << OmC.size() << " sigma1 " << sigma*ObsSet::fct << " sigma2 " << sqrt(resid.SumSq() / (resid.Size() - 1))*ObsSet::fct  << " pRMS " << pe << " vRMS " << ve << endl;
+
+#pragma region precRAdec
+			if (Global::ObsT == TypeOfObs::Astro)
+			{
+				double sra = 0, sdec = 0;
+				for (size_t i = 1; i < resid.Size(); i = i + 2)
+				{
+					sra += SQR(resid(i - 1, 0));
+					sdec += SQR(resid(i, 0));
+				}
+				sra /= (resid.Size() / 2 - 1);
+				sra = sqrt(sra);
+				sdec /= (resid.Size() / 2 - 1);
+				sdec = sqrt(sdec);
+				double sigmaAstr = sqrt(SQR(sra) + SQR(sdec));
+				fo << "AstroObsStat:\tRMS\t" << sigmaAstr*ObsSet::fct << "\t RMS_RA\t" << sra*ObsSet::fct << "\t RMS_dec\t" << sdec*ObsSet::fct << endl;
+			}
+
+#pragma endregion
 			Control::Obs_.sigma = sigma;
 
 			Control::Obs_.isConverg = x.MaxMod() < epsIter*SV.MaxMod();

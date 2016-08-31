@@ -17,7 +17,7 @@ namespace Algebra
 			b = y;
 			c = z;
 		}
-		triple(double X[3])
+		triple(const double X[3])
 		{
 			a = X[0];
 			b = X[1];
@@ -27,13 +27,16 @@ namespace Algebra
 		double getAbs() const;
 		double getSq()const;
 		triple norm();
-		void toSph(double &ra, double &dec, double &r);
+		void toSph(double &ra, double &dec, double &r) const;
 
 		std::string toString() const;
 		std::string toString(char* sep) const;
 		std::string toString(char* sep, char* format) const;
-
+		
+		//set-get indexer
 		double & operator[](const int index);
+		//get-only indexer
+		const double & operator[](const int index) const;
 		//
 		friend triple operator+(const triple &left, const triple &right);
 		friend triple operator-(const triple &left, const triple &right);

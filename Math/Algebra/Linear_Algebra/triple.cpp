@@ -32,7 +32,7 @@ namespace Algebra
 		double r = this->getAbs();
 		return triple(a / r, b / r, c / r);
 	}
-	void triple::toSph(double &ra, double &dec, double &r)
+	void triple::toSph(double &ra, double &dec, double &r) const 
 	{
 		r = this->getAbs();
 
@@ -41,6 +41,7 @@ namespace Algebra
 
 		dec = atan(this->c / (sqrt(SQR(this->a) + SQR(this->b))));
 	}
+
 	std::string triple::toString(char* sep, char* format) const
 	{
 		string str = "";
@@ -64,8 +65,8 @@ namespace Algebra
 	{
 		return this->toString("\t", "%f");
 	}
-	//
-	double  &triple::operator[](const int index)
+	//set-get indexer
+	double &triple::operator[](const int index)
 	{
 		switch (index)
 		{
@@ -76,7 +77,23 @@ namespace Algebra
 		case 2: return this->c;
 			break;
 		default:
-			throw("triple: Index out of range exceptoin.");
+			throw out_of_range("triple: Index out of range exceptoin.");
+			break;
+		}
+	}
+	//get-only indexer
+	const double &triple::operator[](const int index) const
+	{
+		switch (index)
+		{
+		case 0: return this->a;
+			break;
+		case 1: return this->b;
+			break;
+		case 2: return this->c;
+			break;
+		default:
+			throw out_of_range("triple: Index out of range exceptoin.");
 			break;
 		}
 	}
@@ -117,7 +134,7 @@ namespace Algebra
 		return res;
 	}
 	//
-	triple triple::operator&(const triple &right)const
+	triple triple::operator&(const triple &right) const
 	{
 		triple res;
 		res.a = this->b*right.c - this->c*right.b;
@@ -167,7 +184,7 @@ namespace Algebra
 	//
 	void triple::operator*=(const double &right)
 	{
-		this->a = this->a*right;
+		this->a = this->a * right;
 		this->b = this->b * right;
 		this->c = this->c * right;
 	}
@@ -187,9 +204,7 @@ namespace Algebra
 		abs_a = a.getAbs();
 		abs_b = b.getAbs();
 		cos = a*b / (abs_a*abs_b);
-
 		angle = acos(cos);
-
 		return angle;
 	}
 	//
