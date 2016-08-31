@@ -62,7 +62,7 @@ namespace OrbMod
 			//fo << "\nT_e\t" << Global::te << "\tSVe\t" << SVe.toString("\t", "%18.12e", 18) << endl;
 			fo << setprecision(3);
 			int del = (Global::ObsT == TypeOfObs::Astro) ? 2 : 1;
-			fo  <<"Process statistic\t" << "\tNumobs\t" << fit->getb().Size()/del << "\tsigma\t" << sigma << "\tpRMS\t" << pe << "\tvRMS\t" << ve << endl;
+			fo  <<"Stat:\tNumobs\t" << fit->getb().Size()/del << "\tsigma\t" << sigma*ObsSet::fct << "\tpRMS\t" << pe << "\tvRMS\t" << ve << endl;
 			fo << "Nrp=\t" << Global::N_rp << endl;
 			//fo << "RMS\t" << RMS.toString("\t", "%12.6e", 20) << endl;
 		/*	fo << "P prime diag\n" << (Q.PrimeDiag().Transpose()).toString("\t", "%e", 25, true) << endl;

@@ -17,6 +17,12 @@ namespace OrbMod
 		StVec(Matrix &SV, double mu);
 		void setFromOscEl(Matrix elts, double mu);
 		Matrix getOscEl(bool IsConvert2deg);
+		//
+		double getMMotion();
+		double getMMotion(double mu_);
+		//
+		double getPeriod();
+		double getPeriod(double mu_);
 		triple X();
 		triple V();
 		Matrix toMatrix();

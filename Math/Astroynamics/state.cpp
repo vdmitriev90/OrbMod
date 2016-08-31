@@ -8,14 +8,17 @@ namespace OrbMod
 	//
 	StVec::StVec(Matrix &SV, double mu)
 	{
-		if (SV.nRows() < 6) throw ("");
+		if (SV.nRows() < 6) 
+			throw invalid_argument("StVec: state vector  must be specified by 6 parameters ");
 		for (int i = 0; i < 6; i++) state[i] = SV(i, 0);
+		if (mu <= 0) throw invalid_argument("StVec: mu must be positive");
 		this->mu = mu;
 	}
 	//
 	StVec::StVec(Matrix &SV)
 	{
-		if (SV.nRows() < 6) throw ("");
+		if (SV.nRows() < 6) 
+			throw invalid_argument("StVec: state vector  must be specified by 6 parameters ");
 		for (int i = 0; i < 6; i++) state[i] = SV(i, 0);
 		this->mu = ID2GM(Global::IDC);
 	}
@@ -38,6 +41,32 @@ namespace OrbMod
 			el(i, 0) = elts[i] * r2d;
 		}
 		return el;
+	}
+	double StVec::getMMotion()
+	{
+		if (mu <= 0) throw invalid_argument("StVec: mu must be positive");
+		double elts[8];
+		oscelt_c(state, 0, mu, elts);
+		double sma = elts[0] / (1.0 - elts[1]);
+		return sqrt(mu / CUB(sma));
+	}
+	double StVec::getMMotion(double mu_)
+	{
+		if (mu_ <= 0) throw invalid_argument("StVec: mu must be positive");
+		double elts[8];
+		oscelt_c(state, 0, mu_, elts);
+		double sma = elts[0] / (1.0 - elts[1]);
+		return sqrt(mu_ / CUB(sma));
+	}
+	//
+	double StVec::getPeriod()
+	{
+		return twopi / getMMotion();
+	}
+	//
+	double StVec::getPeriod(double mu_)
+	{
+		return twopi / getMMotion(mu_);
 	}
 	//
 	triple StVec::X()

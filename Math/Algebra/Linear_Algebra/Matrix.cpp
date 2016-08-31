@@ -132,7 +132,6 @@ namespace Algebra
 	//get-only indexer
 	const double & Matrix:: operator ()(int i, int j) const
 	{
-		return m1;
 		if (this->size >= (i + 1)*(j + 1))
 			return this->M[i*this->m + j];
 		else throw out_of_range("Matrix: Index is out of range.");
@@ -148,7 +147,6 @@ namespace Algebra
 	//get indexer
 	const double & Matrix::at(int i, int j) const
 	{
-		return m1;
 		if (this->size >= (i + 1)*(j + 1))
 			return this->M[i*this->m + j];
 		else throw out_of_range("Matrix: Index is out of range.");

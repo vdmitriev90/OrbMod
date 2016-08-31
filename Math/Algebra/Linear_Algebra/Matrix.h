@@ -15,7 +15,7 @@ namespace Algebra
 		//m - number of columns
 		size_t n, m, size;
 		double* M;
-		double m1;
+
 		void initDim(const int & n, const int & m);
 		//void init();
 
