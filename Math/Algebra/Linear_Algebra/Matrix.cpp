@@ -20,6 +20,7 @@ namespace Algebra
 		this->size = n*m;
 		this->M = new double[this->size];
 	}
+
 	//
 	//void Matrix::init()
 	//{
@@ -29,6 +30,7 @@ namespace Algebra
 	//		this->M[j] = 0;
 	//}
 	//
+	
 	Matrix::Matrix(const int & N, const int & M)
 	{
 		initDim(N, M);

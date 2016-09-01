@@ -18,7 +18,7 @@ namespace OrbMod
 		Cunningham Gfield;
 		string Title = "";
 		static map<int, body> bodies;
-		bool tryParse(string str);
+		bool tryParse(const string & str);
 
 		int getID();
 		double getGM();

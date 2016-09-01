@@ -36,11 +36,11 @@ namespace OrbMod
 	//solving of Kepler's equation
 	void Kepler::kepler(double M, double E, double &EX, double &TA)
 	{
-		double   F, F1, Ex0 = M, EXi;
+		double  Ex0 = M, EXi;
 		for (;;)
 		{
-			F = Ex0 - E*sin(Ex0) - M;
-			F1 = 1.0 - E*cos(Ex0);
+			double F = Ex0 - E*sin(Ex0) - M;
+			double F1 = 1.0 - E*cos(Ex0);
 			EXi = Ex0 - F / F1;
 			if (abs(Ex0 - EXi) < 1e-15) break;
 			Ex0 = EXi;

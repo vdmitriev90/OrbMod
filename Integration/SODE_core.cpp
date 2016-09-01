@@ -209,7 +209,7 @@ namespace OrbMod
 				{
 					dV[i] = A2[i] - A1[i];
 					mdV[i] = dV[i].getAbs();
-					if (abs(max < mdV[i]))max = mdV[i];
+					if (max <abs( mdV[i])) max = abs(mdV[i]);
 				}
 				if (max < eps && ij>2)	goto exit;
 				if (ij > 7)	goto exit;

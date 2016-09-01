@@ -59,7 +59,6 @@ namespace OrbMod
 		atm HIJ;
 
 		//ускорение от центрального тела
-		double r = X.getAbs();
 		if (Global::b_Cunn) acc = Global::GravField_CB.getAcceleration(Global::IDC, time, X);
 
 		//Меркурий

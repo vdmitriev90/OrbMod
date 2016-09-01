@@ -14,7 +14,7 @@ namespace OrbMod
 	}
 	map<int, body> body::bodies;
 	//
-	bool body::tryParse(string str)
+	bool body::tryParse(const string & str)
 	{
 		return true;
 	}

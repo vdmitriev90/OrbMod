@@ -120,108 +120,108 @@ namespace OrbMod
 	};
 
 #pragma region parcers
-	bool config::NmNr(string s)
+	bool config::NmNr(const string & s)
 	{
 		//Global::NameNr = (NameOrNumber)stoi(s);
 		return true;
 	}
 	//
-	bool config::IsTestMode(string s)
+	bool config::IsTestMode(const string & s)
 	{
 		Global::mode = (Mode)stoi(s);
 		return true;
 	}
 	//
-	bool config::FittingMode(string s)
+	bool config::FittingMode(const string & s)
 	{
 		Global::fitMode = (FitMode)stoi(s);
 		return true;
 	}
 	//
-	bool config::Obs(string s)
+	bool config::Obs(const string & s)
 	{
 		Global::ObsT = (TypeOfObs)stoi(s);
 		return true;
 	}
 	//
-	bool config::ArcLength(string s)
+	bool config::ArcLength(const string & s)
 	{
 		Global::ArcLength = stod(s);
 		return true;
 	}
 	//
-	bool config::MinObsInbatch(string s)
+	bool config::MinObsInbatch(const string & s)
 	{
 		Global::MinObsinBatch = stoi(s);
 		return true;
 	}
 	//
-	bool config::CB(string s)
+	bool config::CB(const string & s)
 	{
 		Global::IDC = stoi(s);
 		return true;
 	}
 	//
-	bool config::Int(string s)
+	bool config::Int(const string & s)
 	{
 		//Global:: = stoi(s);
 		return true;
 	}
-	bool config::Var(string s)
+	bool config::Var(const string & s)
 	{
 		Global::Var = (Variables)stoi(s);
 		return true;
 	}
 	//
-	bool config::NOR(string s)
+	bool config::NOR(const string & s)
 	{
 		Global::NOR = stoi(s);
 		return true;
 	}
 	//
-	bool config::step(string s)
+	bool config::step(const string & s)
 	{
 		Global::step = stof(s);
 		return true;
 	}
 	//
-	bool config::eps(string s)
+	bool config::eps(const string & s)
 	{
 		Global::eps = pow(10, -stof(s));
 		return true;
 	}
 	//
-	bool config::orbFitEps(string s)
+	bool config::orbFitEps(const string & s)
 	{
 		OrbFit::epsIter = pow(10, -stof(s));
 		return true;
 	}
 	//
-	bool config::Autostep(string s)
+	bool config::Autostep(const string & s)
 	{
 		Global::IsAutoStep = stoi(s);
 		return true;
 	}
 	//
-	bool config::Niter(string s)
+	bool config::Niter(const string & s)
 	{
 		Global::Niter = stoi(s);
 		return true;
 	}
 	//
-	bool config::orbFitNiter(string s)
+	bool config::orbFitNiter(const string & s)
 	{
 		OrbFit::maxIter = stoi(s);
 		return true;
 	}
 	//
-	bool config::orbFitNiterPerBatch(string s)
+	bool config::orbFitNiterPerBatch(const string & s)
 	{
 		OrbFit::maxIterPerBatch = stoi(s);
 		return true;
 	}
 	//
-	bool config::orbFitRejOuts(string s)
+	bool config::orbFitRejOuts(const string & s)
 	{
 		vector<string> strs = Misc::splitStr(s, ';');
 		if (strs.size() < 2) return false;
@@ -230,25 +230,25 @@ namespace OrbMod
 		return true;
 	}
 	//
-	bool config::t0(string s)
+	bool config::t0(const string & s)
 	{
 		s_t0 = s;
 		return true;
 	}
 	//
-	bool config::te(string s)
+	bool config::te(const string & s)
 	{
 		s_te = s;
 		return true;
 	}
 	//
-	bool config::frame(string s)
+	bool config::frame(const string & s)
 	{
 		Global::ICFrame = (FrameOfIC)stoi(s);
 		return true;
 	}
 	//
-	bool config::EarthFixedFrame(string s)
+	bool config::EarthFixedFrame(const string & s)
 	{
 		Global::EFrame = (EarthFixFrame)stoi(s);
 		try
@@ -262,31 +262,31 @@ namespace OrbMod
 		return true;
 	}
 	//
-	bool config::tscale(string s)
+	bool config::tscale(const string & s)
 	{
 		Global::Tscale = (TimeFormat)stoi(s);
 		return true;
 	}
 	//
-	bool config::TypeIC(string s)
+	bool config::TypeIC(const string & s)
 	{
 		Global::i_IC = stoi(s);
 
 		return true;
 	}
-	bool config::UsePeriTime(string s)
+	bool config::UsePeriTime(const string & s)
 	{
 		Global::IsUsePeriTime = (bool)stoi(s);
 		return true;
 	}
-	bool config::IC(string s)
+	bool config::IC(const string & s)
 	{
 		vector<string> strs = Misc::splitStr(s, ';');
 		if (strs.size() < 6) return false;
 		for (int i = 0; i < 6; i++) Global::SV(i,0) =  config::SV[i] = stod(strs[i]);
 		return true;
 	}
-	bool config::BigPlanets(string s)
+	bool config::BigPlanets(const string & s)
 	{
 		vector<string> strs = Misc::splitStr(s, ';');
 		if (strs.size() < 10) return false;
@@ -302,7 +302,7 @@ namespace OrbMod
 		Global::b_10 = (bool)stoi(strs[9]);
 		return true;
 	}
-	bool config::AddBodies(string s)
+	bool config::AddBodies(const string & s)
 	{
 		vector<string> strs = Misc::splitStr(s, ';');
 		if (strs.size() < 10) return false;
@@ -325,7 +325,7 @@ namespace OrbMod
 		return true;
 	}
 	//
-	bool config::AddBody5HT(string s)
+	bool config::AddBody5HT(const string & s)
 	{
 		vector<string> strs = Misc::splitStr(s, ';');
 		if (strs.size() < 3) return false;
@@ -335,7 +335,7 @@ namespace OrbMod
 		return true;
 	}
 	//
-	bool config::CBHterms(string s)
+	bool config::CBHterms(const string & s)
 	{
 		vector<string> strs = Misc::splitStr(s, ';');
 		if (strs.size() < 3) return false;
@@ -345,7 +345,7 @@ namespace OrbMod
 
 		return true;
 	}
-	bool config::Rel(string s)
+	bool config::Rel(const string & s)
 	{
 		vector<string> strs = Misc::splitStr(s, ';');
 		if (strs.size() < 2) return false;
@@ -354,7 +354,7 @@ namespace OrbMod
 
 		return true;
 	}
-	bool config::SRP(string s)
+	bool config::SRP(const string & s)
 	{
 		vector<string> strs = Misc::splitStr(s, ';');
 		if (strs.size() < 4) return false;
@@ -365,12 +365,12 @@ namespace OrbMod
 
 		return true;
 	}
-	bool config::Discr(string s)
+	bool config::Discr(const string & s)
 	{
 		Global::Discr = stod(s);
 		return true;
 	}
-	bool config::Out(string s)
+	bool config::Out(const string & s)
 	{
 		vector<string> strs = Misc::splitStr(s, ';');
 		if (strs.size() < 8) return false;
@@ -386,12 +386,12 @@ namespace OrbMod
 		return true;
 	}
 	//
-	bool config::BFFID(string s)
+	bool config::BFFID(const string & s)
 	{
 		Global::ID_3_BFF_num = stod(s);
 		return true;
 	}
-	bool config::Colors(string s)
+	bool config::Colors(const string & s)
 	{
 		vector<string> strs = Misc::splitStr(s, ';');
 		if (strs.size() < 23) return false;
@@ -402,7 +402,7 @@ namespace OrbMod
 
 		return true;
 	}
-	bool config::useObs(string s)
+	bool config::useObs(const string & s)
 	{
 		try
 		{
@@ -423,7 +423,7 @@ namespace OrbMod
 		return true;
 	}
 	//
-    bool config ::ObsTimeFrame( string s)
+    bool config ::ObsTimeFrame(const string & s)
 	{
 		vector<string> strs = Misc::splitStr(s, ';');
 		if (strs.size() < 2) return false;
@@ -433,18 +433,18 @@ namespace OrbMod
 		return true;
 	}
 	//
-	bool config::ObservationsPath(string s)
+	bool config::ObservationsPath(const string & s)
 	{
 		Control::Obs_.path = s;
 		return true;
 	}
 	//
-	bool config::IsLogResiduals(string s)
+	bool config::IsLogResiduals(const string & s)
 	{
 		ObsSet::isLogResid = stoi(s);
 		return true;
 	}
-	bool config::aprioriRMS(string s)
+	bool config::aprioriRMS(const string & s)
 	{
 		vector<string> strs = Misc::splitStr(s, ';');
 		if (strs.size() < 3) return false;
@@ -455,7 +455,7 @@ namespace OrbMod
 		return true;
 	}
 	//
-	bool config::processNoise(string s)
+	bool config::processNoise(const string & s)
 	{
 		OrbFit::Qnoise = stod(s);
 		return true;

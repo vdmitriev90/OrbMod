@@ -46,7 +46,7 @@ namespace OrbMod
 	{
 		jd1 = jd1_, jd2 = jd2_;
 	}
-	JD2::JD2(dateTime dt, char* scale)
+	JD2::JD2(const dateTime & dt, char* scale)
 	{
 
 	}

@@ -19,6 +19,6 @@ namespace OrbMod
 	public:
 		double jd1, jd2;
 		JD2(double jd1_, double jd2_);
-		JD2(dateTime dt, char* scale);
+		JD2(const dateTime & dt, char* scale);
 	};
 }

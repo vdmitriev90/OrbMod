@@ -47,10 +47,6 @@ namespace OrbMod
 
 		char str_GM[50], str_R0[50], str_XZ[50], str_Nmax[50], str_Mmax[50], str_Normalize[50], str_1[50], str_2[50], str_n[5], str_m[5], str_C[50], str_S[50], str_mC[50], str_mS[30];
 
-		double C, S, coef;
-
-		int n, m;
-
 		ComplexNum CSnm;
 		this->FileModel = str;
 
@@ -68,17 +64,17 @@ namespace OrbMod
 
 			fscanf(f, "%s %s %s %s %s %s \n", str_n, str_m, str_C, str_S, str_mC, str_mS);
 
-			n = atoi(str_n);
-			m = atoi(str_m);
-			C = atof(str_C);
-			S = atof(str_S);
+			int n = atoi(str_n);
+			int m = atoi(str_m);
+			double C = atof(str_C);
+			double S = atof(str_S);
 
 			if (n > this->Ngf) break;
 
 			//denormalization
 			if (Normalize)
 			{
-				coef = enom(m) *(2.0*n + 1)*factorial(n - m) / factorial(n + m);
+				double coef = enom(m) *(2.0*n + 1)*factorial(n - m) / factorial(n + m);
 				coef = sqrt(coef);
 				C *= coef;
 				S *= coef;
