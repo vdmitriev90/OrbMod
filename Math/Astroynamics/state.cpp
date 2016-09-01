@@ -25,7 +25,6 @@ namespace OrbMod
 	//
 	void StVec::setFromOscEl(Matrix elts, double mu)
 	{
-
 	}
 	//
 	Matrix StVec::getOscEl(bool IsConvert2deg)
@@ -36,6 +35,24 @@ namespace OrbMod
 		oscelt_c(state, 0, mu, elts);
 		el(0, 0) = elts[0] / (1 - elts[1]);
 		el(1, 0) = elts[1];
+		for (int i = 2; i < 6; i++)
+		{
+			el(i, 0) = elts[i] * r2d;
+		}
+		return el;
+	}
+	//
+	Matrix StVec::getOscEl(bool IsConvert2deg, bool isAU)
+	{
+		Matrix el(6, 1);
+		double r2d = IsConvert2deg ? rad : 1.0;
+		double toAU = isAU ? AU : 1.0;
+
+		double elts[8];
+		oscelt_c(state, 0, mu, elts);
+		el(0, 0) = elts[0] / (1 - elts[1])/ toAU;
+		el(1, 0) = elts[1];
+
 		for (int i = 2; i < 6; i++)
 		{
 			el(i, 0) = elts[i] * r2d;

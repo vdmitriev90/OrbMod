@@ -18,6 +18,8 @@ namespace OrbMod
 		void setFromOscEl(Matrix elts, double mu);
 		Matrix getOscEl(bool IsConvert2deg);
 		//
+		Matrix getOscEl(bool IsConvert2deg, bool isAU);
+		//
 		double getMMotion();
 		double getMMotion(double mu_);
 		//

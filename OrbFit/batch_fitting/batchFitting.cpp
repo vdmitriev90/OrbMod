@@ -42,7 +42,7 @@ namespace OrbMod
 		{
 			fit->Nbatch = 1;
 			fo << "Initial state:\t"+SV.toString("\t", "%21.16f", 35) << endl;
-			fo << "Initial elts:\t" << (StVec(SV).getOscEl(true).toString("\t", "%21.16f", 35)) << endl;
+			fo << "Initial elts:\t" << (StVec(SV).getOscEl(true, true).toString("\t", "%21.16f", 35)) << endl;
 			double te = (Control::Obs_).last().t;
 
 			fit->FitBatch(SV, t0, te, sigma, Q);
