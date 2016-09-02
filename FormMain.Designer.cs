@@ -89,6 +89,7 @@
             this.tb_add_cun_file = new System.Windows.Forms.TextBox();
             this.gb_add = new System.Windows.Forms.GroupBox();
             this.gb_add_cunn = new System.Windows.Forms.GroupBox();
+            this.label43 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cmb_add_cun_N = new System.Windows.Forms.ComboBox();
@@ -299,11 +300,11 @@
             // 
             // bt_add_Cnm_file
             // 
-            this.bt_add_Cnm_file.Location = new System.Drawing.Point(7, 60);
+            this.bt_add_Cnm_file.Location = new System.Drawing.Point(101, 84);
             this.bt_add_Cnm_file.Name = "bt_add_Cnm_file";
-            this.bt_add_Cnm_file.Size = new System.Drawing.Size(83, 23);
+            this.bt_add_Cnm_file.Size = new System.Drawing.Size(61, 23);
             this.bt_add_Cnm_file.TabIndex = 2;
-            this.bt_add_Cnm_file.Text = "File with coeff.";
+            this.bt_add_Cnm_file.Text = "Select file";
             this.bt_add_Cnm_file.UseVisualStyleBackColor = true;
             this.bt_add_Cnm_file.Click += new System.EventHandler(this.butt_add_cun_choose_file_Click);
             // 
@@ -461,7 +462,7 @@
             this.gb_planet.Controls.Add(this.cb_5);
             this.gb_planet.Location = new System.Drawing.Point(6, 6);
             this.gb_planet.Name = "gb_planet";
-            this.gb_planet.Size = new System.Drawing.Size(223, 104);
+            this.gb_planet.Size = new System.Drawing.Size(227, 104);
             this.gb_planet.TabIndex = 22;
             this.gb_planet.TabStop = false;
             this.gb_planet.Text = "Planetary systems barycenters ";
@@ -489,7 +490,7 @@
             // cb_1
             // 
             this.cb_1.AutoSize = true;
-            this.cb_1.Location = new System.Drawing.Point(6, 39);
+            this.cb_1.Location = new System.Drawing.Point(6, 41);
             this.cb_1.Name = "cb_1";
             this.cb_1.Size = new System.Drawing.Size(64, 17);
             this.cb_1.TabIndex = 12;
@@ -499,7 +500,7 @@
             // cb_8
             // 
             this.cb_8.AutoSize = true;
-            this.cb_8.Location = new System.Drawing.Point(154, 59);
+            this.cb_8.Location = new System.Drawing.Point(156, 61);
             this.cb_8.Name = "cb_8";
             this.cb_8.Size = new System.Drawing.Size(67, 17);
             this.cb_8.TabIndex = 20;
@@ -509,7 +510,7 @@
             // cb_2
             // 
             this.cb_2.AutoSize = true;
-            this.cb_2.Location = new System.Drawing.Point(6, 59);
+            this.cb_2.Location = new System.Drawing.Point(6, 61);
             this.cb_2.Name = "cb_2";
             this.cb_2.Size = new System.Drawing.Size(56, 17);
             this.cb_2.TabIndex = 13;
@@ -519,7 +520,7 @@
             // cb_7
             // 
             this.cb_7.AutoSize = true;
-            this.cb_7.Location = new System.Drawing.Point(154, 39);
+            this.cb_7.Location = new System.Drawing.Point(156, 41);
             this.cb_7.Name = "cb_7";
             this.cb_7.Size = new System.Drawing.Size(60, 17);
             this.cb_7.TabIndex = 19;
@@ -539,7 +540,7 @@
             // cb_6
             // 
             this.cb_6.AutoSize = true;
-            this.cb_6.Location = new System.Drawing.Point(154, 21);
+            this.cb_6.Location = new System.Drawing.Point(156, 21);
             this.cb_6.Name = "cb_6";
             this.cb_6.Size = new System.Drawing.Size(57, 17);
             this.cb_6.TabIndex = 18;
@@ -549,7 +550,7 @@
             // cb_4
             // 
             this.cb_4.AutoSize = true;
-            this.cb_4.Location = new System.Drawing.Point(70, 39);
+            this.cb_4.Location = new System.Drawing.Point(70, 41);
             this.cb_4.Name = "cb_4";
             this.cb_4.Size = new System.Drawing.Size(49, 17);
             this.cb_4.TabIndex = 15;
@@ -559,7 +560,7 @@
             // cb_5
             // 
             this.cb_5.AutoSize = true;
-            this.cb_5.Location = new System.Drawing.Point(70, 58);
+            this.cb_5.Location = new System.Drawing.Point(70, 61);
             this.cb_5.Name = "cb_5";
             this.cb_5.Size = new System.Drawing.Size(57, 17);
             this.cb_5.TabIndex = 16;
@@ -814,17 +815,17 @@
             // 
             // bt_Cnm_file
             // 
-            this.bt_Cnm_file.Location = new System.Drawing.Point(9, 83);
+            this.bt_Cnm_file.Location = new System.Drawing.Point(116, 81);
             this.bt_Cnm_file.Name = "bt_Cnm_file";
             this.bt_Cnm_file.Size = new System.Drawing.Size(62, 23);
             this.bt_Cnm_file.TabIndex = 5;
-            this.bt_Cnm_file.Text = "Open file";
+            this.bt_Cnm_file.Text = "Select file";
             this.bt_Cnm_file.UseVisualStyleBackColor = true;
             this.bt_Cnm_file.Click += new System.EventHandler(this.bt_Cnm_file_Click);
             // 
             // tb_Cnm_file
             // 
-            this.tb_Cnm_file.Location = new System.Drawing.Point(77, 85);
+            this.tb_Cnm_file.Location = new System.Drawing.Point(8, 83);
             this.tb_Cnm_file.Name = "tb_Cnm_file";
             this.tb_Cnm_file.Size = new System.Drawing.Size(102, 20);
             this.tb_Cnm_file.TabIndex = 4;
@@ -841,7 +842,7 @@
             // lb_Cunn_1
             // 
             this.lb_Cunn_1.AutoSize = true;
-            this.lb_Cunn_1.Location = new System.Drawing.Point(9, 43);
+            this.lb_Cunn_1.Location = new System.Drawing.Point(89, 43);
             this.lb_Cunn_1.Name = "lb_Cunn_1";
             this.lb_Cunn_1.Size = new System.Drawing.Size(90, 13);
             this.lb_Cunn_1.TabIndex = 2;
@@ -849,7 +850,7 @@
             // 
             // tb_Cunn_N
             // 
-            this.tb_Cunn_N.Location = new System.Drawing.Point(105, 40);
+            this.tb_Cunn_N.Location = new System.Drawing.Point(9, 40);
             this.tb_Cunn_N.Name = "tb_Cunn_N";
             this.tb_Cunn_N.Size = new System.Drawing.Size(74, 20);
             this.tb_Cunn_N.TabIndex = 1;
@@ -857,7 +858,7 @@
             // cb_Cunn
             // 
             this.cb_Cunn.AutoSize = true;
-            this.cb_Cunn.Location = new System.Drawing.Point(12, 19);
+            this.cb_Cunn.Location = new System.Drawing.Point(9, 19);
             this.cb_Cunn.Name = "cb_Cunn";
             this.cb_Cunn.Size = new System.Drawing.Size(59, 17);
             this.cb_Cunn.TabIndex = 0;
@@ -866,9 +867,9 @@
             // 
             // tb_add_cun_file
             // 
-            this.tb_add_cun_file.Location = new System.Drawing.Point(96, 62);
+            this.tb_add_cun_file.Location = new System.Drawing.Point(6, 86);
             this.tb_add_cun_file.Name = "tb_add_cun_file";
-            this.tb_add_cun_file.Size = new System.Drawing.Size(67, 20);
+            this.tb_add_cun_file.Size = new System.Drawing.Size(89, 20);
             this.tb_add_cun_file.TabIndex = 3;
             // 
             // gb_add
@@ -893,6 +894,7 @@
             // 
             // gb_add_cunn
             // 
+            this.gb_add_cunn.Controls.Add(this.label43);
             this.gb_add_cunn.Controls.Add(this.label8);
             this.gb_add_cunn.Controls.Add(this.groupBox2);
             this.gb_add_cunn.Controls.Add(this.cmb_add_cun_N);
@@ -906,10 +908,19 @@
             this.gb_add_cunn.TabStop = false;
             this.gb_add_cunn.Text = "Hight terms of #5";
             // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(6, 67);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(148, 13);
+            this.label43.TabIndex = 13;
+            this.label43.Text = "File with harmonic coefficients\r\n";
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(5, 38);
+            this.label8.Location = new System.Drawing.Point(64, 41);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(90, 13);
             this.label8.TabIndex = 12;
@@ -922,12 +933,13 @@
             this.groupBox2.Controls.Add(this.cmb_add5_tide_bodyID);
             this.groupBox2.Controls.Add(this.cb_add5_tide_body);
             this.groupBox2.Controls.Add(this.cb_add5_tide_sun);
-            this.groupBox2.Location = new System.Drawing.Point(7, 88);
+            this.groupBox2.Location = new System.Drawing.Point(7, 111);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(156, 74);
+            this.groupBox2.Size = new System.Drawing.Size(156, 71);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "tide on #5";
+            this.groupBox2.Visible = false;
             // 
             // cmb_add_cun_N
             // 
@@ -982,9 +994,9 @@
             "48",
             "49",
             "50"});
-            this.cmb_add_cun_N.Location = new System.Drawing.Point(101, 33);
+            this.cmb_add_cun_N.Location = new System.Drawing.Point(6, 38);
             this.cmb_add_cun_N.Name = "cmb_add_cun_N";
-            this.cmb_add_cun_N.Size = new System.Drawing.Size(62, 21);
+            this.cmb_add_cun_N.Size = new System.Drawing.Size(53, 21);
             this.cmb_add_cun_N.TabIndex = 4;
             // 
             // label15
@@ -1119,7 +1131,7 @@
             this.cb_out_postFitRes.AutoSize = true;
             this.cb_out_postFitRes.Checked = true;
             this.cb_out_postFitRes.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_out_postFitRes.Location = new System.Drawing.Point(9, 229);
+            this.cb_out_postFitRes.Location = new System.Drawing.Point(9, 224);
             this.cb_out_postFitRes.Name = "cb_out_postFitRes";
             this.cb_out_postFitRes.Size = new System.Drawing.Size(102, 17);
             this.cb_out_postFitRes.TabIndex = 1;
@@ -1216,9 +1228,9 @@
             // 
             this.gb_relativ.Controls.Add(this.cb_L_T);
             this.gb_relativ.Controls.Add(this.cb_rel);
-            this.gb_relativ.Location = new System.Drawing.Point(232, 6);
+            this.gb_relativ.Location = new System.Drawing.Point(235, 6);
             this.gb_relativ.Name = "gb_relativ";
-            this.gb_relativ.Size = new System.Drawing.Size(108, 104);
+            this.gb_relativ.Size = new System.Drawing.Size(105, 104);
             this.gb_relativ.TabIndex = 36;
             this.gb_relativ.TabStop = false;
             this.gb_relativ.Text = "General Rel. effects";
@@ -1226,7 +1238,7 @@
             // cb_L_T
             // 
             this.cb_L_T.AutoSize = true;
-            this.cb_L_T.Location = new System.Drawing.Point(4, 64);
+            this.cb_L_T.Location = new System.Drawing.Point(6, 66);
             this.cb_L_T.Name = "cb_L_T";
             this.cb_L_T.Size = new System.Drawing.Size(98, 30);
             this.cb_L_T.TabIndex = 25;
@@ -1235,7 +1247,7 @@
             // 
             // cb_rel
             // 
-            this.cb_rel.Location = new System.Drawing.Point(4, 34);
+            this.cb_rel.Location = new System.Drawing.Point(6, 32);
             this.cb_rel.Name = "cb_rel";
             this.cb_rel.Size = new System.Drawing.Size(98, 35);
             this.cb_rel.TabIndex = 24;
@@ -1371,7 +1383,7 @@
             // 
             // tb_3b_ff_num
             // 
-            this.tb_3b_ff_num.Location = new System.Drawing.Point(122, 203);
+            this.tb_3b_ff_num.Location = new System.Drawing.Point(131, 201);
             this.tb_3b_ff_num.Name = "tb_3b_ff_num";
             this.tb_3b_ff_num.Size = new System.Drawing.Size(48, 20);
             this.tb_3b_ff_num.TabIndex = 40;
@@ -1379,7 +1391,7 @@
             // chb_3b_FixFr_sv
             // 
             this.chb_3b_FixFr_sv.AutoSize = true;
-            this.chb_3b_FixFr_sv.Location = new System.Drawing.Point(9, 206);
+            this.chb_3b_FixFr_sv.Location = new System.Drawing.Point(9, 204);
             this.chb_3b_FixFr_sv.Name = "chb_3b_FixFr_sv";
             this.chb_3b_FixFr_sv.Size = new System.Drawing.Size(116, 17);
             this.chb_3b_FixFr_sv.TabIndex = 39;
@@ -1389,7 +1401,7 @@
             // cb_out_sv_ECLIPJ2000
             // 
             this.cb_out_sv_ECLIPJ2000.AutoSize = true;
-            this.cb_out_sv_ECLIPJ2000.Location = new System.Drawing.Point(9, 106);
+            this.cb_out_sv_ECLIPJ2000.Location = new System.Drawing.Point(9, 104);
             this.cb_out_sv_ECLIPJ2000.Name = "cb_out_sv_ECLIPJ2000";
             this.cb_out_sv_ECLIPJ2000.Size = new System.Drawing.Size(152, 17);
             this.cb_out_sv_ECLIPJ2000.TabIndex = 38;
@@ -1399,7 +1411,7 @@
             // cb_out_elts_ECLIPJ2000
             // 
             this.cb_out_elts_ECLIPJ2000.AutoSize = true;
-            this.cb_out_elts_ECLIPJ2000.Location = new System.Drawing.Point(9, 126);
+            this.cb_out_elts_ECLIPJ2000.Location = new System.Drawing.Point(9, 124);
             this.cb_out_elts_ECLIPJ2000.Name = "cb_out_elts_ECLIPJ2000";
             this.cb_out_elts_ECLIPJ2000.Size = new System.Drawing.Size(214, 17);
             this.cb_out_elts_ECLIPJ2000.TabIndex = 37;
@@ -1409,7 +1421,7 @@
             // cb_out_BL
             // 
             this.cb_out_BL.AutoSize = true;
-            this.cb_out_BL.Location = new System.Drawing.Point(9, 186);
+            this.cb_out_BL.Location = new System.Drawing.Point(9, 184);
             this.cb_out_BL.Name = "cb_out_BL";
             this.cb_out_BL.Size = new System.Drawing.Size(142, 17);
             this.cb_out_BL.TabIndex = 35;
@@ -1457,7 +1469,7 @@
             // cb_out_sv_IAUPlanet
             // 
             this.cb_out_sv_IAUPlanet.AutoSize = true;
-            this.cb_out_sv_IAUPlanet.Location = new System.Drawing.Point(9, 147);
+            this.cb_out_sv_IAUPlanet.Location = new System.Drawing.Point(9, 144);
             this.cb_out_sv_IAUPlanet.Name = "cb_out_sv_IAUPlanet";
             this.cb_out_sv_IAUPlanet.Size = new System.Drawing.Size(141, 17);
             this.cb_out_sv_IAUPlanet.TabIndex = 2;
@@ -1469,7 +1481,7 @@
             this.cb_out_el_J2000.AutoSize = true;
             this.cb_out_el_J2000.Checked = true;
             this.cb_out_el_J2000.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_out_el_J2000.Location = new System.Drawing.Point(9, 85);
+            this.cb_out_el_J2000.Location = new System.Drawing.Point(9, 84);
             this.cb_out_el_J2000.Name = "cb_out_el_J2000";
             this.cb_out_el_J2000.Size = new System.Drawing.Size(184, 17);
             this.cb_out_el_J2000.TabIndex = 1;
@@ -2614,7 +2626,7 @@
             this.MaximumSize = new System.Drawing.Size(742, 430);
             this.MinimumSize = new System.Drawing.Size(742, 430);
             this.Name = "OrbMod_FormMain";
-            this.Text = "OrbMod_FmMain";
+            this.Text = "OrbMod ";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OrbMod_FormMain_FormClosing);
             this.Load += new System.EventHandler(this.OrbMod_FormMain_Load);
             this.gb_planet.ResumeLayout(false);
@@ -2913,5 +2925,6 @@
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.ToolStripMenuItem tsmi_LoadObs;
+        private System.Windows.Forms.Label label43;
     }
 }

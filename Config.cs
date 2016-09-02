@@ -104,7 +104,6 @@ namespace OrbModUI
         public bool b_rel;
         public bool b_rel_LT;
 
-
         public bool b_SRP;
         public double SRP_albedo;
         public double SRP_S;
@@ -192,9 +191,10 @@ namespace OrbModUI
         { "aprioriRMS", aprioriRMS },
         { "processNoise", processNoise },
         { "lineWidth", lineWidth },
-         { "symbolSize", symbolSize },
-          { "symbolType", symbolType },
-            { "isShowLines", isShowLines },
+        { "symbolSize", symbolSize },
+        { "symbolType", symbolType },
+        { "isShowLines", isShowLines },
+
             };
 
             Formatters = new Par2Str[]

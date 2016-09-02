@@ -24,6 +24,8 @@ namespace OrbModUI
         //
         private void OrbMod_FormMain_Load(object sender, EventArgs e)
         {
+            this.Text += OrbModWrap.getVersion();
+
             foreach (var value in Enum.GetValues(typeof(FitMode)))
                 cmb_OrbFitMode.Items.Add(((FitMode)value).ToString());
 
