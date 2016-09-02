@@ -61,7 +61,7 @@ namespace OrbMod
 		A.Clear();
 		OmC.clear();
 		//1-st integration w/o variations
-		FODE(Xi, to, te, step, NOR, NI, NS, NBS);
+		Gauss_FODE(Xi, to, te, step, NOR, NI, NS, NBS);
 
 		//+
 		for (I = 1; I < 7; I++)
@@ -70,7 +70,7 @@ namespace OrbMod
 			Xi[I - 1] += var[I - 1];
 			Control::Obs_.reset();
 			(Control::Obs_.curr()).t;
-			FODE(Xi, to, te, step, NOR, NI, NS, NBS);
+			Gauss_FODE(Xi, to, te, step, NOR, NI, NS, NBS);
 		}
 		//-
 		for (I = 7; I < 13; I++)
@@ -79,7 +79,7 @@ namespace OrbMod
 			Xi[I - 7] -= var[I - 7];
 			Control::Obs_.reset();
 			(Control::Obs_.curr()).t;
-			FODE(Xi, to, te, step, NOR, NI, NS, NBS);
+			Gauss_FODE(Xi, to, te, step, NOR, NI, NS, NBS);
 		}
 		Matrix Am;
 		for (int i = 0; i < OmC.size() / 2; i++)

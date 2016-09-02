@@ -15,14 +15,16 @@ namespace OrbMod
 
 #pragma region буферные переменные
 	double		config::SV[6];
+
+	double		config::SRP_albedo;
+	double		config::SRP_S;
+	double		config::SRP_Mass;
+
 	std::string	config::s_t0;
 	std::string	config::s_te;
 	std::string	config::s_fileCBHarm;
 	std::string	config::s_fileAddHarm;
 
-	double		config::SRP_albedo;
-	double		config::SRP_S;
-	double		config::SRP_Mass;
 
 #pragma endregion
 

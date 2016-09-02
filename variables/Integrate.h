@@ -22,7 +22,7 @@ namespace OrbMod
 		virtual bool Inter(double t0, double H, vector<double> &X, vector<double> &Yo) = 0;
 		void stepDs(double ds, double S, vector<double> &X, vector<double> &Y);
 
-		virtual int FODE(vector<double> &X, double to, double &te, double &step, int NOR, int NI, int &NS, int &NBS);
+		virtual int Gauss_FODE(vector<double> &X, double to, double &te, double &step, int NOR, int NI, int &NS, int &NBS);
 		//virtual void substep(double s, )
 		virtual void endOfStep(double t0, double H, vector<double> &X, vector<double> &Y);
 	private:

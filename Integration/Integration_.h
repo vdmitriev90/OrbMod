@@ -16,7 +16,7 @@ namespace OrbMod
 		virtual void GetX(const vector<double> &X, Matrix &mSV, double t0, Matrix &dXdX0) override;
 		virtual void force(const double Ti, const vector<double> &X, vector<double> &dXds) override;
 		virtual bool Inter(double t0, double H, vector<double> &X, vector<double> &Yo)override;
-		virtual int FODE(vector<double> &X, double to, double &te, double &step, int NOR, int NI, int &NS, int &NBS) override;
+		virtual int Gauss_FODE(vector<double> &X, double to, double &te, double &step, int NOR, int NI, int &NS, int &NBS) override;
 		void		 Integrate(Matrix &SV, double t0, double te, Matrix &dXdX0);
 		void	 	 Integrate(Matrix &SV, double t0, double te, Matrix &dXdX0, Variables var);
 		void SODE();

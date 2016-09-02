@@ -42,7 +42,7 @@ namespace OrbMod
 		Matrix dxdx0;
 		//ObsSet::Instance().f_res << Nbatch << "\t";
 		inst->setPar(X, SV, t0);
-		inst->FODE(X, t0, te, Global::step, Global::NOR, Global::Niter, NS, NBS);
+		inst->Gauss_FODE(X, t0, te, Global::step, Global::NOR, Global::Niter, NS, NBS);
 		inst->GetX(X, SV, t0, dxdx0);
 
 		Nbatch++;

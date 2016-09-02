@@ -32,7 +32,7 @@ namespace OrbMod
 			//fo << s_iter;
 			inst->setPar(X, SV, t0);
 
-			inst->FODE(X, t0, te, Global::step, Global::NOR, Global::Niter, NS, NBS);
+			inst->Gauss_FODE(X, t0, te, Global::step, Global::NOR, Global::Niter, NS, NBS);
 			
 			Global::IsAutoStep = false;
 			b = Matrix(OmC);

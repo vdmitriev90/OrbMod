@@ -110,7 +110,7 @@ namespace OrbMod
 			Control::Obs_.Nouts = 0;
 
 			inst->setPar(X, SV, t0);
-			inst->FODE(X, t0, te, Global::step, Global::NOR, Global::Niter, NS, NBS);
+			inst->Gauss_FODE(X, t0, te, Global::step, Global::NOR, Global::Niter, NS, NBS);
 			//
 			Matrix resid = Matrix(OmC);
 			if (!Solve(A, resid, x, sigma, Q)) return 1;

@@ -30,7 +30,7 @@ namespace OrbMod
 		for (int i = 0; i < Neq; i++) var[i] = X0[i] * 0.01;
 		var[3] = var[2];
 		//первое интегрирование без вариаций
-		Integration::Instance.FODE(Xi, to, te, step, NOR, NI, NS, NBS);
+		Integration::Instance.Gauss_FODE(Xi, to, te, step, NOR, NI, NS, NBS);
 		Xvar[0] = Xi;
 		//+
 		f << "Xvar\t" << Xvar.size() << endl;
@@ -40,7 +40,7 @@ namespace OrbMod
 		{
 			Xi = X0;
 			Xi[I - 1] += var[I - 1];
-			Integration::Instance.FODE(Xi, to, te, step, NOR, NI, NS, NBS);
+			Integration::Instance.Gauss_FODE(Xi, to, te, step, NOR, NI, NS, NBS);
 			Xvar[I] = Xi;
 			f << Xvar[I].size() << endl;
 		}
@@ -51,7 +51,7 @@ namespace OrbMod
 		{
 			Xi = X0;
 			Xi[I - Neq - 1] -= var[I - Neq - 1];
-			Integration::Instance.FODE(Xi, to, te, step, NOR, NI, NS, NBS);
+			Integration::Instance.Gauss_FODE(Xi, to, te, step, NOR, NI, NS, NBS);
 			Xvar[I] = Xi;
 			f << Xvar[I].size() << endl;
 		}
@@ -83,7 +83,7 @@ namespace OrbMod
 
 		Integration::Instance.SwitchVar(Variables::IZO_KS);
 		Integration::Instance.setPar(X0, Global::SV, to);
-		Integration::Instance.FODE(X0, to, te, Global::step, NOR, NI, NS, NBS);
+		Integration::Instance.Gauss_FODE(X0, to, te, Global::step, NOR, NI, NS, NBS);
 		dXdX0.setFromVec(Neq, X0);
 		f << "varEq\n" << dXdX0.toString("\t", "%e", 20, 1);
 		f.close();
@@ -117,7 +117,7 @@ namespace OrbMod
 			Matrix dXdX0, SVks = Global::SV;
 			//izoKS.setPar(X0, Global::SV, to);
 			//int i = X0.size();
-			//izoKS.FODE(X0, to, tei, Global::step, NOR, NI, NS, NBS);
+			//izoKS.Gauss_FODE(X0, to, tei, Global::step, NOR, NI, NS, NBS);
 			//izoKS.GetX(X0, SVks, tei, dXdX0);
 			//OrbFit::fo << "KS izo\n" << dXdX0.toString("\t", "%e", 20, 1);
 
@@ -130,7 +130,7 @@ namespace OrbMod
 			var_3D_izo izo3D;
 			Matrix dXdX03d, SV3d;
 			izo3D.setPar(X3d, Global::SV, to);
-			izo3D.FODE(X3d, to, tei, Global::step, NOR, NI, NS, NBS);
+			izo3D.Gauss_FODE(X3d, to, tei, Global::step, NOR, NI, NS, NBS);
 			izo3D.GetX(X3d, SV3d, tei, dXdX03d);
 			Matrix elts = StVec(SV3d, Force::getMu()).getOscEl(true);
 
@@ -170,12 +170,12 @@ namespace OrbMod
 
 		izo3D.setPar(X3d, Global::SV, to);
 		OrbFit::fo << "izo3D\n" << Global::SV.toString("\t") << endl;
-		izo3D.FODE(X3d, to, te, Global::step, NOR, NI, NS, NBS);
+		izo3D.Gauss_FODE(X3d, to, te, Global::step, NOR, NI, NS, NBS);
 		izo3D.GetX(X3d, SV3d, to, dXdX03d);
 
 		var_KS_izo2 izoKS;
 		izoKS.setPar(X3ks, Global::SV, to);
-		izoKS.FODE(X3ks, to, te, step, NOR, NI, NS, NBS);
+		izoKS.Gauss_FODE(X3ks, to, te, step, NOR, NI, NS, NBS);
 		izoKS.GetX(X3ks, SVks, to, dXdX0ks);
 
 		double t = to;

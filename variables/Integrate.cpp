@@ -38,8 +38,11 @@ namespace OrbMod
 		for (int k = 0; k < N; k++)
 			X[k] = X[k] + H*(F0[k] + P[k]);
 	}
-	//
-	int ivar::FODE(vector<double> &X, double to, double &te_, double &step, int NOR, int NI, int &NS, int &NBS)
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Everchart integrator for first-order differential qeuation (FODE)
+	//implemented according to  http://scharmn.narod.ru/AVD/Gauss_15.pdf 
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	int ivar::Gauss_FODE(vector<double> &X, double to, double &te_, double &step, int NOR, int NI, int &NS, int &NBS)
 	{
 		K = NOR / 2;
 		this->te = te_;

@@ -160,7 +160,7 @@ namespace OrbMod
 		 Matrix dXdX0;
 
 		 Integration::Instance.setPar(X, Global::SV, to);
-		 Integration::Instance.FODE(X, to, te, Global::step, NOR, NI, NS, NBS);
+		 Integration::Instance.Gauss_FODE(X, to, te, Global::step, NOR, NI, NS, NBS);
 		 Integration::Instance.GetX(X, Global::SV, te, dXdX0);
 
 	 };
@@ -200,9 +200,9 @@ namespace OrbMod
 			 Global::N_rp = 0;
 
 			 Integration::Instance.setPar(X, SV, to);
-			 Integration::Instance.FODE(X, to, te, step, NOR, NI, NS, NBS);
+			 Integration::Instance.Gauss_FODE(X, to, te, step, NOR, NI, NS, NBS);
 
-			 Integration::Instance.FODE(X, te, to, step, NOR, NI, NS, NBS);
+			 Integration::Instance.Gauss_FODE(X, te, to, step, NOR, NI, NS, NBS);
 			 Integration::Instance.GetX(X, SVfinal, te, dXdX0);
 
 #pragma region Output

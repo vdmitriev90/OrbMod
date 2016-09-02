@@ -51,9 +51,9 @@ namespace OrbMod
 	{
 		var->force(Ti, X, dXds);
 	}
-	int Integration::FODE(vector<double> &X, double to, double &te, double &step, int NOR, int NI, int &NS, int &NBS)
+	int Integration::Gauss_FODE(vector<double> &X, double to, double &te, double &step, int NOR, int NI, int &NS, int &NBS)
 	{
-		return var->FODE(X, to, te, step, NOR, NI, NS, NBS);
+		return var->Gauss_FODE(X, to, te, step, NOR, NI, NS, NBS);
 	}
 	//
 	void Integration::Integrate(Matrix &SV, double t0, double te, Matrix &dXdX0)
@@ -64,7 +64,7 @@ namespace OrbMod
 		vector<double> X;
 		Integration::Instance.SwitchVar(Global::Var);
 		Integration::Instance.setPar(X, SV, t0);
-		Integration::Instance.FODE(X, t0, te, Global::step, Global::NOR, Global::Niter, NS, NBS);
+		Integration::Instance.Gauss_FODE(X, t0, te, Global::step, Global::NOR, Global::Niter, NS, NBS);
 		Integration::Instance.GetX(X, SV, te, dXdX0);
 	}
 	//
@@ -76,7 +76,7 @@ namespace OrbMod
 		vector<double> X;
 		Integration::Instance.SwitchVar(var);
 		Integration::Instance.setPar(X, SV, t0);
-		Integration::Instance.FODE(X, t0, te, Global::step, Global::NOR, Global::Niter, NS, NBS);
+		Integration::Instance.Gauss_FODE(X, t0, te, Global::step, Global::NOR, Global::Niter, NS, NBS);
 		Integration::Instance.GetX(X, SV, te, dXdX0);
 	}
 	//void Integration::Integrate(Matrix &SV, double t0, double te, Matrix &dXdX0, Matrix &dxdx0)
@@ -87,7 +87,7 @@ namespace OrbMod
 	//	vector<double> X;
 	//	Integration::Instance.SwitchVar(Global::Var);
 	//	Integration::Instance.setPar(X, SV, t0);
-	//	Integration::Instance.FODE(X, t0, te, Global::step, Global::NOR, Global::Niter, NS, NBS);
+	//	Integration::Instance.Gauss_FODE(X, t0, te, Global::step, Global::NOR, Global::Niter, NS, NBS);
 	//	Integration::Instance.GetX(X, SV, te, dXdX0);
 	//	//Integration::
 	//}
