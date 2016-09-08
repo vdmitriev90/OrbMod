@@ -156,7 +156,7 @@ namespace OrbMod
 #pragma region Начальное значение шага
 		if (H_ == 0)
 		{
-			if (!vs)throw("Zero Constant Step!");
+			if (!vs) throw invalid_argument("Zero Constant Step!");
 			///////////////////////////////////////
 			force(to, X, F0);
 			H_ = EPS;
