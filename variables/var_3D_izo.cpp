@@ -3,10 +3,12 @@
 using namespace std;
 namespace OrbMod
 {
+	//
 	var_3D_izo::var_3D_izo()
 	{
 		N = 42; Niter = 6;
 	}
+	//
 	void var_3D_izo::setPar(vector<double> &X, Matrix &SV, double t0)
 	{
 		X.resize(N);

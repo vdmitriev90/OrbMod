@@ -87,7 +87,7 @@ namespace OrbMod
 		{ "Variables", Var },
 		{ "NOR", NOR },
 		{ "Step", step },
-		{ "Eps", eps},
+		{ "Eps", eps },
 		{ "OrbFitEps", orbFitEps },
 		{ "IsAutoStep", Autostep },
 		{ "Niter", Niter },
