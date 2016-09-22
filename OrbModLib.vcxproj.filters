@@ -1,0 +1,430 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="src\Force">
+      <UniqueIdentifier>{1bc772e3-c015-4f35-ad0d-fca2dc4187c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Force\Perturbations">
+      <UniqueIdentifier>{72435c8e-433c-4ec7-bf1e-cdb0f69745d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Integration">
+      <UniqueIdentifier>{dc0bf102-873d-41a2-9fb5-c69a98ac9eb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Math">
+      <UniqueIdentifier>{960770bd-bef5-436e-80b7-3395d97619f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Math\Algebra">
+      <UniqueIdentifier>{6245f1a8-adb7-456c-aee4-e9e6cb8eec31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Math\Algebra\LinearAlgebra">
+      <UniqueIdentifier>{3f7fa3af-59cf-4c55-aa76-4d34a7db61ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Math\Astrodynamics">
+      <UniqueIdentifier>{4cc8a72e-a40e-400c-87bb-bf6dd2e1e6cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Math\Derivatives">
+      <UniqueIdentifier>{d116027b-3464-4049-a871-8dd0cb7912e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Misc">
+      <UniqueIdentifier>{6ed07fc7-8e75-4055-b7d2-750efcdaee37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OrbFit">
+      <UniqueIdentifier>{cd9139f8-413f-4195-9e9c-c0d316f6fed4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OrbFit\Abstract">
+      <UniqueIdentifier>{e53513ee-cd50-40c4-a1a0-27d6893922d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OrbFit\batch_fitting">
+      <UniqueIdentifier>{26becb4a-91b6-4eec-a98c-a47bfd8c2b55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OrbFit\Filtering">
+      <UniqueIdentifier>{9f881f90-954d-4c78-a72a-b76c6f0d57cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OrbFit\FiniteDifference">
+      <UniqueIdentifier>{b85a9f1f-c0eb-44a1-87c1-1374d544574e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OrbFit\Filtering\KS">
+      <UniqueIdentifier>{b8f6bf65-b38d-4fb3-9c78-46bcc0f0bc77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OrbFit\Filtering\XV">
+      <UniqueIdentifier>{2921aa74-f005-48a6-b2b3-d6b6222cbd68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Observations">
+      <UniqueIdentifier>{d0be452d-64ab-40bd-8a60-174b96d4c765}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Parameters">
+      <UniqueIdentifier>{c903465f-7127-42f7-be2b-27bbe564fc33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Variables">
+      <UniqueIdentifier>{ba4e26b8-76c3-4359-ba23-3c2281fd1e32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Variables\debug">
+      <UniqueIdentifier>{cf9aad7f-f65a-49dd-8527-4c026f3df7f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Control">
+      <UniqueIdentifier>{2f1ff62b-c30f-4b6f-9489-46abbcf65d5a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\stdafx.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Force\force.cpp">
+      <Filter>src\Force</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Force\ForceIzo.cpp">
+      <Filter>src\Force</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Force\Perturbations\atmosferic_drag.cpp">
+      <Filter>src\Force\Perturbations</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Force\Perturbations\Cunningham.cpp">
+      <Filter>src\Force\Perturbations</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Force\Perturbations\SRP.cpp">
+      <Filter>src\Force\Perturbations</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Integration\Integration_.cpp">
+      <Filter>src\Integration</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Integration\SODE_core.cpp">
+      <Filter>src\Integration</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Integration\write.cpp">
+      <Filter>src\Integration</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Math\tform.cpp">
+      <Filter>src\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Math\Algebra\ComplexNum.cpp">
+      <Filter>src\Math\Algebra</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Math\Algebra\KS.cpp">
+      <Filter>src\Math\Algebra</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Math\Algebra\SB.cpp">
+      <Filter>src\Math\Algebra</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Math\Algebra\Linear_Algebra\LinAlgAux.cpp">
+      <Filter>src\Math\Algebra\LinearAlgebra</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Math\Algebra\Linear_Algebra\LinearSystem.cpp">
+      <Filter>src\Math\Algebra\LinearAlgebra</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Math\Algebra\Linear_Algebra\Matrix.cpp">
+      <Filter>src\Math\Algebra\LinearAlgebra</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Math\Algebra\Linear_Algebra\triple.cpp">
+      <Filter>src\Math\Algebra\LinearAlgebra</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Math\Derivatives\Derivatives.cpp">
+      <Filter>src\Math\Derivatives</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Math\Astroynamics\Kepler.cpp">
+      <Filter>src\Math\Astrodynamics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Math\Astroynamics\state.cpp">
+      <Filter>src\Math\Astrodynamics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Misc\dateTime.cpp">
+      <Filter>src\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Misc\frame.cpp">
+      <Filter>src\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Misc\Misc.cpp">
+      <Filter>src\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Misc\visibility.cpp">
+      <Filter>src\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Observations\AstroObs.cpp">
+      <Filter>src\Observations</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Observations\ModAstroObs.cpp">
+      <Filter>src\Observations</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Observations\ModAstroObs2.cpp">
+      <Filter>src\Observations</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Observations\ModDistObs.cpp">
+      <Filter>src\Observations</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Observations\Obs.cpp">
+      <Filter>src\Observations</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Observations\Observatory.cpp">
+      <Filter>src\Observations</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Observations\ObsSet.cpp">
+      <Filter>src\Observations</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Observations\PreObrit.cpp">
+      <Filter>src\Observations</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OrbFit\Abstract\OrbFit.cpp">
+      <Filter>src\OrbFit\Abstract</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OrbFit\Filtering\KS\batchFilter_KS.cpp">
+      <Filter>src\OrbFit\Filtering\KS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OrbFit\Filtering\XV\batchFilter_XV.cpp">
+      <Filter>src\OrbFit\Filtering\XV</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OrbFit\Filtering\XV\Filter_XV.cpp">
+      <Filter>src\OrbFit\Filtering\XV</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OrbFit\Filtering\XV\hibridKalman_XV.cpp">
+      <Filter>src\OrbFit\Filtering\XV</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OrbFit\Filtering\XV\pureKalman_XV.cpp">
+      <Filter>src\OrbFit\Filtering\XV</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OrbFit\Filtering\XV\seqLS.cpp">
+      <Filter>src\OrbFit\Filtering\XV</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OrbFit\FiniteDifference\OrbFit_FinDiff.cpp">
+      <Filter>src\OrbFit\FiniteDifference</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OrbFit\OrbFit_KS.cpp">
+      <Filter>src\OrbFit</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OrbFit\OrbFit_XV.cpp">
+      <Filter>src\OrbFit</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Parameters\body.cpp">
+      <Filter>src\Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Parameters\config.cpp">
+      <Filter>src\Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Parameters\constant.cpp">
+      <Filter>src\Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Parameters\Global.cpp">
+      <Filter>src\Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="src\variables\Integrate.cpp">
+      <Filter>src\Variables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\variables\var_3D.cpp">
+      <Filter>src\Variables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\variables\var_3D_izo.cpp">
+      <Filter>src\Variables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\variables\var_KS.cpp">
+      <Filter>src\Variables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\variables\var_KS_izo.cpp">
+      <Filter>src\Variables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\variables\var_SB.cpp">
+      <Filter>src\Variables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\variables\var_SB_izo.cpp">
+      <Filter>src\Variables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\variables\debug\var_3D_izo2.cpp">
+      <Filter>src\Variables\debug</Filter>
+    </ClCompile>
+    <ClCompile Include="src\variables\debug\var_KS_izo2.cpp">
+      <Filter>src\Variables\debug</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OrbFit\batch_fitting\batchFitting.cpp">
+      <Filter>src\OrbFit\batch_fitting</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Control\Control.cpp">
+      <Filter>src\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Control\Debug_mode.cpp">
+      <Filter>src\Control</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\stdafx.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\targetver.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Force\force.h">
+      <Filter>src\Force</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Force\ForceIzo.h">
+      <Filter>src\Force</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Force\Perturbations\atmosferic_drag.h">
+      <Filter>src\Force\Perturbations</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Force\Perturbations\Cunningham.h">
+      <Filter>src\Force\Perturbations</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Force\Perturbations\SRP.h">
+      <Filter>src\Force\Perturbations</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Math\tform.h">
+      <Filter>src\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Math\Algebra\ComplexNum.h">
+      <Filter>src\Math\Algebra</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Math\Algebra\KS.h">
+      <Filter>src\Math\Algebra</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Math\Algebra\SB.h">
+      <Filter>src\Math\Algebra</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Math\Algebra\Linear_Algebra\LinAlgAux.h">
+      <Filter>src\Math\Algebra\LinearAlgebra</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Math\Algebra\Linear_Algebra\LinearSystem.h">
+      <Filter>src\Math\Algebra\LinearAlgebra</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Math\Algebra\Linear_Algebra\Matrix.h">
+      <Filter>src\Math\Algebra\LinearAlgebra</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Math\Algebra\Linear_Algebra\triple.h">
+      <Filter>src\Math\Algebra\LinearAlgebra</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Math\Derivatives\Derivatives.h">
+      <Filter>src\Math\Derivatives</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Math\Astroynamics\Kepler.h">
+      <Filter>src\Math\Astrodynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Math\Astroynamics\state.h">
+      <Filter>src\Math\Astrodynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Misc\dateTime.h">
+      <Filter>src\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Misc\frame.h">
+      <Filter>src\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Misc\macroses.h">
+      <Filter>src\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Misc\Misc.h">
+      <Filter>src\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Misc\visibility.h">
+      <Filter>src\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Observations\AstroObs.h">
+      <Filter>src\Observations</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Observations\ModAstroObs.h">
+      <Filter>src\Observations</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Observations\ModAstroObs2.h">
+      <Filter>src\Observations</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Observations\ModDistObs.h">
+      <Filter>src\Observations</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Observations\Obs.h">
+      <Filter>src\Observations</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Observations\Observatory.h">
+      <Filter>src\Observations</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Observations\ObsSet.h">
+      <Filter>src\Observations</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Observations\PreObrit.h">
+      <Filter>src\Observations</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OrbFit\Abstract\OrbFit.h">
+      <Filter>src\OrbFit\Abstract</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OrbFit\batch_fitting\batchFitting.h">
+      <Filter>src\OrbFit\batch_fitting</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OrbFit\Filtering\KS\batchFilter_KS.h">
+      <Filter>src\OrbFit\Filtering\KS</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OrbFit\Filtering\XV\batchFilter_XV.h">
+      <Filter>src\OrbFit\Filtering\XV</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OrbFit\Filtering\XV\Filter_XV.h">
+      <Filter>src\OrbFit\Filtering\XV</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OrbFit\Filtering\XV\hibridKalman_XV.h">
+      <Filter>src\OrbFit\Filtering\XV</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OrbFit\Filtering\XV\pureKalman_XV.h">
+      <Filter>src\OrbFit\Filtering\XV</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OrbFit\Filtering\XV\seqLS.h">
+      <Filter>src\OrbFit\Filtering\XV</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OrbFit\FiniteDifference\OrbFit_FinDiff.h">
+      <Filter>src\OrbFit\FiniteDifference</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OrbFit\OrbFit_KS.h">
+      <Filter>src\OrbFit</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OrbFit\OrbFit_XV.h">
+      <Filter>src\OrbFit</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Parameters\body.h">
+      <Filter>src\Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Parameters\config.h">
+      <Filter>src\Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Parameters\constant.h">
+      <Filter>src\Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Parameters\Global.h">
+      <Filter>src\Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="src\variables\Integrate.h">
+      <Filter>src\Variables</Filter>
+    </ClInclude>
+    <ClInclude Include="src\variables\var.h">
+      <Filter>src\Variables</Filter>
+    </ClInclude>
+    <ClInclude Include="src\variables\debug\var_3D_izo2.h">
+      <Filter>src\Variables\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="src\variables\debug\var_KS_izo2.h">
+      <Filter>src\Variables\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Integration\Integration_.h">
+      <Filter>src\Integration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Control\Control.h">
+      <Filter>src\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="OrbModLib.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\OrbModClassDiagram.cd">
+      <Filter>src</Filter>
+    </None>
+  </ItemGroup>
+</Project>

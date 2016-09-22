@@ -1,0 +1,290 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{3958F054-2B98-4B1D-8FED-A776CF6A4E7D}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>OrbModLib</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(VC_IncludePath);$(OutDir)libs\cspice\include;$(OutDir)libs\;$(SolutionDir);$(ProjectDir)src\</IncludePath>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(VC_IncludePath);$(OutDir)libs\cspice\include;$(OutDir)libs\;$(SolutionDir);$(ProjectDir)src\</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <AdditionalLibraryDirectories>$(OutDir)libs\cspice\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>cspice.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>LIBCMT</IgnoreSpecificDefaultLibraries>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>cspice.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir)libs\cspice\lib;$(OutDir)libs</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>LIBCMT</IgnoreSpecificDefaultLibraries>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>cspice.lib</AdditionalDependencies>
+    </Lib>
+    <Lib>
+      <AdditionalLibraryDirectories>$(OutDir)libs\cspice\lib;$(OutDir)libs</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>LIBCMT</IgnoreSpecificDefaultLibraries>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Control\Control.cpp" />
+    <ClCompile Include="src\Control\Debug_mode.cpp" />
+    <ClCompile Include="src\Force\force.cpp" />
+    <ClCompile Include="src\Force\ForceIzo.cpp" />
+    <ClCompile Include="src\Force\Perturbations\atmosferic_drag.cpp" />
+    <ClCompile Include="src\Force\Perturbations\Cunningham.cpp" />
+    <ClCompile Include="src\Force\Perturbations\SRP.cpp" />
+    <ClCompile Include="src\Integration\Integration_.cpp" />
+    <ClCompile Include="src\Integration\SODE_core.cpp" />
+    <ClCompile Include="src\Integration\write.cpp" />
+    <ClCompile Include="src\Math\Algebra\ComplexNum.cpp" />
+    <ClCompile Include="src\Math\Algebra\KS.cpp" />
+    <ClCompile Include="src\Math\Algebra\Linear_Algebra\LinAlgAux.cpp" />
+    <ClCompile Include="src\Math\Algebra\Linear_Algebra\LinearSystem.cpp" />
+    <ClCompile Include="src\Math\Algebra\Linear_Algebra\Matrix.cpp" />
+    <ClCompile Include="src\Math\Algebra\Linear_Algebra\triple.cpp" />
+    <ClCompile Include="src\Math\Algebra\SB.cpp" />
+    <ClCompile Include="src\Math\Astroynamics\Kepler.cpp" />
+    <ClCompile Include="src\Math\Astroynamics\state.cpp" />
+    <ClCompile Include="src\Math\Derivatives\Derivatives.cpp" />
+    <ClCompile Include="src\Math\tform.cpp" />
+    <ClCompile Include="src\Misc\dateTime.cpp" />
+    <ClCompile Include="src\Misc\frame.cpp" />
+    <ClCompile Include="src\Misc\Misc.cpp" />
+    <ClCompile Include="src\Misc\visibility.cpp" />
+    <ClCompile Include="src\Observations\AstroObs.cpp" />
+    <ClCompile Include="src\Observations\ModAstroObs.cpp" />
+    <ClCompile Include="src\Observations\ModAstroObs2.cpp" />
+    <ClCompile Include="src\Observations\ModDistObs.cpp" />
+    <ClCompile Include="src\Observations\Obs.cpp" />
+    <ClCompile Include="src\Observations\Observatory.cpp" />
+    <ClCompile Include="src\Observations\ObsSet.cpp" />
+    <ClCompile Include="src\Observations\PreObrit.cpp" />
+    <ClCompile Include="src\OrbFit\Abstract\OrbFit.cpp" />
+    <ClCompile Include="src\OrbFit\batch_fitting\batchFitting.cpp" />
+    <ClCompile Include="src\OrbFit\Filtering\KS\batchFilter_KS.cpp" />
+    <ClCompile Include="src\OrbFit\Filtering\XV\batchFilter_XV.cpp" />
+    <ClCompile Include="src\OrbFit\Filtering\XV\Filter_XV.cpp" />
+    <ClCompile Include="src\OrbFit\Filtering\XV\hibridKalman_XV.cpp" />
+    <ClCompile Include="src\OrbFit\Filtering\XV\pureKalman_XV.cpp" />
+    <ClCompile Include="src\OrbFit\Filtering\XV\seqLS.cpp" />
+    <ClCompile Include="src\OrbFit\FiniteDifference\OrbFit_FinDiff.cpp" />
+    <ClCompile Include="src\OrbFit\OrbFit_KS.cpp" />
+    <ClCompile Include="src\OrbFit\OrbFit_XV.cpp" />
+    <ClCompile Include="src\Parameters\body.cpp" />
+    <ClCompile Include="src\Parameters\config.cpp" />
+    <ClCompile Include="src\Parameters\constant.cpp" />
+    <ClCompile Include="src\Parameters\Global.cpp" />
+    <ClCompile Include="src\stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="src\variables\debug\var_3D_izo2.cpp" />
+    <ClCompile Include="src\variables\debug\var_KS_izo2.cpp" />
+    <ClCompile Include="src\variables\Integrate.cpp" />
+    <ClCompile Include="src\variables\var_3D.cpp" />
+    <ClCompile Include="src\variables\var_3D_izo.cpp" />
+    <ClCompile Include="src\variables\var_KS.cpp" />
+    <ClCompile Include="src\variables\var_KS_izo.cpp" />
+    <ClCompile Include="src\variables\var_SB.cpp" />
+    <ClCompile Include="src\variables\var_SB_izo.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="src\Control\Control.h" />
+    <ClInclude Include="src\Force\force.h" />
+    <ClInclude Include="src\Force\ForceIzo.h" />
+    <ClInclude Include="src\Force\Perturbations\atmosferic_drag.h" />
+    <ClInclude Include="src\Force\Perturbations\Cunningham.h" />
+    <ClInclude Include="src\Force\Perturbations\SRP.h" />
+    <ClInclude Include="src\Integration\Integration_.h" />
+    <ClInclude Include="src\Math\Algebra\ComplexNum.h" />
+    <ClInclude Include="src\Math\Algebra\KS.h" />
+    <ClInclude Include="src\Math\Algebra\Linear_Algebra\LinAlgAux.h" />
+    <ClInclude Include="src\Math\Algebra\Linear_Algebra\LinearSystem.h" />
+    <ClInclude Include="src\Math\Algebra\Linear_Algebra\Matrix.h" />
+    <ClInclude Include="src\Math\Algebra\Linear_Algebra\triple.h" />
+    <ClInclude Include="src\Math\Algebra\SB.h" />
+    <ClInclude Include="src\Math\Astroynamics\Kepler.h" />
+    <ClInclude Include="src\Math\Astroynamics\state.h" />
+    <ClInclude Include="src\Math\Derivatives\Derivatives.h" />
+    <ClInclude Include="src\Math\tform.h" />
+    <ClInclude Include="src\Misc\dateTime.h" />
+    <ClInclude Include="src\Misc\frame.h" />
+    <ClInclude Include="src\Misc\macroses.h" />
+    <ClInclude Include="src\Misc\Misc.h" />
+    <ClInclude Include="src\Misc\visibility.h" />
+    <ClInclude Include="src\Observations\AstroObs.h" />
+    <ClInclude Include="src\Observations\ModAstroObs.h" />
+    <ClInclude Include="src\Observations\ModAstroObs2.h" />
+    <ClInclude Include="src\Observations\ModDistObs.h" />
+    <ClInclude Include="src\Observations\Obs.h" />
+    <ClInclude Include="src\Observations\Observatory.h" />
+    <ClInclude Include="src\Observations\ObsSet.h" />
+    <ClInclude Include="src\Observations\PreObrit.h" />
+    <ClInclude Include="src\OrbFit\Abstract\OrbFit.h" />
+    <ClInclude Include="src\OrbFit\batch_fitting\batchFitting.h" />
+    <ClInclude Include="src\OrbFit\Filtering\KS\batchFilter_KS.h" />
+    <ClInclude Include="src\OrbFit\Filtering\XV\batchFilter_XV.h" />
+    <ClInclude Include="src\OrbFit\Filtering\XV\Filter_XV.h" />
+    <ClInclude Include="src\OrbFit\Filtering\XV\hibridKalman_XV.h" />
+    <ClInclude Include="src\OrbFit\Filtering\XV\pureKalman_XV.h" />
+    <ClInclude Include="src\OrbFit\Filtering\XV\seqLS.h" />
+    <ClInclude Include="src\OrbFit\FiniteDifference\OrbFit_FinDiff.h" />
+    <ClInclude Include="src\OrbFit\OrbFit_KS.h" />
+    <ClInclude Include="src\OrbFit\OrbFit_XV.h" />
+    <ClInclude Include="src\Parameters\body.h" />
+    <ClInclude Include="src\Parameters\config.h" />
+    <ClInclude Include="src\Parameters\constant.h" />
+    <ClInclude Include="src\Parameters\Global.h" />
+    <ClInclude Include="src\stdafx.h" />
+    <ClInclude Include="src\targetver.h" />
+    <ClInclude Include="src\variables\debug\var_3D_izo2.h" />
+    <ClInclude Include="src\variables\debug\var_KS_izo2.h" />
+    <ClInclude Include="src\variables\Integrate.h" />
+    <ClInclude Include="src\variables\var.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AlgLib\AlgLib.vcxproj">
+      <Project>{c9565f4e-a77e-4663-8d94-5ed0606b9459}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="OrbModLib.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\OrbModClassDiagram.cd" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
