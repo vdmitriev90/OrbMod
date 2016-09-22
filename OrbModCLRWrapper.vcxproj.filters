@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{98b06985-553b-486b-b5a8-385ec6ea62a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\res">
+      <UniqueIdentifier>{6f1a32d0-0556-420d-94bb-eb8629f839f7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\AssemblyInfo.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OrbModCLRWrapper.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Stdafx.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Marshaling.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\_ObsSet.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\OrbModCLRWrapper.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\resource.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Stdafx.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Marshaling.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\_ObsSet.h">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="src\res\app.ico">
+      <Filter>src\res</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="src\res\app.rc">
+      <Filter>src\res</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
