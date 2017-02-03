@@ -165,6 +165,7 @@ namespace OrbMod
 		static double		R_visi[3];
 		static double		M_visi[3][3];
 		static long unsigned int N_rp;
+		static unsigned int		Nstep;
 		static double		oz_visi;
 		static bool			b_visi_pl;
 		static int			ID_visi;
