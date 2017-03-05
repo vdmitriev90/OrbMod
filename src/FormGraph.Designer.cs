@@ -209,10 +209,10 @@
             this.rb_Xaxis_calend.AutoSize = true;
             this.rb_Xaxis_calend.Location = new System.Drawing.Point(6, 32);
             this.rb_Xaxis_calend.Name = "rb_Xaxis_calend";
-            this.rb_Xaxis_calend.Size = new System.Drawing.Size(107, 17);
+            this.rb_Xaxis_calend.Size = new System.Drawing.Size(99, 17);
             this.rb_Xaxis_calend.TabIndex = 6;
             this.rb_Xaxis_calend.TabStop = true;
-            this.rb_Xaxis_calend.Text = "Formant calendar";
+            this.rb_Xaxis_calend.Text = "Calendar format";
             this.rb_Xaxis_calend.UseVisualStyleBackColor = false;
             // 
             // rb_Xaxis_days
