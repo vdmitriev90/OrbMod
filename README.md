@@ -28,6 +28,30 @@ Here you able to specify the set of perturbation forces:
 
 ![Alt-текст](https://github.com/vdmitriev90/OrbMod_DotNET_UI/blob/master/ForceModel.png)
 
+## Process setting menu
+Here you can manage the parameters of fitting orbit to observations:
+
+1. Orbit fiting mode
+
+ 1. (LS) - Ordinary batch least squares adjustment. It means, that full set of observations will process in each iteration
+ 1. (batch_LS_filer) - adjustment orbit to observations using  sequential least squares flter. Please, see [here](https://www.researchgate.net/publication/310503329_Application_of_recursive_approaches_to_differential_orbit_correction_of_near_Earth_asteroids) for detaials.
+ 1. (pure_Kalman) - Extended Kalman filter(EKF) for detains see (O. Montenbruckand, E. Gil  - 2000)
+ 1. (hybrid_Kalman) - Software will try to estimate state vector and covariance using few first epochs via batch least squares, after that standart EKF algorithm will be used.
+
+2. Outliers rejection - rejection epoch with bad observations
+3. Settings of EKF
+
+ 
+ ![Alt-текст](https://github.com/vdmitriev90/OrbMod_DotNET_UI/blob/master/Process%20settings.png)
+ 
+ 
+## Output setting menu
+Here you able to specify the data whichkind of data wil be store in files during processing, and rate of output streams
+
+![Alt-текст](https://github.com/vdmitriev90/OrbMod_DotNET_UI/blob/master/Output%20settings.png)
+
+
+
 ## Observations view  
 
 ![Alt-текст](https://github.com/vdmitriev90/OrbMod_DotNET_UI/blob/master/ObservationsView.png)
