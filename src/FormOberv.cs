@@ -16,7 +16,8 @@ namespace OrbModUI
         {
             InitializeComponent();
             pane = zg_ObsView.GraphPane;
-            ChangeTimeFrame();
+           
+            //ChangeTimeFrame();
         }
         //
         private void cb_IsShowLegend_CheckedChanged(object sender, EventArgs e)
