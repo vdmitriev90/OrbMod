@@ -1101,7 +1101,7 @@
             this.tsmi_Plot.Image = global::OrbModUI.Properties.Resources.line_graph_128px_1170483_easyicon_net;
             this.tsmi_Plot.Name = "tsmi_Plot";
             this.tsmi_Plot.Size = new System.Drawing.Size(172, 22);
-            this.tsmi_Plot.Text = "Plot gaphs";
+            this.tsmi_Plot.Text = "Visualization View";
             this.tsmi_Plot.Click += new System.EventHandler(this.tsmi_Plot_Click);
             // 
             // tsmi_ObsView
