@@ -53,13 +53,12 @@ Here you able to specify the data whichkind of data wil be store in files during
 
 ## Tools menus
 
+
+![](https://github.com/vdmitriev90/OrbMod_DotNET_UI/blob/master/Tools.png)
+
 Here you able to:
 ### Load observation
 Load astrometric observation  from text file (in MPC format) to intrnal storage (item "Load observations")
-
-
-
-![](https://github.com/vdmitriev90/OrbMod_DotNET_UI/blob/master/Tools.png)
 
 
 ### Observations view  
@@ -68,10 +67,16 @@ On pictuer below are shown example for obsevations of Apophis asteroid.
 
 ![](https://github.com/vdmitriev90/OrbMod_DotNET_UI/blob/master/ObservationsView.png)
 
-Plot graphs
+### Plot graphs
 Visualize result of orbit propagation or fiiting (Plot graphs)
+There are two examples of such graphs.
+Graph  of accelerations for asteroid Apophis from 2005 to 2015
 
+![](https://github.com/vdmitriev90/OrbMod_DotNET_UI/blob/master/Plot_acc.png)
 
+Graph  of post fit residuals    for asteroid Apophis from 2005 to 2015
+
+![](https://github.com/vdmitriev90/OrbMod_DotNET_UI/blob/master/ResidualsRA.png)
 
 
 
