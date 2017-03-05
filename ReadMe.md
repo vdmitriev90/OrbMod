@@ -7,4 +7,4 @@ In this software, [SPICE](https://naif.jpl.nasa.gov/naif/)  routines and kernels
 
 The graphic user interface (written on C#) for this software is available here: https://github.com/vdmitriev90/OrbMod_DotNET_UI 
 
-Pre-build binaries for OrbMod as well as for UI, auxiliary libraris, all required SPICE kernels and input files is available here: https://github.com/vdmitriev90/OrbMod_bin
+Pre-build binaries for OrbMod as well as for UI, auxiliary libraris, all required SPICE kernels and input files are available here: https://github.com/vdmitriev90/OrbMod_bin
