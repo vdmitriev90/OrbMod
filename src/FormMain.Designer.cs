@@ -2192,9 +2192,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(67, 116);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 13);
+            this.label3.Size = new System.Drawing.Size(87, 13);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Tolerance (10^-X)";
+            this.label3.Text = "Tolerance (1E-X)";
             // 
             // tabPage3
             // 

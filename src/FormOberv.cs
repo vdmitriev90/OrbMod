@@ -16,6 +16,7 @@ namespace OrbModUI
         {
             InitializeComponent();
             pane = zg_ObsView.GraphPane;
+            ChangeTimeFrame();
         }
         //
         private void cb_IsShowLegend_CheckedChanged(object sender, EventArgs e)
@@ -66,7 +67,7 @@ namespace OrbModUI
         //
         private void bt_apply_Click(object sender, EventArgs e)
         {
-            //Обсерватории наблюдения которых будут использованы
+            //Обсерватории, наблюдения которых будут использованы
             for (int i = 0; i < N; i++)
             {
                 string s = Convert.ToString(dgv_1.Rows[i].Cells[2].Value);

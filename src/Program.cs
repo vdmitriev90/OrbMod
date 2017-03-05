@@ -15,7 +15,7 @@ namespace OrbModUI
         static void Main()
         {
             Application.EnableVisualStyles();
-           // Application.SetCompatibleTextRenderingDefault(false);
+            //Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new OrbMod_FormMain());
         }
     }

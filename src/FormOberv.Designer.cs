@@ -36,13 +36,6 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.zg_ObsView = new ZedGraph.ZedGraphControl();
             this.dgv_1 = new System.Windows.Forms.DataGridView();
-            this.col_01 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col0 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.col1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.csmi_1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmi_Check = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_UnCheck = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,6 +44,13 @@
             this.tb_UTC_start = new System.Windows.Forms.TextBox();
             this.tb_UTC_finish = new System.Windows.Forms.TextBox();
             this.bt_apply = new System.Windows.Forms.Button();
+            this.col_01 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col0 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.col1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -148,55 +148,6 @@
             this.dgv_1.Size = new System.Drawing.Size(768, 136);
             this.dgv_1.TabIndex = 6;
             // 
-            // col_01
-            // 
-            this.col_01.FillWeight = 25F;
-            this.col_01.HeaderText = "#";
-            this.col_01.Name = "col_01";
-            this.col_01.ReadOnly = true;
-            this.col_01.Width = 25;
-            // 
-            // col0
-            // 
-            this.col0.FillWeight = 30F;
-            this.col0.HeaderText = "Use";
-            this.col0.Name = "col0";
-            this.col0.Width = 30;
-            // 
-            // col1
-            // 
-            this.col1.FillWeight = 30F;
-            this.col1.HeaderText = "ID";
-            this.col1.Name = "col1";
-            this.col1.ReadOnly = true;
-            this.col1.Width = 40;
-            // 
-            // col2
-            // 
-            this.col2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.col2.HeaderText = "Name";
-            this.col2.Name = "col2";
-            // 
-            // col3
-            // 
-            this.col3.HeaderText = "Num obs";
-            this.col3.Name = "col3";
-            this.col3.ReadOnly = true;
-            // 
-            // col4
-            // 
-            this.col4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.col4.HeaderText = "First obs";
-            this.col4.Name = "col4";
-            this.col4.ReadOnly = true;
-            // 
-            // col5
-            // 
-            this.col5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.col5.HeaderText = "Last obs";
-            this.col5.Name = "col5";
-            this.col5.ReadOnly = true;
-            // 
             // csmi_1
             // 
             this.csmi_1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -266,6 +217,55 @@
             this.bt_apply.UseVisualStyleBackColor = true;
             this.bt_apply.Click += new System.EventHandler(this.bt_apply_Click);
             // 
+            // col_01
+            // 
+            this.col_01.FillWeight = 25F;
+            this.col_01.HeaderText = "#";
+            this.col_01.Name = "col_01";
+            this.col_01.ReadOnly = true;
+            this.col_01.Width = 25;
+            // 
+            // col0
+            // 
+            this.col0.FillWeight = 30F;
+            this.col0.HeaderText = "Use";
+            this.col0.Name = "col0";
+            this.col0.Width = 30;
+            // 
+            // col1
+            // 
+            this.col1.FillWeight = 30F;
+            this.col1.HeaderText = "ID";
+            this.col1.Name = "col1";
+            this.col1.ReadOnly = true;
+            this.col1.Width = 40;
+            // 
+            // col2
+            // 
+            this.col2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.col2.HeaderText = "Observatory name";
+            this.col2.Name = "col2";
+            // 
+            // col3
+            // 
+            this.col3.HeaderText = "Number of observations";
+            this.col3.Name = "col3";
+            this.col3.ReadOnly = true;
+            // 
+            // col4
+            // 
+            this.col4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.col4.HeaderText = "Epoch of first observation";
+            this.col4.Name = "col4";
+            this.col4.ReadOnly = true;
+            // 
+            // col5
+            // 
+            this.col5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.col5.HeaderText = "Epoch of last observation";
+            this.col5.Name = "col5";
+            this.col5.ReadOnly = true;
+            // 
             // OrbMod_FormOberv
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -303,13 +303,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.DataGridView dgv_1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_01;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn col0;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col5;
         private System.Windows.Forms.ContextMenuStrip csmi_1;
         private System.Windows.Forms.ToolStripMenuItem tsmi_Check;
         private System.Windows.Forms.ToolStripMenuItem tsmi_UnCheck;
@@ -319,5 +312,12 @@
         private System.Windows.Forms.TextBox tb_UTC_finish;
         private System.Windows.Forms.Button bt_apply;
         private ZedGraph.ZedGraphControl zg_ObsView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_01;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn col0;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col5;
     }
 }
