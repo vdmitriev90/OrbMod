@@ -13,7 +13,7 @@ Here you able to specify:
 4. intial conditions, its type, coordinates and time frame
 5. integraion setting (step, order, tolerance and so on)
 
-![Alt-текст](https://github.com/vdmitriev90/OrbMod_DotNET_UI/blob/master/MainWindow.png )
+![](https://github.com/vdmitriev90/OrbMod_DotNET_UI/blob/master/MainWindow.png )
 
 ## Force model menu
 Here you able to specify the set of perturbation forces:
@@ -26,7 +26,7 @@ Here you able to specify the set of perturbation forces:
 5. Solar radiation pressure whithin 'cannon ball' model
 5. athmospheric drag whithin 'cannon ball' model
 
-![Alt-текст](https://github.com/vdmitriev90/OrbMod_DotNET_UI/blob/master/ForceModel.png)
+![](https://github.com/vdmitriev90/OrbMod_DotNET_UI/blob/master/ForceModel.png)
 
 ## Process setting menu
 Here you can manage the parameters of fitting orbit to observations:
@@ -39,19 +39,41 @@ Here you can manage the parameters of fitting orbit to observations:
  1. (hybrid_Kalman) - Software will try to estimate state vector and covariance using few first epochs via batch least squares, after that standart EKF algorithm will be used.
 
 2. Outliers rejection - rejection epoch with bad observations
-3. Settings of EKF
+3. Settings of sequential least squares flter
+4. Settings of EKF
 
  
- ![Alt-текст](https://github.com/vdmitriev90/OrbMod_DotNET_UI/blob/master/Process%20settings.png)
+ ![](https://github.com/vdmitriev90/OrbMod_DotNET_UI/blob/master/Process%20settings.png)
  
  
 ## Output setting menu
 Here you able to specify the data whichkind of data wil be store in files during processing, and rate of output streams
 
-![Alt-текст](https://github.com/vdmitriev90/OrbMod_DotNET_UI/blob/master/Output%20settings.png)
+![](https://github.com/vdmitriev90/OrbMod_DotNET_UI/blob/master/Output%20settings.png)
+
+## Tools menus
+
+Here you able to:
+### Load observation
+Load astrometric observation  from text file (in MPC format) to intrnal storage (item "Load observations")
 
 
 
-## Observations view  
+![](https://github.com/vdmitriev90/OrbMod_DotNET_UI/blob/master/Tools.png)
 
-![Alt-текст](https://github.com/vdmitriev90/OrbMod_DotNET_UI/blob/master/ObservationsView.png)
+
+### Observations view  
+View and manage amount of observations to be proceesed. You can change time frames  and include/exclude all observation from specific observatory.
+On pictuer below are shown example for obsevations of Apophis asteroid. 
+
+![](https://github.com/vdmitriev90/OrbMod_DotNET_UI/blob/master/ObservationsView.png)
+
+Plot graphs
+Visualize result of orbit propagation or fiiting (Plot graphs)
+
+
+
+
+
+
+
