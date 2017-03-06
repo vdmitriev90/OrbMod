@@ -70,9 +70,6 @@
     <Filter Include="src\Variables">
       <UniqueIdentifier>{ba4e26b8-76c3-4359-ba23-3c2281fd1e32}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Variables\debug">
-      <UniqueIdentifier>{cf9aad7f-f65a-49dd-8527-4c026f3df7f4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Control">
       <UniqueIdentifier>{2f1ff62b-c30f-4b6f-9489-46abbcf65d5a}</UniqueIdentifier>
     </Filter>

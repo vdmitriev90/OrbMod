@@ -140,7 +140,7 @@ namespace OrbMod
 	double			Global::R_pl = 0;
 	//количество обращений к правым частям дифф. уравнений:
 	long unsigned int Global::N_rp = 0;
-
+	 unsigned int Global::Nstep = 0;
 	//colors
 	int					Global::col_Main;
 	int					Global::ColorsAcc[22];

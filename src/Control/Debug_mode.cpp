@@ -166,7 +166,11 @@ namespace OrbMod
 		//vector<double> X3d, X3ks;
 		//Matrix dXdX03d, SV3d, dXdX0ks, SVks;
 
+<<<<<<< HEAD
 		////var_3D_izo2 izo3D;
+=======
+		//var_3D_izo2 izo3D;
+>>>>>>> 885e2d63630b6907812edaad4d4f3bdfaee20200
 
 		//izo3D.setPar(X3d, Global::SV, to);
 		//OrbFit::fo << "izo3D\n" << Global::SV.toString("\t") << endl;
