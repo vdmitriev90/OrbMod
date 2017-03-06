@@ -152,49 +152,49 @@ namespace OrbMod
 	//
 	void  Control::debugAction3()
 	{
-		OrbFit::fo.open("Orbfit.out");
-		const int  NOR = Global::NOR;
-		double to = Global::t0;
-		double te = Global::te;
-		double step = 0;
+		//OrbFit::fo.open("Orbfit.out");
+		//const int  NOR = Global::NOR;
+		//double to = Global::t0;
+		//double te = Global::te;
+		//double step = 0;
 
-		//максимальное число итераций
-		int NI = Global::Niter;
-		//Output parameters
-		int NS = 0, NBS = 0;
-		int	Neq = 10, I = 0;
-		vector<double> X3d, X3ks;
-		Matrix dXdX03d, SV3d, dXdX0ks, SVks;
+		////максимальное число итераций
+		//int NI = Global::Niter;
+		////Output parameters
+		//int NS = 0, NBS = 0;
+		//int	Neq = 10, I = 0;
+		//vector<double> X3d, X3ks;
+		//Matrix dXdX03d, SV3d, dXdX0ks, SVks;
 
-		var_3D_izo2 izo3D;
+		////var_3D_izo2 izo3D;
 
-		izo3D.setPar(X3d, Global::SV, to);
-		OrbFit::fo << "izo3D\n" << Global::SV.toString("\t") << endl;
-		izo3D.Gauss_FODE(X3d, to, te, Global::step, NOR, NI, NS, NBS);
-		izo3D.GetX(X3d, SV3d, to, dXdX03d);
+		//izo3D.setPar(X3d, Global::SV, to);
+		//OrbFit::fo << "izo3D\n" << Global::SV.toString("\t") << endl;
+		//izo3D.Gauss_FODE(X3d, to, te, Global::step, NOR, NI, NS, NBS);
+		//izo3D.GetX(X3d, SV3d, to, dXdX03d);
 
-		var_KS_izo2 izoKS;
-		izoKS.setPar(X3ks, Global::SV, to);
-		izoKS.Gauss_FODE(X3ks, to, te, step, NOR, NI, NS, NBS);
-		izoKS.GetX(X3ks, SVks, to, dXdX0ks);
+		//var_KS_izo2 izoKS;
+		//izoKS.setPar(X3ks, Global::SV, to);
+		//izoKS.Gauss_FODE(X3ks, to, te, step, NOR, NI, NS, NBS);
+		//izoKS.GetX(X3ks, SVks, to, dXdX0ks);
 
-		double t = to;
-		for (size_t i = 0; i < izoKS.Fi.size(); i++)
-		{
-			Matrix dizo = (izo3D.Fi[i] - izoKS.Fi[i]);
+		//double t = to;
+		//for (size_t i = 0; i < izoKS.Fi.size(); i++)
+		//{
+		//	Matrix dizo = (izo3D.Fi[i] - izoKS.Fi[i]);
 
-			string s_dsv = (izo3D.SVi[i] - izoKS.SVi[i]).toString("\t", "%e", 20, 1);
-			string s_dizo = dizo.toString("\t", "%e", 20, 1);
-			string s_izo3D = (izo3D.Fi[i]).toString("\t", "%e", 20, 1);
-			string s_izoKS = (izoKS.Fi[i]).toString("\t", "%e", 20, 1);
+		//	string s_dsv = (izo3D.SVi[i] - izoKS.SVi[i]).toString("\t", "%e", 20, 1);
+		//	string s_dizo = dizo.toString("\t", "%e", 20, 1);
+		//	string s_izo3D = (izo3D.Fi[i]).toString("\t", "%e", 20, 1);
+		//	string s_izoKS = (izoKS.Fi[i]).toString("\t", "%e", 20, 1);
 
-			//OrbFit::fo << t <</* "\t" << s_dsv <<*/ "\n----------\ndizo\n" << s_dizo << "\tdsv\n" << s_dsv << endl;
-			OrbFit::fo << "izo3D\n" << s_izo3D << endl;
-			OrbFit::fo << "izoKS\n" << s_izoKS << endl;
-			OrbFit::fo << "dizo\t" << s_dizo << endl;
-			t += Global::Discr;
-		}
-		OrbFit::fo.close();
+		//	//OrbFit::fo << t <</* "\t" << s_dsv <<*/ "\n----------\ndizo\n" << s_dizo << "\tdsv\n" << s_dsv << endl;
+		//	OrbFit::fo << "izo3D\n" << s_izo3D << endl;
+		//	OrbFit::fo << "izoKS\n" << s_izoKS << endl;
+		//	OrbFit::fo << "dizo\t" << s_dizo << endl;
+		//	t += Global::Discr;
+		//}
+		//OrbFit::fo.close();
 	}
 
 	void Control::debugAction4()

@@ -74,8 +74,8 @@
 
 #include"Integration\Integration_.h"
 
-#include"variables\debug\var_3D_izo2.h"
-#include"variables\debug\var_KS_izo2.h"
+//#include"variables\debug\var_3D_izo2.h"
+//#include"variables\debug\var_KS_izo2.h"
 
 
 #include"OrbFit\Abstract\OrbFit.h"

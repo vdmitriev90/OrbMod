@@ -240,12 +240,6 @@
     <ClCompile Include="src\variables\var_SB_izo.cpp">
       <Filter>src\Variables</Filter>
     </ClCompile>
-    <ClCompile Include="src\variables\debug\var_3D_izo2.cpp">
-      <Filter>src\Variables\debug</Filter>
-    </ClCompile>
-    <ClCompile Include="src\variables\debug\var_KS_izo2.cpp">
-      <Filter>src\Variables\debug</Filter>
-    </ClCompile>
     <ClCompile Include="src\OrbFit\batch_fitting\batchFitting.cpp">
       <Filter>src\OrbFit\batch_fitting</Filter>
     </ClCompile>
@@ -400,12 +394,6 @@
     </ClInclude>
     <ClInclude Include="src\variables\var.h">
       <Filter>src\Variables</Filter>
-    </ClInclude>
-    <ClInclude Include="src\variables\debug\var_3D_izo2.h">
-      <Filter>src\Variables\debug</Filter>
-    </ClInclude>
-    <ClInclude Include="src\variables\debug\var_KS_izo2.h">
-      <Filter>src\Variables\debug</Filter>
     </ClInclude>
     <ClInclude Include="src\Integration\Integration_.h">
       <Filter>src\Integration</Filter>
