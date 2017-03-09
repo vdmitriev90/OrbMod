@@ -28,7 +28,7 @@ Here you able to specify the set of perturbation forces:
 
 ![](https://github.com/vdmitriev90/OrbMod_DotNET_UI/blob/master/ForceModel.png)
 
-## Process setting menu
+## Process settings menu
 Here you can manage the parameters of fitting orbit to observations:
 
 1. Orbit fiting mode
@@ -46,7 +46,7 @@ Here you can manage the parameters of fitting orbit to observations:
  ![](https://github.com/vdmitriev90/OrbMod_DotNET_UI/blob/master/Process%20settings.png)
  
  
-## Output setting menu
+## Output settings menu
 Here you able to specify the data whichkind of data wil be store in files during processing, and rate of output streams
 
 ![](https://github.com/vdmitriev90/OrbMod_DotNET_UI/blob/master/Output%20settings.png)
@@ -70,11 +70,12 @@ On pictuer below are shown example for obsevations of Apophis asteroid.
 ### Plot graphs
 Visualize result of orbit propagation or fiiting (Plot graphs)
 There are two examples of such graphs.
-Graph  of accelerations for asteroid Apophis from 2005 to 2015
+
+Graph  of different source of accelerations for asteroid Apophis from 2005 to 2015
 
 ![](https://github.com/vdmitriev90/OrbMod_DotNET_UI/blob/master/Plot_acc.png)
 
-Graph  of post fit residuals    for asteroid Apophis from 2005 to 2015
+Graph of post fit residuals (right ascension) for observations of Apophis asteroid  from 2005 to 2015, obtained in this software
 
 ![](https://github.com/vdmitriev90/OrbMod_DotNET_UI/blob/master/ResidualsRA.png)
 
