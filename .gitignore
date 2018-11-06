@@ -1,0 +1,9 @@
+$ cat .gitignore
+[Dd]ebug/
+[Rr]elease/
+.vs
+*.pdb
+*.db
+*.phc
+*.obj
+
