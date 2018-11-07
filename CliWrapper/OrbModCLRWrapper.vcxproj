@@ -150,9 +150,6 @@
     </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="ZedGraph">
-      <HintPath>..\Release\ZedGraph.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\AssemblyInfo.cpp" />
@@ -177,9 +174,15 @@
     <ResourceCompile Include="src\res\app.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OrbModLib\OrbModLib.vcxproj">
+    <ProjectReference Include="..\core\OrbModLib.vcxproj">
       <Project>{3958f054-2b98-4b1d-8fed-a776cf6a4e7d}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="License-LGPL.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
