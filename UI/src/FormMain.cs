@@ -2,8 +2,9 @@
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+
 using OrbModCLRWrapper;
-using static OrbModUI.Config;
+
 
 namespace OrbModUI
 {
@@ -21,6 +22,7 @@ namespace OrbModUI
         {
             InitializeComponent();
         }
+
         //
         private void OrbMod_FormMain_Load(object sender, EventArgs e)
         {
@@ -58,18 +60,17 @@ namespace OrbModUI
              cfgPath = Path.Combine(AppDir, "OrbMod.ini");
 
             if (!OrbModWrap.loadKernels(kernelPath))
-                MessageBox.Show("ModOrb:\nFailed to load:\n metak.tm\n");
+                MessageBox.Show($"Loading failed: {kernelPath}");
             if (!OrbModWrap.loadObservatories(observatoriesPath))
-                MessageBox.Show("ModOrb:\nFailed to load:\n observatories.txt\n");
+                MessageBox.Show($"Loading failed: {observatoriesPath}");
 
             if (!LoadCfg(cfgPath))
-                MessageBox.Show("UI.FormMain:\nFailed to load:\n OrbMod.ini\n");
-
+                MessageBox.Show($"Loading failed: {cfgPath}");
 
             if (System.IO.File.Exists(Config.Instance.ObsPath))
                 Config.Instance.ObsSet.LoadObs(Config.Instance.ObsPath,(int)Config.Instance.ObsType);
-
         }
+
         //
         private void tsmi_Plot_Click(object sender, EventArgs e)
         {

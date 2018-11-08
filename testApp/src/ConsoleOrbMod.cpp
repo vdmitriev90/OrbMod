@@ -6,11 +6,17 @@
 using namespace OrbMod;
 using namespace std;
 
-int main()
+int main(char ** args)
 {
-	Control::loadKernels("metak.tm");
-	cout << "meta" << endl;
-	Control::loadObservatories("observatories.txt");
-	cout << "obs" << endl;
-	Control::Process("OrbMod.ini");
+    cout << "SPICE kernels loading: ";
+    cout << Control::loadKernels(args[0]) << endl;//"metak.tm"
+
+    cout << "Observatories loading: ";
+    cout << Control::loadObservatories(args[1]) << endl;//"observatories.txt"
+
+    cout << "Process started " << endl;
+    Control::Process(args[2]);//"OrbMod.ini"
+    cout << "Process finished " << endl;
+
+    system("pause");
 }
