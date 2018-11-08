@@ -44,7 +44,7 @@ namespace OrbMod
 			
 			Global::IsAutoStep = false;
 			b = Matrix(OmC);
-			int n = b.nRows();
+            size_t n = b.nRows();
 
 			if (!Solve(A, b, x, sigma, Q)) return 1;
 

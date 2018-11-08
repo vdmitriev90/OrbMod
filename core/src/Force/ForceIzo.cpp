@@ -34,8 +34,8 @@ namespace OrbMod
 	//
 	void ForceIzo::merge_izo()
 	{
-		for (size_t i = 0; i < 3; i++)
-			for (size_t j = 0; j < 3; j++)
+		for (int i = 0; i < 3; i++)
+			for (int j = 0; j < 3; j++)
 			{
 				ddFdy(i, j) = dF3bdx(i, j) + dFnmdx(i, j);
 				ddFdy(i, j + 3) = dfdv(i, j);

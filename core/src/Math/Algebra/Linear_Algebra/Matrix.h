@@ -14,7 +14,7 @@ namespace Algebra
 		size_t n, m, size;
 		double* M;
 
-		void initDim(const int & n, const int & m);
+        void initDim(int n, int m);
 
 	public:
 		Matrix();

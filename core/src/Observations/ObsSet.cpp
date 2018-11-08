@@ -12,6 +12,7 @@
 using namespace Algebra;
 using namespace consts;
 using namespace std;
+
 namespace OrbMod
 {
 	double ObsSet::fct = 1;
@@ -29,6 +30,7 @@ namespace OrbMod
 		this->it = this->it = 0;
 		this->it_end = 0;
 	}
+
 	ObsSet::ObsSet(const ObsSet& other)
 	{
 		if (this != &other) // self-assignment protection
@@ -49,12 +51,10 @@ namespace OrbMod
 
 			//observatories
 			this->isUseObs.clear();
-			for (auto it : other.isUseObs)
-			{
+			for (auto&& it : other.isUseObs)
 				this->isUseObs.insert(it);
-			}
+			
 		}
-		
 	}
 
 	//
@@ -78,10 +78,9 @@ namespace OrbMod
 
 			//observatories
 			this->isUseObs.clear();
-			for (auto it : other.isUseObs)
-			{
+			for (auto&& it : other.isUseObs)
 				this->isUseObs.insert(it);
-			}
+			
 		}
 		return *this;
 	}
@@ -137,7 +136,7 @@ namespace OrbMod
 		return (it_end - it0);
 	}
 	//
-	bool ObsSet::tryAddObs(string ID, bool val)
+	bool ObsSet::tryAddObs(const string& ID, bool val)
 	{
 		auto it1 = this->isUseObs.begin();
 		it1 = this->isUseObs.find(ID);
@@ -151,7 +150,7 @@ namespace OrbMod
 		}
 	}
 	//
-	bool ObsSet::LoadObs(std::string FileName, TypeOfObs ObsType)
+	bool ObsSet::LoadObs(const string& FileName, TypeOfObs ObsType)
 	{
 		obs.clear();
 		obs.reserve(2000);
@@ -170,7 +169,9 @@ namespace OrbMod
 					delete obsi;
 			}
 		}
-		else return false;
+		else 
+            return false;
+
 		file.close();
 
 		std::sort(obs.begin(), obs.end(), &Obs::compare);
@@ -180,31 +181,29 @@ namespace OrbMod
 		return true;
 	};
 	//
-	Obs * ObsSet::ñreateObs(TypeOfObs id)
-	{
-		Obs * p;
-		switch (id)
-		{
-		case TypeOfObs::Astro: p = new AstroObs();
-			break;
-		case TypeOfObs::mDist: p = new ModDistObs();
-			break;
-		case TypeOfObs::mAstro: p = new ModAstroObs();
-			break;
-		case TypeOfObs::mAstro2: p = new ModAstroObs2();
-			break;
-		default:
-			throw"Invalid Observation code";
-		}
-		return p;
-	}
+    Obs * ObsSet::ñreateObs(TypeOfObs id)
+    {
+        switch (id)
+        {
+        case TypeOfObs::Astro: return new AstroObs();
+            break;
+        case TypeOfObs::mDist: return new ModDistObs();
+            break;
+        case TypeOfObs::mAstro: return new ModAstroObs();
+            break;
+        case TypeOfObs::mAstro2: return new ModAstroObs2();
+            break;
+        default:
+            throw invalid_argument("Unsupported type of observations");
+        }
+    }
 
 	//
 	//äâîè÷íûé ïîèñê  ýïîõè ïî âðåìåíè
 	int ObsSet::FindTime(double time)
 	{
 		int min = 0;
-		int max = obs.size();
+        size_t max = obs.size();
 		int mid = 0;
 
 		if (obs[0]->t > time) return 0;
@@ -226,7 +225,7 @@ namespace OrbMod
 	{
 		if (obs.size() < 2) return false;
 		it0 = 0;
-		int N = obs.size();
+        size_t N = obs.size();
 		
 		t0 = et_s, te = et_e;
 

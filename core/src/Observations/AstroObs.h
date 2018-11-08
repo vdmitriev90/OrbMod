@@ -23,10 +23,10 @@ namespace OrbMod
 
 		//methods
 		virtual	bool tryParce(std::string s);
-		virtual void setParEq(Algebra::Matrix &A, std::vector<double> &OmC, Algebra::Matrix &x, Algebra::Matrix &dxdx0, double  tau) override;
+		virtual void updateEquations(Algebra::Matrix &A, std::vector<double> &OmC, Algebra::Matrix &x, Algebra::Matrix &dxdx0, double  tau) override;
 		//void AbbCorr(int K, double dt0, double H, vector<double> &X, vector< vector<double>> &B, vector<double> &F0, vector<double> &P, vector<double> &Yo) override;
 		virtual std::string getType() override;
-		virtual void writeRes() override;
+		virtual void writeResiduals() override;
 		virtual bool isOutlier() override;
 		virtual void abCorr(double pos[]);
 		virtual AstroObs* clone() const override;

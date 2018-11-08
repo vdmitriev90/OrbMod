@@ -9,8 +9,6 @@
 
 #include"SpiceUsr.h"
 
-
-
 using namespace OrbMod;
 using namespace ZedGraph;
 using namespace consts;
@@ -91,7 +89,7 @@ namespace OrbModCLRWrapper
 		map<string, vector<OrbMod::dateTime> > dict;
 		auto oi = dict.begin();
 
-		for (auto it : ((*this->setO)))
+		for (auto&& it : *this->setO)
 		{
 			double et = it->t;
 
@@ -123,13 +121,13 @@ namespace OrbModCLRWrapper
 		cli::array <String^, 1> ^  AccNames = gcnew cli::array<String^>(N);
 
 		int i = 0;
-		for (auto it : dict)
+		for (auto&& it : dict)
 		{
 			ListObs[i] = gcnew ZedGraph::PointPairList();
 			string sid = it.first;
 			AccNames[i] = Marsh::s2S(Observatory::str2Obsy[sid].Name);
 
-			for (auto it1 : it.second)
+			for (auto&& it1 : it.second)
 			{
 				int msec = (it1.sec - (int)it1.sec) * 1000;
 				XDate dt = XDate(it1.Y, it1.M, it1.D, it1.h, it1.min, (int)it1.sec, msec);
@@ -213,7 +211,7 @@ namespace OrbModCLRWrapper
 	String^ _ObsSet::UsedObs2String()
 	{
 		std::string str = "";
-		for (auto it : (*this->setO).isUseObs)
+		for (auto&& it : (*this->setO).isUseObs)
 			str += it.first + ',' + to_string((int)it.second) + ';';
 		return Marsh::s2S(str);
 	}

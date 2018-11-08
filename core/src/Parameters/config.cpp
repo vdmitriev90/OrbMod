@@ -402,7 +402,7 @@ namespace OrbMod
 	//
 	bool config::BFFID(const string & s)
 	{
-		Global::ID_3_BFF_num = stod(s);
+		Global::ID_3_BFF_num = stoi(s);
 		return true;
 	}
 	bool config::Colors(const string & s)

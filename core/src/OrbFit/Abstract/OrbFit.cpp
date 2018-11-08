@@ -58,8 +58,8 @@ namespace OrbMod
 	//
 	int OrbFit::Solve(Matrix A, Matrix b, Matrix &x, double &sigma, Matrix &Q)
 	{
-		int M = A.nCols();
-		int N = A.nRows();
+		size_t M = A.nCols();
+        size_t N = A.nRows();
 		if (N < 6 || M < 6)
 		{
 			fo << "Number of observations isn't enough for parameter estimation. Processing stopped. N=" << N << " M=" << M << endl;
@@ -93,7 +93,7 @@ namespace OrbMod
 		//if the observatory is marked for use
 		if (Control::Obs_.isUseObs[obsid])
 			//call of procedure-constructor of parametric equations (matrix A and vector A to C)
-			(Control::Obs_.curr()).setParEq(A, OmC, sv, dxdx0, tau);
+			(Control::Obs_.curr()).updateEquations(A, OmC, sv, dxdx0, tau);
 
 		if (Control::Obs_.next())
 			tnext = (Control::Obs_.curr()).t;
@@ -138,7 +138,7 @@ namespace OrbMod
 			if (Global::ObsT == TypeOfObs::Astro)
 			{
 				double sra = 0, sdec = 0;
-				for (size_t i = 1; i < resid.Size(); i = i + 2)
+				for (size_t i = 1; i < resid.Size(); i = i + (size_t)2)
 				{
 					sra += SQR(resid(i - 1, 0));
 					sdec += SQR(resid(i, 0));

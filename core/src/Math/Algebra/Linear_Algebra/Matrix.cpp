@@ -1,3 +1,5 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include "Matrix.h"
 #include "linalg.h"
 
@@ -5,6 +7,7 @@
 
 using namespace alglib;
 using namespace std;
+
 
 namespace Algebra
 {
@@ -16,7 +19,7 @@ namespace Algebra
 			this->M[j] = 0;
 	}
 	//
-	void Matrix::initDim(const int &n, const int & m)
+	void Matrix::initDim(int n, int m)
 	{
 		this->n = n;
 		this->m = m;
@@ -404,7 +407,7 @@ namespace Algebra
 		char buf[30];
 		for (int i = 0; i < this->size; ++i)
 		{
-            sprintf_s(buf, L, format, this->M[i]);
+            sprintf(buf, format, this->M[i]);
 			str += buf;
 			str += sep;
 		}
@@ -418,7 +421,7 @@ namespace Algebra
 		for (int i = 0; i < this->size; ++i)
 		{
 
-            sprintf_s(buf, L, format, this->M[i]);
+            sprintf(buf, format, this->M[i]);
 			str += buf;
 			if (isSplitByRows && ((i + 1) % this->m) == 0) str += "\n";
 			else str += sep;

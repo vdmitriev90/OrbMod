@@ -77,7 +77,7 @@ namespace OrbMod
 			Matrix b = fit->getb();
 			Matrix H = fit->getA();
 			Matrix Fi = fit->getFi();
-			int n = b.nRows();
+            size_t n = b.nRows();
 
 			if (n != 0)
 			{

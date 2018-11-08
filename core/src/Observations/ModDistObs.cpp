@@ -13,6 +13,7 @@ using namespace std;
 #define DEF__1 1
 namespace OrbMod
 {
+    
 	ModDistObs::ModDistObs() 
 	{
 	}
@@ -54,21 +55,27 @@ namespace OrbMod
 		}
 		return true;
 	}
-	void ModDistObs::setParEq(Matrix &A, vector<double> &OmC, Matrix &sv, Matrix &dxdx0, double  tau)
+
+	void ModDistObs::updateEquations(Matrix &A, vector<double> &OmC, Matrix &sv, Matrix &dxdx0, double  tau)
 	{
-		double pos[3], lt, ra, dec, d, posE[3] = { 3000,3000,4800 }, rotate[3][3];
+        double pos[3]; 
+        double lt, ra, dec, d;
+        double rotate[3][3];
+
 		triple r = triple(sv(0, 0), sv(1, 0), sv(2, 0));
 
 		spkgps_c(399, this->t, "J2000", Global::IDC, pos, &lt);
 		//pxform_c("IAU_EARTH","J2000",this->t,rotate);
-
+        //double posE[3] = { 3000,3000,4800 };
 		//mtxv_c(rotate, posE, posE);
 
 		triple re(pos);
 		triple dr = r - re;
 		dr.toSph(ra, dec, d);
 
-		for (int i = 0; i < 3; i++) dOdX(0, i) = dr[i] / d;
+		for (int i = 0; i < 3; i++)
+            dOdX(0, i) = dr[i] / d;
+
 		res = this->dist - d;
 
 		//str_dbg = dxdx0.toString("\t", "%e", 10);
@@ -82,12 +89,12 @@ namespace OrbMod
 		//str_dbg += "\n";
 		Matrix dOdX0 = dOdX*dxdx0;
 
-		if (ObsSet::isLogResid) writeRes();
+		if (ObsSet::isLogResid) writeResiduals();
 
 		A.addRows(dOdX0);
 		OmC.push_back(res);
 	}
-	void ModDistObs::writeRes()
+	void ModDistObs::writeResiduals()
 	{
 		char buff[200], c_time[35];
 		//timout_c(this->t, Global::pictur_tdb, 70, c_time);

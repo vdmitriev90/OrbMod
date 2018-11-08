@@ -15,13 +15,13 @@ namespace OrbMod
 
 		bool tryParce(std::string s) override;
 
-		void setParEq(Algebra::Matrix &A, std::vector<double> &OmC, Algebra::Matrix &x, Algebra::Matrix &dxdx0, double  tau) override;
+		void updateEquations(Algebra::Matrix &A, std::vector<double> &OmC, Algebra::Matrix &x, Algebra::Matrix &dxdx0, double  tau) override;
 
 		//void AbbCorr(int K, double dt0, double H, vector<double> &X, vector< vector<double>> &B, vector<double> &F0, vector<double> &P, vector<double> &Yo) override;
         
         std::string getType() override;
 		
-        void writeRes() override;
+        void writeResiduals() override;
 		
         virtual ModAstroObs* clone() const override;
 

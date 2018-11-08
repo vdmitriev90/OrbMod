@@ -64,7 +64,7 @@ namespace OrbMod
 			Global::IsAutoStep = false;
 			Matrix A = getA();
 			Matrix b = getb();
-			int n = b.Size();
+            size_t n = b.Size();
 
 			if (!Solve(A, b, x, sigma, Q)) return 1;
 

@@ -70,7 +70,7 @@ namespace OrbMod
 		triple accp;
 
 		SRP EFG;
-		atm HIJ;
+		AtmosphericDrag HIJ;
 
 		//ускорение от центрального тела
 		if (Global::b_Cunn) acc = Global::GravField_CB.getAcceleration(Global::IDC, time, X);
@@ -249,7 +249,7 @@ namespace OrbMod
 		triple acc, accp, accr, acc_SRP, accA;
 
 		SRP EFG;
-		atm HIJ;
+		AtmosphericDrag HIJ;
 
 		SpiceChar        utcstr[100];
 		//et2utc_c ( this->time,  "C", 10, 80, utcstr );

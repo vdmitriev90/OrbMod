@@ -1,11 +1,9 @@
 #pragma once
-
 #include "triple.h"
-
 
 namespace OrbMod
 {
-	class atm {
+	class AtmosphericDrag {
 	private:
 		Algebra::triple r, v;
 		static double Catm, H, ro_0, Massa, Peri, Area;
@@ -14,8 +12,8 @@ namespace OrbMod
 
 	public:
 
-		atm(void);
-		~atm(void);
+		AtmosphericDrag(void);
+		~AtmosphericDrag(void);
 
 		//сеты
 		void setPos(Algebra::triple R) { r = R; };

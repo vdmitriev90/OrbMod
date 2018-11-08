@@ -19,9 +19,9 @@ namespace OrbMod
         //methods
         virtual ~ModAstroObs2();
         virtual bool tryParce(std::string s) override;
-        virtual void setParEq(Algebra::Matrix &A, std::vector<double> &OmC, Algebra::Matrix &x, Algebra::Matrix &dxdx0, double  tau) override;
+        virtual void updateEquations(Algebra::Matrix &A, std::vector<double> &OmC, Algebra::Matrix &x, Algebra::Matrix &dxdx0, double  tau) override;
         virtual std::string getType()override;
-        virtual void writeRes()override;
+        virtual void writeResiduals()override;
         virtual ModAstroObs2* clone() const override;
 
     };

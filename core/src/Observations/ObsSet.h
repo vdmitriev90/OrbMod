@@ -37,8 +37,10 @@ namespace OrbMod
 
         ~ObsSet()
         {
-            for (int i = obs.size() - 1; i >= 0; --i)  delete obs[i];
+            for (size_t i = obs.size() - 1; i >= 0; --i)  
+                delete obs[i];
         }
+
         //
         Vobs::iterator begin();
         Vobs::iterator end();
@@ -54,8 +56,8 @@ namespace OrbMod
         size_t size();
         int getObsNum();
 
-        bool tryAddObs(std::string ID, bool val);
-        bool LoadObs(std::string FileName, consts::TypeOfObs ObsType);
+        bool tryAddObs(const std::string & ID, bool val);
+        bool LoadObs(const std::string & FileName, consts::TypeOfObs ObsType);
         bool setTimeFrames(double et_0, double et_1);
         int  FindTime(double et);
 

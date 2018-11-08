@@ -77,7 +77,7 @@ namespace OrbMod
 		return true;
 	}
 	//
-	void ModAstroObs2::setParEq(Matrix &A, vector<double> &OmC, Matrix &sv, Matrix &dxdx0, double  tau)
+	void ModAstroObs2::updateEquations(Matrix &A, vector<double> &OmC, Matrix &sv, Matrix &dxdx0, double  tau)
 	{
 		double pos[6], lt, ra_c, dec_c, d;
 		triple r = triple(sv(0, 0), sv(1, 0), sv(2, 0));
@@ -110,14 +110,14 @@ namespace OrbMod
 		res_del = (this->dec + this->ddec) - dec_c;
 
 		Matrix dOdX0 = dOdX*dxdx0;
-		if (ObsSet::isLogResid) writeRes();
+		if (ObsSet::isLogResid) writeResiduals();
 
 		A.addRows(dOdX0);
 		OmC.push_back(res_ra*cos(dec_c));
 		OmC.push_back(res_del);
 
 	}
-	void ModAstroObs2::writeRes()
+	void ModAstroObs2::writeResiduals()
 	{
 		char buff[200], c_time[35];
 		timout_c(this->t, Global::pictur_tdb, 70, c_time);

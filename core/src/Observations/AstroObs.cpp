@@ -91,7 +91,7 @@ namespace OrbMod
 		return true;
 	}
 	//
-	void AstroObs::setParEq(Matrix &A, vector<double> &OmC, Matrix &sv, Matrix &dxdx0, double  tau)
+	void AstroObs::updateEquations(Matrix &A, vector<double> &OmC, Matrix &sv, Matrix &dxdx0, double  tau)
 	{
 		double pos[6], lt, ra_c, dec_c, d;
 		triple r = triple(sv(0, 0), sv(1, 0), sv(2, 0));
@@ -142,7 +142,7 @@ namespace OrbMod
 		//d(RA,DEC)/d(x,y,z,vx,vy,vz)
 		Matrix dOdX0 = dOdX*dxdx0;
 		//logging residuals
-		if (ObsSet::isLogResid) writeRes();
+		if (ObsSet::isLogResid) writeResiduals();
 
 		A.addRows(dOdX0);
 		OmC.push_back(res_ra);
@@ -187,7 +187,7 @@ namespace OrbMod
 			return false;
 	}
 	//
-	void AstroObs::writeRes()
+	void AstroObs::writeResiduals()
 	{
 		char buff[250], c_time[70];
 		timout_c(this->t, Global::pictur_tdb, 70, c_time);
