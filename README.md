@@ -1,5 +1,5 @@
-## OrbMod Software
-# Brief description
+# OrbMod Software
+## Brief description
 OrbMod (Orbit Modeling ) - tools for numerical modeling of orbits. Orbit propagation and fitting to observations. Orbit modeling is implemented  within the perturbed  two-body problem, in Cartesian, Kustaanheimo-Stiefel (KS) and Sperling-Burdet (SB) variables. The flexible set of perturbations can be used:
  1. central body gravity as point mass
  2. central body gravity in spherical harmonics expansion
