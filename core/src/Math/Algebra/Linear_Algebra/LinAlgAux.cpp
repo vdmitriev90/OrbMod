@@ -1,5 +1,7 @@
-#include "stdafx.h"
+
 #include "LinAlgAux.h"
+
+using namespace std;
 
 namespace Algebra
 {

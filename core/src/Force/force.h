@@ -1,8 +1,8 @@
 #pragma once
-#include <stdio.h>
-#include"stdafx.h"
+#include "triple.h"
 
-using namespace std;
+#include <stdio.h>
+
 namespace OrbMod
 {
 	class Force
@@ -11,27 +11,27 @@ namespace OrbMod
 		static double mu;
 		static FILE *facc;
 
-		triple X, V, acc;
+		Algebra::triple X, V, acc;
 		double time;
-		virtual triple planet(int IDP);
-		virtual triple planet(int IDP, double mu);
-		triple acc5th_body();
-		triple relativ();
-		triple L_T();
+		virtual Algebra::triple planet(int IDP);
+		virtual Algebra::triple planet(int IDP, double mu);
+		Algebra::triple acc5th_body();
+		Algebra::triple relativ();
+		Algebra::triple L_T();
 
 	public:
 		static void AccFileOpen();
 		static void AccFileClose();
 		static void setMu();
 		static double getMu() { return mu; };
-		static triple force_SODE(const double Ti, const triple &Xi, const triple &Vi);
+		static Algebra::triple force_SODE(const double Ti, const Algebra::triple &Xi, const Algebra::triple &Vi);
 
 		Force();
-		Force(const double &t, const  triple &X, const triple &V);
+		Force(const double &t, const  Algebra::triple &X, const Algebra::triple &V);
 		virtual ~Force();
 
-		virtual triple force_cb();
-		virtual triple force_pert();
+		virtual Algebra::triple force_cb();
+		virtual Algebra::triple force_pert();
 		//
 		void   force_w(double Ti);
 

@@ -1,5 +1,13 @@
-#include"stdafx.h"
-#include "atmosferic_drag.h"
+#include "AtmosphericDrag.h"
+#include "Global.h"
+#include "frame.h"
+
+#include "SpiceUsr.h"
+
+#include<fstream>
+
+using namespace std;
+using namespace Algebra;
 
 namespace OrbMod
 {
@@ -48,7 +56,7 @@ namespace OrbMod
 
 		if (a == true) {
 			double 	H = rz.getAbs() - 6371.0;
-			if (H > AtmModel_H[size - 1]) return zero;
+			if (H > AtmModel_H[size - 1]) return triple::zero;
 
 			for (int i = 1; i < size; i++) {
 				if (AtmModel_H[i - 1]<H && AtmModel_H[i]>H) {

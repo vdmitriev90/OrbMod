@@ -1,6 +1,8 @@
 #pragma once
-using namespace std;
-#include"stdafx.h"
+
+#include"triple.h"
+#include"Matrix.h"
+
 namespace Algebra
 {
 	//Kustaanheimo-Stiefel transformation and  variables
@@ -21,7 +23,7 @@ namespace Algebra
 		KS();
 		KS(triple X, triple V);
 		KS(double SV[]);
-		KS(const vector<double> &X);
+		KS(const std::vector<double> &X);
 		KS(Matrix Q, Matrix P);
 		KS(Matrix QP);
 
@@ -32,13 +34,13 @@ namespace Algebra
 		triple  X();
 		triple  V();
 		Matrix SV3d();
-		double* KS::getSVxy();
+
 
 		double r();
 		Matrix dydY();
 		Matrix dYdy(double mu);
 		Matrix Y0(double mu, double t0);
-		void   Y0(double mu, double t0, vector<double> &X);
+		void   Y0(double mu, double t0, std::vector<double> &X);
 		double h0(double mu);
 
 		static Matrix Lam(triple Tri);

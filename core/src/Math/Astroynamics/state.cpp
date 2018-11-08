@@ -1,5 +1,15 @@
-#include "stdafx.h"
 #include "state.h"
+#include"constant.h"
+#include"Global.h"
+#include"macroses.h"
+
+#include"SpiceUsr.h"
+
+#include<exception>
+using namespace Algebra;
+using namespace std;
+using namespace consts;
+
 namespace OrbMod
 {
 	StVec::StVec()

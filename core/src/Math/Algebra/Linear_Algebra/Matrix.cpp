@@ -1,8 +1,11 @@
-#include "stdafx.h"
 #include "Matrix.h"
-#include "AlgLib\src\linalg.h"
+#include "linalg.h"
+
+#include <stdio.h>
 
 using namespace alglib;
+using namespace std;
+
 namespace Algebra
 {
 #pragma region Constructors
@@ -401,7 +404,7 @@ namespace Algebra
 		char buf[30];
 		for (int i = 0; i < this->size; ++i)
 		{
-			std::sprintf(buf, format, this->M[i]);
+            sprintf_s(buf, L, format, this->M[i]);
 			str += buf;
 			str += sep;
 		}
@@ -414,7 +417,8 @@ namespace Algebra
 		char *buf = new char[L];
 		for (int i = 0; i < this->size; ++i)
 		{
-			std::sprintf(buf, format, this->M[i]);
+
+            sprintf_s(buf, L, format, this->M[i]);
 			str += buf;
 			if (isSplitByRows && ((i + 1) % this->m) == 0) str += "\n";
 			else str += sep;

@@ -1,7 +1,11 @@
-#include "stdafx.h"
 #include "constant.h"
+
+#include"Global.h"
+#include"SpiceUsr.h"
+
 using namespace OrbMod;
-namespace Consts
+
+namespace consts
 {
 
 	double ID2GM(int ID)
@@ -496,7 +500,7 @@ namespace Consts
 		double valPM[3], RADII[3];
 		SpiceInt dim;
 		char  id[20];
-		_itoa(ID, id, 10);
+		_itoa_s(ID, id, 10);
 		bodvrd_c(id, "PM", 3, &dim, valPM);
 		bodvrd_c(id, "RADII", 3, &dim, RADII);
 		triple R(RADII);
@@ -507,7 +511,7 @@ namespace Consts
 		double valPM[3];
 		SpiceInt dim;
 		char  id[20];
-		_itoa(ID, id, 10);
+        _itoa_s(ID, id, 10);
 		bodvrd_c(id, "PM", 3, &dim, valPM);
 
 		double W = valPM[1] / rad / 24.0 / 3600.0;
@@ -521,7 +525,7 @@ namespace Consts
 			double valPM[3], RADII[3];
 			SpiceInt dim;
 			char  id[20];
-			_itoa(ID, id, 10);
+            _itoa_s(ID, id, 10);
 			bodvrd_c(id, "PM", 3, &dim, valPM);
 			bodvrd_c(id, "RADII", 3, &dim, RADII);
 			oz = valPM[1] / rad / 24.0 / 3600.0;

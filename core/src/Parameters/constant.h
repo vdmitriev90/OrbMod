@@ -1,13 +1,13 @@
 #pragma once 
 
 #include"stdafx.h"
-#include"Math\Algebra\Linear_Algebra\triple.h"
-#include"Math\Algebra\Linear_Algebra\Matrix.h"
-#include"Math\Algebra\ComplexNum.h"
+#include"triple.h"
+#include"Matrix.h"
+#include"ComplexNum.h"
 
 using namespace Algebra;
 
-namespace Consts
+namespace consts
 {
 	//Вид уравнений движения
 	enum  Variables { SODE_XV = 0, FODE_2D, FODE_3D, FODE_KS, FODE_SB, IZO_3D, IZO_KS, IZO_SB, FinDiff };
@@ -162,7 +162,7 @@ BODY2000002_GM = 14.3,
 BODY2000004_GM = 17.8;
 
 
-	SpiceDouble ID2GM(int);
+	double ID2GM(int);
 	long int id2fixfr(long int);
 	//System::String^ id2name(int ID);
 	//int name2id(System::String^);

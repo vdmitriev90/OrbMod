@@ -1,6 +1,6 @@
 #pragma once
-#include "OrbFit\Abstract\OrbFit.h"
-using namespace Algebra;
+#include "OrbFit.h"
+
 
 namespace OrbMod
 {
@@ -13,8 +13,8 @@ namespace OrbMod
 		~pureKalman_XV();
 
 		//void  SwitchVar(Variables V);
-		virtual void  Adjust(Matrix &SV, double t0, double &sigma, Matrix &Q) override;
-		virtual void  InitFilter(Matrix &SV, double t0, double &sigma, Matrix &P);
+		virtual void  Adjust(Algebra::Matrix &SV, double t0, double &sigma, Algebra::Matrix &Q) override;
+		virtual void  InitFilter(Algebra::Matrix &SV, double t0, double &sigma, Algebra::Matrix &P);
 
 	protected:
 		OrbFit *fit;

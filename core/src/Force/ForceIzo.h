@@ -1,30 +1,34 @@
 #pragma once
 #include "force.h"
+#include "triple.h"
+#include "Matrix.h"
+
 namespace OrbMod
 {
-	class ForceIzo :
-		public Force
-	{
-	protected:
+    class ForceIzo :
+        public Force
+    {
+    protected:
 
-		Matrix dfdv, ddFdy, dFcbdx, dFnmdx, dF3bdx;
-		//произодные от  вектора сотояния в KS переменных по ветору сотояния в прямоугольных координатах на t0
-		Matrix dYdy0;
+        Algebra::Matrix dfdv, ddFdy, dFcbdx, dFnmdx, dF3bdx;
 
-		virtual triple planet(int IDP) override;
-		virtual triple planet(int IDP, double mu) override;
-		void	init_izo();
-		void	merge_izo();
-	public:
-		ForceIzo();
-		ForceIzo(const double &t, const  triple &X, const triple &V);
-		~ForceIzo();
+        //произодные от  вектора сотояния в KS переменных по ветору сотояния в прямоугольных координатах на t0
+        Algebra::Matrix dYdy0;
 
-		virtual triple force_cb() override;
+        virtual Algebra::triple planet(int IDP) override;
+        virtual Algebra::triple planet(int IDP, double mu) override;
+        void	init_izo();
+        void	merge_izo();
+    public:
+        ForceIzo();
+        ForceIzo(const double &t, const  Algebra::triple &X, const Algebra::triple &V);
+        ~ForceIzo();
 
-		void	getdXdX0(const vector<double> &Xks, vector<double> &X3d);
-		Matrix	get_ddFdsv();
-		Matrix	get_dFcbdx();
-	};
+        virtual Algebra::triple force_cb() override;
+
+        void getdXdX0(const std::vector<double> &Xks, std::vector<double> &X3d);
+        Algebra::Matrix	get_ddFdsv();
+        Algebra::Matrix	get_dFcbdx();
+    };
 
 }

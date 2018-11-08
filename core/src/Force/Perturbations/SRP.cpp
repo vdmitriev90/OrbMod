@@ -1,5 +1,10 @@
-#include"stdafx.h"
 #include"SRP.h"
+#include"constant.h"
+#include"Global.h"
+
+#include"SpiceUsr.h"
+
+using namespace consts;
 namespace OrbMod
 {
 	SRP::SRP(void)
@@ -24,7 +29,7 @@ namespace OrbMod
 		SpiceInt dim;
 		double values[3];
 
-		_itoa(IDC, id, 10);
+		_itoa_s(IDC, id, 10);
 		bodvrd_c(id, "RADII", 3, &dim, values);
 		rPl = (values[0] + values[1] + values[2]) / 3.0;
 		//rPl=(values[2]+AB)/2.0;

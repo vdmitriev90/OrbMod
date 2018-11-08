@@ -1,7 +1,8 @@
 #pragma once
-#include"OrbModLib\src\stdafx.h"
+#include"ObsSet.h"
 using namespace System;
 using namespace OrbMod;
+
 
 namespace OrbModCLRWrapper {
 

@@ -1,14 +1,25 @@
-#include "stdafx.h"
+#include"Control.h"
+#include"OrbFit.h"
+#include"Global.h"
+#include"Integration_.h"
+#include"var.h"
+#include"state.h"
+#include"force.h"
+#include"PreObrit.h"
+#include"constant.h"
 
+#include<fstream>
+#include<iomanip>
 
 using namespace std;
+using namespace consts;
 //
 namespace OrbMod
 {
 	void  Control::debugAction1()
 	{
 
-		ofstream f;
+		std::ofstream f;
 		f.open("custom.out");
 		OrbFit::fo.open("Orbfit.out");
 		const int  NOR = Global::NOR;
@@ -166,11 +177,6 @@ namespace OrbMod
 		//vector<double> X3d, X3ks;
 		//Matrix dXdX03d, SV3d, dXdX0ks, SVks;
 
-<<<<<<< HEAD
-		////var_3D_izo2 izo3D;
-=======
-		//var_3D_izo2 izo3D;
->>>>>>> 885e2d63630b6907812edaad4d4f3bdfaee20200
 
 		//izo3D.setPar(X3d, Global::SV, to);
 		//OrbFit::fo << "izo3D\n" << Global::SV.toString("\t") << endl;

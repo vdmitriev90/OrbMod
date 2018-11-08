@@ -1,10 +1,11 @@
 #pragma once
-#include"stdafx.h"
+#include"triple.h"
+
 namespace OrbMod
 {
 	class SRP {
 	private:
-		triple r;
+		Algebra::triple r;
 		static double rPl, Mass, Area, Albedo, SRPconst;
 
 	public:
@@ -13,7 +14,7 @@ namespace OrbMod
 
 
 		//сеты
-		void setpos(triple R) { r = R; };
+		void setpos(Algebra::triple R) { r = R; };
 		static void setMass(double M) { Mass = M; };
 		static void setArea(double S) { Area = S; };
 		static void setAlbedo(double A) { Albedo = A; };
@@ -23,7 +24,7 @@ namespace OrbMod
 		//геты
 		double getRadii() { return rPl; };
 		double getSRPconst() { return SRPconst; };
-		triple getAcceleration(double et);
+		Algebra::triple getAcceleration(double et);
 
 	};
 }

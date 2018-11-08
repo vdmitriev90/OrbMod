@@ -72,13 +72,18 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(OutDir)libs\cspice\include;$(OutDir)libs\;$(SolutionDir);$(ProjectPath)src\;$(IncludePath);</IncludePath>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(OutDir)libs\cspice\include;$(OutDir)libs\;$(SolutionDir);$(ProjectPath)src\;$(IncludePath);</IncludePath>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -86,40 +91,43 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalUsingDirectories>
       </AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>$(IncludePath)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)OrbMod\AlgLib\src;$(SolutionDir)orbMod\core\src\Control;$(SolutionDir)OrbMod\core\src\Force;$(SolutionDir)OrbMod\core\src\Integration;$(SolutionDir)OrbMod\core\src\Math;$(SolutionDir)OrbMod\core\src\Misc;$(SolutionDir)OrbMod\core\src\Observations;$(SolutionDir)OrbMod\core\src\OrbFit;$(SolutionDir)OrbMod\core\src\Parameters;$(SolutionDir)OrbMod\core\src\variables;$(SolutionDir)OrbMod\core\src\Force\Perturbations;$(SolutionDir)OrbMod\core\src\Math\Algebra;$(SolutionDir)OrbMod\core\src\Math\Astroynamics;$(SolutionDir)OrbMod\core\src\Math\Derivatives;$(SolutionDir)OrbMod\core\src\Math\Algebra\Linear_Algebra;$(SolutionDir)OrbMod\core\src\OrbFit\Abstract;$(SolutionDir)OrbMod\core\src\OrbFit\batch_fitting;$(SolutionDir)OrbMod\core\src\OrbFit\Filtering;$(SolutionDir)OrbMod\core\src\OrbFit\FiniteDifference;$(SolutionDir)OrbMod\core\src\OrbFit\Filtering\KS;$(SolutionDir)OrbMod\core\src\OrbFit\Filtering\XV;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>LIBCMT</IgnoreSpecificDefaultLibraries>
       <AdditionalLibraryDirectories>$(OutDir)libs\cspice\lib;$(OutDir)libs</AdditionalLibraryDirectories>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);cspice.lib</AdditionalDependencies>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)OrbMod\AlgLib\src;$(SolutionDir)orbMod\core\src\Control;$(SolutionDir)OrbMod\core\src\Force;$(SolutionDir)OrbMod\core\src\Integration;$(SolutionDir)OrbMod\core\src\Math;$(SolutionDir)OrbMod\core\src\Misc;$(SolutionDir)OrbMod\core\src\Observations;$(SolutionDir)OrbMod\core\src\OrbFit;$(SolutionDir)OrbMod\core\src\Parameters;$(SolutionDir)OrbMod\core\src\variables;$(SolutionDir)OrbMod\core\src\Force\Perturbations;$(SolutionDir)OrbMod\core\src\Math\Algebra;$(SolutionDir)OrbMod\core\src\Math\Astroynamics;$(SolutionDir)OrbMod\core\src\Math\Derivatives;$(SolutionDir)OrbMod\core\src\Math\Algebra\Linear_Algebra;$(SolutionDir)OrbMod\core\src\OrbFit\Abstract;$(SolutionDir)OrbMod\core\src\OrbFit\batch_fitting;$(SolutionDir)OrbMod\core\src\OrbFit\Filtering;$(SolutionDir)OrbMod\core\src\OrbFit\FiniteDifference;$(SolutionDir)OrbMod\core\src\OrbFit\Filtering\KS;$(SolutionDir)OrbMod\core\src\OrbFit\Filtering\XV;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(OutDir)libs\cspice\lib;$(OutDir)libs</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>LIBCMT</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -127,7 +135,7 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalUsingDirectories>
       </AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>$(IncludePath)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)OrbMod\AlgLib\src;$(SolutionDir)orbMod\core\src\Control;$(SolutionDir)OrbMod\core\src\Force;$(SolutionDir)OrbMod\core\src\Integration;$(SolutionDir)OrbMod\core\src\Math;$(SolutionDir)OrbMod\core\src\Misc;$(SolutionDir)OrbMod\core\src\Observations;$(SolutionDir)OrbMod\core\src\OrbFit;$(SolutionDir)OrbMod\core\src\Parameters;$(SolutionDir)OrbMod\core\src\variables;$(SolutionDir)OrbMod\core\src\Force\Perturbations;$(SolutionDir)OrbMod\core\src\Math\Algebra;$(SolutionDir)OrbMod\core\src\Math\Astroynamics;$(SolutionDir)OrbMod\core\src\Math\Derivatives;$(SolutionDir)OrbMod\core\src\Math\Algebra\Linear_Algebra;$(SolutionDir)OrbMod\core\src\OrbFit\Abstract;$(SolutionDir)OrbMod\core\src\OrbFit\batch_fitting;$(SolutionDir)OrbMod\core\src\OrbFit\Filtering;$(SolutionDir)OrbMod\core\src\OrbFit\FiniteDifference;$(SolutionDir)OrbMod\core\src\OrbFit\Filtering\KS;$(SolutionDir)OrbMod\core\src\OrbFit\Filtering\XV;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -142,42 +150,33 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)OrbMod\AlgLib\src;$(SolutionDir)orbMod\core\src\Control;$(SolutionDir)OrbMod\core\src\Force;$(SolutionDir)OrbMod\core\src\Integration;$(SolutionDir)OrbMod\core\src\Math;$(SolutionDir)OrbMod\core\src\Misc;$(SolutionDir)OrbMod\core\src\Observations;$(SolutionDir)OrbMod\core\src\OrbFit;$(SolutionDir)OrbMod\core\src\Parameters;$(SolutionDir)OrbMod\core\src\variables;$(SolutionDir)OrbMod\core\src\Force\Perturbations;$(SolutionDir)OrbMod\core\src\Math\Algebra;$(SolutionDir)OrbMod\core\src\Math\Astroynamics;$(SolutionDir)OrbMod\core\src\Math\Derivatives;$(SolutionDir)OrbMod\core\src\Math\Algebra\Linear_Algebra;$(SolutionDir)OrbMod\core\src\OrbFit\Abstract;$(SolutionDir)OrbMod\core\src\OrbFit\batch_fitting;$(SolutionDir)OrbMod\core\src\OrbFit\Filtering;$(SolutionDir)OrbMod\core\src\OrbFit\FiniteDifference;$(SolutionDir)OrbMod\core\src\OrbFit\Filtering\KS;$(SolutionDir)OrbMod\core\src\OrbFit\Filtering\XV;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(OutDir)libs\cspice\lib;$(OutDir)libs</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>LIBCMT</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\OrbModLib\OrbModLib.vcxproj">
-      <Project>{3958f054-2b98-4b1d-8fed-a776cf6a4e7d}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="src\ConsoleOrbMod.cpp" />
-    <ClCompile Include="src\stdafx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
-    <ClInclude Include="src\stdafx.h" />
-    <ClInclude Include="src\targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="ConsoleOrbMod.rc" />
+    <ProjectReference Include="..\core\OrbModLib.vcxproj">
+      <Project>{3958f054-2b98-4b1d-8fed-a776cf6a4e7d}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

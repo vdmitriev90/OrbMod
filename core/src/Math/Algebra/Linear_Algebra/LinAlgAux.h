@@ -1,4 +1,6 @@
 #pragma once
+#include"Matrix.h"
+
 namespace Algebra
 {
 	class LinAlgAux
@@ -7,7 +9,7 @@ namespace Algebra
 		static Matrix initCov(double p, double q);
 		static Matrix initCov(Matrix &RMS);
 		static int LSSolve(Matrix &A, Matrix &b, Matrix &x, double &sigma, Matrix &Q);
-		static int LSSolve(Matrix &A, Matrix &b, Matrix &x, double &sigma, Matrix &Q, float nsig, vector<int> &Outs);
+		static int LSSolve(Matrix &A, Matrix &b, Matrix &x, double &sigma, Matrix &Q, float nsig, std::vector<int> &Outs);
 
 		static Matrix CalcRMS(double sigma, Matrix &Q);
 		static Matrix CalcRMS(double sigma, Matrix &Q, double &Prms, double &Vrms);

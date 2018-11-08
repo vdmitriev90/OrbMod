@@ -1,5 +1,6 @@
 #pragma once
-#include "OrbFit\Abstract\OrbFit.h"
+#include "OrbFit.h"
+#include "constant.h"
 
 namespace OrbMod
 {
@@ -8,12 +9,12 @@ namespace OrbMod
 	{
 	public:
 		seqLS();
-		seqLS(Variables var);
+		seqLS(consts::Variables var);
 		~seqLS();
-		void switchVar(Variables var);
+		void switchVar(consts::Variables var);
 		static seqLS inst;
 
-		virtual void  Adjust(Matrix &SV, double t0, double &sigma, Matrix &Q) override;
+		virtual void  Adjust(Algebra::Matrix &SV, double t0, double &sigma, Algebra::Matrix &Q) override;
 	protected:
 		OrbFit *fit;
 	};

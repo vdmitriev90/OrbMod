@@ -1,5 +1,8 @@
 #pragma once
-using namespace Algebra;
+#include "AstroObs.h"
+#include"Matrix.h"
+#include"triple.h"
+
 namespace OrbMod
 {
 	class ModDistObs : public Obs
@@ -10,13 +13,13 @@ namespace OrbMod
 		~ModDistObs();
 		double dist;
 		double res;
-		static Matrix dOdX;
+		static Algebra::Matrix dOdX;
 
 		virtual bool tryParce(std::string s);
-		virtual void setParEq(Matrix &A, vector<double> &OmC, Matrix &x, Matrix &dxdx0, double  tau) override;
+		virtual void setParEq(Algebra::Matrix &A, std::vector<double> &OmC, Algebra::Matrix &x, Algebra::Matrix &dxdx0, double  tau) override;
 		//void AbbCorr(int K, double dt0, double H, vector<double> &X, vector< vector<double>> &B, vector<double> &F0, vector<double> &P, vector<double> &Yo) override;
 
-		virtual string getType() override;
+		virtual std::string getType() override;
 		virtual void writeRes() override;
 		virtual ModDistObs* clone() const override;
 	};

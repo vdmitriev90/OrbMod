@@ -1,5 +1,17 @@
-#include "stdafx.h"
 #include "pureKalman_XV.h"
+
+#include "Filter_XV.h"
+#include "Control.h"
+#include "Global.h"
+#include "LinAlgAux.h"
+#include "Integration_.h"
+#include "state.h"
+
+#include <iomanip>
+
+using namespace Algebra;
+using namespace std;
+
 namespace OrbMod
 {
 	//

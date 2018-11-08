@@ -1,9 +1,22 @@
-#include "stdafx.h"
 #include "_ObsSet.h"
-typedef pair<string, vector<OrbMod::dateTime> > pobs;
+#include "Marshaling.h"
+
+#include "dateTime.h"
+#include "Control.h"
+#include "constant.h"
+#include "Misc.h"
+#include "Global.h"
+
+#include"SpiceUsr.h"
+
+
 
 using namespace OrbMod;
 using namespace ZedGraph;
+using namespace consts;
+using namespace std;
+
+typedef pair<string, vector<OrbMod::dateTime> > pobs;
 
 namespace OrbModCLRWrapper
 {
@@ -12,42 +25,50 @@ namespace OrbModCLRWrapper
 	{
 		setO = new ObsSet();
 	}
+
 	//
 	_ObsSet::_ObsSet(const ObsSet &setObs)
 	{
 		this->setO = new ObsSet(setObs);
 	}
 	//
-	_ObsSet^ _ObsSet::getObsSetFromOrbMod()
+	
+    _ObsSet^ _ObsSet::getObsSetFromOrbMod()
 	{
 		return gcnew _ObsSet(Control::Obs_);
 	}
 	//
-	_ObsSet ::~_ObsSet()
+	
+    _ObsSet ::~_ObsSet()
 	{
 		delete setO;
 	}
+
 	//
 	ObsSet _ObsSet::getIntObsSet()
 	{
 		return (*this->setO);
 	}
-	//
+	
+    //
 	void _ObsSet::reset()
 	{
 		this->setO->reset();
 	}
 	//
-	bool _ObsSet::setTimeFrames(double et_0, double et_1)
+	
+    bool _ObsSet::setTimeFrames(double et_0, double et_1)
 	{
 		return (this->setO->setTimeFrames(et_0, et_1));
 	}
-	//
+	
+    //
 	int _ObsSet::getObsNum()
 	{
 		return this->setO->getObsNum();
 	}
-	//
+	
+    //
 	bool _ObsSet::LoadObs(System::String ^ FileName, int ObsType)
 	{
 		return this->setO->LoadObs(Marsh::S2s(FileName), (TypeOfObs)ObsType);

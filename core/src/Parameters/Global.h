@@ -1,40 +1,40 @@
 #pragma once
-#include"stdafx.h"
-using namespace std;
-using namespace Consts;
-using namespace Algebra;
+#include"Obs.h"
+#include"constant.h"
+#include"Cunningham.h"
 
 namespace OrbMod
 {
 	class Cunningham;
 
-	//enum NameOrNumber { Name = 0, Number = 1 };
 	class Global
 	{
 	public:
-		//
+		
 		static std::string FormCaption;
 		//
-		static ConstSpiceChar *pictur_utc;
-		static ConstSpiceChar * Global::pictur_tdb;
-		static ConstSpiceChar * Global::pictur_tdt;
+		static const char* pictur_utc;
+        static const char* Global::pictur_tdb;
+        static const char* Global::pictur_tdt;
 		//
 		static int lineWidth;
 		static int symbolType;
 		static int symbolSize;
 
-		static EarthFixFrame EFrame;
+		static consts::EarthFixFrame EFrame;
 		static char *		EarthFrame;
 		
 		//
-		static TypeOfObs	ObsT;
+		static consts::TypeOfObs	ObsT;
 		
 		//Вид уравнений движения
-		static Variables	Var;
+		static consts::Variables	Var;
+
 		//режим
-		static Mode			mode;
+		static consts::Mode			mode;
+
 		//режим определения орбиты
-		static FitMode		fitMode;
+		static consts::FitMode		fitMode;
 
 		static double		ArcLength;
 		static int			MinObsinBatch;
@@ -43,9 +43,9 @@ namespace OrbMod
 		static long int		start;
 
 		//ситема координат
-		static FrameOfIC	ICFrame;
+		static consts::FrameOfIC	ICFrame;
 		//Шкала времени
-		static TimeFormat  Tscale;
+		static consts::TimeFormat  Tscale;
 		//тип начальных условий
 		static int			i_IC;
 		static bool			IsUsePeriTime;

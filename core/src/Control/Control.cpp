@@ -1,6 +1,27 @@
-#include"stdafx.h"
+#include"Control.h"
+#include"macroses.h"
+#include"config.h"
+#include"Misc.h"
+#include"Global.h"
+#include"Force.h"
+#include"Integration_.h"
+#include"OrbFit.h"
+#include"hibridKalman_XV.h"
+#include"pureKalman_XV.h"
+#include"seqLS.h"
+#include"batchFitting.h"
+#include"OrbFit.h"
+
+#include"SpiceUsr.h"
+
+#include<string>
+#include<time.h>
+#include<filesystem>
+
 using namespace std;
 using namespace Algebra;
+using namespace consts;
+namespace fs = std::experimental::filesystem;
 
 namespace OrbMod
 {
@@ -18,54 +39,54 @@ namespace OrbMod
 	//	delete Obs_;
 	//}
 	ObsSet Control::Obs_;
-	bool Control:: loadObseravations(string path, TypeOfObs OType)
+
+	bool Control:: loadObseravations(const std::string& path, TypeOfObs OType)
 	{
 		return Obs_.LoadObs(path, OType);
 	}
 	//
-	 void Control ::LogReport(std::string path)
+	 void Control ::LogReport(const std::string& file)
 	{
 		
 	}
-	 bool Control ::loadKernels(std::string path)
-	{
-		try
-		{
-			furnsh_c("metak.tm");
-			return true;
-		}
-		catch (...)
-		{
-			return false;
-		}
+     bool Control::loadKernels(const std::string& file)
+     {
+         if (fs::exists(fs::path(file)))
+         {
+             furnsh_c(file.c_str());
+             return true;
+         }
+         else
+             return false;
+     }
 
-	}
-	 bool Control ::loadObservatories(std::string path)
-	{
-		if (Observatory::LoadObsrs(path))
-			return true;
-		else
-			return false;
-	}
+     bool Control::loadObservatories(const std::string& path)
+     {
+         if (Observatory::LoadObsrs(path))
+             return true;
+         else
+             return false;
+     }
 	//
-	 bool Control::loadConfig(std::string path)
+	 bool Control::loadConfig(const std::string& path)
 	 {
 		 return config::LoadCFG(path);
 	 }
-	 bool Control::parseTime(string s_t,TimeFormat TForm, double t )
+
+	 bool Control::parseTime(const std::string& s_t,TimeFormat TForm, double t )
 	 {
 		 if (!Misc::parceTime(s_t, TForm, t))return false;
 		 else return true;	 
 	 }
+
 	 bool Control::setTime()
 	 {
 		 if (!Misc::parceTime(config::s_t0, Global::Tscale, Global::t0))return false;
 		 if (!Misc::parceTime(config::s_te, Global::Tscale, Global::te))return false;
 		 return true;
-
 	 }
 	//
-	 void Control::Process(std::string path)
+	 void Control::Process(const std::string& path)
 	 {
 		 config::LoadCFG(path);
 		 InitProcess();
@@ -167,7 +188,8 @@ namespace OrbMod
 
 	 void Control::FODE_test()
 	 {
-		 FILE *ft = fopen("Test.out", "w");
+         FILE *ft;
+         fopen_s(&ft, "Test.out", "w");
 		 //FILE *fx = fopen("X.out", "w");
 		 double dtd = Global::te - Global::t0;
 

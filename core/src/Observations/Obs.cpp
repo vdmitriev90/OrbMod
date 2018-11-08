@@ -1,5 +1,11 @@
-#include "stdafx.h"
 #include "Obs.h"
+#include "tform.h"
+#include "state.h"
+#include "Global.h"
+
+using namespace Algebra;
+using namespace std;
+
 namespace OrbMod
 {
 	Obs::Obs()

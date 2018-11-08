@@ -1,5 +1,11 @@
-#include "stdafx.h"
+
 #include"batchFilter_KS.h"
+#include"Control.h"
+#include"LinAlgAux.h"
+#include"Integration_.h"
+
+using namespace Algebra;
+using namespace std;
 
 namespace OrbMod
 {
@@ -41,7 +47,7 @@ namespace OrbMod
 		double pe, ve;
 		Matrix b, K, D, dx, x, E(6, 6), Q, sv, dxdx0, Pi = P;
 		int iter = 1;
-		uint it_0 = Control::Obs_.it;
+		unsigned it_0 = Control::Obs_.it;
 		//Process noise
 		Matrix Qpn = ProcessNoise(Qnoise);
 

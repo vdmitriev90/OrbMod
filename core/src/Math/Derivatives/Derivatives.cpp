@@ -1,5 +1,11 @@
 #pragma once
-#include "stdafx.h"
+#include "Derivatives.h"
+#include "Kepler.h"
+
+#include"SpiceUsr.h"
+
+using namespace Algebra;
+
 namespace OrbMod
 {
 	Derivatives::Derivatives()

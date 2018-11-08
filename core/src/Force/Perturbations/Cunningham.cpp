@@ -1,6 +1,16 @@
-#include "stdafx.h"
-#include "Force\Perturbations\Cunningham.h"
+#define _CRT_SECURE_NO_WARNINGS
+
+#include "Cunningham.h"
+
+#include"Matrix.h"
+#include"constant.h"
+#include"macroses.h"
+#include"frame.h"
+
 using namespace std;
+using namespace Algebra;
+using namespace consts;
+
 namespace OrbMod
 {
 	//факториал
@@ -17,20 +27,12 @@ namespace OrbMod
 
 		return (N*dblefactorial(N - 2));
 	}
-	//GM и R0 
-/*	double Cunningham::GM;
-	double Cunningham::R0;
-	//Макс. степень учета гармоник ГП
-	int Cunningham::Ngf;
-	vector<vector<ComplexNum>>  Cunningham:: GravModel;
-*/
-	Cunningham::Cunningham(void)
-	{
-	}
+
+    Cunningham::Cunningham(void)
+	{	}
 
 	Cunningham::~Cunningham(void)
-	{
-	}
+	{	}
 
 	double enom(int m) {
 		if (m == 0) return 1.0;
@@ -50,7 +52,8 @@ namespace OrbMod
 		ComplexNum CSnm;
 		this->FileModel = str;
 
-		FILE*f = fopen(str.c_str(), "r");
+        FILE*f;
+        fopen_s(&f, str.c_str(), "r");
 
 		fscanf(f, "%s %s %s %s %s %s %s %s\n", str_R0, str_GM, str_XZ, str_Nmax, str_Mmax, str_Normalize, str_1, str_2);
 
@@ -62,7 +65,7 @@ namespace OrbMod
 		//reading of file with gravity model
 		while (!feof(f)) {
 
-			fscanf(f, "%s %s %s %s %s %s \n", str_n, str_m, str_C, str_S, str_mC, str_mS);
+            fscanf(f, "%s %s %s %s %s %s \n", str_n, str_m, str_C, str_S, str_mC, str_mS);
 
 			int n = atoi(str_n);
 			int m = atoi(str_m);

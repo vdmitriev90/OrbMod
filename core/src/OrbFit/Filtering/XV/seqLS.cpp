@@ -1,5 +1,18 @@
-#include"stdafx.h"
+
 #include"seqLS.h"
+#include"batchFilter_XV.h"
+#include"batchFilter_KS.h"
+#include"Control.h"
+#include"LinAlgAux.h"
+#include"Integration_.h"
+#include"constant.h"
+
+#include<iomanip>
+
+using namespace Algebra;
+using namespace consts;
+using namespace std;
+
 namespace OrbMod
 {
 	//
@@ -38,7 +51,7 @@ namespace OrbMod
 		double t1 = t0, te;
 		fit->Nbatch = 1;
 		int s_o = Global::MinObsinBatch;
-		uint ite = Control::Obs_.it_end;
+		unsigned ite = Control::Obs_.it_end;
 		P = LinAlgAux::initCov(PosRMS*PosRMS, VelRMS*VelRMS);
 		//
 		while (Control::Obs_.it != ite +1)

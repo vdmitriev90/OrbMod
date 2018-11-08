@@ -1,5 +1,12 @@
-#include "stdafx.h"
 #include "Kepler.h"
+#include"macroses.h"
+
+#include"SpiceUsr.h"
+
+#include<math.h>
+
+using namespace Algebra;
+
 namespace OrbMod
 {
 

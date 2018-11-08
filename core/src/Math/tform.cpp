@@ -1,5 +1,12 @@
-#include "stdafx.h"
 #include "tform.h"
+
+#include"triple.h"
+#include"Matrix.h"
+#include"SpiceUsr.h"
+
+using namespace std;
+using namespace Algebra;
+
 namespace OrbMod
 {
 	//

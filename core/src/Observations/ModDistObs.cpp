@@ -1,6 +1,15 @@
-#include "stdafx.h"
+#define _CRT_SECURE_NO_WARNINGS
+
 #include "ModDistObs.h"
+#include "Misc.h"
+#include "Control.h"
+#include "ObsSet.h"
+#include "Global.h"
+
+#include "SpiceUsr.h"
+
 using namespace Algebra;
+using namespace std;
 #define DEF__1 1
 namespace OrbMod
 {

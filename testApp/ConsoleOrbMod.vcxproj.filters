@@ -10,28 +10,11 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="src\ConsoleOrbMod.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\stdafx.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\stdafx.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\targetver.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="resource.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="ConsoleOrbMod.rc">
-      <Filter>Resource Files</Filter>
-    </ResourceCompile>
   </ItemGroup>
 </Project>

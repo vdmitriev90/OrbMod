@@ -1,6 +1,9 @@
-#include"stdafx.h"
 #include"var.h"
+#include"force.h"
+#include"Global.h"
+#include"Integration_.h"
 
+using namespace Algebra;
 using namespace std;
 namespace OrbMod
 {

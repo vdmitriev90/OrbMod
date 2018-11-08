@@ -1,6 +1,12 @@
-#include"stdafx.h"
+#include"var.h"
+#include"KS.h"
+#include"force.h"
+#include"Global.h"
+#include"Integration_.h"
 
+using namespace Algebra;
 using namespace std;
+
 namespace OrbMod
 {
 	var_KS::var_KS()

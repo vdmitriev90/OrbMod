@@ -1,8 +1,16 @@
 // This is the main DLL file.
-#include"Stdafx.h"
+#include"Marshaling.h"
 #include "OrbModCLRWrapper.h"
+
+#include"constant.h"
+#include"Control.h"
+#include"Global.h"
+#include"config.h"
+
 using namespace OrbMod;
+using namespace consts;
 using namespace ZedGraph;
+using namespace std;
 
 namespace OrbModCLRWrapper
 {

@@ -1,5 +1,11 @@
-#include "stdafx.h"
+
 #include "Filter_XV.h"
+#include "Control.h"
+#include "Global.h"
+
+using namespace Algebra;
+using namespace std;
+
 namespace OrbMod
 {
 	//

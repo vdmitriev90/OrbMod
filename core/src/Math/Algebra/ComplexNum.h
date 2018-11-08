@@ -1,5 +1,5 @@
 #pragma once
-#include"stdafx.h"
+#include<iostream>
 namespace Algebra
 {
 	class ComplexNum {

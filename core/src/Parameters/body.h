@@ -1,6 +1,7 @@
 #pragma once
-//
-using namespace std;
+#include"Cunningham.h"
+#include<map>
+
 namespace OrbMod
 {
 	class body
@@ -12,17 +13,17 @@ namespace OrbMod
 	private:
 		int ID;
 		double GM;
-		string FRAME = "";
+		std::string FRAME = "";
 
 	public:
 		Cunningham Gfield;
-		string Title = "";
-		static map<int, body> bodies;
-		bool tryParse(const string & str);
+        std::string Title = "";
+		static std::map<int, body> bodies;
+		bool tryParse(const std::string & str);
 
 		int getID();
 		double getGM();
-		string getFrame();
+        std::string getFrame();
 
 	};
 }

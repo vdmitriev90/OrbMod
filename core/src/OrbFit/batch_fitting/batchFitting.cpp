@@ -1,4 +1,19 @@
-#include "stdafx.h"
+#include "batchFitting.h"
+#include "OrbFit_XV.h"
+#include "OrbFit_KS.h"
+#include "OrbFit_FinDiff.h"
+#include "constant.h"
+#include "Global.h"
+#include "LinAlgAux.h"
+#include "state.h"
+#include "Control.h"
+#include "Integration_.h"
+#include "config.h"
+
+#include<iomanip>
+
+using namespace consts;
+using namespace std;
 namespace OrbMod
 {
 	batchFitting::batchFitting()

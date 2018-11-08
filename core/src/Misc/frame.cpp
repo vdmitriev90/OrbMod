@@ -1,10 +1,17 @@
-#include "stdafx.h"
 #include "frame.h"
+#include"constant.h"
+#include"Global.h"
+
+#include "SpiceUsr.h"
+
+using namespace Algebra;
+using namespace consts;
+
 namespace OrbMod
 {
-	triple trpos(SpiceDouble et, long int from, long int to, triple xin) {
+	triple trpos(double et, long int from, long int to, triple xin) {
 
-		SpiceDouble Xin[3], Xout[3];
+		double Xin[3], Xout[3];
 
 		Xin[0] = xin[0];
 		Xin[1] = xin[1];
@@ -12,7 +19,7 @@ namespace OrbMod
 
 
 		SpiceChar   namefrom[60], nameto[60];
-		SpiceDouble rotate[3][3];
+		double rotate[3][3];
 		long int idfrom = id2fixfr(from);
 		long int idto = id2fixfr(to);
 
@@ -28,10 +35,10 @@ namespace OrbMod
 		return(xout);
 	};
 
-	void trpos(SpiceDouble et, long int from, long int to, SpiceDouble Xin[3], SpiceDouble Xout[3]) {
+	void trpos(double et, long int from, long int to, double Xin[3], double Xout[3]) {
 
 		SpiceChar               namefrom[60], nameto[60];
-		SpiceDouble rotate[3][3];
+		double rotate[3][3];
 		long int idfrom = id2fixfr(from);
 		long int idto = id2fixfr(to);
 
@@ -43,9 +50,9 @@ namespace OrbMod
 		mxv_c(rotate, Xin, Xout);
 	};
 
-	void trsv(SpiceDouble et, long int from, long int to, triple xin, triple vin, triple &xout, triple &vout) {
+	void trsv(double et, long int from, long int to, triple xin, triple vin, triple &xout, triple &vout) {
 
-		SpiceDouble Xin[6], Xout[6];
+		double Xin[6], Xout[6];
 
 		Xin[0] = xin[0];
 		Xin[1] = xin[1];
@@ -55,7 +62,7 @@ namespace OrbMod
 		Xin[5] = vin[2];
 
 		SpiceChar   namefrom[60], nameto[60];
-		SpiceDouble rotate[6][6];
+		double rotate[6][6];
 		long int idfrom = id2fixfr(from);
 		long int idto = id2fixfr(to);
 
@@ -68,10 +75,10 @@ namespace OrbMod
 		xout = triple::triple(Xout[0], Xout[1], Xout[2]);
 		vout = triple::triple(Xout[3], Xout[4], Xout[5]);
 	};
-	void trsv(SpiceDouble et, long int from, long int to, SpiceDouble Xin[6], SpiceDouble Xout[6]) {
+	void trsv(double et, long int from, long int to, double Xin[6], double Xout[6]) {
 
 		SpiceChar   namefrom[60], nameto[60];
-		SpiceDouble rotate[6][6];
+		double rotate[6][6];
 		long int idfrom = id2fixfr(from);
 		long int idto = id2fixfr(to);
 
@@ -83,10 +90,10 @@ namespace OrbMod
 		mxvg_c(rotate, Xin, 6, 6, Xout);
 
 	};
-	void trsv_NR(SpiceDouble et, long int from, long int to, SpiceDouble Xin[6], SpiceDouble Xout[6]) {
+	void trsv_NR(double et, long int from, long int to, double Xin[6], double Xout[6]) {
 
 		SpiceChar   namefrom[60], nameto[60];
-		SpiceDouble rotate[6][6];
+		double rotate[6][6];
 		long int idfrom = id2fixfr(from);
 		long int idto = id2fixfr(to);
 
@@ -98,26 +105,27 @@ namespace OrbMod
 		mxvg_c(rotate, Xin, 6, 6, Xout);
 
 	};
-	void trsv_pl(SpiceDouble et, long int from, long int to, SpiceDouble Xin[6], SpiceDouble Xout[6]) 
+	void trsv_pl(double et, long int from, long int to, double Xin[6], double Xout[6]) 
 	{
 
-		SpiceDouble Xfix[6];
-		SpiceDouble poss[6];
+		double Xfix[6];
+		double poss[6];
 		double valPM[3];
 		SpiceInt dim;
-		SpiceDouble lt1, dlt;
-		SpiceDouble poleIAU[3] = { 0,0,1.0 };
+		double lt1, dlt;
+		double poleIAU[3] = { 0,0,1.0 };
 		triple  Zeq = triple(0, 0, 1.0);
 		triple Zorb, Node;
-		SpiceDouble poleJ[3];
+		double poleJ[3];
 		SpiceChar   nameto[60], id[20];
-		SpiceDouble M[3][3], Mtr[3][3];
+		double M[3][3], Mtr[3][3];
 		long int idto = id2fixfr(to);
-		SpiceDouble Z[3], Zpl[3], N[3], Npl[3];
+		double Z[3], Zpl[3], N[3], Npl[3];
 
 		frmnam_c(idto, 60, nameto);
 
-		FILE*f = fopen("test.txt", "a");
+        FILE*f;
+        fopen_s(&f, "test.txt", "a");
 
 		trsv(et, from, to, Xin, Xfix);
 
@@ -151,16 +159,16 @@ namespace OrbMod
 		N[2] = Node[2];
 		mxvg_c(M, N, 3, 3, Npl);
 
-		SpiceDouble S = atan2(Npl[1], Npl[0]);
+		double S = atan2(Npl[1], Npl[0]);
 		if (S < 0.0)  S = S + 2.0*pi;
 
-		_itoa(Global::IDC, id, 10);
+		_itoa_s(Global::IDC, id, 10);
 		bodvrd_c(id, "PM", 3, &dim, valPM);
 		double oz = valPM[1] / rad / 24.0 / 3600.0;
 		fprintf(f, "%f %f %f %f\n", Npl[0], Npl[1], Npl[2], S*rad);
 
 		//------------------|Матрица преобразования координат|---------------------------------------------------------------------
-		SpiceDouble R[6][6];
+		double R[6][6];
 
 		R[0][0] = cos(S);     R[0][1] = -sin(S);     R[0][2] = 0.0; R[0][3] = 0.0;    R[0][4] = 0.0;     R[0][5] = 0.0;
 		R[1][0] = sin(S);	  R[1][1] = cos(S);      R[1][2] = 0.0; R[1][3] = 0.0;    R[1][4] = 0.0;     R[1][5] = 0.0;

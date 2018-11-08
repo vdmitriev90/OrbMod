@@ -1,13 +1,16 @@
 #pragma once
-#include"stdafx.h"
+
+#include"state.h"
+#include"constant.h"
+
 #include<map>
-using namespace std;
+#include<vector>
 typedef unsigned uint;
 
-typedef  bool(*parce_ptr)(const string & s);
-typedef  string(*format_ptr)(void);
-typedef map< string, parce_ptr> parce_dict;
-typedef vector<format_ptr> formatters;
+typedef bool(*parce_ptr)(const std::string & s);
+typedef std::string(*format_ptr)(void);
+typedef std::map< std::string, parce_ptr> parce_dict;
+typedef std::vector<format_ptr> formatters;
 
 namespace OrbMod
 {
@@ -18,49 +21,49 @@ namespace OrbMod
 		static formatters formatDict;
 
 #pragma region parcers
-		static bool IsTestMode(const string & s);
-		static bool FittingMode(const string & s);
-		static bool Obs(const string & s);
-		static bool MinObsInbatch(const string & s);
-		static bool ArcLength(const string & s);
-		static bool NmNr(const string & s);
-		static bool CB(const string & s);
-		static bool Int(const string & s);
-		static bool Var(const string & s);
-		static bool NOR(const string & s);
-		static bool step(const string & s);
-		static bool eps(const string & s);
-		static bool Autostep(const string & s);
-		static bool Niter(const string & s);
-		static bool t0(const string & s);
-		static bool te(const string & s);
-		static bool frame(const string & s);
-		static bool EarthFixedFrame(const string & s);
-		static bool tscale(const string & s);
-		static bool TypeIC(const string & s);
-		static bool UsePeriTime(const string & s);
-		static bool IC(const string & s);
-		static bool BigPlanets(const string & s);
-		static bool AddBodies(const string & s);
-		static bool AddBody5HT(const string & s);
-		static bool CBHterms(const string & s);
-		static bool Rel(const string & s);
-		static bool SRP(const string & s);
-		static bool Discr(const string & s);
-		static bool Out(const string & s);
-		static bool BFFID(const string & s);
-		static bool Colors(const string & s);
-		static bool useObs(const string & s);
-		static bool ObsTimeFrame(const string & s);
-		static bool ObservationsPath(const string & s);
-		static bool orbFitEps(const string & s);
-		static bool orbFitNiter(const string & s);
-		static bool orbFitNiterPerBatch(const string & s);
-		static bool orbFitRejOuts(const string & s);
+		static bool IsTestMode(const std::string & s);
+		static bool FittingMode(const std::string & s);
+		static bool Obs(const std::string & s);
+		static bool MinObsInbatch(const std::string & s);
+		static bool ArcLength(const std::string & s);
+		static bool NmNr(const std::string & s);
+		static bool CB(const std::string & s);
+		static bool Int(const std::string & s);
+		static bool Var(const std::string & s);
+		static bool NOR(const std::string & s);
+		static bool step(const std::string & s);
+		static bool eps(const std::string & s);
+		static bool Autostep(const std::string & s);
+		static bool Niter(const std::string & s);
+		static bool t0(const std::string & s);
+		static bool te(const std::string & s);
+		static bool frame(const std::string & s);
+		static bool EarthFixedFrame(const std::string & s);
+		static bool tscale(const std::string & s);
+		static bool TypeIC(const std::string & s);
+		static bool UsePeriTime(const std::string & s);
+		static bool IC(const std::string & s);
+		static bool BigPlanets(const std::string & s);
+		static bool AddBodies(const std::string & s);
+		static bool AddBody5HT(const std::string & s);
+		static bool CBHterms(const std::string & s);
+		static bool Rel(const std::string & s);
+		static bool SRP(const std::string & s);
+		static bool Discr(const std::string & s);
+		static bool Out(const std::string & s);
+		static bool BFFID(const std::string & s);
+		static bool Colors(const std::string & s);
+		static bool useObs(const std::string & s);
+		static bool ObsTimeFrame(const std::string & s);
+		static bool ObservationsPath(const std::string & s);
+		static bool orbFitEps(const std::string & s);
+		static bool orbFitNiter(const std::string & s);
+		static bool orbFitNiterPerBatch(const std::string & s);
+		static bool orbFitRejOuts(const std::string & s);
 
-		static bool IsLogResiduals(const string & s);
-		static bool aprioriRMS(const string & s);
-		static bool processNoise(const string & s);
+		static bool IsLogResiduals(const std::string & s);
+		static bool aprioriRMS(const std::string & s);
+		static bool processNoise(const std::string & s);
 
 #pragma endregion
 
@@ -116,10 +119,10 @@ namespace OrbMod
 		config();
 		~config();
 
-		static bool SaveCFG(string fileName);
-		static bool LoadCFG(string fileName);
-		static bool SetIC(std::string IC[], int IDC, TypeOfIC ICtype, FrameOfIC ICframe);
-		static bool GetIC(std::string *IC, int IDC, TypeOfIC ICtype, FrameOfIC ICframe);
+		static bool SaveCFG(std::string fileName);
+		static bool LoadCFG(std::string fileName);
+		static bool SetIC(std::string IC[], int IDC, consts::TypeOfIC ICtype, consts::FrameOfIC ICframe);
+		static bool GetIC(std::string *IC, int IDC, consts::TypeOfIC ICtype, consts::FrameOfIC ICframe);
 
 #pragma region буферные переменные 
 		static int		NameNr;

@@ -78,17 +78,11 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\stdafx.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="src\Force\force.cpp">
       <Filter>src\Force</Filter>
     </ClCompile>
     <ClCompile Include="src\Force\ForceIzo.cpp">
       <Filter>src\Force</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Force\Perturbations\atmosferic_drag.cpp">
-      <Filter>src\Force\Perturbations</Filter>
     </ClCompile>
     <ClCompile Include="src\Force\Perturbations\Cunningham.cpp">
       <Filter>src\Force\Perturbations</Filter>
@@ -246,11 +240,11 @@
     <ClCompile Include="src\Control\Debug_mode.cpp">
       <Filter>src\Control</Filter>
     </ClCompile>
+    <ClCompile Include="src\Force\Perturbations\AtmosphericDrag.cpp">
+      <Filter>src\Force\Perturbations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\stdafx.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="src\targetver.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -259,9 +253,6 @@
     </ClInclude>
     <ClInclude Include="src\Force\ForceIzo.h">
       <Filter>src\Force</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Force\Perturbations\atmosferic_drag.h">
-      <Filter>src\Force\Perturbations</Filter>
     </ClInclude>
     <ClInclude Include="src\Force\Perturbations\Cunningham.h">
       <Filter>src\Force\Perturbations</Filter>
@@ -400,6 +391,9 @@
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Force\Perturbations\AtmosphericDrag.h">
+      <Filter>src\Force\Perturbations</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

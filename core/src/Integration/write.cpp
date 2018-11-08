@@ -1,12 +1,21 @@
-#include "stdafx.h"
+#define _CRT_SECURE_NO_WARNINGS
 #include "Integration_.h"
+#include "Global.h"
+#include "force.h"
+#include "constant.h"
+#include "frame.h"
+#include "visibility.h"
+
+#include "SpiceUsr.h"
+
+using namespace consts;
+using namespace std;
 //
 namespace OrbMod
 {
 	void Integration::streamsOpen()
 	{
-#pragma region Output
-
+        #pragma region Output
 
 		fosv = fopen("sv_J2000.out", "w");
 		//fprintf(fosv,"year month day hms(UTC) TDB(sec) interval(days) X Y Z Vx Vy Vz \n");
@@ -35,7 +44,8 @@ namespace OrbMod
 
 		fopen_s(&fvisi, "visibility.out", "w");
 
-		fo3bg = fopen("3body_geodetic.out", "w");
+        fo3bg = fopen("3body_geodetic.out", "w");
+
 #pragma endregion
 	}
 
@@ -76,21 +86,22 @@ namespace OrbMod
 		SVo[3] = V[0];
 		SVo[4] = V[1];
 		SVo[5] = V[2];
+
 		if (Global::cb_out_sv_ECLIPJ2000 == true || Global::cb_out_el_ECLIPJ2000 == true) trsv(0, 1, 17, SVo, SVEcl);
 		if (Global::b_out_sv_IAUPlanet == true || Global::b_out_NEU == true || Global::b_out_AZR == true) trsv(t0, 1, Global::IDC, SVo, SViau);
 
 		if (Global::b_out_NEU == true || Global::b_out_AZR == true)
 		{
 			double X0[3];
-			for (int i = 0; i < 3; i++) X0[i] = SViau[i] - Global::R_topo[i];
+			for (int i = 0; i < 3; i++) 
+                X0[i] = SViau[i] - Global::R_topo[i];
 			mxv_c(Global::M_topo, X0, NEU);
 		}
 
-		SpiceChar        utcstr[50];
+		char utcstr[50];
 		timout_c(t0, pictur, 50, utcstr);
-		//	et2utc_c (t0,  "C", 10, 60, utcstr);
 
-		//orbit elements J2000-----------------------				
+        //orbit elements J2000-----------------------				
 		if (Global::b_out_el_J2000 == true) {
 			fprintf(foel, "%s ", utcstr);
 			fprintf(foel, " %25.16e ", t0);

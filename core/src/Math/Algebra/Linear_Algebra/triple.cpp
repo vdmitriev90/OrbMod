@@ -1,5 +1,9 @@
-#include "stdafx.h"
 #include "triple.h"
+#include"constant.h"
+#include"macroses.h"
+
+using namespace std;
+
 namespace Algebra
 {
 	triple::triple()
@@ -37,7 +41,7 @@ namespace Algebra
 		r = this->getAbs();
 
 		ra = atan2(this->b, this->a);
-		ra = (ra >= 0) ? ra : ra + Consts::twopi;
+		ra = (ra >= 0) ? ra : ra + consts::twopi;
 
 		dec = atan(this->c / (sqrt(SQR(this->a) + SQR(this->b))));
 	}
@@ -50,7 +54,7 @@ namespace Algebra
 		{
 			char buf[30];
 
-			std::sprintf(buf, format, tr[i]);
+			sprintf_s(buf,30, format, tr[i]);
 			str += buf;
 			str += sep;
 		}

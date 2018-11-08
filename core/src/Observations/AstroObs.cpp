@@ -1,7 +1,18 @@
-#include "stdafx.h"
+#define _CRT_SECURE_NO_WARNINGS
 #include "AstroObs.h"
+#include "Global.h"
+#include "Misc.h"
+#include "constant.h"
+#include "tform.h"
+#include "OrbFit.h"
+#include "Control.h"
+
+#include "SpiceUsr.h"
+
 //#include<atltrace.h>
 using namespace Algebra;
+using namespace consts;
+using namespace std;
 
 namespace OrbMod
 {

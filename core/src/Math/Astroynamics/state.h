@@ -1,6 +1,6 @@
 #pragma once
-#include "stdafx.h"
-using namespace Algebra;
+#include "Matrix.h"
+#include "triple.h"
 
 namespace OrbMod
 {
@@ -13,23 +13,23 @@ namespace OrbMod
 	public:
 
 		StVec();
-		StVec(Matrix &SV);
-		StVec(Matrix &SV, double mu);
-		void setFromOscEl(Matrix elts, double mu);
-		Matrix getOscEl(bool IsConvert2deg);
+		StVec(Algebra::Matrix &SV);
+		StVec(Algebra::Matrix &SV, double mu);
+		void setFromOscEl(Algebra::Matrix elts, double mu);
+		Algebra::Matrix getOscEl(bool IsConvert2deg);
 		//
-		Matrix getOscEl(bool IsConvert2deg, bool isAU);
+		Algebra::Matrix getOscEl(bool IsConvert2deg, bool isAU);
 		//
 		double getMMotion();
 		double getMMotion(double mu_);
 		//
 		double getPeriod();
 		double getPeriod(double mu_);
-		triple X();
-		triple V();
-		Matrix toMatrix();
-		static triple getPos(int target, double et, char*FRAME, int observer);
-		static Matrix getState(int target, double et, char*FRAME, int observer);
+		Algebra::triple X();
+		Algebra::triple V();
+		Algebra::Matrix toMatrix();
+		static Algebra::triple getPos(int target, double et, char*FRAME, int observer);
+		static Algebra::Matrix getState(int target, double et, char*FRAME, int observer);
 
 		~StVec();
 	};

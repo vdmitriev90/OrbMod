@@ -1,5 +1,13 @@
-#include "stdafx.h"
 #include "Observatory.h"
+#include "constant.h"
+#include "Control.h"
+
+#include <fstream>
+
+using namespace Algebra;
+using namespace consts;
+using namespace std;
+
 namespace OrbMod
 {
 	Observatory::Observatory()

@@ -1,5 +1,13 @@
-#include "stdafx.h"
 #include "hibridKalman_XV.h"
+#include "batchFitting.h"
+#include "Filter_XV.h"
+#include "Control.h"
+#include "Global.h"
+#include "LinAlgAux.h"
+
+using namespace Algebra;
+using namespace std;
+
 namespace OrbMod
 {
 	hibridKalman_XV hibridKalman_XV::instance1;
@@ -17,7 +25,7 @@ namespace OrbMod
 	void hibridKalman_XV::InitFilter(Matrix &SV, double t0, double &sigma, Matrix &P)
 	{
 		Control::Obs_.reset();
-		uint ite = Control::Obs_.it_end;
+		unsigned ite = Control::Obs_.it_end;
 		Control::Obs_.it_end = Control::Obs_.it + Global::MinObsinBatch;
 		batchFitting prefit;
 		Matrix Q;

@@ -1,6 +1,14 @@
-#include "stdafx.h"
 #include "OrbFit_KS.h"
+#include "KS.h"
+#include "Control.h"
+#include "Global.h"
+#include "constant.h"
+
+#include "SpiceUsr.h"
+
 using namespace std;
+using namespace Algebra;
+using namespace consts;
 //
 namespace OrbMod
 {

@@ -1,13 +1,15 @@
 #include"stdafx.h"
 #include"Global.h"
-//
+
+using namespace consts;
+
 namespace OrbMod
 {
 	std::string		Global::FormCaption = "3.8";
 	//
-	ConstSpiceChar * Global::pictur_utc = "YYYY MM DD HR:MN:SC.####### ::UTC";
-	ConstSpiceChar * Global::pictur_tdb = "YYYY MM DD HR:MN:SC.####### ::TDB";
-	ConstSpiceChar * Global::pictur_tdt = "YYYY MM DD HR:MN:SC.####### ::TDT";
+	const char*  Global::pictur_utc = "YYYY MM DD HR:MN:SC.####### ::UTC";
+    const char * Global::pictur_tdb = "YYYY MM DD HR:MN:SC.####### ::TDB";
+    const char * Global::pictur_tdt = "YYYY MM DD HR:MN:SC.####### ::TDT";
 	//
 	EarthFixFrame	Global::EFrame = EarthFixFrame::IAU_EARTH;
 	char *			Global::EarthFrame = "IAU_EARTH";

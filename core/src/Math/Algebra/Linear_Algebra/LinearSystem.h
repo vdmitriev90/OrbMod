@@ -1,4 +1,5 @@
 #pragma once
+#include "Matrix.h"
 namespace Algebra
 {
 	class SLAU
@@ -6,7 +7,7 @@ namespace Algebra
 	private:
 		void init(const Matrix &A, const Matrix &b);
 		unsigned n, m, Nouts;
-		vector<int> Outs;
+		std::vector<int> Outs;
 		Matrix A, b, x, Q;
 		double sigma;
 		int SolveWithOtlsRej(Matrix &X, Matrix &Q, float nsig);

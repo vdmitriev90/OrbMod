@@ -1,5 +1,15 @@
-#include "stdafx.h"
 #include "OrbFit_XV.h"
+#include"LinAlgAux.h"
+#include"Integration_.h"
+#include"Control.h"
+#include"Global.h"
+#include"constant.h"
+
+#include"SpiceUsr.h"
+
+using namespace Algebra;
+using namespace consts;
+using namespace std;
 
 #define DEF__2  0
 namespace OrbMod

@@ -1,10 +1,17 @@
 #include"stdafx.h"
+#include"ObsSet.h"
+#include "constant.h"
+#include "AstroObs.h"
+#include "ModAstroObs.h"
+#include "ModAstroObs2.h"
+#include "ModDistObs.h"
 
 #include<algorithm>
-#include <iterator>
-#include <algorithm>
-#include <vector>
-#include"ObsSet.h"
+#include <fstream>
+
+using namespace Algebra;
+using namespace consts;
+using namespace std;
 namespace OrbMod
 {
 	double ObsSet::fct = 1;
@@ -120,7 +127,7 @@ namespace OrbMod
 		it = it0;
 	}
 	//
-	uint ObsSet::size()
+	size_t ObsSet::size()
 	{
 		return obs.size();
 	}
@@ -194,7 +201,7 @@ namespace OrbMod
 
 	//
 	//двоичный поиск  эпохи по времени
-	uint ObsSet::FindTime(double time)
+	int ObsSet::FindTime(double time)
 	{
 		int min = 0;
 		int max = obs.size();

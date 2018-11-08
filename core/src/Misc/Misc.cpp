@@ -1,5 +1,12 @@
-#include "stdafx.h"
 #include "Misc.h"
+
+#include"Global.h"
+
+#include"SpiceUsr.h"
+
+using namespace std;
+using namespace consts;
+
 namespace OrbMod
 {
 	int Misc::sum(int N)
@@ -11,19 +18,22 @@ namespace OrbMod
 		}
 		return(s);
 	}
+
 	//set spacing for Everchart integrator
 	vector<double> Misc::setSpacing(int NOR, char *path)
 	{
 		int ii = 1;
 		int jj = 0;
-		FILE*f = fopen(path, "r");
+        FILE*f;
+        fopen_s(&f, path, "r");
+
 		char lineRad[300];
 
 		vector<double> Spacing(NOR + 1);
 		Spacing[0] = 0.0;
 		while (!feof(f))
 		{
-			fscanf(f, "%s\n", lineRad);
+			fscanf_s(f, "%s\n", lineRad);
 			if (ii > Misc::sum(NOR - 1) && ii <= Misc::sum(NOR))
 			{
 				Spacing[jj + 1] = atof(lineRad);
@@ -34,6 +44,7 @@ namespace OrbMod
 		fclose(f);
 		return Spacing;
 	}
+
 	//Split a String
 	//http://www.cplusplus.com/articles/2wA0RXSz/
 	const vector<string>  Misc::splitStr(const string& s, const char& c)
@@ -50,6 +61,7 @@ namespace OrbMod
 
 		return v;
 	}
+
 	const vector<string>  Misc::splitStr(const string& s, const string &c)
 	{
 		string buff{ "" };
@@ -204,7 +216,7 @@ namespace OrbMod
 		if (F == TimeFormat::UTC_Calendar_format)
 			timout_c(et, Global::pictur_utc, 50, str);
 		else if (F == TimeFormat::TDB_Seconds_past_J2000)
-			sprintf(str, "%20.13f", et);
+			sprintf_s(str, "%20.13f", et);
 
 		else if (F == TimeFormat::TDB_Calendar_format)
 			timout_c(et, Global::pictur_tdb, 50, str);

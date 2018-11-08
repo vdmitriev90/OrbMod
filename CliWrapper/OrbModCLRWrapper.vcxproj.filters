@@ -9,53 +9,42 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\_ObsSet.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
     <ClCompile Include="src\AssemblyInfo.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\OrbModCLRWrapper.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Stdafx.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\Marshaling.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\_ObsSet.cpp">
+    <ClCompile Include="src\OrbModCLRWrapper.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\_ObsSet.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Marshaling.h">
+      <Filter>src</Filter>
+    </ClInclude>
     <ClInclude Include="src\OrbModCLRWrapper.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\resource.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Stdafx.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Marshaling.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\_ObsSet.h">
-      <Filter>src</Filter>
-    </ClInclude>
+    <ClInclude Include="..\testApp\targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="src\res\app.ico">
-      <Filter>src\res</Filter>
+      <Filter>src</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="src\res\app.rc">
-      <Filter>src\res</Filter>
+      <Filter>src</Filter>
     </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="License-LGPL.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
 </Project>

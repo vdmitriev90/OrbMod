@@ -1,5 +1,10 @@
-#include"stdafx.h"
+#include"var.h"
+#include"KS.h"
+#include"ForceIzo.h"
+#include"Global.h"
+
 using namespace std;
+using namespace Algebra;
 namespace OrbMod
 {
 	//

@@ -1,5 +1,7 @@
 #pragma once
-#include"stdafx.h"
+#include"triple.h"
+#include"Matrix.h"
+
 namespace Algebra
 {
 	using namespace std;

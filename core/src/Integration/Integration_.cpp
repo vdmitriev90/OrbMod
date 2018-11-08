@@ -1,5 +1,12 @@
 #include"stdafx.h"
 #include"Integration_.h"
+#include"constant.h"
+#include"OrbFit_FinDiff.h"
+#include"Global.h"
+
+using namespace consts;
+using namespace std;
+
 namespace OrbMod
 {
 	Integration Integration::Instance;

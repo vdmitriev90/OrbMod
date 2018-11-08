@@ -1,5 +1,7 @@
-#include "stdafx.h"
 #include "KS.h"
+#include"macroses.h"
+using namespace std;
+
 namespace Algebra
 {
 #pragma region Constructors
@@ -116,19 +118,8 @@ namespace Algebra
 		}
 		return sv3d;
 	}
-	double* KS::getSVxy()
-	{
-		double out[6];
-		triple Xo = X();
-		triple Vo = V();
+	
 
-		for (size_t i = 0; i < 3; i++)
-		{
-			out[i] = Xo[i];
-			out[i + 3] = Vo[i];
-		}
-		return out;
-	}
 	//
 	Matrix KS::Lam(triple F)
 	{

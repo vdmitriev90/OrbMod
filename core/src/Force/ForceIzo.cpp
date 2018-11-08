@@ -1,15 +1,22 @@
-#include "stdafx.h"
 #include "ForceIzo.h"
+#include "Global.h"
+#include "macroses.h"
+#include "constant.h"
 
+#include "SpiceUsr.h"
+
+using namespace Algebra;
+using namespace consts;
 //
 namespace OrbMod
 {
 	ForceIzo::ForceIzo() {};
 	//
-	ForceIzo::ForceIzo(const double &t, const  triple &X, const triple &V) :Force(t, X, V)
-	{
-		init_izo();
-	}
+    ForceIzo::ForceIzo(const double &t, const  Algebra::triple &X, const Algebra::triple &V)
+        :Force(t, X, V)
+    {
+        init_izo();
+    }
 	//
 	ForceIzo::~ForceIzo()
 	{

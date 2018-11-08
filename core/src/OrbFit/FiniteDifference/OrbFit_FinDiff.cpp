@@ -1,5 +1,15 @@
-#include "stdafx.h"
 #include "OrbFit_FinDiff.h"
+#include "Global.h"
+
+#include"Control.h"
+#include"LinAlgAux.h"
+#include"constant.h"
+
+#include<iomanip>
+
+using namespace Algebra;
+using namespace consts;
+using namespace std;
 
 namespace OrbMod
 {

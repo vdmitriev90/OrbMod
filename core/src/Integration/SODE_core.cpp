@@ -1,6 +1,16 @@
-#include "stdafx.h"
+#define _CRT_SECURE_NO_WARNINGS
+
 #include "Integration_.h"
+#include "Global.h"
+#include "frame.h"
+#include "constant.h"
+#include "Misc.h"
+#include "force.h"
+
+#include "SpiceUsr.h"
+
 using namespace std;
+using namespace consts;
 
 namespace OrbMod
 {

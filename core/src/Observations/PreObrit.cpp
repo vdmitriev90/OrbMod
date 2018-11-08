@@ -1,7 +1,18 @@
-#include "stdafx.h"
 #include "PreObrit.h"
+#include"Kepler.h"
+#include"macroses.h"
+#include"OrbFit.h"
+#include"constant.h"
+#include"state.h"
+
+#include"SpiceUsr.h"
+
+#include<iostream>
+#include<fstream>
 
 using namespace Algebra;
+using namespace consts;
+using namespace std;
 
 namespace OrbMod
 {

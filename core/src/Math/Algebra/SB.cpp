@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "SB.h"
 namespace Algebra
 {

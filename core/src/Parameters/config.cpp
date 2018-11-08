@@ -1,19 +1,31 @@
-#include "stdafx.h"
-#include "config.h"
+#define _CRT_SECURE_NO_WARNINGS
+
+#include"config.h"
+#include"OrbFit.h"
+#include"Global.h"
+#include"constant.h"
+#include"Misc.h"
+#include"Control.h"
+
+#include"SpiceUsr.h"
+
 #include <exception>
+#include <fstream>
+using namespace std;
+using namespace consts;
 
 namespace OrbMod
 {
-#pragma region constructors
+    #pragma region c-tors
 	config::config()
 	{
 	}
 	config::~config()
 	{
 	}
-#pragma endregion
+    #pragma endregion
 
-#pragma region буферные переменные
+    #pragma region buffers
 	double		config::SV[6];
 
 	double		config::SRP_albedo;
@@ -26,7 +38,7 @@ namespace OrbMod
 	std::string	config::s_fileAddHarm;
 
 
-#pragma endregion
+    #pragma endregion
 
 	formatters config::formatDict
 	{

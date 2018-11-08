@@ -1,8 +1,16 @@
-#include"stdafx.h"
 #include"force.h"
-#include"Misc\macroses.h"
+#include"Global.h"
+#include"constant.h"
+#include"macroses.h"
+#include"AtmosphericDrag.h"
+#include"SRP.h"
+#include"frame.h"
+
+#include"SpiceUsr.h"
 
 using namespace std;
+using namespace Algebra;
+using namespace consts;
 //
 namespace OrbMod
 {
@@ -17,29 +25,34 @@ namespace OrbMod
 		this->X = X;
 		this->V = V;
 	};
+
 	//
 	Force::~Force() {};
+
 	//
 	void Force::AccFileOpen()
 	{
-		facc = fopen("acc.out","w");
-
+        fopen_s(&facc, "acc.out", "w");
 	}
+
 	void Force::AccFileClose()
 	{
 		fclose(facc);
 	}
+
 	void Force::setMu()
 	{
 		if (Global::b_Cunn) mu = Global::GravField_CB.getGM();
 		else mu = ID2GM(Global::IDC);
 	};
+
 	//
 	triple Force::force_SODE(const double Ti, const triple &Xi, const triple &Vi)
 	{
 		Force f(Ti, Xi, Vi);
 		return  (f.force_cb() + f.force_pert());
 	}
+
 	//
 	//Central body acceleration 
 	triple Force::force_cb()
@@ -48,6 +61,7 @@ namespace OrbMod
 		triple a = (X)*(-mu) / (r*r*r);
 		return a;
 	}
+
 	//
 	//Perturbation acceleration
 	triple Force::force_pert()
@@ -115,6 +129,7 @@ namespace OrbMod
 
 		return(acc);
 	};
+
 	//
 	triple Force::planet(int IDP) 
 	{
@@ -123,6 +138,7 @@ namespace OrbMod
 		return planet(IDP, mu);
 
 	}
+
 	triple Force::planet(int IDP, double mu) {
 		triple Xa = X;
 		double poss[3];
@@ -138,6 +154,7 @@ namespace OrbMod
 
 		return accp;
 	}
+
 	//
 	//the perturbation by additional body #5(central and none-central gravity)
 	triple Force:: acc5th_body()
@@ -164,6 +181,7 @@ namespace OrbMod
 		}
 		return acc_;
 	}
+
 	//
 	triple Force::relativ()
 	{
@@ -178,6 +196,7 @@ namespace OrbMod
 		triple rel = K1*X + K2*((4.0*(X*V))*V - v2*X);
 		return rel;
 	}
+
 	//Lenze-Thirring precession:
 	triple Force::L_T()
 	{
@@ -221,6 +240,7 @@ namespace OrbMod
 
 		return FlenzeI;
 	}
+
 	//
 	void Force::force_w(double Ti)
 	{

@@ -1,7 +1,18 @@
-#include "stdafx.h"
+#define _CRT_SECURE_NO_WARNINGS
 #include "ModAstroObs2.h"
+#include "Misc.h"
+#include "Global.h"
+#include "tform.h"
+#include "ObsSet.h"
+#include "Control.h"
+#include "constant.h"
+
+#include "SpiceUsr.h"
 
 using namespace Algebra;
+using namespace consts;
+using namespace std;
+
 namespace OrbMod
 {
 	//
@@ -9,7 +20,8 @@ namespace OrbMod
 	{
 	}
 	//
-	ModAstroObs2::ModAstroObs2(const ModAstroObs2& otr) :AstroObs(otr)
+	ModAstroObs2::ModAstroObs2(const ModAstroObs2& otr)
+        :AstroObs(otr)
 	{
 		this->pos = otr.pos;
 		this->posres = otr.posres;

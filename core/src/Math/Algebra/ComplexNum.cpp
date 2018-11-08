@@ -1,5 +1,6 @@
-#include"stdafx.h"
 #include "ComplexNum.h"
+#include<iostream>
+
 using namespace std;
 //
 namespace Algebra

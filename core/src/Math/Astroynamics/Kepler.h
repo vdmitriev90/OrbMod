@@ -1,4 +1,5 @@
 #pragma once
+#include"Matrix.h"
 
 namespace OrbMod
 {
@@ -19,6 +20,6 @@ namespace OrbMod
 		//propagate state from one epoch to another using equations of unperturbed motion
 		static int PropSV(double mu, const double *sv1, double tdb1, double tdb2, double *sv2);
 		//
-		static int PropSV(double mu, const Matrix &sv1, double tdb1, double tdb2, Matrix &sv2);
+		static int PropSV(double mu, const Algebra::Matrix &sv1, double tdb1, double tdb2, Algebra::Matrix &sv2);
 	};
 }

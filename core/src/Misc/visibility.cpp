@@ -1,5 +1,11 @@
-#include "stdafx.h"
 #include "visibility.h"
+#include "Global.h"
+#include"frame.h"
+
+#include"SpiceUsr.h"
+
+using namespace Algebra;
+using namespace consts;
 
 namespace OrbMod
 {
@@ -14,7 +20,7 @@ namespace OrbMod
 		if (Global::i_fr == 0) { FRAME = "ECLIPJ2000"; i_frame = 17; }
 		else { FRAME = "J2000"; i_frame = 1; }
 
-		SpiceChar   utcstr[50];
+		char utcstr[50];
 		triple Vo;
 		triple Vot, RotJ2k;
 		timout_c(time, Global::pictur_utc, 50, utcstr);

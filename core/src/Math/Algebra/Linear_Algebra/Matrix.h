@@ -1,12 +1,10 @@
 #pragma once
-#include"stdafx.h"
-#include "AlgLib\src\linalg.h"
-//#include "Math\Algebra\Linear_Algebra\triple.h"
-//#include"Math\Algebra\Linear_Algebra\triple.h"
+#include "linalg.h"
+#include "triple.h"
 
-using namespace std;
 namespace Algebra
 {
+    class triple;
 	enum Axis { X = 0, Y, Z };
 	class Matrix
 	{
@@ -17,7 +15,6 @@ namespace Algebra
 		double* M;
 
 		void initDim(const int & n, const int & m);
-		//void init();
 
 	public:
 		Matrix();
@@ -26,8 +23,8 @@ namespace Algebra
 		Matrix(const int & N, const int & M);
 		Matrix(const alglib::real_2d_array &rArr);
 		Matrix(const double *Arr, int N, int M);
-		Matrix(const vector<double> &Vec, int N, int M, int offset);
-		Matrix(const vector<double> &Vec);
+		Matrix(const std::vector<double> &Vec, int N, int M, int offset);
+		Matrix(const std::vector<double> &Vec);
 		Matrix(triple Vec);
 
 		//copy constructor
@@ -37,10 +34,10 @@ namespace Algebra
 #pragma region CopyTo
 
 		void ToOneDimArr(double *&vec) const;
-		vector<vector<double>> ToTwoDimVector() const;
-		void copyToVec(int offset, vector<double> &V) const;
+		std::vector<std::vector<double>> ToTwoDimVector() const;
+		void copyToVec(int offset, std::vector<double> &V) const;
 #pragma endregion 
-		void setFromVec(int offset, const vector<double> &V);
+		void setFromVec(int offset, const std::vector<double> &V);
 
 		void Clear();
 		void Zero();
@@ -100,9 +97,6 @@ namespace Algebra
 		void operator-=(const Matrix & right);
 		void operator*=(const double & right);
 		void operator/=(const double & right);
-
-		//	void MatrixDecompose(vector<vector<double>> matrix, vector<int> b, int toggle);
-		//	MatrixInverse(Matrix &matrix, Matrix &result);
 
 	};
 }

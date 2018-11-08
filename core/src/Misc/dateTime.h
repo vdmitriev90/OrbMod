@@ -1,4 +1,5 @@
 #pragma once;
+#include<string>
 namespace OrbMod
 {
 	class dateTime
@@ -12,7 +13,7 @@ namespace OrbMod
 		int Y, M, D, h, min;
 		double	sec;
 		double msec();
-		string toString();
+		std::string toString();
 	};
 	class JD2
 	{

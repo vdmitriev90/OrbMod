@@ -1,5 +1,10 @@
-#include"stdafx.h"
+#include"var.h"
+#include"force.h"
+#include"SB.h"
+#include"Global.h"
+#include"Integration_.h"
 
+using namespace Algebra;
 using namespace std;
 namespace OrbMod
 {
@@ -53,7 +58,7 @@ namespace OrbMod
 		Global::N_rp++;
 	}
 	//
-	bool var_SB::Inter(SpiceDouble s0, double H, vector<double> &X, vector<double> &Y)
+	bool var_SB::Inter(double s0, double H, vector<double> &X, vector<double> &Y)
 	{
 		double t0 = X[10];
 

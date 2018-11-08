@@ -1,7 +1,8 @@
 #pragma once
-#include"stdafx.h"
-#include"Math\Algebra\Linear_Algebra\triple.h"
-#include"Math\Algebra\Linear_Algebra\Matrix.h"
+#include"triple.h"
+#include"ComplexNum.h"
+
+#include<vector>
 
 namespace OrbMod
 {
@@ -11,8 +12,8 @@ namespace OrbMod
 	class Cunningham
 	{
 	private:
-		triple r;
-		vector<vector<ComplexNum>> dVx, dVy, dVz, V;
+		Algebra::triple r;
+		std::vector<std::vector<Algebra::ComplexNum>> dVx, dVy, dVz, V;
 		int Ngf;
 		double GM;
 		double R0;
@@ -21,9 +22,9 @@ namespace OrbMod
 		bool tide_by_body;
 		int bodyID;
 
-		vector<vector<ComplexNum>>  GravModel;  //коэффициенты C,-S 
+        std::vector<std::vector<Algebra::ComplexNum>>  GravModel;  //коэффициенты C,-S 
 		//поправки в коэфф. разложения потенциала притяжения за твердые приливы
-		ComplexNum dCS_sun[3], dCS_body[3], dCS[3];
+        Algebra::ComplexNum dCS_sun[3], dCS_body[3], dCS[3];
 		double mu_body;
 		double mu_sun;
 		void dCS_tide(double et, int IDtide, double mu_tide);
@@ -33,9 +34,9 @@ namespace OrbMod
 		Cunningham(void);
 		~Cunningham(void);
 
-		string FileModel = "";
+		std::string FileModel = "";
 
-		void setPosition(triple pos) { r = pos; }
+		void setPosition(Algebra::triple pos) { r = pos; }
 		void setTide(bool b_sun, bool b_body) { this->tide_by_sun = b_sun; this->tide_by_body = b_body; };
 		void setTide_body(int ID) { this->bodyID = ID; };
 		void setLove(double Love_number) { this->k2 = Love_number; };
@@ -43,11 +44,10 @@ namespace OrbMod
 		int get_Ngf() { return this->Ngf; };
 		double getGM() { return(GM); }
 		double getR0() { return(R0); }
+		
+		void LoadGravityModel(std::string str);
 
-		triple getacc(SpiceDouble time, triple X);
-		void LoadGravityModel(string str);
-
-		triple getAcceleration(int, long double, triple);
+		Algebra::triple getAcceleration(int, long double, Algebra::triple);
 	protected:
 		void validdV();
 

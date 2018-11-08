@@ -1,9 +1,11 @@
-// ConsoleOrbMod.cpp : Defines the entry point for the console application.
-//
+#include"Control.h"
 
-#include "stdafx.h"
-#include"OrbModLib\src\stdafx.h"
+#include<iomanip>
+#include<iostream>
+
 using namespace OrbMod;
+using namespace std;
+
 int main()
 {
 	Control::loadKernels("metak.tm");
@@ -12,4 +14,3 @@ int main()
 	cout << "obs" << endl;
 	Control::Process("OrbMod.ini");
 }
-

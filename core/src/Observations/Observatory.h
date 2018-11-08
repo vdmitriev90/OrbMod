@@ -1,4 +1,10 @@
 #pragma once
+#include"triple.h"
+
+#include<vector>
+#include<map>
+#include<string>
+
 namespace OrbMod
 {
 	class Observatory
@@ -11,14 +17,14 @@ namespace OrbMod
 	public:
 		//fields
 		std::string  ID;
-		triple X;
+		Algebra::triple X;
 		std::string Name;
 		
 		//methods
-		bool tryParce(const string &str);
+		bool tryParce(const std::string &str);
 
-		static vector<Observatory> Obsrs;
-		static map<string, Observatory> str2Obsy;
+		static std::vector<Observatory> Obsrs;
+		static std::map<std::string, Observatory> str2Obsy;
 		static bool LoadObsrs(std::string FileName);
 	};
 }

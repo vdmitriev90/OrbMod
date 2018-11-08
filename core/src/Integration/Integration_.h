@@ -1,8 +1,10 @@
 #pragma once
-#include"stdafx.h"
+#include"var.h"
+#include"triple.h"
+#include"constant.h"
 
-#include"Parameters\constant.h"
-using namespace Consts;
+#include<vector>
+#include<fstream>
 
 namespace OrbMod
 {
@@ -12,18 +14,18 @@ namespace OrbMod
 		//
 		static  Integration Instance;
 
-		virtual void setPar(vector<double> &X, Matrix &mSV, double t0) override;
-		virtual void GetX(const vector<double> &X, Matrix &mSV, double t0, Matrix &dXdX0) override;
-		virtual void force(const double Ti, const vector<double> &X, vector<double> &dXds) override;
-		virtual bool Inter(double t0, double H, vector<double> &X, vector<double> &Yo)override;
-		virtual int Gauss_FODE(vector<double> &X, double to, double &te, double &step, int NOR, int NI, int &NS, int &NBS) override;
-		void		 Integrate(Matrix &SV, double t0, double te, Matrix &dXdX0);
-		void	 	 Integrate(Matrix &SV, double t0, double te, Matrix &dXdX0, Variables var);
+		virtual void setPar(std::vector<double> &X, Matrix &mSV, double t0) override;
+		virtual void GetX(const std::vector<double> &X, Matrix &mSV, double t0, Matrix &dXdX0) override;
+		virtual void force(const double Ti, const std::vector<double> &X, std::vector<double> &dXds) override;
+		virtual bool Inter(double t0, double H, std::vector<double> &X, std::vector<double> &Yo)override;
+		virtual int Gauss_FODE(std::vector<double> &X, double to, double &te, double &step, int NOR, int NI, int &NS, int &NBS) override;
+		void Integrate(Matrix &SV, double t0, double te, Matrix &dXdX0);
+		void Integrate(Matrix &SV, double t0, double te, Matrix &dXdX0, consts::Variables var);
 		void SODE();
 
-		void write(double t0, triple X, triple V);
-		void write_3_BodyFix_sv(FILE*f, char* UTC, double t, triple X, triple V);
-		void SwitchVar(Variables V);
+		void write(double t0, Algebra::triple X, Algebra::triple V);
+		void write_3_BodyFix_sv(FILE*f, char* UTC, double t, Algebra::triple X, Algebra::triple V);
+		void SwitchVar(consts::Variables V);
 
 		//
 

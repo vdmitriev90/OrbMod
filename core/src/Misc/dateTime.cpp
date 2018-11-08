@@ -1,6 +1,7 @@
-#include"stdafx.h"
+#define _CRT_SECURE_NO_WARNINGS
 #include"dateTime.h"
 using namespace std;
+
 namespace OrbMod
 {
 	dateTime::dateTime()

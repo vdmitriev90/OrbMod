@@ -1,6 +1,8 @@
 #pragma once
-//#include"stdafx.h"
-using namespace std;
+#include"ObsSet.h"
+#include"Obs.h"
+#include"constant.h"
+
 namespace OrbMod
 {
 	class Control
@@ -12,14 +14,14 @@ namespace OrbMod
 		static ObsSet &inst();
 		//~Control();
 		static ObsSet Obs_;
-		static bool loadObseravations(string path,TypeOfObs OType);
+		static bool loadObseravations(const std::string& path, consts::TypeOfObs OType);
 		//static 
-		static void Process(std::string PathConfig);
-		static bool loadKernels(std::string path);
-		static bool loadObservatories(std::string path);
-		static bool loadConfig(std::string path);
+		static void Process(const std::string& PathConfig);
+		static bool loadKernels(const std::string& path);
+		static bool loadObservatories(const std::string& path);
+		static bool loadConfig(const std::string& path);
 
-		static bool parseTime(string s_t, TimeFormat TForm, double t);
+		static bool parseTime(const std::string& s_t, consts::TimeFormat TForm, double t);
 		
 	private:
 		
@@ -27,7 +29,7 @@ namespace OrbMod
 		static bool InitProcess();
 		static void FinalizeProcess();
 		static void StartProcess();
-		static void LogReport(std::string path);
+		static void LogReport(const std::string& path);
 		//
 		static void FODE();
 		static void ParameterEstimation();

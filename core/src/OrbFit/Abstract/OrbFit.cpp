@@ -1,6 +1,18 @@
-#include"stdafx.h"
 #include"OrbFit.h"
+#include"constant.h"
+#include"Global.h"
+#include"LinAlgAux.h"
+#include"Control.h"
+#include"Integration_.h"
+#include"Misc.h"
+#include"macroses.h"
+
+#include"SpiceUsr.h"
+
+using namespace Algebra;
+using namespace consts;
 using namespace std;
+
 namespace OrbMod
 {
 	//
