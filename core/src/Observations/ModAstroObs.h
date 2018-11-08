@@ -1,10 +1,10 @@
 #pragma once
-#include"Obs.h"
+#include"Observations.h"
 #include"Matrix.h"
 
 namespace OrbMod
 {
-	class ModAstroObs : public Obs
+	class ModAstroObs : public Observations
 	{
 	public:
 		static Algebra::Matrix dOdX;
@@ -23,7 +23,7 @@ namespace OrbMod
 		
         void writeResiduals() override;
 		
-        virtual ModAstroObs* clone() const override;
+        virtual obs_ptr clone() const override;
 
         double ra;
         double dec;

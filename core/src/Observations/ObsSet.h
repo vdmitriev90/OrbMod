@@ -1,14 +1,15 @@
 #pragma once
 #include"constant.h"
-#include"Obs.h"
+#include"Observations.h"
 
 #include<fstream>
 #include<map>
+#include<memory>
 
 
 namespace OrbMod
 {
-    typedef std::vector<Obs*> Vobs;
+    typedef std::vector<std::shared_ptr<Observations>> Vobs;
 
     class ObsSet
     {
@@ -37,8 +38,8 @@ namespace OrbMod
 
         ~ObsSet()
         {
-            for (size_t i = obs.size() - 1; i >= 0; --i)  
-                delete obs[i];
+            //for (size_t i = obs.size() - 1; i >= 0; --i)  
+            //    delete obs[i];
         }
 
         //
@@ -47,9 +48,9 @@ namespace OrbMod
         //
         //Obs  &operator[](const int index);
 
-        Obs  &curr();
-        Obs  &first();
-        Obs &last();
+        Observations  &curr();
+        Observations  &first();
+        Observations &last();
 
         void reset();
         bool next();
@@ -66,7 +67,7 @@ namespace OrbMod
 
         Vobs obs;
         //ïîðîæäàþùàÿ ôóíêöèÿ
-        Obs * ñreateObs(consts::TypeOfObs id);
+        obs_ptr ñreateObs(consts::TypeOfObs id);
 
     };
 }

@@ -105,17 +105,17 @@ namespace OrbMod
 		return (it == this->obs.size()) ? 0 : 1;
 	}
 	//
-	Obs  &ObsSet::curr()
+	Observations  &ObsSet::curr()
 	{
 		return *obs[it];
 	}
 	//
-	Obs  &ObsSet::first()
+	Observations  &ObsSet::first()
 	{
 		return *obs[it0];
 	}
 	//
-	Obs &ObsSet::last()
+	Observations &ObsSet::last()
 	{
 		return *obs[it_end];
 	}
@@ -162,11 +162,9 @@ namespace OrbMod
 			{
 				std::string line;
 				getline(file, line);
-				Obs* obsi = ñreateObs(ObsType);
+				auto obsi = ñreateObs(ObsType);
 				if (obsi->tryParce(line))
 					obs.push_back(obsi);
-				else
-					delete obsi;
 			}
 		}
 		else 
@@ -174,24 +172,24 @@ namespace OrbMod
 
 		file.close();
 
-		std::sort(obs.begin(), obs.end(), &Obs::compare);
+		std::sort(obs.begin(), obs.end(), &Observations::compare);
 		it0 = 0;
 		it_end = obs.size() - 1;
 		if ((obs[0])->getType() == "Astrometric") fct = rad2asec;
 		return true;
 	};
 	//
-    Obs * ObsSet::ñreateObs(TypeOfObs id)
+    obs_ptr ObsSet::ñreateObs(TypeOfObs id)
     {
         switch (id)
         {
-        case TypeOfObs::Astro: return new AstroObs();
+        case TypeOfObs::Astro: return make_shared<AstroObs>();
             break;
-        case TypeOfObs::mDist: return new ModDistObs();
+        case TypeOfObs::mDist: return make_shared<ModDistObs>();
             break;
-        case TypeOfObs::mAstro: return new ModAstroObs();
+        case TypeOfObs::mAstro: return make_shared<ModAstroObs>();
             break;
-        case TypeOfObs::mAstro2: return new ModAstroObs2();
+        case TypeOfObs::mAstro2: return make_shared<ModAstroObs2>();
             break;
         default:
             throw invalid_argument("Unsupported type of observations");

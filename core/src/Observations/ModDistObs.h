@@ -5,7 +5,7 @@
 
 namespace OrbMod
 {
-	class ModDistObs : public Obs
+	class ModDistObs : public Observations
 	{
 	public:
 		ModDistObs();
@@ -21,7 +21,7 @@ namespace OrbMod
 
 		virtual std::string getType() override;
 		virtual void writeResiduals() override;
-		virtual ModDistObs* clone() const override;
+		virtual obs_ptr clone() const override;
 	};
 }
 

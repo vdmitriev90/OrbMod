@@ -124,8 +124,8 @@ namespace OrbMod
 		sprintf(buff, "%20.7f %f %f  %f %f %f\n", this->t, res_ra*rad2asec, res_del*rad2asec, posres[0], posres[1], posres[2]);
 		Control::Obs_.f_res << c_time << " " << buff;
 	}
-	ModAstroObs2* ModAstroObs2::clone() const
+    obs_ptr ModAstroObs2::clone() const
 	{
-		return new ModAstroObs2(*this);
+		return make_shared<ModAstroObs2>(*this);
 	}
 }

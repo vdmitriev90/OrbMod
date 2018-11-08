@@ -17,7 +17,7 @@ namespace OrbMod
 	ModDistObs::ModDistObs() 
 	{
 	}
-	ModDistObs::ModDistObs(const ModDistObs& otr):Obs(otr)
+	ModDistObs::ModDistObs(const ModDistObs& otr):Observations(otr)
 	{
 		this->dist = otr.dist;
 		this->res = otr.res;
@@ -103,8 +103,8 @@ namespace OrbMod
 		//ObsSet::Instance().f_res << c_time << " " << buff<< "\t" << str_dbg <<endl;
 		Control::Obs_.f_res << str_dbg << endl;
 	}
-	ModDistObs* ModDistObs::clone() const
+    obs_ptr ModDistObs::clone() const
 	{
-		return new ModDistObs(*this);
+		return make_shared<ModDistObs>(*this);
 	}
 }

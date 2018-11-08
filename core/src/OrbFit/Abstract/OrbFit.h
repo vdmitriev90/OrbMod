@@ -1,6 +1,6 @@
 #pragma once
 #include"var.h"
-#include"Obs.h"
+#include"Observations.h"
 #include<fstream>
 
 namespace OrbMod
@@ -26,7 +26,7 @@ namespace OrbMod
 		static double PosRMS, VelRMS, Qnoise;
 		Algebra::Matrix OrbFit::ProcessNoise(double sigSq);
 		static double calcLTCorr(int observer, Algebra::triple pos, double tdb);
-		std::vector<Obs*>::iterator it_0;
+		std::vector<Observations*>::iterator it_0;
 
 		virtual void Adjust(Algebra::Matrix &SV, double t0, double &sigma, Algebra::Matrix &Q) {};
 		virtual int FitBatch(Algebra::Matrix &SV, double &t0, double &te, double &sigma, Algebra::Matrix &Q);

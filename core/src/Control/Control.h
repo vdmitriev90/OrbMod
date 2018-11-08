@@ -1,6 +1,6 @@
 #pragma once
 #include"ObsSet.h"
-#include"Obs.h"
+#include"Observations.h"
 #include"constant.h"
 
 namespace OrbMod

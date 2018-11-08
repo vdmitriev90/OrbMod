@@ -129,7 +129,7 @@ namespace OrbModCLRWrapper
 
 			for (auto&& it1 : it.second)
 			{
-				int msec = (it1.sec - (int)it1.sec) * 1000;
+				int msec = (int)((it1.sec - (int)it1.sec) * 1000);
 				XDate dt = XDate(it1.Y, it1.M, it1.D, it1.h, it1.min, (int)it1.sec, msec);
 				ListObs[i]->Add(dt, i + 1);
 			}

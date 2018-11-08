@@ -156,9 +156,6 @@
     <ClCompile Include="src\Observations\ModDistObs.cpp">
       <Filter>src\Observations</Filter>
     </ClCompile>
-    <ClCompile Include="src\Observations\Obs.cpp">
-      <Filter>src\Observations</Filter>
-    </ClCompile>
     <ClCompile Include="src\Observations\Observatory.cpp">
       <Filter>src\Observations</Filter>
     </ClCompile>
@@ -243,6 +240,9 @@
     <ClCompile Include="src\Force\Perturbations\AtmosphericDrag.cpp">
       <Filter>src\Force\Perturbations</Filter>
     </ClCompile>
+    <ClCompile Include="src\Observations\Observations.cpp">
+      <Filter>src\Observations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\targetver.h">
@@ -320,9 +320,6 @@
     <ClInclude Include="src\Observations\ModDistObs.h">
       <Filter>src\Observations</Filter>
     </ClInclude>
-    <ClInclude Include="src\Observations\Obs.h">
-      <Filter>src\Observations</Filter>
-    </ClInclude>
     <ClInclude Include="src\Observations\Observatory.h">
       <Filter>src\Observations</Filter>
     </ClInclude>
@@ -394,6 +391,9 @@
     </ClInclude>
     <ClInclude Include="src\Force\Perturbations\AtmosphericDrag.h">
       <Filter>src\Force\Perturbations</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Observations\Observations.h">
+      <Filter>src\Observations</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

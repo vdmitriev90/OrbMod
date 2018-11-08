@@ -1,4 +1,4 @@
-#include "Obs.h"
+#include "Observations.h"
 #include "tform.h"
 #include "state.h"
 #include "Global.h"
@@ -8,23 +8,24 @@ using namespace std;
 
 namespace OrbMod
 {
-	Obs::Obs()
+	Observations::Observations()
 	{
 		isOutl = false;
 	};
-	Obs::Obs(const Obs& otr)
+	Observations::Observations(const Observations& otr)
 	{
 		this->t = otr.t;
 		this->dlt = otr.dlt;
 		this->observ = Observatory(otr.observ);
 		this->str_dbg = otr.str_dbg;
 	}
-	Obs::~Obs()
+	Observations::~Observations()
 	{
 
 	};
-	int Obs::compare(const Obs * a, const Obs * b) { return (a->t < a->t); };
-	triple  Obs::getObsPos() const
+
+    int Observations::compare(const obs_ptr& a, const obs_ptr & b) { return (a->t < a->t); };
+	triple  Observations::getObsPos() const
 	{
 		triple R1 = StVec::getPos(399, t, "J2000", Global::IDC);
 		triple dr1 = observ.X;

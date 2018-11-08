@@ -1,8 +1,8 @@
 #pragma once
-#include"Obs.h"
+#include"Observations.h"
 namespace OrbMod
 {
-	class AstroObs : public Obs
+	class AstroObs : public Observations
 	{
 	public:
 		AstroObs();
@@ -29,7 +29,7 @@ namespace OrbMod
 		virtual void writeResiduals() override;
 		virtual bool isOutlier() override;
 		virtual void abCorr(double pos[]);
-		virtual AstroObs* clone() const override;
+		virtual obs_ptr clone() const override;
 
 	};
 }

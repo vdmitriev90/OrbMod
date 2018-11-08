@@ -18,7 +18,7 @@ namespace OrbMod
 	ModAstroObs::ModAstroObs()
 	{
 	}
-	ModAstroObs::ModAstroObs(const ModAstroObs& otr) :Obs(otr)
+	ModAstroObs::ModAstroObs(const ModAstroObs& otr) :Observations(otr)
 	{
 		this->ra = otr.ra;
 		this->dec = otr.dec;
@@ -101,8 +101,8 @@ namespace OrbMod
 		Control::Obs_.f_res << c_time << " " << buff;
 	}
 	//
-	ModAstroObs* ModAstroObs::clone() const
+    obs_ptr ModAstroObs::clone() const
 	{
-		return new ModAstroObs(*this);
+		return make_shared<ModAstroObs>(*this);
 	}
 }

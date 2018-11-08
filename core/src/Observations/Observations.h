@@ -2,19 +2,24 @@
 #include"Matrix.h"
 #include"triple.h"
 #include"Observatory.h"
+#include<memory>
+
 
 namespace OrbMod
 {
-	class Obs
+    class Observations;
+    typedef std::shared_ptr<Observations> obs_ptr;
+
+	class Observations
 	{
 	public:
-		Obs();
-		Obs(const Obs& other);
-		virtual ~Obs();
+		Observations();
+		Observations(const Observations& other);
+		virtual ~Observations();
 		double t, dlt;
 		Observatory observ;
 		std::string  str_dbg;
-		static  int compare(const Obs * a, const Obs * b);
+		static int compare(const obs_ptr& a, const obs_ptr&  b);
 
 		Algebra::triple getObsPos() const;
 		
@@ -24,12 +29,14 @@ namespace OrbMod
 		
         virtual std::string getType() = 0;
 		
-        virtual Obs * clone() const = 0;
+        virtual obs_ptr clone() const = 0;
 
 	protected:
 		bool isOutl;
+
 		virtual void writeResiduals() = 0;
-		virtual bool isOutlier() { return false; };
+		
+        virtual bool isOutlier() { return false; };
 
 	};
 }

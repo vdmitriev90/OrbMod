@@ -22,7 +22,7 @@ namespace OrbMod
         virtual void updateEquations(Algebra::Matrix &A, std::vector<double> &OmC, Algebra::Matrix &x, Algebra::Matrix &dxdx0, double  tau) override;
         virtual std::string getType()override;
         virtual void writeResiduals()override;
-        virtual ModAstroObs2* clone() const override;
+        virtual obs_ptr clone() const override;
 
     };
 }

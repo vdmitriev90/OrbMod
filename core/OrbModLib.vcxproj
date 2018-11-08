@@ -205,7 +205,7 @@
     <ClCompile Include="src\Observations\ModAstroObs.cpp" />
     <ClCompile Include="src\Observations\ModAstroObs2.cpp" />
     <ClCompile Include="src\Observations\ModDistObs.cpp" />
-    <ClCompile Include="src\Observations\Obs.cpp" />
+    <ClCompile Include="src\Observations\Observations.cpp" />
     <ClCompile Include="src\Observations\Observatory.cpp" />
     <ClCompile Include="src\Observations\ObsSet.cpp" />
     <ClCompile Include="src\Observations\PreObrit.cpp" />
@@ -261,7 +261,7 @@
     <ClInclude Include="src\Observations\ModAstroObs.h" />
     <ClInclude Include="src\Observations\ModAstroObs2.h" />
     <ClInclude Include="src\Observations\ModDistObs.h" />
-    <ClInclude Include="src\Observations\Obs.h" />
+    <ClInclude Include="src\Observations\Observations.h" />
     <ClInclude Include="src\Observations\Observatory.h" />
     <ClInclude Include="src\Observations\ObsSet.h" />
     <ClInclude Include="src\Observations\PreObrit.h" />

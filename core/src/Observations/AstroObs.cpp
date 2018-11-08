@@ -26,7 +26,7 @@ namespace OrbMod
 		res_del = 0;
 	}
 
-	AstroObs::AstroObs(const AstroObs& otr) :Obs(otr)
+	AstroObs::AstroObs(const AstroObs& otr) :Observations(otr)
 	{
 		this->ra = otr.ra;
 		this->dra = otr.dra;
@@ -36,18 +36,21 @@ namespace OrbMod
 
 		this->res_ra = otr.res_ra;
 		this->res_del = otr.res_del;
-
 	}
-	AstroObs::~AstroObs()
+
+    AstroObs::~AstroObs()
 	{
 	}
+
 	Matrix AstroObs::dOdX(2, 6);
+
 	//example
 	//     J96R13O* C1996 09 08.38795 23 47 38.69 -00 50 48.2                 27851691
 	string AstroObs::getType()
 	{
 		return "Astrometric";
 	}
+
 	bool AstroObs::tryParce(std::string s)
 	{
 		if (s.length() < 80) return false;
@@ -90,6 +93,7 @@ namespace OrbMod
 
 		return true;
 	}
+
 	//
 	void AstroObs::updateEquations(Matrix &A, vector<double> &OmC, Matrix &sv, Matrix &dxdx0, double  tau)
 	{
@@ -147,7 +151,8 @@ namespace OrbMod
 		A.addRows(dOdX0);
 		OmC.push_back(res_ra);
 		OmC.push_back(res_del);
-	};
+	}
+
 	//
 	void AstroObs::abCorr(double pos[])
 	{
@@ -173,6 +178,7 @@ namespace OrbMod
 		this->dra = _ra - this->ra;
 		this->ddec = _dec - this->dec;
 	}
+
 	//
 	bool AstroObs::isOutlier()
 	{
@@ -195,8 +201,8 @@ namespace OrbMod
 		Control::Obs_.f_res << c_time << "\t" << buff;
 	}
 	//
-	AstroObs* AstroObs::clone() const
+	obs_ptr AstroObs::clone() const
 	{
-		return new AstroObs(*this);
+		return make_shared<AstroObs>(*this);
 	}
 }
