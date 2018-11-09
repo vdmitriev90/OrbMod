@@ -16,7 +16,7 @@ namespace OrbModCLRWrapper {
 		~_ObsSet();
 
 		//public fields
-		int N;
+		int OservNumber;
 
 		//methods
 		ObsSet getIntObsSet();

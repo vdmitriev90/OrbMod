@@ -114,11 +114,11 @@ namespace OrbModCLRWrapper
 				oi->second.push_back(dt);
 			}
 		}
-		N = dict.size();
+		OservNumber = dict.size();
 
-		cli::array <ZedGraph::PointPairList^, 1>^ ListObs = gcnew cli::array<ZedGraph::PointPairList^>(N);
-		cli::array <ZedGraph::LineItem^, 1 >^  ListCurve = gcnew cli::array<ZedGraph::LineItem^>(N);
-		cli::array <String^, 1> ^  AccNames = gcnew cli::array<String^>(N);
+		cli::array <ZedGraph::PointPairList^, 1>^ ListObs = gcnew cli::array<ZedGraph::PointPairList^>(OservNumber);
+		cli::array <ZedGraph::LineItem^, 1 >^  ListCurve = gcnew cli::array<ZedGraph::LineItem^>(OservNumber);
+		cli::array <String^, 1> ^  AccNames = gcnew cli::array<String^>(OservNumber);
 
 		int i = 0;
 		for (auto&& it : dict)
@@ -162,7 +162,7 @@ namespace OrbModCLRWrapper
 	void _ObsSet::ChangeTimeFrame(GraphPane ^pane, System::Windows::Forms::DataGridView^  dgv_1, String ^% t_start, String ^% t_finish, double % t0, double % te)
 	{
 		//Обсерватории наблюдения которых будут использованы
-		for (int i = 0; i < N; i++)
+		for (int i = 0; i < OservNumber; i++)
 		{
 			String ^ s = Convert::ToString(dgv_1->Rows[i]->Cells[2]->Value);
 			bool b = Convert::ToBoolean(dgv_1->Rows[i]->Cells[1]->Value);

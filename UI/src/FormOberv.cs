@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Linq;
+using System.Collections.Generic;
 using ZedGraph;
 using OrbModCLRWrapper;
 
@@ -7,7 +9,16 @@ namespace OrbModUI
 {
     public partial class OrbMod_FormOberv : Form
     {
-        int N = 0;
+        int labelsXfontSize = 12;
+        int labelsYfontSize = 12;
+
+        int titleXFontSize = 14;
+        int titleYFontSize = 14;
+
+        int legendFontSize = 12;
+
+        int mainTitleFontSize = 16;
+
         GraphPane pane;
 
         bool IsShowLegend = false;
@@ -17,8 +28,9 @@ namespace OrbModUI
             InitializeComponent();
             pane = zg_ObsView.GraphPane;
            
-            //ChangeTimeFrame();
+           
         }
+
         //
         private void cb_IsShowLegend_CheckedChanged(object sender, EventArgs e)
         {
@@ -26,29 +38,77 @@ namespace OrbModUI
             GraphPane  pane = zg_ObsView.GraphPane;
             pane.Legend.IsVisible = IsShowLegend;
 
-            zg_ObsView.AxisChange();
-            zg_ObsView.Invalidate();
+            UpdateZedGraph();
         }
+
         //
         private void OrbMod_FormOberv_Load(object sender, EventArgs e)
         {
             cb_IsShowLegend.Checked = IsShowLegend;
 
-            #region zg
-            zg_ObsView.IsShowPointValues = true;
-            zg_assist(pane);
-            #endregion
-
             Config.Instance.ObsSet.DataToForm(pane, dgv_1);
-            string toobs = Config.Instance.ObsSet.TypeOfObserv();
-            this.N = Config.Instance.ObsSet.N;
+            string totalObs = Config.Instance.ObsSet.TypeOfObserv();
 
-            #region zg
-            pane.YAxis.Title.Text = "Observatory with " + toobs + " obs.";
-            pane.XAxis.Title.Text = "time, UTC";
-            pane.Legend.IsVisible = IsShowLegend;
 
+            pane.YAxis.Title.Text = $"Observatory with {totalObs} obs.";
+            pane.XAxis.Title.Text = "UTC";
+
+            FormatZedGraph();
+
+            ZgApplyFormatting();
+
+            ChangeTimeFrame();
+        }
+
+        //
+        private void bt_apply_Click(object sender, EventArgs e)
+        {
+            //Обсерватории, наблюдения которых будут использованы
+            //for (int i = 0; i < Config.Instance.ObsSet.OservNumber; i++)
+            foreach(DataGridViewRow row in dgv_1.Rows)
+            {
+                string s = Convert.ToString(row.Cells[2].Value);
+                bool b = Convert.ToBoolean(row.Cells[1].Value);
+                Config.Instance.ObsSet.SetUseObs(s, b);
+            }
+
+            Config.Instance.ObsSet.SetObservationToCore();
+            Config.Instance.observeratories = Config.Instance.ObsSet.UsedObs2String();
+        }
+
+        //
+        void ChangeTimeFrame()
+        {
+            var s1 = string.Empty;
+            var s2 = string.Empty;
+            Config.Instance.ObsSet.ChangeTimeFrame(pane, dgv_1, ref s1, ref s2, ref Config.Instance.obs_t0, ref Config.Instance.obs_te);
+
+            tb_UTC_start.Text = s1;
+            tb_UTC_finish.Text = s2;
+            lb_numobs.Text = Config.Instance.ObsSet.getObsNum().ToString();
+        }
+       
+        //
+        private void zg_ObsView_ZoomEvent(ZedGraphControl sender, ZoomState oldState, ZoomState newState)
+        {
+            ChangeTimeFrame();
+        }
+
+        //
+        private void tsmi_Check_Click(object sender, EventArgs e) => UpdateObservatories(true);
+        //
+        private void tsmi_UnCheck_Click(object sender, EventArgs e) => UpdateObservatories(false);
+
+        private void UpdateObservatories(bool isUse)
+        {
+            foreach (DataGridViewRow row in dgv_1.SelectedRows)
+                dgv_1.Rows[row.Index].Cells[1].Value = isUse;
+        }
+
+        private void ZgApplyFormatting()
+        {
             pane.XAxis.Type = AxisType.Date;
+            pane.Legend.IsVisible = IsShowLegend;
 
             pane.XAxis.Scale.MinAuto = true;
             pane.XAxis.Scale.MaxAuto = true;
@@ -57,72 +117,19 @@ namespace OrbModUI
             pane.YAxis.Scale.MinAuto = true;
             pane.YAxis.Scale.MaxAuto = true;
 
-            // Обновим данные об осях
+            UpdateZedGraph();
+        }
+
+        private void UpdateZedGraph()
+        {
             zg_ObsView.AxisChange();
-
-            // Обновляем график
             zg_ObsView.Invalidate();
-            #endregion
-
         }
-        //
-        private void bt_apply_Click(object sender, EventArgs e)
-        {
-            //Обсерватории, наблюдения которых будут использованы
-            for (int i = 0; i < N; i++)
-            {
-                string s = Convert.ToString(dgv_1.Rows[i].Cells[2].Value);
-                bool b = Convert.ToBoolean(dgv_1.Rows[i].Cells[1].Value);
-                Config.Instance.ObsSet.SetUseObs(s, b);
 
-            }
-            Config.Instance.ObsSet.SetObservationToCore();
+        private void FormatZedGraph()
+        {
+            zg_ObsView.IsShowPointValues = true;
 
-            Config.Instance.observeratories = Config.Instance.ObsSet.UsedObs2String();
-        }
-        //
-        void ChangeTimeFrame()
-        {
-            string s1 = "", s2 = "";
-            Config.Instance.ObsSet.ChangeTimeFrame(pane, dgv_1, ref s1, ref s2, ref Config.Instance.obs_t0, ref Config.Instance.obs_te);
-            tb_UTC_start.Text = s1; tb_UTC_finish.Text = s2;
-            lb_numobs.Text = Config.Instance.ObsSet.getObsNum().ToString();
-        }
-        //
-        private void zg_ObsView_ZoomEvent(ZedGraphControl sender, ZoomState oldState, ZoomState newState)
-        {
-            ChangeTimeFrame();
-        }
-        //
-        private void tsmi_Check_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < dgv_1.SelectedRows.Count; i++)
-            {
-                int j = dgv_1.SelectedRows[i].Index;
-                dgv_1.Rows[j].Cells[1].Value = true;
-            }
-        }
-        //
-        private void tsmi_UnCheck_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < dgv_1.SelectedRows.Count; i++)
-            {
-                int j = dgv_1.SelectedRows[i].Index;
-                dgv_1.Rows[j].Cells[1].Value = false;
-            }
-        }
-        //
-        void zg_assist(GraphPane  pane)
-        {
-            int labelsXfontSize = 12;
-            int labelsYfontSize = 12;
-
-            int titleXFontSize = 14;
-            int titleYFontSize = 14;
-
-            int legendFontSize = 12;
-
-            int mainTitleFontSize = 16;
             // Установим размеры шрифтов для меток вдоль осей
             pane.XAxis.Scale.FontSpec.Size = labelsXfontSize;
             pane.YAxis.Scale.FontSpec.Size = labelsYfontSize;
@@ -135,6 +142,7 @@ namespace OrbModUI
 
             // Установим размеры шрифта для общего заголовка
             pane.Title.FontSpec.Size = mainTitleFontSize;
+
             //запрет на изменеие кегля
             pane.IsFontsScaled = true;
 

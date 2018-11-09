@@ -11,7 +11,8 @@ namespace OrbMod
 	Observations::Observations()
 	{
 		isOutl = false;
-	};
+	}
+
 	Observations::Observations(const Observations& otr)
 	{
 		this->t = otr.t;
@@ -20,11 +21,13 @@ namespace OrbMod
 		this->str_dbg = otr.str_dbg;
 	}
 	Observations::~Observations()
-	{
+	{ }
 
-	};
+    int Observations::compare(const obs_ptr& a, const obs_ptr & b) 
+    {
+        return (a->t < a->t); 
+    }
 
-    int Observations::compare(const obs_ptr& a, const obs_ptr & b) { return (a->t < a->t); };
 	triple  Observations::getObsPos() const
 	{
 		triple R1 = StVec::getPos(399, t, "J2000", Global::IDC);
