@@ -140,7 +140,7 @@
     </Compile>
     <Compile Include="src\plots\plotElts.cs" />
     <Compile Include="src\plots\Plot.cs" />
-    <Compile Include="src\plots\PlotSV.cs" />
+    <Compile Include="src\plots\PlotStateVector.cs" />
     <Compile Include="src\plots\PlotSingle.cs" />
     <Compile Include="src\Program.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -184,9 +184,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="src\res\line_graph_128px_1170483_easyicon.net.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="src\res\telescope_128px_1190065_easyicon.net.ico" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\res\telescope_128px_1150113_easyicon.net.ico" />

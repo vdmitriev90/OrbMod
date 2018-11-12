@@ -57,17 +57,14 @@ namespace OrbModUI
             Dictionary<string, PointPairList> pLists = new Dictionary<string, PointPairList>();
             Dictionary<string, statbyObs> Stat = new Dictionary<string, statbyObs>();
 
-            using (StreamReader sr = new StreamReader(FName))
+            using (StreamReader sr = new StreamReader(fileName))
             {
-                DateTime dt = new DateTime();
-                double et = 0;
-                string[] data = new string[1];
 
                 while (sr.Peek() != -1)
                 {
                     string line = sr.ReadLine();
 
-                    if (!ParseString(line, ref dt, ref et, ref data)) continue;
+                    if (!ParseString(line, out DateTime dt, out double et, out string[] data)) continue;
 
                     if (data.Length != 3) continue;
 
@@ -159,17 +156,13 @@ namespace OrbModUI
     {
         public PlotResbyObsRA() { }
         public PlotResbyObsRA(ZedGraphControl zg, string fname) : base(zg, fname) { }
-        protected override bool AddPoint(DateTime dt, double et, string[] data, ref PointPairList Points)
+        protected override bool AddPoint(DateTime dt, double et, string[] data, ref PointPairList list)
         {
 
             if (data.Length < 3) return false;
-            double Val;
-            double.TryParse(data[1], out Val);
+            double.TryParse(data[1], out double Val);
 
-            if (Config.Instance.UseCalend)
-                Points.Add(new XDate(dt), Val);
-            else
-                Points.Add(dTdays(et), Val);
+            AddPoint(list, dt, et, Val);
             return true;
         }
         public override void EndDraw_()
@@ -188,17 +181,13 @@ namespace OrbModUI
         //
         public PlotResbyObsDec(ZedGraphControl zg, string fname) : base(zg, fname) { }
         //
-        protected override bool AddPoint(DateTime dt, double et, string[] data, ref PointPairList Points)
+        protected override bool AddPoint(DateTime dt, double et, string[] data, ref PointPairList list)
         {
             //
             if (data.Length < 3) return false;
-            double Val;
-            double.TryParse(data[2], out Val);
+            double.TryParse(data[2], out double Val);
 
-            if (Config.Instance.UseCalend)
-                Points.Add(new XDate(dt), Val);
-            else
-                Points.Add(dTdays(et), Val);
+            AddPoint(list, dt, et, Val);
             return true;
         }
         public override void EndDraw_()

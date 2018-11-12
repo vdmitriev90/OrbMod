@@ -15,8 +15,8 @@ namespace OrbModUI
     public partial class OrbMod_FormGraph : Form
     {
 
-        public enum PlotSourceData {Acc = 0, SV, Elts, Visi,Inegrator,_3_bodyFixFrame , Residuals, NotDefined};
-        public enum Acc_vs_T { Accelerations = 0 };
+        public enum PlotSourceData {Acc = 0, SV, Elts, Visi,Integrator,BodyFixedFrame_3rd , Residuals, NotDefined};
+        public enum Accelerations { Accelerations = 0 };
         public enum SV_vs { X = 0, Y , Z, Vx, Vy, Vz, R, Vel ,XoY, XoZ, YoZ };
         public enum Elts_vs_T { SMA = 0,Ecc,Inc, Node,W,MeanAnomaly, PeriDistance, ApoDistance };
         public enum Integ_vs_T { StepSize = 0, ItNum };
@@ -30,11 +30,11 @@ namespace OrbModUI
         //
         private Dictionary<PlotSourceData, Type> Source2GraphCmb = new Dictionary<PlotSourceData, Type>()
         {
-               {PlotSourceData.Acc, (Acc_vs_T.Accelerations).GetType() },
+               {PlotSourceData.Acc, (Accelerations.Accelerations).GetType() },
                {PlotSourceData.SV, (SV_vs.R).GetType() },
                {PlotSourceData.Elts, (Elts_vs_T.SMA).GetType() },
-               {PlotSourceData.Inegrator, (Integ_vs_T.StepSize).GetType() },
-               {PlotSourceData._3_bodyFixFrame, (_3body_vs_T.X).GetType() },
+               {PlotSourceData.Integrator, (Integ_vs_T.StepSize).GetType() },
+               {PlotSourceData.BodyFixedFrame_3rd, (_3body_vs_T.X).GetType() },
                  {PlotSourceData.Residuals, (Residuals.Declination).GetType() }
 
         };
@@ -44,8 +44,8 @@ namespace OrbModUI
             {"sv", PlotSourceData.SV },
             {"elts", PlotSourceData.Elts },
             {"acc", PlotSourceData.Acc },
-            {"integ", PlotSourceData.Inegrator },
-            {"3body_", PlotSourceData._3_bodyFixFrame },
+            {"integ", PlotSourceData.Integrator },
+            {"body_3rd", PlotSourceData.BodyFixedFrame_3rd },
              {"residuals", PlotSourceData.Residuals }
         };
         string AppDir;
@@ -86,8 +86,9 @@ namespace OrbModUI
                 cmb_file.SelectedIndex = 0;
         }
         //
-        private bool str2PlotSourceData(string str, ref PlotSourceData psd)
+        private bool Str2PlotSourceData(string str, out PlotSourceData psd)
         {
+            psd = PlotSourceData.NotDefined;
             foreach (var it in str2PSD)
             {
                 if (str.Contains(it.Key))
@@ -102,15 +103,14 @@ namespace OrbModUI
         private void SourseFileChange(object sender, EventArgs e)
         {
             cmb_PlotType.Items.Clear();
-            PlotSourceData psd = PlotSourceData.NotDefined;
-            if (str2PlotSourceData(cmb_file.SelectedItem.ToString(), ref psd))
+
+            if (Str2PlotSourceData(cmb_file.SelectedItem.ToString(), out PlotSourceData psd))
             {
                 currSource = psd;
                 var strs = Source2GraphCmb[psd].GetEnumNames();
                 foreach (var value in strs)
                     cmb_PlotType.Items.Add(value);
                 cmb_PlotType.SelectedIndex = 0;
-
             }
             else
                 MessageBox.Show("There are not graphs for given file.");
@@ -123,7 +123,7 @@ namespace OrbModUI
         //
         private void FormGraphInit()
         {
-            var strs = (ZedGraph.SymbolType.Circle).GetType().GetEnumNames();
+            var strs = (SymbolType.Circle).GetType().GetEnumNames();
             foreach (var value in strs)
                 cmb_symbol.Items.Add(value);
 
@@ -172,7 +172,6 @@ namespace OrbModUI
         }
         private void ChangeColor()
         {
-
             OrbMod_FormColorChange FM = new OrbMod_FormColorChange();
             FM.Owner = this;
             FM.Show();

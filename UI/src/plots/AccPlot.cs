@@ -60,60 +60,52 @@ namespace OrbModUI
             AccNames[21] = "General rel. 2";
 
 
-            using (StreamReader sr = new StreamReader(FName))
+            using (StreamReader sr = new StreamReader(fileName))
             {
-                DateTime dt = new DateTime();
-                double et = 0;
-                string[] data = new string[1];
-
                 while (sr.Peek() != -1)
                 {
                     string line = sr.ReadLine();
 
-                    if (!ParseString(line, ref dt, ref et, ref data)) continue;
-                    if (data.Length != N_acc) continue;
-                    for (int i=0;i<N_acc;i++)
+                    if (!ParseString(line, out DateTime dt, out double et, out string[] data) && data.Length == N_acc) 
                     {
-                        double val = 0;
-                        double.TryParse(data[i],out val);
-                        if (Config.Instance.UseAU)
-                            val /= Consts.AUpDay2;
-
-                        if (val > 0)
+                        for (int i = 0; i < N_acc; i++)
                         {
-                            if (Config.Instance.UseCalend)
-                                points[i].Add(new XDate(dt), val);
-                            else
-                                points[i].Add(dTdays(et), val);
+                            double.TryParse(data[i], out double val);
+                            if (Config.Instance.UseAU)
+                                val /= Consts.AUpDay2;
 
+                            if (val > 0)
+                                AddPoint(points[i], dt, et, val);
+                            
                         }
-
                     }
-                }
-                EndDraw();
-                for (int i = 0; i < N_acc; i++)
+                }        
+            }
+            EndDraw();
+            for (int i = 0; i < N_acc; i++)
+            {
+                if (points[i].Count > 0)
                 {
-                    if (points[i].Count > 0)
-                    {
-                        LineItem myCurve = pane.AddCurve(AccNames[i], points[i], Color.FromArgb(Config.Instance.ColorsAcc[i]), (SymbolType)Config.Instance.SymbolType);
+                    LineItem myCurve = pane.AddCurve(AccNames[i], points[i], Color.FromArgb(Config.Instance.ColorsAcc[i]), (SymbolType)Config.Instance.SymbolType);
 
-                        myCurve.Symbol.Size = Config.Instance.SymbolSize;
-                        myCurve.Symbol.Fill.Type = FillType.Solid;
+                    myCurve.Symbol.Size = Config.Instance.SymbolSize;
+                    myCurve.Symbol.Fill.Type = FillType.Solid;
 
-                        myCurve.Line.IsVisible = Config.Instance.IsShowLines;
-                        myCurve.Line.Width = Config.Instance.LineWidth;
-                        myCurve.Line.IsSmooth = Config.Instance.isSmoothGraph;
-                        myCurve.Line.SmoothTension = Config.Instance.Tension;
-                    }
+                    myCurve.Line.IsVisible = Config.Instance.IsShowLines;
+                    myCurve.Line.Width = Config.Instance.LineWidth;
+                    myCurve.Line.IsSmooth = Config.Instance.isSmoothGraph;
+                    myCurve.Line.SmoothTension = Config.Instance.Tension;
                 }
             }
         }
+
+
 
         //
         public override void EndDraw_()
         {
             zg.GraphPane.YAxis.Type = AxisType.Log;
-            string yT = "accelerations, ";
+            string yT = "Accelerations, ";
             if (Config.Instance.UseAU)
                 yT += "AU/day^2";
             else

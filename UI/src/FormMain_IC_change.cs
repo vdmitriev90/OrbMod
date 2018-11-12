@@ -9,7 +9,6 @@ namespace OrbModUI
     {
         private void cmb_TypeOfIC_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             ChangeIC();
             if ((TypeOfIC)cmb_TypeOfIC.SelectedIndex == TypeOfIC.OrbitalElements)
             {
@@ -20,6 +19,7 @@ namespace OrbModUI
                 lb_IC_5.Text = "peri, reg";
                 lb_IC_6.Text = "M, deg";
             }
+
             else if ((TypeOfIC)cmb_TypeOfIC.SelectedIndex == TypeOfIC.StateVector)
             {
                 lb_IC_1.Text = "X, km";
@@ -30,6 +30,7 @@ namespace OrbModUI
                 lb_IC_6.Text = "Vz, km/s";
             }
         }
+
         //
         void ChangeIC()
         {
@@ -65,9 +66,9 @@ namespace OrbModUI
 
                 // refresh the state  in Config
                 Config.Instance.SV = OrbModWrap.getIC(IDC, (int)TypeOfIC.StateVector, (int)FrameOfIC.Equator_and_Equinox_J2000);
-
             }
         }
+
         private void bt_refresh_IC_Click(object sender, EventArgs e)
         {
             int IDC = int.Parse(cmb_IDCB.Text);

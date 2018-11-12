@@ -13,7 +13,9 @@ namespace OrbModUI
         private double Mean, Var;
 
         public PlotResRA() { }
+
         public PlotResRA(ZedGraphControl zg, string fname) : base(zg, fname) { }
+
         public override void EndDraw_()
         {
 
@@ -23,18 +25,13 @@ namespace OrbModUI
             zg.GraphPane.YAxis.Title.Text = yT;
         }
         //
-        protected override bool AddPoint(DateTime dt, double et, string[] data, ref PointPairList list)
+        protected override bool ParseData(DateTime dt, double et, string[] data, PointPairList list)
         {
             if (data.Length < 3) return false;
-            double Val;
-            double.TryParse(data[1], out Val);
-            MathLib.Misc.RecMeanDisp(ref Mean, ref Var, ref i, Val);
+            double.TryParse(data[1], out double Val);
+            Misc.RecMeanDisp(ref Mean, ref Var, ref i, Val);
 
-
-            if (Config.Instance.UseCalend)
-                list.Add(new XDate(dt), Val);
-            else
-                list.Add(dTdays(et), Val);
+            AddPoint(list, dt, et, Val);
             return true;
 
         }
@@ -56,18 +53,14 @@ namespace OrbModUI
             zg.GraphPane.YAxis.Title.Text = yT;
         }
         //
-        protected override bool AddPoint(DateTime dt, double et, string[] data, ref PointPairList list)
+        protected override bool ParseData(DateTime dt, double et, string[] data, PointPairList list)
         {
 
             if (data.Length < 3) return false;
-            double Val;
-            double.TryParse(data[2], out Val);
+            double.TryParse(data[2], out double Val);
             Misc.RecMeanDisp(ref Mean, ref Var, ref i, Val);
 
-            if (Config.Instance.UseCalend)
-                list.Add(new XDate(dt), Val);
-            else
-                list.Add(dTdays(et), Val);
+            AddPoint(list, dt, et, Val);
             return true;
         }
     }
@@ -89,21 +82,17 @@ namespace OrbModUI
             zg.GraphPane.YAxis.Title.Text = yT;
         }
         //
-        protected override bool AddPoint(DateTime dt, double et, string[] data, ref PointPairList list)
+        protected override bool ParseData(DateTime dt, double et, string[] data, PointPairList list)
         {
             if (data.Length < 3) return false;
-            double Val1, Val2;
-            double.TryParse(data[1], out Val1);
-            double.TryParse(data[2], out Val2);
+            double.TryParse(data[1], out double Val1);
+            double.TryParse(data[2], out double Val2);
             double Val = Sqrt(Val1 * Val1 + Val2 * Val2);
 
             Misc.RecMeanDisp(ref Mean1, ref Var1, i, Val1);
             Misc.RecMeanDisp(ref Mean2, ref Var2, i, Val2);
             i++;
-            if (Config.Instance.UseCalend)
-                list.Add(new XDate(dt), Val);
-            else
-                list.Add(dTdays(et), Val);
+            AddPoint(list, dt, et, Val);
             return true;
         }
 

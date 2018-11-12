@@ -12,7 +12,7 @@ namespace OrbModUI
         //
         public PlotSingle(ZedGraphControl zg, string fname) : base(zg, fname){}
         //
-        protected abstract bool AddPoint(DateTime dt, double et, string[] data, ref PointPairList list);
+        protected abstract bool ParseData(DateTime dt, double et, string[] data, PointPairList list);
         //
         public override void PlotData()
         {
@@ -20,19 +20,16 @@ namespace OrbModUI
             pane.CurveList.Clear();
 
             PointPairList points = new PointPairList();
-            using (StreamReader sr = new StreamReader(FName))
+            using (StreamReader sr = new StreamReader(fileName))
             {
-                DateTime dt = new DateTime();
-                double et = 0;
-                string[] data = new string[1];
 
                 while (sr.Peek() != -1)
                 {
                     string line = sr.ReadLine();
 
-                    if (!ParseString(line, ref dt, ref et, ref data)) continue;
+                    if (!ParseString(line, out DateTime dateTime, out double et, out string[] data)) continue;
 
-                    AddPoint(dt, et, data, ref points);
+                    ParseData(dateTime, et, data, points);
                 }
 
                 //

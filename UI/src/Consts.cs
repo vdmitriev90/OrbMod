@@ -8,8 +8,8 @@ namespace OrbModUI
 {
     public class Consts
     {
-        public static readonly double AU = 149597870.7;
-        public static readonly double AUpDay = 149597870.7/86400.0;
-        public static readonly double AUpDay2 = (149597870.7 /( 86400.0* 86400.0));
+        public const double AU = 149597870.7;
+        public const double AUpDay = 149597870.7/86400.0;
+        public const double AUpDay2 = (149597870.7 /( 86400.0* 86400.0));
     }
 }

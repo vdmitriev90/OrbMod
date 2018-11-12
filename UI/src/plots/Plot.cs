@@ -11,57 +11,71 @@ namespace OrbModUI
 {
     public abstract class Plot
     {
-        protected int _EpochCounter;
+
         protected ZedGraphControl zg;
-        //
-        protected string FName;
-        protected double t0;
+
+        protected string fileName;
+        protected double timeStart;
+        protected int epochCounter;
 
         //
         public Plot()
         {
-
-
-            _EpochCounter = 0;
+            epochCounter = 0;
         }
+
         //
         public Plot(ZedGraphControl zg, string fname)
         {
             this.zg = zg;
-            FName = fname;
+            fileName = fname;
             GraphPane pane = zg.GraphPane;
             pane.CurveList.Clear();
             pane.GraphObjList.Clear();
 
-            _EpochCounter = 0;
+            epochCounter = 0;
        }
 
-        protected double dTdays(double et)
+        protected double TimeDeltaDays(double et)
         {
-            return (et - t0) / 86400.0;
+            return (et - timeStart) / 86400.0;
         }
 
-        protected virtual bool ParseString(string input, ref DateTime dt, ref double et, ref string[] data)
+        protected virtual bool ParseString(string input, out DateTime dt, out double et, out string[] data)
         {
+            data = null;
+            dt = DateTime.MaxValue;
+            et = double.MinValue;
 
             string[] strs = input.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            if (strs.Length < 6) return false;
+            if (strs.Length < 6)
+                return false;
 
             string s_dt = "";
             for (int i = 0; i < 4; i++)
                 s_dt += strs[i] + " ";
 
-            if (!DateTime.TryParse(s_dt, out dt)) return false;
+            if (!DateTime.TryParse(s_dt, out dt))
+                return false;
             double.TryParse(strs[4], out et);
             data = new string[strs.Length - 5];
 
             for (int i = 0; i < data.Length; i++)
                 data[i] = strs[i + 5];
 
-            if (_EpochCounter == 0) t0 = et;
-            _EpochCounter++;
+            if (epochCounter == 0)
+                timeStart = et;
+            epochCounter++;
 
             return true;
+        }
+
+        protected void AddPoint(PointPairList ppList, DateTime dt, double et,  double val)
+        {
+            if (Config.Instance.UseCalend)
+                ppList.Add(new XDate(dt), val);
+            else
+                ppList.Add(TimeDeltaDays(et), val);
         }
         //
 
@@ -71,7 +85,7 @@ namespace OrbModUI
         public virtual void EndDraw()
         {
             zg.GraphPane.YAxis.Type = AxisType.Linear;
-            zg.GraphPane.Title.Text = Path.GetFileNameWithoutExtension(this.FName);
+            zg.GraphPane.Title.Text = Path.GetFileNameWithoutExtension(this.fileName);
             if (Config.Instance.UseCalend)
             {
                 zg.GraphPane.XAxis.Title.Text = "";
@@ -99,12 +113,8 @@ namespace OrbModUI
             pane.YAxis.Scale.MaxAuto = true;
 
             zgStateChange();
-
         }
-        //
-        //
-        
-        //
+
         public virtual void zgStateChange()
         {
             // Обновим данные об осях
@@ -113,6 +123,7 @@ namespace OrbModUI
             // Обновляем график
             zg.Invalidate();
         }
+
         //
         protected static void SetEqualScale(ZedGraphControl zg)
         {

@@ -18,8 +18,7 @@ namespace OrbModUI
 
         private void OrbMod_FormAbout_Load(object sender, EventArgs e)
         {
-            string str = "OrbMod version:\t" + OrbModWrap.getVersion() + "\n";
-            str += "OrbMod UI version:\t1.0\n";
+            string str = "OrbMod software version:\t" + OrbModWrap.getVersion() + "\n";
             str += "Author:\t Vasily Dmitriev, Moscow, MIIGAiK MexLab";
             this.label1.Text = str;
         }

@@ -22,20 +22,16 @@ namespace OrbModUI
             zg.GraphPane.YAxis.Title.Text = yT;
         }
         //
-        protected override bool AddPoint(DateTime dt, double et, string[] data, ref PointPairList list)
+        protected override bool ParseData(DateTime dt, double et, string[] data,  PointPairList list)
         {
             if (data.Length < 2) return false;
-            double peri, ecc;
-            double.TryParse(data[0], out peri);
-            double.TryParse(data[1], out ecc);
+            double.TryParse(data[0], out double peri);
+            double.TryParse(data[1], out double ecc);
             double Val = peri / (1.0 - ecc);
 
             if (Config.Instance.UseAU)
                 Val /= Consts.AU;
-            if (Config.Instance.UseCalend)
-                list.Add(new XDate(dt), Val);
-            else
-                list.Add(dTdays(et), Val);
+            AddPoint(list, dt, et, Val);
             return true;
         }
     }
@@ -56,21 +52,18 @@ namespace OrbModUI
             zg.GraphPane.YAxis.Title.Text = yT;
         }
         //
-        protected override bool AddPoint(DateTime dt, double et, string[] data, ref PointPairList list)
+        protected override bool ParseData(DateTime dt, double et, string[] data,  PointPairList list)
         {
             if (data.Length < 2) return false;
-            double peri, ecc;
-            double.TryParse(data[0], out peri);
-            double.TryParse(data[1], out ecc);
+            double.TryParse(data[0], out double peri);
+            double.TryParse(data[1], out double ecc);
 
             double Val = peri * ((1.0 + ecc) / (1.0 - ecc));
 
             if (Config.Instance.UseAU)
                 Val /= Consts.AU;
-            if (Config.Instance.UseCalend)
-                list.Add(new XDate(dt), Val);
-            else
-                list.Add(dTdays(et), Val);
+
+            AddPoint(list, dt, et, Val);
             return true;
 
         }
@@ -90,17 +83,13 @@ namespace OrbModUI
             zg.GraphPane.YAxis.Title.Text = yT;
         }
         //
-        protected override bool AddPoint(DateTime dt, double et, string[] data, ref PointPairList list)
+        protected override bool ParseData(DateTime dt, double et, string[] data,  PointPairList list)
         {
             if (data.Length < 1) return false;
-            double Val;
-            double.TryParse(data[0], out Val);
+            double.TryParse(data[0], out double Val);
             if (Config.Instance.UseAU)
                 Val /= Consts.AU;
-            if (Config.Instance.UseCalend)
-                list.Add(new XDate(dt), Val);
-            else
-                list.Add(dTdays(et), Val);
+            AddPoint(list, dt, et, Val);
             return true;
         }
     }
@@ -120,16 +109,13 @@ namespace OrbModUI
             zg.GraphPane.YAxis.Title.Text = yT;
         }
         //
-        protected override bool AddPoint(DateTime dt, double et, string[] data, ref PointPairList list)
+        protected override bool ParseData(DateTime dt, double et, string[] data, PointPairList list)
         {
             double Val;
             if (data.Length < 2) return false;
             double.TryParse(data[1], out Val);
 
-            if (Config.Instance.UseCalend)
-                list.Add(new XDate(dt), Val);
-            else
-                list.Add(dTdays(et), Val);
+            AddPoint(list, dt, et, Val);
             return true;
 
         }
@@ -150,16 +136,12 @@ namespace OrbModUI
             zg.GraphPane.YAxis.Title.Text = yT;
         }
         //
-        protected override bool AddPoint(DateTime dt, double et, string[] data, ref PointPairList list)
+        protected override bool ParseData(DateTime dt, double et, string[] data, PointPairList list)
         {
             if (data.Length < 3) return false;
-            double Val;
-            double.TryParse(data[2], out Val);
+            double.TryParse(data[2], out double Val);
 
-            if (Config.Instance.UseCalend)
-                list.Add(new XDate(dt), Val);
-            else
-                list.Add(dTdays(et), Val);
+            AddPoint(list, dt, et, Val);
             return true;
 
         }
@@ -180,16 +162,12 @@ namespace OrbModUI
             zg.GraphPane.YAxis.Title.Text = yT;
         }
         //
-        protected override bool AddPoint(DateTime dt, double et, string[] data, ref PointPairList list)
+        protected override bool ParseData(DateTime dt, double et, string[] data, PointPairList list)
         {
             if (data.Length < 4) return false;
-            double Val;
-            double.TryParse(data[3], out Val);
+            double.TryParse(data[3], out double Val);
 
-            if (Config.Instance.UseCalend)
-                list.Add(new XDate(dt), Val);
-            else
-                list.Add(dTdays(et), Val);
+            AddPoint(list, dt, et, Val);
             return true;
 
         }
@@ -210,16 +188,12 @@ namespace OrbModUI
             zg.GraphPane.YAxis.Title.Text = yT;
         }
         //
-        protected override bool AddPoint(DateTime dt, double et, string[] data, ref PointPairList list)
+        protected override bool ParseData(DateTime dt, double et, string[] data, PointPairList list)
         {
             if (data.Length < 5) return false;
-            double Val;
-            double.TryParse(data[4], out Val);
+            double.TryParse(data[4], out double Val);
 
-            if (Config.Instance.UseCalend)
-                list.Add(new XDate(dt), Val);
-            else
-                list.Add(dTdays(et), Val);
+            AddPoint(list, dt, et, Val);
             return true;
 
         }
@@ -240,16 +214,12 @@ namespace OrbModUI
             zg.GraphPane.YAxis.Title.Text = yT;
         }
         //
-        protected override bool AddPoint(DateTime dt, double et, string[] data, ref PointPairList list)
+        protected override bool ParseData(DateTime dt, double et, string[] data, PointPairList list)
         {
             if (data.Length < 6) return false;
-            double Val;
-            double.TryParse(data[5], out Val);
+            double.TryParse(data[5], out double Val);
 
-            if (Config.Instance.UseCalend)
-                list.Add(new XDate(dt), Val);
-            else
-                list.Add(dTdays(et), Val);
+            AddPoint(list, dt, et, Val);
             return true;
         }
     }
