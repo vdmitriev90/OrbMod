@@ -8,6 +8,8 @@ namespace OrbModUI
 
         public class PlotSpec : Plot
         {
+            public static string FileSelected{ set; get; }
+
             private Plot plot;
             public PlotSpec(ZedGraphControl zg, string fname)
             {

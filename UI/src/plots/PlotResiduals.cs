@@ -95,6 +95,5 @@ namespace OrbModUI
             AddPoint(list, dt, et, Val);
             return true;
         }
-
     }
 }

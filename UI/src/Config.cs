@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using OrbModCLRWrapper;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace OrbModUI
 {
@@ -14,7 +15,7 @@ namespace OrbModUI
     public enum FrameOfIC { Equator_and_Equinox_J2000 = 0, Ecliptic_and_Equinox_J2000 };
     public enum TimeFormat { UTC_Calendar_format = 0, TDB_Seconds_past_J2000, TDB_Calendar_format, TT_Calendar_format };
 
-    public enum EarthFixFrame {IAU_EARTH = 0, ITRF93, ITRF2008 };
+    public enum EarthFixFrame { IAU_EARTH = 0, ITRF93, ITRF2008 };
 
     public class Config
     {
@@ -129,9 +130,9 @@ namespace OrbModUI
         //
         //line
         public bool IsShowLines = true;
-        public int LineWidth =0;
-        public int SymbolType=1;
-        public int SymbolSize=1;
+        public int LineWidth = 0;
+        public int SymbolType = 1;
+        public int SymbolSize = 1;
 
         public bool UseAU = false;
         public bool UseCalend = false;
@@ -141,7 +142,7 @@ namespace OrbModUI
         //
         public bool isLogRes;
 
-#endregion
+        #endregion
 
         private void initDict()
         {
@@ -194,43 +195,84 @@ namespace OrbModUI
         { "symbolSize", symbolSize },
         { "symbolType", symbolType },
         { "isShowLines", isShowLines },
+        { "GraphSelected", GraphSelected },
 
             };
 
             Formatters = new Par2Str[]
             {
-        ProcessMode,FittingMode,
-        Obs, MinObsInbatch,ArcLength,
-        NmNr, CB,Int, Var, NOR,
-         step, Eps, orbFitEps,
-        AutoStep ,Niter, orbFitNiter,
-        orbFitNiterPerBatch,orbFitRejOuts,
-         T_start ,  T_end ,  Frame ,EarthFixedFrame,
-         Time_scale, TypeIC, UsePeriTime, IC,
-        BigPlanets,  AddBodies,AddBody5HT, CBHterms, Rel, SRP,
-            Discr, Out,BFFID, Colors,
-         useObs,ObservationsPath,ObsTimeFrame,
-        IsLogResiduals, aprioriRMS,processNoise,
-        lineWidth,symbolSize, symbolType, isShowLines
+        ProcessMode,
+FittingMode,
+Obs,
+MinObsInbatch,
+ArcLength,
+NmNr,
+CB,
+Int,
+Var,
+NOR,
+step,
+Eps,
+orbFitEps,
+AutoStep,
+Niter,
+orbFitNiter,
+orbFitNiterPerBatch,
+orbFitRejOuts,
+T_start,
+T_end,
+Frame,
+EarthFixedFrame,
+Time_scale,
+TypeIC,
+UsePeriTime,
+IC,
+BigPlanets,
+AddBodies,
+AddBody5HT,
+CBHterms,
+Rel,
+SRP,
+Discr,
+Out,
+BFFID,
+Colors,
+useObs,
+ObservationsPath,
+ObsTimeFrame,
+IsLogResiduals,
+aprioriRMS,
+processNoise,
+lineWidth,
+symbolSize,
+symbolType,
+isShowLines,
+GraphSelected
             };
         }
 
         public bool LoadConfig(string Path)
         {
 
-                using (StreamReader sr = new StreamReader(Path))
+            using (StreamReader sr = new StreamReader(Path))
+            {
+                while (sr.Peek() != -1)
                 {
-                    while (sr.Peek() != -1)
+                    try
                     {
                         string line = sr.ReadLine();
-                        string[] _v = line.Split(new char[] { ':' },2);
+                        string[] _v = line.Split(new char[] { ':' }, 2);
                         if (_v.Length < 2) continue;
-                        Str2Par del;
-                        if (Parser.TryGetValue(_v[0], out del))
+                        if (Parser.TryGetValue(_v[0], out Str2Par del))
                             del(_v[1]);
                     }
+                    catch(Exception exc)
+                    {
+                        Debug.WriteLine(exc);
+                    }
                 }
-  
+            }
+
             return true;
         }
 
@@ -257,7 +299,7 @@ namespace OrbModUI
         }
 
         #region Parsers
-            bool NmNr(string s)
+        bool NmNr(string s)
         {
             //  NameNr = (NameOrNumber)int.Parse(s);
             return true;
@@ -265,7 +307,7 @@ namespace OrbModUI
         //
         bool ProcessMode(string s)
         {
-             mode = (ProcessMode)int.Parse(s);
+            mode = (ProcessMode)int.Parse(s);
             return true;
         }
         //
@@ -324,7 +366,7 @@ namespace OrbModUI
         //
         bool eps(string s)
         {
-            Local_eps =float.Parse(s);
+            Local_eps = float.Parse(s);
             return true;
         }
         //
@@ -336,7 +378,7 @@ namespace OrbModUI
         //
         bool Autostep(string s)
         {
-            IsAutoStep =Convert.ToBoolean(int.Parse(s));
+            IsAutoStep = Convert.ToBoolean(int.Parse(s));
             return true;
         }
         //
@@ -432,8 +474,8 @@ namespace OrbModUI
             int j = 0;
             for (int i = 0; i < 10; i = i + 2)
             {
-                b_add[j] = Convert.ToBoolean(int.Parse(strs[i+1]));
-                id_add[j] = int.Parse(strs[i ]);
+                b_add[j] = Convert.ToBoolean(int.Parse(strs[i + 1]));
+                id_add[j] = int.Parse(strs[i]);
                 j++;
             }
             return true;
@@ -475,7 +517,7 @@ namespace OrbModUI
             string[] strs = s.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
             if (strs.Length < 4) return false;
 
-            b_SRP =  Convert.ToBoolean(int.Parse(strs[0]));
+            b_SRP = Convert.ToBoolean(int.Parse(strs[0]));
             SRP_albedo = double.Parse(strs[1]);
             SRP_S = double.Parse(strs[2]);
             SRP_Mass = double.Parse(strs[3]);
@@ -492,14 +534,14 @@ namespace OrbModUI
             string[] strs = s.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
             if (strs.Length < 8) return false;
 
-            b_out_sv_J2000 =  Convert.ToBoolean(int.Parse(strs[0]));
-            b_out_el_J2000 =  Convert.ToBoolean(int.Parse(strs[1]));
-            b_out_sv_ECLIPJ2000 =  Convert.ToBoolean(int.Parse(strs[2]));
-            b_out_el_ECLIPJ2000 =  Convert.ToBoolean(int.Parse(strs[3]));
-            b_out_sv_IAUPlanet =  Convert.ToBoolean(int.Parse(strs[4]));
-            b_out_acc =  Convert.ToBoolean(int.Parse(strs[5]));
-            b_out_BL =  Convert.ToBoolean(int.Parse(strs[6]));
-            b_3_BFF_sv =  Convert.ToBoolean(int.Parse(strs[7]));
+            b_out_sv_J2000 = Convert.ToBoolean(int.Parse(strs[0]));
+            b_out_el_J2000 = Convert.ToBoolean(int.Parse(strs[1]));
+            b_out_sv_ECLIPJ2000 = Convert.ToBoolean(int.Parse(strs[2]));
+            b_out_el_ECLIPJ2000 = Convert.ToBoolean(int.Parse(strs[3]));
+            b_out_sv_IAUPlanet = Convert.ToBoolean(int.Parse(strs[4]));
+            b_out_acc = Convert.ToBoolean(int.Parse(strs[5]));
+            b_out_BL = Convert.ToBoolean(int.Parse(strs[6]));
+            b_3_BFF_sv = Convert.ToBoolean(int.Parse(strs[7]));
             return true;
         }
         //
@@ -545,7 +587,7 @@ namespace OrbModUI
             string[] strs = s.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
             if (strs.Length < 2) return false;
 
-            obs_t0 = double.Parse( strs[0]);
+            obs_t0 = double.Parse(strs[0]);
             obs_te = double.Parse(strs[1]);
             return true;
         }
@@ -575,7 +617,7 @@ namespace OrbModUI
         //
         bool IsLogResiduals(string s)
         {
-            isLogRes =  Convert.ToBoolean(int.Parse(s));
+            isLogRes = Convert.ToBoolean(int.Parse(s));
             return true;
         }
         bool aprioriRMS(string s)
@@ -595,10 +637,17 @@ namespace OrbModUI
             Qnoise = double.Parse(strs[0]);
             return true;
         }
-        bool  isShowLines(string s)
+        bool isShowLines(string s)
         {
 
             IsShowLines = Convert.ToBoolean(int.Parse(s));
+
+            return true;
+        }
+        bool GraphSelected(string s)
+        {
+
+            OrbMod_FormGraph.PlotSpec.FileSelected =s;
 
             return true;
         }
@@ -606,112 +655,112 @@ namespace OrbModUI
 
         #region Formatters
 
-        string  NmNr()
+        string NmNr()
         {
             string str = "NmNr:1";
             //str += Convert.ToString((int) NameNr);
             return str;
         }
         //
-        string  ProcessMode()
+        string ProcessMode()
         {
             string str = "Mode:";
-            str += Convert.ToString((int) mode);
+            str += Convert.ToString((int)mode);
             return str;
         }
-        string  FittingMode()
+        string FittingMode()
         {
             string str = "FittingMode:";
-            str += Convert.ToString((int) fitMode);
+            str += Convert.ToString((int)fitMode);
             return str;
         }
         //
-        string  Obs()
+        string Obs()
         {
             string str = "Obs:";
-            str += Convert.ToString((int) ObsType);
+            str += Convert.ToString((int)ObsType);
             return str;
         }
         //
-        string  MinObsInbatch()
+        string MinObsInbatch()
         {
             string str = "MinObsInbatch:";
-            str += Convert.ToString( MinObsinBatch);
+            str += Convert.ToString(MinObsinBatch);
             return str;
         }
         //
-        string  ArcLength()
+        string ArcLength()
         {
             string str = "ArcLength:";
-            str += Convert.ToString( arcLength);
+            str += Convert.ToString(arcLength);
             return str;
         }
         //
-        string  CB()
+        string CB()
         {
             string str = "IDC:";
-            str += Convert.ToString( IDC);
+            str += Convert.ToString(IDC);
             return str;
         }
         //
-        string  Int()
+        string Int()
         {
             return "Integrator:0";
         }
         //
-        string  Var()
+        string Var()
         {
             string str = "Variables:";
-            str += Convert.ToString( (int)var);
+            str += Convert.ToString((int)var);
             return str;
         }
-        string  NOR()
+        string NOR()
         {
             string str = "NOR:";
-            str += Convert.ToString( NOr);
+            str += Convert.ToString(NOr);
             return str;
         }
-        string  step()
+        string step()
         {
             string str = "Step:";
 
             str += Step.ToString("F12");
             return str;
         }
-        string  Eps()
+        string Eps()
         {
             string str = "Eps:";
             str += Convert.ToString(Local_eps);
             return str;
         }
-        string  orbFitEps()
+        string orbFitEps()
         {
             string str = "OrbFitEps:";
             str += OrbFitEps.ToString();
             return str;
         }
-        string  AutoStep()
+        string AutoStep()
         {
             string str = "IsAutoStep:";
-            str += Convert.ToString(Convert.ToInt32( IsAutoStep));
+            str += Convert.ToString(Convert.ToInt32(IsAutoStep));
             return str;
         }
         //
-        string  Niter()
+        string Niter()
         {
             string str = "Niter:";
-            str += Convert.ToString( niter);
+            str += Convert.ToString(niter);
             return str;
         }
         //
-        string  orbFitNiter()
+        string orbFitNiter()
         {
             string str = "OrbFitNiter:";
             str += Convert.ToString(OrbFitMaxIter);
             return str;
         }
         //
-        string  orbFitNiterPerBatch()
+        string orbFitNiterPerBatch()
         {
             string str = "orbFitNiterPerBatch:";
             str += Convert.ToString(maxIterPerBatch);
@@ -719,7 +768,7 @@ namespace OrbModUI
             return str;
         }
         //
-        string  orbFitRejOuts()
+        string orbFitRejOuts()
         {
             string str = "orbFitRejOuts:";
             str += Convert.ToString(Convert.ToInt32(isRejOuts)) + ";";
@@ -727,52 +776,52 @@ namespace OrbModUI
 
             return str;
         }
-        string  T_start()
+        string T_start()
         {
             string str = "T_start:";
-            str +=  s_t0;
+            str += s_t0;
             return str;
         }
-        string  T_end()
+        string T_end()
         {
             string str = "T_end:";
-            str +=  s_te;
+            str += s_te;
             return str;
         }
         //
-        string  Frame()
+        string Frame()
         {
             string str = "Frame:";
-            str += Convert.ToString( (int)ICFrame);
+            str += Convert.ToString((int)ICFrame);
             return str;
         }
         //
-        string  EarthFixedFrame()
+        string EarthFixedFrame()
         {
             string str = "EarthFixedFrame:";
-            str += Convert.ToString((int) EarthFrame);
+            str += Convert.ToString((int)EarthFrame);
             return str;
         }
         //
-        string  Time_scale()
+        string Time_scale()
         {
             string str = "Time_scale:";
-            str += Convert.ToString((int) Tframe);
+            str += Convert.ToString((int)Tframe);
             return str;
         }
-        string  TypeIC()
+        string TypeIC()
         {
             string str = "Type_of_IC:";
-            str += Convert.ToString( (int)ICType);
+            str += Convert.ToString((int)ICType);
             return str;
         }
-        string  UsePeriTime()
+        string UsePeriTime()
         {
             string str = "UsePeriTime:";
             str += Convert.ToString("0");
             return str;
         }
-        string  IC()
+        string IC()
         {
             string str = "IC:";
             for (int i = 0; i < 6; i++)
@@ -782,41 +831,41 @@ namespace OrbModUI
             }
             return str;
         }
-        string  BigPlanets()
+        string BigPlanets()
         {
             string str = "PerturbationsByPlanets:";
             foreach (var it in b_pl)
-                str += Convert.ToString(Convert.ToUInt32(it))+";";
+                str += Convert.ToString(Convert.ToUInt32(it)) + ";";
 
             return str;
         }
         //
-        string  AddBodies()
+        string AddBodies()
         {
             string str = "PerturbationsBySpecificBodies:";
-            for (int i = 0; i< b_add.Length; i++)
+            for (int i = 0; i < b_add.Length; i++)
             {
-                str += Convert.ToString(id_add[i]) + ";" + Convert.ToString(Convert.ToInt32(b_add[i])) +";" ;
+                str += Convert.ToString(id_add[i]) + ";" + Convert.ToString(Convert.ToInt32(b_add[i])) + ";";
             }
             return str;
         }
         //
-        string  CBHterms()
+        string CBHterms()
         {
             string str = "CBHterms:";
-               str += Convert.ToString(Convert.ToInt32( b_CB_Cnm)) + ";" + Convert.ToString( CB_N) + ';' +  CB_FileModel;
+            str += Convert.ToString(Convert.ToInt32(b_CB_Cnm)) + ";" + Convert.ToString(CB_N) + ';' + CB_FileModel;
 
             return str;
         }
         //
-        string  AddBody5HT()
+        string AddBody5HT()
         {
             string str = "AddBody5HT:";
             str += Convert.ToString(Convert.ToInt32(b_add5Cnm)) + ";" + Convert.ToString(add5_N) + ';' + add5_FileModel;
             return str;
         }
         //
-        string  Rel()
+        string Rel()
         {
             string str = "Rel:";
             str += Convert.ToString(Convert.ToInt32(b_rel)) + ";" + Convert.ToString(Convert.ToInt32(b_rel_LT));
@@ -824,62 +873,62 @@ namespace OrbModUI
             return str;
         }
         //
-        string  SRP()
+        string SRP()
         {
             string str = "SRP:";
-            str += Convert.ToString(Convert.ToInt32(b_SRP)) + ';' + Convert.ToString( SRP_albedo) + ';';
-            str += Convert.ToString((int) SRP_S) + ';' + Convert.ToString((int) SRP_Mass);
+            str += Convert.ToString(Convert.ToInt32(b_SRP)) + ';' + Convert.ToString(SRP_albedo) + ';';
+            str += Convert.ToString((int)SRP_S) + ';' + Convert.ToString((int)SRP_Mass);
 
             return str;
         }
         //
-        string  Discr()
+        string Discr()
         {
             string str = "Discr:";
-            str += Convert.ToString( discr);
+            str += Convert.ToString(discr);
 
             return str;
         }
         //
-        string  Out()
+        string Out()
         {
             string str = "Out:";
-            str += Convert.ToString( Convert.ToInt32( b_out_sv_J2000) )+ ";";
-            str += Convert.ToString( Convert.ToInt32(b_out_el_J2000)) + ";";
-            str += Convert.ToString( Convert.ToInt32(b_out_sv_ECLIPJ2000)) + ";";
-            str += Convert.ToString( Convert.ToInt32(b_out_el_ECLIPJ2000)) + ";";
-            str += Convert.ToString( Convert.ToInt32(b_out_sv_IAUPlanet)) + ";";
-            str += Convert.ToString( Convert.ToInt32(b_out_acc)) + ";";
-            str += Convert.ToString( Convert.ToInt32(b_out_BL)) + ";";
-            str += Convert.ToString( Convert.ToInt32(b_3_BFF_sv)) + ";";
+            str += Convert.ToString(Convert.ToInt32(b_out_sv_J2000)) + ";";
+            str += Convert.ToString(Convert.ToInt32(b_out_el_J2000)) + ";";
+            str += Convert.ToString(Convert.ToInt32(b_out_sv_ECLIPJ2000)) + ";";
+            str += Convert.ToString(Convert.ToInt32(b_out_el_ECLIPJ2000)) + ";";
+            str += Convert.ToString(Convert.ToInt32(b_out_sv_IAUPlanet)) + ";";
+            str += Convert.ToString(Convert.ToInt32(b_out_acc)) + ";";
+            str += Convert.ToString(Convert.ToInt32(b_out_BL)) + ";";
+            str += Convert.ToString(Convert.ToInt32(b_3_BFF_sv)) + ";";
 
             return str;
         }
         //
-        string  BFFID()
+        string BFFID()
         {
             string str = "BFFID:";
-            str += Convert.ToString( ID_3_BFF_num);
+            str += Convert.ToString(ID_3_BFF_num);
             return str;
         }
         //
-        string  Colors()
+        string Colors()
         {
             string str = "Colors:";
-            str += Convert.ToString( col_Main) + ';';
+            str += Convert.ToString(col_Main) + ';';
             for (int i = 0; i < 22; i++)
-                str += Convert.ToString( ColorsAcc[i]) + ';';
+                str += Convert.ToString(ColorsAcc[i]) + ';';
             return str;
         }
         //
-        string  useObs()
+        string useObs()
         {
-            string str = "useObservatoris:"+observeratories;
+            string str = "useObservatoris:" + observeratories;
 
             return str;
         }
         //
-        string  ObservationsPath()
+        string ObservationsPath()
         {
             string str = "ObservationsPath:";
             str += ObsPath;
@@ -888,33 +937,33 @@ namespace OrbModUI
         string ObsTimeFrame()
         {
             string str = "ObsTimeFrame:";
-            str += obs_t0.ToString("F4")+";";
+            str += obs_t0.ToString("F4") + ";";
             str += obs_te.ToString("F4") + ";";
             return str;
         }
         //
-        string  IsLogResiduals()
+        string IsLogResiduals()
         {
             string str = "IsLogResiduals:";
-            str += Convert.ToString(Convert.ToInt32( isLogRes));
+            str += Convert.ToString(Convert.ToInt32(isLogRes));
             return str;
         }
         //
-        string  aprioriRMS()
+        string aprioriRMS()
         {
             string str = "aprioriRMS:";
 
-            str += ObsSigma.ToString("E8")+";";
+            str += ObsSigma.ToString("E8") + ";";
             str += PosRMS.ToString("E8") + ";";
             str += VelRMS.ToString("E8") + ";";
 
             return str;
         }
         //
-        string  processNoise()
+        string processNoise()
         {
             string str = "processNoise:";
-            str += Qnoise.ToString("E8") ;
+            str += Qnoise.ToString("E8");
 
             return str;
         }
@@ -939,11 +988,19 @@ namespace OrbModUI
 
             return str;
         }
+
         //
         string isShowLines()
         {
             string str = "siShowLines:";
             str += IsShowLines.ToString();
+
+            return str;
+        }
+
+        string GraphSelected()
+        {
+            string str = $"GraphSelected:{OrbMod_FormGraph.PlotSpec.FileSelected}";
 
             return str;
         }

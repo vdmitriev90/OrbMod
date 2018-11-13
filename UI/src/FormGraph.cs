@@ -20,7 +20,7 @@ namespace OrbModUI
         public enum SV_vs { X = 0, Y , Z, Vx, Vy, Vz, R, Vel ,XoY, XoZ, YoZ };
         public enum Elts_vs_T { SMA = 0,Ecc,Inc, Node,W,MeanAnomaly, PeriDistance, ApoDistance };
         public enum Integ_vs_T { StepSize = 0, ItNum };
-        public enum _3body_vs_T { X = 0, Y, Z, Vx, Vy, Vz, R ,V };
+        public enum Third_body_vs_T { X = 0, Y, Z, Vx, Vy, Vz, R ,V };
         public enum Residuals { RightAccention,Declination, RAandDec,RAbyObservatory, DecbyObservatory };
 
         private PlotSpec currGraph;
@@ -34,7 +34,7 @@ namespace OrbModUI
                {PlotSourceData.SV, (SV_vs.R).GetType() },
                {PlotSourceData.Elts, (Elts_vs_T.SMA).GetType() },
                {PlotSourceData.Integrator, (Integ_vs_T.StepSize).GetType() },
-               {PlotSourceData.BodyFixedFrame_3rd, (_3body_vs_T.X).GetType() },
+               {PlotSourceData.BodyFixedFrame_3rd, (Third_body_vs_T.X).GetType() },
                  {PlotSourceData.Residuals, (Residuals.Declination).GetType() }
 
         };
@@ -46,7 +46,7 @@ namespace OrbModUI
             {"acc", PlotSourceData.Acc },
             {"integ", PlotSourceData.Integrator },
             {"body_3rd", PlotSourceData.BodyFixedFrame_3rd },
-             {"residuals", PlotSourceData.Residuals }
+            {"residuals", PlotSourceData.Residuals }
         };
         string AppDir;
         public OrbMod_FormGraph()
@@ -68,8 +68,8 @@ namespace OrbModUI
         {
             FormGraphInit();
             cmb_fileInit();
-
         }
+
         //
         private void cmb_fileInit()
         {
@@ -82,7 +82,9 @@ namespace OrbModUI
                 cmb_file.Items.Add(Path.GetFileNameWithoutExtension(it));
             }
 
-            if (cmb_file.Items.Count > 0)
+            if (cmb_file.Items.Contains(PlotSpec.FileSelected))
+                cmb_file.SelectedItem = PlotSpec.FileSelected;
+            else if (cmb_file.Items.Count > 0)
                 cmb_file.SelectedIndex = 0;
         }
         //
@@ -99,6 +101,7 @@ namespace OrbModUI
             }
             return false;
         }
+
         //
         private void SourseFileChange(object sender, EventArgs e)
         {
@@ -118,8 +121,8 @@ namespace OrbModUI
             string path = OutFiles[cmb_file.SelectedIndex];
            // zedGraphControl1 = new ZedGraphControl();
             currGraph = new PlotSpec(zedGraphControl1, path);
-
         }
+
         //
         private void FormGraphInit()
         {
@@ -147,6 +150,7 @@ namespace OrbModUI
             int legendFontSize = 12;
 
             int mainTitleFontSize = 14;
+
             // Установим размеры шрифтов для меток вдоль осей
             pane.XAxis.Scale.FontSpec.Size = labelsXfontSize;
             pane.YAxis.Scale.FontSpec.Size = labelsYfontSize;
@@ -194,6 +198,7 @@ namespace OrbModUI
             Config.Instance.Tension = Convert.ToSingle(nud_Smooth.Value);
 
             Config.Instance.isSmoothGraph = (Config.Instance.Tension > 0);
+            PlotSpec.FileSelected = cmb_file.SelectedItem.ToString();
         }
 
         private void zedGraphControl1_ZoomEvent(ZedGraphControl sender, ZoomState oldState, ZoomState newState)

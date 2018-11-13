@@ -66,7 +66,7 @@ namespace OrbModUI
                 {
                     string line = sr.ReadLine();
 
-                    if (!ParseString(line, out DateTime dt, out double et, out string[] data) && data.Length == N_acc) 
+                    if (ParseString(line, out DateTime dt, out double et, out string[] data) && data.Length >= N_acc)
                     {
                         for (int i = 0; i < N_acc; i++)
                         {
