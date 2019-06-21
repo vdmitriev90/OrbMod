@@ -56,18 +56,18 @@ Here you can manage the parameters of fitting orbit to observations:
 4. Settings of EKF
 
  
- ![](https://github.com/vdmitriev90/OrbMod_DotNET_UI/blob/master/Process%20settings.png)
+ ![](https://github.com/vdmitriev90/OrbMod/blob/master/Process%20settings.png)
  
  
 ## Output settings menu
 Here you able to specify the data whichkind of data wil be store in files during processing, and rate of output streams
 
-![](https://github.com/vdmitriev90/OrbMod_DotNET_UI/blob/master/Output%20settings.png)
+![](https://github.com/vdmitriev90/OrbMod/blob/master/Output%20settings.png)
 
 ## Tools menus
 
 
-![](https://github.com/vdmitriev90/OrbMod_DotNET_UI/blob/master/Tools.png)
+![](https://github.com/vdmitriev90/OrbMod/blob/master/Tools.png)
 
 Here you able to:
 ### Load observation
@@ -78,7 +78,7 @@ Load astrometric observation  from text file (in MPC format) to intrnal storage 
 View and manage amount of observations to be proceesed. You can change time frames  and include/exclude all observation from specific observatory.
 On pictuer below are shown example for obsevations of Apophis asteroid. 
 
-![](https://github.com/vdmitriev90/OrbMod_DotNET_UI/blob/master/ObservationsView.png)
+![](https://github.com/vdmitriev90/OrbMod/blob/master/ObservationsView.png)
 
 ### Plot graphs
 Visualize result of orbit propagation or fiiting (Plot graphs)
@@ -86,11 +86,11 @@ There are two examples of such graphs.
 
 Graph  of different source of accelerations for asteroid Apophis from 2005 to 2015
 
-![](https://github.com/vdmitriev90/OrbMod_DotNET_UI/blob/master/Plot_acc.png)
+![](https://github.com/vdmitriev90/OrbMod/blob/master/Plot_acc.png)
 
 Graph of post fit residuals (right ascension) for observations of Apophis asteroid  from 2005 to 2015, obtained in this software
 
-![](https://github.com/vdmitriev90/OrbMod_DotNET_UI/blob/master/ResidualsRA.png)
+![](https://github.com/vdmitriev90/OrbMod/blob/master/ResidualsRA.png)
 
 
 
